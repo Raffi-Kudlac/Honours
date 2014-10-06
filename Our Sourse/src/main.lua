@@ -1,8 +1,6 @@
-
+local composer = require( "composer" )
 
 local function main()
-
-    menu()
-
+  composer.gotoScene("menu")
 end
 main()
