@@ -1,0 +1,80 @@
+
+-- NOTES FOR MYSELF------
+-- Width is along the x axis
+-- Height is along the y axis
+-----------------
+
+local widget    = require( "widget" )
+local gv        = require( "global" )
+local composer  = require( "composer" )
+
+local function main()
+  composer.gotoScene("menu")
+end
+
+function centerY(height)
+  return (display.contentHeight-height)/2 
+end
+
+function centerX(width)
+  return (display.contentWidth-width)/2 
+end
+
+local function test(event)
+    if ( "ended" == event.phase ) then
+        print("the test button was pressed")
+    end   
+end
+
+
+function buildStaticBG()
+
+local h = 120
+
+local stcBG = widget.newButton
+    {        
+        width     = 175,
+        height    = h,
+        shape     = "rect",
+        fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "stcBG",              
+        left      = 0,
+        top       = display.contentHeight - h                
+    }
+  gv.stage:insert( stcBG )
+end
+
+function buildScreenButtons()
+  
+  stage:insert( btntest )
+ 
+end
+
+function buildStaticScreen()
+    gv.stage = display.getCurrentStage()
+    buildStaticBG()
+    --buildScreenButtons()
+
+end
+
+
+function initialize()  
+  local btntest = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btntest",
+        label     = "Test",
+        left      = 200,
+        top       = 300,
+        onEvent   = test        
+    }
+
+  
+  
+  stage:insert( btntest )
+
+end
+main()

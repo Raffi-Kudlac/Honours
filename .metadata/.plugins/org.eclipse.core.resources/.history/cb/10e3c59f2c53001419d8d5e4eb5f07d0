@@ -1,0 +1,6 @@
+ 
+-- Used to hold the static images so they remain when scenes change
+stage = display.getCurrentStage()
+local g = {}
+
+return g

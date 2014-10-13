@@ -1,0 +1,19 @@
+
+-- NOTES FOR MYSELF------
+-- Width is along the x axis
+-- Height is along the y axis
+-----------------
+local composer = require( "composer" )
+
+local function main()
+  composer.gotoScene("menu")
+end
+
+function centerY(height)
+  return (display.contentHeight/2 - height)
+end
+
+function centerX(width)
+  return (display.contentWidth/2 - width)
+end
+main()

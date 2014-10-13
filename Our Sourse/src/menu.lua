@@ -1,6 +1,7 @@
-local composer = require( "composer" )
-
-local scene = composer.newScene()
+local composer  = require( "composer" )
+local gv        = require( "global" )
+local widget    = require( "widget" )
+local scene     = composer.newScene()
 
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
@@ -9,6 +10,12 @@ local scene = composer.newScene()
 -- local forward references should go here
 
 -- -------------------------------------------------------------------------------
+local function play( event )
+
+    if ( "ended" == event.phase ) then
+        composer.gotoScene("city")
+    end
+end
 
 
 -- "scene:create()"
@@ -18,6 +25,20 @@ function scene:create( event )
 
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
+    
+    local btnPlay = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btnPlay",
+        label     = "PLay",
+        left      = centerX(100),
+        top       = centerY(50),
+        onEvent   = play        
+    }    
+    sceneGroup:insert(btnPlay)         
 end
 
 

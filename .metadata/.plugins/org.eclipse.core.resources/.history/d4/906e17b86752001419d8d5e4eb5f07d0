@@ -1,0 +1,9 @@
+
+staticImages = display.newGroup()
+g = {}
+
+function initalize()
+  staticImages = display.newGroup()
+end
+
+return g
