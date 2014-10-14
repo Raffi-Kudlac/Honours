@@ -1,0 +1,14 @@
+local composer = require( "composer" )
+
+local function main()
+  composer.gotoScene("menu")
+end
+
+function centerY()
+
+end
+
+function centerX()
+
+end
+main()

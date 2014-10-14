@@ -1,0 +1,5 @@
+
+local staticImages = display.newGroup()
+g = {}
+
+return g

@@ -1,0 +1,6 @@
+ 
+
+stage = display.getCurrentStage()
+local g = {}
+
+return g

@@ -1,0 +1,11 @@
+
+
+function initialize()
+  stage = nil
+
+
+end 
+ 
+g = {}
+
+return g

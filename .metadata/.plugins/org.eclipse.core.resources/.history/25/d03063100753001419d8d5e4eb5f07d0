@@ -1,0 +1,175 @@
+
+-- NOTES FOR MYSELF------
+-- Width is along the x axis
+-- Height is along the y axis
+-----------------
+
+local widget    = require( "widget" )
+local gv        = require( "global" )
+local composer  = require( "composer" )
+
+local function main()
+  composer.gotoScene("menu")
+end
+
+function centerY(height)
+  return (display.contentHeight-height)/2 
+end
+
+function centerX(width)
+   return (display.contentWidth-width)/2 
+end
+
+
+local function buildStaticBG()
+  
+  h = 120
+
+  local stcBG = widget.newButton
+  {        
+      width     = 175,
+      height    = h,
+      shape     = "rect",
+      fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+      id        = "stcBG",              
+      left      = 0,
+      top       = display.contentHeight - h                
+  }
+  gv.stage:insert( stcBG )
+  
+end
+
+local function buildScreenButtons()
+
+  local buttonFactorY = display.contentHeight - h + 5
+  local buttonFactorX = 5
+    
+    
+   -- this is the resourse screen button 
+   local btnRS = widget.newButton
+   {
+      radius = 15,      
+      shape = "circle",
+      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      label = "LS",
+      id = "rs",
+      top = buttonFactorY,
+      left = buttonFactorX
+   }
+   
+   buttonFactorY = buttonFactorY + 5
+   buttonFactorX = buttonFactorX + 40
+   
+   --This is the Land screen button
+   local btnLND = widget.newButton
+   {
+      radius = 15,      
+      shape = "circle",
+      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      label = "LD",
+      id = "LND",
+      top = buttonFactorY,
+      left = buttonFactorX
+   }
+   
+   buttonFactorY = buttonFactorY + 10
+   buttonFactorX = buttonFactorX + 40
+   
+   --This is the power plant screen button
+   local btnPP = widget.newButton
+   {
+      radius = 15,      
+      shape = "circle",
+      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      label = "PP",
+      id = "PP",
+      top = buttonFactorY,
+      left = buttonFactorX
+   }
+   
+   
+   buttonFactorY = buttonFactorY + 25
+   buttonFactorX = buttonFactorX + 30
+   
+   --This is the city screen button
+   local btnCY = widget.newButton
+   {
+      radius = 15,      
+      shape = "circle",
+      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      label = "CY",
+      id = "CY",
+      top = buttonFactorY,
+      left = buttonFactorX
+   }
+   
+   buttonFactorY = buttonFactorY + 30
+   buttonFactorX = buttonFactorX + 25
+   
+   --This is the busness screen button
+   local btnBNS = widget.newButton
+   {
+      radius = 15,      
+      shape = "circle",
+      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      label = "BS",
+      id = "BS",
+      top = buttonFactorY,
+      left = buttonFactorX
+   }
+   
+   gv.stage:insert(btnBNS)
+   gv.stage:insert(btnCY)
+   gv.stage:insert(btnPP)
+   gv.stage:insert(btnLND)
+   gv.stage:insert(btnRS)
+ 
+end
+
+local function buildMenu()
+
+  local menuFactorY = display.contentHeight - h + 10 
+  
+  local btnMenu = widget.newButton
+  {        
+      width     = 50,
+      height    = 20,
+      shape     = "rect",
+      fillColor = { default={ 0, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+      id        = "btnMenu",              
+      left      = 5,
+      top       =  menuFactorY               
+  }
+  gv.stage:insert( btnMenu )
+
+end
+
+function buildStaticScreen()
+    gv.stage = display.getCurrentStage()
+    buildStaticBG()
+    buildScreenButtons()
+    buildMenu()
+
+end
+
+
+function initialize()  
+  local btntest = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btntest",
+        label     = "Test",
+        left      = 200,
+        top       = 300,
+        onEvent   = test        
+    }
+
+  
+  
+  stage:insert( btntest )
+
+end
+main()
