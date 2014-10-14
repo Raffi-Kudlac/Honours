@@ -131,11 +131,10 @@ local function buildScreenButtons()
    --This is the city screen button
    local btnCY = widget.newButton
    {
-      --radius      = rad,      
+      radius      = rad,      
       --shape       = "circle",
       --fillColor   = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      width       = 30,
-      height      = 30,      
+      label       = "CY",
       id          = "CY",
       defaultFile = "Images/st_city.png",
       top         = buttonFactorY,
