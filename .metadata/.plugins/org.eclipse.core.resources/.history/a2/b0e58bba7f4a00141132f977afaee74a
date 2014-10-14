@@ -1,6 +1,0 @@
-local dog = require( "dog" )
-
-local function main()
-
-end
-main()
