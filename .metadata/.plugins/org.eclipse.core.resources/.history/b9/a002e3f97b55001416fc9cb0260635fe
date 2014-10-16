@@ -4,6 +4,6 @@ settings =
     {
         default = "landscapeLeft",
         supported = { "landscapeLeft", "landscapeRight" },
-        UIStatusBarHidden = true,
+        UIStatusBarHidden = true
     },
 }

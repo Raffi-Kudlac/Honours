@@ -259,7 +259,7 @@ local function buildToolBar()
       height      = circleHeight,
       defaultFile = "Images/st_weather_Sun.png",   
       id          = "weather",      
-      top         = 25,
+      top         = 40,
       left        = toolBarFactorX + 70,                   
   }
   
@@ -272,7 +272,7 @@ local function buildToolBar()
       height      = circleHeight,
       defaultFile = "Images/st_pause.png",
       id          = "pause",      
-      top         = 25,
+      top         = 40,
       left        = toolBarFactorX + 110,                  
   }
   
