@@ -4,11 +4,13 @@
 -- Height is along the y axis
 -----------------
 
-local widget        = require( "widget" )
-local gv            = require( "global" )
-local composer      = require( "composer" )
-local monthCounter  = 1
-local month         = {
+local widget          = require( "widget" )
+local gv              = require( "global" )
+local composer        = require( "composer" )
+local monthCounter    = 1
+local circleWidth     = 30
+  local circleHeight  = 30
+local month           = {
     "January",
     "February",
     "March",
@@ -62,8 +64,9 @@ local function buildStaticBG()
   {        
       width     = w,
       height    = h,
-      shape     = "rect",
-      fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+--      shape     = "rect",
+--      fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/st_UICorner.png",              
       id        = "stcBG",              
       left      = 0,
       top       = display.contentHeight - h                
@@ -77,84 +80,75 @@ end
 
 local function buildScreenButtons()
 
-  local buttonFactorY = display.contentHeight - h + 5
-  local buttonFactorX = 5
-  local rad           = 15
-    
+  local buttonFactorY = display.contentHeight - h + 8
+  local buttonFactorX = 5  
     
    -- this is the resourse screen button 
    local btnRS = widget.newButton
-   {
-      radius      = rad,      
-      shape       = "circle",
-      fillColor   = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      label       = "LS",
+   {           
+      width       = circleWidth,
+      height      = circleHeight, 
       id          = "rs",
+      defaultFile = "Images/st_ff.png",
       top         = buttonFactorY,
       left        = buttonFactorX
    }
    
-   buttonFactorY = buttonFactorY + 5
-   buttonFactorX = buttonFactorX + 40
+   buttonFactorY = buttonFactorY + 15
+   buttonFactorX = buttonFactorX + 35
    
    --This is the Land screen button
    local btnLND = widget.newButton
    {
-      radius    = rad,      
-      shape     = "circle",
-      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      label     = "LD",
-      id        = "LND",
-      top       = buttonFactorY,
-      left      = buttonFactorX
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/st_land.png",
+      id          = "land",
+      top         = buttonFactorY,
+      left        = buttonFactorX
    }
    
-   buttonFactorY = buttonFactorY + 10
-   buttonFactorX = buttonFactorX + 40
+   buttonFactorY = buttonFactorY + 20
+   buttonFactorX = buttonFactorX + 35
    
    --This is the power plant screen button
    local btnPP = widget.newButton
    {
-      radius    = rad,      
-      shape     = "circle",
-      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      label     = "PP",
-      id        = "PP",
-      top       = buttonFactorY,
-      left      = buttonFactorX
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/st_plant.png",
+      id          = "plant",
+      top         = buttonFactorY,
+      left        = buttonFactorX
    }
    
    
-   buttonFactorY = buttonFactorY + 25
+   buttonFactorY = buttonFactorY + 20
    buttonFactorX = buttonFactorX + 30
    
    --This is the city screen button
    local btnCY = widget.newButton
-   {
-      --radius      = rad,      
-      --shape       = "circle",
-      --fillColor   = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      width       = 30,
-      height      = 30,      
-      id          = "CY",
+   {      
+      width       = circleWidth,
+      height      = circleHeight,      
+      id          = "city",
       defaultFile = "Images/st_city.png",
       top         = buttonFactorY,
       left        = buttonFactorX
    }
    
-   buttonFactorY = buttonFactorY + 30
+   buttonFactorY = buttonFactorY + 25
    buttonFactorX = buttonFactorX + 25
    
    --This is the busness screen button
    local btnBNS = widget.newButton
    {
-      radius    = rad,      
-      shape     = "circle",
-      fillColor = { default={ 1, 1, 1, 1 }, over={ 1, 0.2, 0.5, 1 } },
-      label     = "BS",
-      id        = "BS",
-      top       = buttonFactorY,
-      left      = buttonFactorX
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/st_business.png",
+      id          = "BS",
+      top         = buttonFactorY,
+      left        = buttonFactorX
    }
    
    gv.stage:insert(btnBNS)
@@ -174,11 +168,9 @@ local function buildMenu()
   {        
       width     = 75,
       height    = 30,
-      shape     = "rect",
-      fillColor = { default={ 0, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+      defaultFile = "Images/st_menu.png",        
       id        = "btnMenu",              
-      left      = 5,
-      label     = "Menu",
+      left      = 5,      
       top       =  menuFactorY               
   }
   gv.stage:insert( btnMenu )
@@ -192,8 +184,9 @@ local function buildMoneyBar()
     
   local MB = widget.newButton
   {        
-      width         = 120,
+      width         = w*0.6,
       height        = 20,
+      labelAlign    = "left",
       shape         = "roundedRect",
       cornerRadius  = 10,
       fillColor     = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
@@ -233,58 +226,56 @@ end
 
 local function buildToolBar()
   
-  local TBwidth         = 130
+  local TBwidth         = 150
   local toolBarFactorX  = display.contentWidth-TBwidth
     
   -- Tool bar Background   
   local TBBG = widget.newButton
   {        
       width     = TBwidth,
-      height    = 70,
-      shape     = "rect",      
-      fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
+      height    = 85,
+      defaultFile = "Images/st_dateControl.png",        
       id        = "btnTB",              
       left      = toolBarFactorX,      
-      top       = 0              
+      top       = 15              
   }
   
   -- The section that will hold the month and year
   timeLabel = widget.newButton
   {
-    width         = TBwidth *0.95,
+    width         = TBwidth *0.9,
     height        = 20, 
     shape         = "roundedRect",
-    cornerRadius  = 5,
+    cornerRadius  = 6,
     id            = "time",
     fillColor     = { default={ 0.5, 0, 0, 1 }, over={ 0.5, 0, 0.5, 0 } },
     label         = "January",
-    top           = 15,
-    left          = toolBarFactorX + 5  
+    top           = 17,
+    left          = toolBarFactorX + 10  
   }
   
   -- the weather icon
   local weather = widget.newButton
-  {
-      radius    = 13,
-      shape     = "circle",
-      id        = "weather",
-      label     = "W",
-      top       = 40,
-      left      = toolBarFactorX +30,
-      fillColor = { default={ 0, 0, 1, 1 }, over={ 0.5, 0, 0.5, 0 } }             
+  {   
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/st_weather_Sun.png",   
+      id          = "weather",      
+      top         = 40,
+      left        = toolBarFactorX + 70,                   
   }
   
   
   -- The pause/play button. When pause is pressed it will turn into the play button.
   local btnPause = widget.newButton
   {
-      radius    = 13,
-      shape     = "circle",
-      id        = "pause",
-      label     = "P",
-      top       = 40,
-      left      = toolBarFactorX +80,
-      fillColor = { default={ 0, 0, 1, 1 }, over={ 0.5, 0, 0.5, 0 } }             
+      
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/st_pause.png",
+      id          = "pause",      
+      top         = 40,
+      left        = toolBarFactorX + 110,                  
   }
   
   
