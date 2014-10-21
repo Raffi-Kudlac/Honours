@@ -13,8 +13,8 @@ local scene     = composer.newScene()
 local function play( event )
 
     if ( "ended" == event.phase ) then
-        composer.gotoScene("city")
-    end
+        composer.gotoScene("city")                             
+    end    
 end
 
 

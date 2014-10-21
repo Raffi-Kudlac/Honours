@@ -9,7 +9,7 @@ local gv              = require( "global" )
 local composer        = require( "composer" )
 local monthCounter    = 1
 local circleWidth     = 30
-  local circleHeight  = 30
+local circleHeight    = 30
 local month           = {
     "January",
     "February",
@@ -41,14 +41,17 @@ local function initalize()
     gv.month         = 5000 --each month is five seconds
     gv.secondsTimer  = timer
     gv.yearTimer     = timer
-    gv.population    = 50000    
+    gv.population    = 10000
+    calcPowerDemanded()
+    gv.powerSupplied = gv.powerDemanded*1.1    
+    gv.screen = "city"
 end
 
 
 function calcPowerDemanded()
     
     -- power demanded = population + a little more for businesses and such
-    gv.powerDemanded = gv.population*1.2
+    gv.powerDemanded = gv.population*1.2/1000
 
 end
 
@@ -61,6 +64,15 @@ function centerX(width)
    return (display.contentWidth-width)/2 
 end
 
+function goToScreen(destination)
+    
+    
+        if gv.screen ~= destination then
+          gv.screen = destination    
+          print(destination)          
+          composer.gotoScene(destination)      
+        end                
+end
 
 local function buildStaticBG()
   
@@ -109,6 +121,7 @@ local function buildScreenButtons()
       height      = circleHeight,
       defaultFile = "Images/st_land.png",
       id          = "land",
+      onEvent     = function() return goToScreen("land") end, 
       top         = buttonFactorY,
       left        = buttonFactorX
    }
@@ -139,6 +152,7 @@ local function buildScreenButtons()
       id          = "city",
       defaultFile = "Images/st_city.png",
       top         = buttonFactorY,
+      onEvent     = function() return goToScreen("city") end,     
       left        = buttonFactorX
    }
    
@@ -214,6 +228,7 @@ local function buildDataBar()
   dataBarX = display.contentWidth - w +5
   local dataBoxShift = w + 10
   local dataBoxWidth = ((dataBarX/3) - 20) 
+  local dataBoxHeightPos = 17
     
   local dataBar = widget.newButton
   {        
@@ -226,7 +241,7 @@ local function buildDataBar()
       top       =  display.contentHeight -20              
   }
   
-  local dataBox1 = widget.newButton
+  dataBox1 = widget.newButton
   {
       height    = 15,
       width     = dataBoxWidth,
@@ -235,13 +250,14 @@ local function buildDataBar()
       fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
       id        = "dataBox1",
       left      =  dataBoxShift,
-      top       =  display.contentHeight - 20
+      fontSize  = 10,
+      top       =  display.contentHeight - dataBoxHeightPos
   
   }
   
   dataBoxShift = dataBoxShift + 15 + dataBoxWidth
   
-  local dataBox2 = widget.newButton
+  dataBox2 = widget.newButton
   {
       height    = 15,
       width     = dataBoxWidth,
@@ -250,13 +266,14 @@ local function buildDataBar()
       fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
       id        = "dataBox2",
       left      =  dataBoxShift,
-      top       =  display.contentHeight - 20
+      fontSize  = 10,
+      top       =  display.contentHeight - dataBoxHeightPos
   
   }
   
   dataBoxShift = dataBoxShift + 15 + dataBoxWidth
   
-  local dataBox3 = widget.newButton
+  dataBox3 = widget.newButton
   {
       height    = 15,
       width     = dataBoxWidth,
@@ -265,7 +282,8 @@ local function buildDataBar()
       fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
       id        = "dataBox3",
       left      =  dataBoxShift,
-      top       =  display.contentHeight - 20  
+      fontSize  = 10,
+      top       =  display.contentHeight - dataBoxHeightPos  
   }
   
   dataBox1:setEnabled( false )
@@ -386,6 +404,19 @@ function timeStart()
   gv.yearTimer    = timer.performWithDelay(1, timerFunction)
   gv.secondsTimer = timer.performWithDelay(1000, secondsCounter)
 
+end
+
+function setDataBox(title, message, number)
+
+    if number == 1 then
+        dataBox1:setLabel(title .. ": ".. message)
+    elseif number == 2 then
+        dataBox2:setLabel(title .. ": ".. message)        
+    elseif number == 3 then
+        dataBox3:setLabel(title .. ": ".. message)    
+    else
+        -- do nothing
+    end
 end
 
 initalize()

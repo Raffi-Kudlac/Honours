@@ -6,8 +6,10 @@ year          = 2000
 month         = 5000 --each month is five seconds
 secondsTimer  = timer
 yearTimer     = timer
-population    = 50000
+population    = 10000
 powerDemanded = 0
+powerSupplied = 0
+screen        = "city"
 local g       = {}
 
 return g
