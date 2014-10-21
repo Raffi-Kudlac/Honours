@@ -213,7 +213,7 @@ local function buildDataBar()
    -- w is the width of the static BG
   dataBarX = display.contentWidth - w +5
   local dataBoxShift = w + 10
-  local dataBoxWidth = ((dataBarX/3) - 20) 
+  local dataBoxWidth = ((dataBarX/3) - 10) 
     
   local dataBar = widget.newButton
   {        
@@ -239,7 +239,7 @@ local function buildDataBar()
   
   }
   
-  dataBoxShift = dataBoxShift + 15 + dataBoxWidth
+  dataBoxShift = dataBoxShift + 10 + dataBoxWidth
   
   local dataBox2 = widget.newButton
   {
@@ -254,28 +254,11 @@ local function buildDataBar()
   
   }
   
-  dataBoxShift = dataBoxShift + 15 + dataBoxWidth
-  
-  local dataBox3 = widget.newButton
-  {
-      height    = 15,
-      width     = dataBoxWidth,
-      shape     = "roundedRect",
-      cornerRadius = 5,
-      fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
-      id        = "dataBox3",
-      left      =  dataBoxShift,
-      top       =  display.contentHeight - 20  
-  }
-  
   dataBox1:setEnabled( false )
-  dataBox2:setEnabled( false )
-  dataBox3:setEnabled( false )
   dataBar:setEnabled( false )
   gv.stage:insert( dataBar )
   gv.stage:insert( dataBox1)
-  gv.stage:insert( dataBox2)
-  gv.stage:insert( dataBox3)
+   gv.stage:insert( dataBox2)
 
 end
 

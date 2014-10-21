@@ -239,7 +239,7 @@ local function buildDataBar()
   
   }
   
-  dataBoxShift = dataBoxShift + 15 + dataBoxWidth
+  dataBoxShift = dataBoxShift + 10 + dataBoxWidth
   
   local dataBox2 = widget.newButton
   {
@@ -254,7 +254,7 @@ local function buildDataBar()
   
   }
   
-  dataBoxShift = dataBoxShift + 15 + dataBoxWidth
+  dataBoxShift = dataBoxShift + 10 + dataBoxWidth
   
   local dataBox3 = widget.newButton
   {

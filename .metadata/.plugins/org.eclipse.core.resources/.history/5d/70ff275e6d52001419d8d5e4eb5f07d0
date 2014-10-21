@@ -1,5 +1,0 @@
- 
-
-local g = {}
-
-return g
