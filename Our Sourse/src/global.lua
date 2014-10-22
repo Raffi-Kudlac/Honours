@@ -1,3 +1,4 @@
+local powerPlant        = require( "powerPlant" )
  
 -- Used to hold the static images so they remain when scenes change
 stage         = display.getCurrentStage()
@@ -10,6 +11,7 @@ population    = 10000
 powerDemanded = 0
 powerSupplied = 0
 screen        = "city"
+oilSpecs      = powerPlant
 local g       = {}
 
 return g

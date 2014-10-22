@@ -1,6 +1,7 @@
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
+local landTile = require( "landTile" )
 
 local scene = composer.newScene()
 
@@ -13,6 +14,14 @@ local scene = composer.newScene()
 -- -------------------------------------------------------------------------------
 
 
+local function loadOptions(event)
+
+    if ( "ended" == event.phase ) then
+        composer.showOverlay("landOptions")                             
+    end    
+
+end
+
 -- "scene:create()"
 function scene:create( event )
 
@@ -23,17 +32,17 @@ function scene:create( event )
     local openLand = widget.newButton
     {        
         width       = d,
-        height      = d,
-        happy = "test",
+        height      = d,        
         shape = "rect",
 --        defaultFile = "Images/st_UICorner.png",              
         id          = "openLand",              
         left        = centerX(d),
         top         = centerY(d),
-        
+        onEvent = loadOptions,       
         label = "Open Land"                
     }
     
+    openLand.tile = landTile.new("open")    
     openLand.happy = "test"
     if openLand.happy == "test" then
         openLand:setLabel("It worked")

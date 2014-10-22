@@ -7,6 +7,7 @@
 local widget          = require( "widget" )
 local gv              = require( "global" )
 local composer        = require( "composer" )
+local powerPlant        = require( "powerPlant" )
 local monthCounter    = 1
 local circleWidth     = 30
 local circleHeight    = 30
@@ -45,6 +46,7 @@ local function initalize()
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
+    gv.oilSpecs = powerPlant.new("oil")            
 end
 
 

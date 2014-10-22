@@ -1,0 +1,22 @@
+-------------------------------------------------
+--
+-- landTile.lua
+--
+--
+-------------------------------------------------
+ 
+local landTile = {}
+
+local landTile_mt = { __index = landTile }  -- metatable
+
+function landTile.new( name, ageInYears )  -- constructor
+    
+  local newDog = {
+    name = name or "Unnamed",
+    age = ageInYears or 2
+  }
+  
+  return setmetatable( newDog, dog_mt )
+end
+ 
+return land
