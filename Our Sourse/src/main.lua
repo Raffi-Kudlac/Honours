@@ -46,7 +46,7 @@ local function initalize()
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
-    gv.oilSpecs = powerPlant.new("oil")            
+    --gv.oilSpecs = powerPlant.new("oil")            
 end
 
 

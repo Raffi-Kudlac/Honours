@@ -28,13 +28,13 @@ function scene:create( event )
     {        
         width       = d -20,
         height      = d,        
-        shape = "rect",
---        defaultFile = "Images/st_UICorner.png",              
+        --shape = "rect",
+        defaultFile = "Images/lnd_buildOverlay.png",              
         id          = "BO",              
         left        = centerX(d),
         top         = centerY(d),
-        fillColor = { default={ 0.6, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
-        label = "Build this"                
+        --fillColor = { default={ 0.6, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+        --label = "Build this"                
     }
   
     local btnoil = widget.newButton
