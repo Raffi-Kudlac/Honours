@@ -18,16 +18,16 @@ function scene:create( event )
 
     local sceneGroup = self.view
 
-    local d = 250
+    local d = 280
     local buildOptionsTop = centerY(d)
     local buildOptionsLeft = centerX(d)
-    local widthShift = 40
-    local heightShift = 20
+    local widthShift = 20
+    local heightShift = -10
     
     local buildOptions = widget.newButton
     {        
         width       = d -20,
-        height      = d,        
+        height      = d -10,        
         --shape = "rect",
         defaultFile = "Images/lnd_buildOverlay.png",              
         id          = "BO",              
