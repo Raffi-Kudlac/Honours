@@ -2,6 +2,10 @@ local composer  = require( "composer" )
 local scene     = composer.newScene()
 local gv        = require( "global" )
 
+local scaleOverlay = display.newImage("Images/cty_scaleOverlay.png")
+local scaleMiddle = 0
+
+
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
 -- -----------------------------------------------------------------------------------------------------------------
@@ -12,7 +16,7 @@ local gv        = require( "global" )
 
 -- "scene:create()"
 function scene:create( event )
-    local scaleMiddle = 0
+    
     local sceneGroup = self.view
     print("Made it to the city Screen")
     buildStaticScreen()    
@@ -24,13 +28,18 @@ function scene:create( event )
     local scale = display.newImage("Images/cty_scale.png")
     scale.x = 30
     scale.y = 100
+    scale:scale(0.3,0.18)  
+    scaleMiddle = scale.y/2 
     
-    scaleMiddle = scale.height/2 + scale.y
-    scale:scale(0.3,0.18)    
+    
+    scaleOverlay:scale(0.3,0.18)
+    --scaleOverlay.width = scaleOverlay.width*0.3
+    --scaleOverlay.height = scaleOverlay.height*0.18 -40
+    scaleOverlay.x = scale.x + 50
+    scaleOverlay.y = scaleMiddle    
+        
     sceneGroup:insert(scale)
-
-    -- Initialize the scene here.
-    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
+    sceneGroup:insert(scaleOverlay)
 end
 
 
