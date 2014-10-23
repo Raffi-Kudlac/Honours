@@ -3,7 +3,8 @@ local scene     = composer.newScene()
 local gv        = require( "global" )
 
 local scaleOverlay = display.newImage("Images/cty_scaleOverlay.png")
-local scaleMiddle = 0
+local maxSOHeight = 0
+ 
 
 
 -- -----------------------------------------------------------------------------------------------------------------
@@ -13,6 +14,17 @@ local scaleMiddle = 0
 -- local forward references should go here
 
 -- -------------------------------------------------------------------------------
+
+local function scaleOverlayHeightCalculator()
+  
+    -- conversion ratio for now is maxHeight = 5Gw 
+    local net = gv.powerSupplied - gv.powerDemanded
+    
+    local percent = net/5
+    
+    scaleOverlay.height = maxSOHeight*percent
+
+end
 
 -- "scene:create()"
 function scene:create( event )
@@ -26,18 +38,22 @@ function scene:create( event )
     setDataBox("Supplied", gv.powerSupplied.."GW", 3)
     
     local scale = display.newImage("Images/cty_scale.png")
-    scale.x = 30
-    scale.y = 100
-    scale:scale(0.3,0.18)  
-    scaleMiddle = scale.y/2 
     
+    scale.anchorX,scale.anchorY = 0,0.5
+    scale.x = 15
+    scale.y = 100 
+    scale:scale(0.3,0.18)
     
+   
+    scaleOverlay.anchorX,scaleOverlay.anchorY = 0,1    
+    scaleOverlay.x = scale.x 
+    scaleOverlay.y = scale.y    
     scaleOverlay:scale(0.3,0.18)
-    --scaleOverlay.width = scaleOverlay.width*0.3
-    --scaleOverlay.height = scaleOverlay.height*0.18 -40
-    scaleOverlay.x = scale.x + 50
-    scaleOverlay.y = scaleMiddle    
+    maxSOHeight = scaleOverlay.height       
+    scaleOverlay:setFillColor(0,1,0)
+    scaleOverlayHeightCalculator()    
         
+           
     sceneGroup:insert(scale)
     sceneGroup:insert(scaleOverlay)
 end
