@@ -35,7 +35,16 @@ end
 
 -- Initalizing the global variables 
 local function initalize()
-
+  
+    local oilPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
+    "It burns fairly well compared to coal."            
+    local oilCons = "Oil has many other purposes other then just fueling power plants. Such as fueling cars and heating homes."..
+    "These other uses drain the amount of oil that can be used"    
+    local oilCost = 2    
+    local oilProduction = 1
+    local oilConsumption = 10
+    
+    
     gv.stage         = display.getCurrentStage()
     gv.seconds       = 0
     gv.year          = 2000
@@ -46,7 +55,14 @@ local function initalize()
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
-    --gv.oilSpecs = powerPlant.new("oil")            
+    
+    gv.oilSpecs = powerPlant.new("oil")
+    gv.oilSpecs:setCost(oilCost)
+    gv.oilSpecs:setProduction(oilProduction)
+    gv.oilSpecs:setCons(oilCons)
+    gv.oilSpecs:setPros(oilPros)
+    gv.oilSpecs:setConsumption(oilConsumption)
+                             
 end
 
 

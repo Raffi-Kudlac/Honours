@@ -12,6 +12,10 @@ local circleHeight = 30
 
 -- -------------------------------------------------------------------------------
 
+local costText = ""
+local productionText = ""
+
+
 
 -- "scene:create()"
 function scene:create( event )
@@ -20,9 +24,9 @@ function scene:create( event )
 
     local d = 280
     local buildOptionsTop = centerY(d)
-    local buildOptionsLeft = centerX(d)
-    local widthShift = 20
-    local heightShift = -10
+    local buildOptionsLeft = centerX(d) + 20
+    local widthShift = 10
+    local heightShift = 20
     
     local buildOptions = widget.newButton
     {        
@@ -36,6 +40,8 @@ function scene:create( event )
         --fillColor = { default={ 0.6, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
         --label = "Build this"                
     }
+    
+    
   
     local btnoil = widget.newButton
     {           

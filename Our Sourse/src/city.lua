@@ -20,6 +20,10 @@ function scene:create( event )
     setDataBox("Population", gv.population, 1)
     setDataBox("Demanded", gv.powerDemanded.."GW", 2)
     setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+    
+    local scale = display.newImage("Images/cty_scale.png")
+    
+    sceneGroup:insert(scale)
 
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
