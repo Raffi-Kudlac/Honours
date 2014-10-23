@@ -12,7 +12,7 @@ local gv        = require( "global" )
 
 -- "scene:create()"
 function scene:create( event )
-   
+    local scaleMiddle = 0
     local sceneGroup = self.view
     print("Made it to the city Screen")
     buildStaticScreen()    
@@ -22,7 +22,11 @@ function scene:create( event )
     setDataBox("Supplied", gv.powerSupplied.."GW", 3)
     
     local scale = display.newImage("Images/cty_scale.png")
+    scale.x = 30
+    scale.y = 100
     
+    scaleMiddle = scale.height/2 + scale.y
+    scale:scale(0.3,0.18)    
     sceneGroup:insert(scale)
 
     -- Initialize the scene here.
