@@ -51,9 +51,16 @@ function scene:create( event )
     scaleOverlay:scale(0.3,0.18)
     maxSOHeight = scaleOverlay.height       
     scaleOverlay:setFillColor(0,1,0)
-    scaleOverlayHeightCalculator()    
+    scaleOverlayHeightCalculator()
+    
+    local bg = display.newImage("Images/cty_bg.png")    
+    bg.Height = centerY(bg.height)
+    bg.Width = centerX(bg.width)
+    bg.x = 40
+    bg.y = 0
         
-           
+        
+    sceneGroup:insert(bg)       
     sceneGroup:insert(scale)
     sceneGroup:insert(scaleOverlay)
 end
