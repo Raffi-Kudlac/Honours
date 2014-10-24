@@ -1,3 +1,9 @@
+--[[
+    Purpose: 
+        This screen creates the city screen where the user can see how the population is doing and of
+        he/she is meeting the demand.
+]]
+
 local composer  = require( "composer" )
 local scene     = composer.newScene()
 local gv        = require( "global" )

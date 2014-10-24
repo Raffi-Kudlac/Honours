@@ -1,4 +1,8 @@
---calculate the aspect ratio of the device:
+--[[
+    Purpose:
+        calculate the aspect ratio of the device. Code taken from corona labs. Not written by Raffi Kudlac
+
+]]
 local aspectRatio = display.pixelHeight / display.pixelWidth
 
 application = {

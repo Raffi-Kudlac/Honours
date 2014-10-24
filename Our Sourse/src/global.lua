@@ -1,3 +1,9 @@
+--[[
+    Purpose: 
+        This file is responcible for holding varibles that are accessable to other files that
+        reference this one.
+]]
+
 local powerPlant        = require( "powerPlant" )
  
 -- Used to hold the static images so they remain when scenes change

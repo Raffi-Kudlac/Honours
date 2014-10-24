@@ -1,3 +1,9 @@
+--[[
+    Purpose:    
+        This screen is the menu screen currently only holding the play button.
+
+]]
+
 local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )

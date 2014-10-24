@@ -1,8 +1,15 @@
 
--- NOTES FOR MYSELF------
--- Width is along the x axis
--- Height is along the y axis
------------------
+--[[ 
+  Purpose: 
+      By Lua default all files have access to this file and this is the first file that is executed by the program.
+      This holds all global methods and is responcible for setting up the static components of the game, as well as timers,
+      and iinitalizing global variables.     
+
+    NOTES FOR MYSELF------
+  Width is along the x axis
+  Height is along the y axis
+
+]]
 
 local widget          = require( "widget" )
 local gv              = require( "global" )

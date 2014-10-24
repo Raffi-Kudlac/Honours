@@ -1,3 +1,10 @@
+--[[
+    Purpose:
+        This file is an object for the land Screen. Each grid section holds a object of this file.
+        Here all the information is held of what kind of tile it is and other characteristic.
+
+]]
+
 -------------------------------------------------
 --
 -- landTile.lua

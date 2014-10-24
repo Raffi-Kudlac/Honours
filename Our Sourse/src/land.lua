@@ -1,3 +1,10 @@
+--[[
+    Purpose:    
+        This screen is responcible for loading the land Screen and setting up components.
+        On this screen the user can build fossil fueled power plants and nuclear power.
+        He/She can also buy more land if more is needed. 
+]]
+
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )

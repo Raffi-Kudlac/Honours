@@ -1,3 +1,12 @@
+--[[
+    Purpose:    
+        This screen appears on top of the land screen (layOver screen) and is responcible
+        for displaying possible build options to the user. This screen only appears if the user owns
+        the land that he/she selected.
+
+]]
+
+
 local composer = require( "composer" )
 local widget    = require( "widget" )
 local gv              = require( "global" )
