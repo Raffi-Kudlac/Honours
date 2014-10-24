@@ -2,16 +2,22 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="powerPlant" key="selection"/>
+		<item value="nulclear" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="gas"/>
+			<item value="coal"/>
+			<item value="oil"/>
 			<item value="landTile"/>
 			<item value="15"/>
 		</list>
 		<list key="replacehistory">
+			<item value="nulclear"/>
+			<item value="gas"/>
+			<item value="coal"/>
 			<item value="powerPlant"/>
 			<item value="rad"/>
 		</list>

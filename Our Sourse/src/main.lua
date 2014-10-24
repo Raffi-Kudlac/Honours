@@ -11,6 +11,7 @@ local powerPlant        = require( "powerPlant" )
 local monthCounter    = 1
 local circleWidth     = 30
 local circleHeight    = 30
+local MB = widget
 local month           = {
     "January",
     "February",
@@ -36,13 +37,13 @@ end
 -- Initalizing the global variables 
 local function initalize()
   
-    local oilPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
+    local energyPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
     "It burns fairly well compared to coal."            
-    local oilCons = "Oil has many other purposes other then just fueling power plants. Such as fueling cars and heating homes."..
+    local energyCons = "Oil has many other purposes other then just fueling power plants. Such as fueling cars and heating homes."..
     "These other uses drain the amount of oil that can be used"    
-    local oilCost = 2    
-    local oilProduction = 1
-    local oilConsumption = 10
+    local energyCost = 2    
+    local energyProduction = 1
+    local energyConsumption = 10
     
     
     gv.stage         = display.getCurrentStage()
@@ -52,17 +53,68 @@ local function initalize()
     gv.secondsTimer  = timer
     gv.yearTimer     = timer
     gv.population    = 10000
+    gv.money = 10
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
     
     gv.oilSpecs = powerPlant.new("oil")
-    gv.oilSpecs:setCost(oilCost)
-    gv.oilSpecs:setProduction(oilProduction)
-    gv.oilSpecs:setCons(oilCons)
-    gv.oilSpecs:setPros(oilPros)
-    gv.oilSpecs:setConsumption(oilConsumption)
-                             
+    gv.oilSpecs:setCost(energyCost)
+    gv.oilSpecs:setProduction(energyProduction)
+    gv.oilSpecs:setCons(energyCons)
+    gv.oilSpecs:setPros(energyPros)
+    gv.oilSpecs:setConsumption(energyConsumption)
+    
+    energyPros = "This Fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossle fuels."..
+    "Coal is cheap and fairly easy to obtain."
+    
+    energyCons = "Coal puts carbon dioxide into the air and its supplies are not infinite. Envirmentatilist will not"..
+    "like you for building this kind of power plant"
+    
+    energyCost = 3
+    energyProduction = 4
+    energyConsumption = 12
+    
+    gv.coalSpecs = powerPlant.new("coal")
+    gv.coalSpecs:setCost(energyCost)
+    gv.coalSpecs:setProduction(energyProduction)
+    gv.coalSpecs:setCons(energyCons)
+    gv.coalSpecs:setPros(energyPros)
+    gv.coalSpecs:setConsumption(energyConsumption)
+    
+    energyPros = "This Fossil fueled power plant runs off of gas. Gas is the most expensive of the fossle fuels but burns the cleanest"..
+    "and has the lest impact on the atmosphere"    
+    energyCons = "There is a finite amount of gas on the planet"
+    energyCost = 3
+    energyProduction = 4
+    energyConsumption = 15
+    
+    gv.gasSpecs = powerPlant.new("gas")
+    gv.gasSpecs:setCost(energyCost)
+    gv.gasSpecs:setProduction(energyProduction)
+    gv.gasSpecs:setCons(energyCons)
+    gv.gasSpecs:setPros(energyPros)
+    gv.gasSpecs:setConsumption(energyConsumption)
+    
+    energyPros = "Nuclear Power is the cleanest of the natural resourses. With uranium being the most abundant it can long outlast fossil fuels"
+    energyCons = "Uranium is limited and plants are expensive. Some of the population is scared of nuclear power"
+    energyCost = 4
+    energyProduction = 8
+    energyConsumption = 10
+    
+    gv.nuclearSpecs = powerPlant.new("nuclear")
+    gv.nuclearSpecs:setCost(energyCost)
+    gv.nuclearSpecs:setProduction(energyProduction)
+    gv.nuclearSpecs:setCons(energyCons)
+    gv.nuclearSpecs:setPros(energyPros)
+    gv.nuclearSpecs:setConsumption(energyConsumption)
+                          
+end
+
+local function setMoney()
+
+    MB:setLabel("$ "..gv.money)
+
 end
 
 
@@ -219,7 +271,7 @@ local function buildMoneyBar()
     
   moneyBarFactorY = display.contentHeight - 30
     
-  local MB = widget.newButton
+  MB = widget.newButton
   {        
       width         = w*0.6,
       height        = 20,
@@ -229,10 +281,11 @@ local function buildMoneyBar()
       fillColor     = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },        
       id            = "btnMB",              
       left          = 5,
-      label         = "$",
+      label         = "$ ",
       top           =  moneyBarFactorY              
   }
   
+  setMoney()
   MB:setEnabled( false )
   gv.stage:insert( MB )
     

@@ -12,6 +12,10 @@ powerDemanded = 0
 powerSupplied = 0
 screen        = "city"
 oilSpecs      = powerPlant
+coalSpecs     = powerPlant
+gasSpecs      = powerPlant
+nuclearSpecs  = powerPlant
+money         = 0
 local g       = {}
 
 return g

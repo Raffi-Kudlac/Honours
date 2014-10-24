@@ -16,8 +16,12 @@ local scene = composer.newScene()
 
 local function loadOptions(event)
 
+    local options = {
+        isModal = true
+    }
+
     if ( "ended" == event.phase ) then
-        composer.showOverlay("landOptions")                             
+        composer.showOverlay("landOptions",options)                                    
     end    
 
 end
