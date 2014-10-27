@@ -1,0 +1,23 @@
+\begin{thebibliography}{BGLW08}
+
+\bibitem[BGLW08]{Bauschke:2007-PA02}
+Heinz~H. Bauschke, Rafal Goebel, Yves Lucet, and Xianfu Wang.
+\newblock \href{http://dx.doi.org/10.1137/070687542}{The proximal average:
+  Basic theory}.
+\newblock {\em SIAM J. Optim.}, 19(2):768--785, 2008.
+
+\bibitem[Fea05]{Fear:2005manual}
+Simon Fear.
+\newblock
+  \href{http://www.ctan.org/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf}{Publication
+  quality tables in {LaTeX}} [online].
+\newblock 2005 [cited April 18, 2010].
+
+\bibitem[HUL93]{Hiriart-Urruty:1993-ConvexAnalysis}
+Jean-Baptiste Hiriart-Urruty and Claude Lemar{\'e}chal.
+\newblock \href{http://www.springer.com/math/book/978-3-540-56850-6}{{\em
+  Convex Analysis and Minimization Algorithms}}, volume 305--306 of {\em
+  Grundlehren der Mathematischen Wissenschaften}.
+\newblock Springer-Verlag, Berlin, 1993.
+
+\end{thebibliography}

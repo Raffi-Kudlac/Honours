@@ -1,0 +1,315 @@
+\documentclass[msc,oneside]{ubcthesis}%msc, phd, masc, ma, or meng
+
+% ================================================================================
+% CHANGE THE FOLLOWING ACCORDING TO YOUR PROGRAM/THESIS
+% ================================================================================
+\institution{The University Of British Columbia}
+\faculty{Computer Science}
+\institutionaddress{Okanagan}
+
+% For an Honours thesis, use \documentclasss[msc,oneside]{ubcthesis} above and
+% uncomment and modify the next line:
+\degreetitle{B.Sc. Computer Science Honours}
+
+\title{The Source}
+%\subtitle{With a Subtitle}
+\author{Raffi Kudlac} % The name needs to be exactly the same as on the diploma i.e. (Name from SISC)
+\copyrightyear{2015}
+\submitdate{April 2015} % date of approved thesis
+%\program{Interdisciplinary Studies - Optimization}%or Mathematics, or Interdisciplinary Studies
+%\previousdegree{B.Sc. Hons., The University of British Columbia, 2008}
+%\previousdegree{M.Sc., The University of British Columbia, 2010}
+
+% ================================================================================
+
+
+\usepackage{ubcostyle} %loads packages
+
+
+% ===================================================================
+% CHANGE THE FOLLOWING COMMANDS ACCORDING TO YOUR NEEDS
+% ===================================================================
+\newcommand{\R}{\mathbb{R}}   %real number
+\newcommand{\Z}{\mathbb{Z}}   %integers
+\newcommand{\C}{\mathbb{C}}   %complex numbers
+
+\newcommand{\dom}{\operatorname{dom}}
+\providecommand{\TT}[1]{\Theta\left(#1\right)} % big-Theta
+\providecommand{\OO}[1]{\mathcal{O}\left(#1\right)} % big-Oh
+% ===================================================================
+
+%Uncomment the next line if there are more than one appendix
+%\renewcommand*\appendixname{Appendices}
+
+
+\begin{document}
+
+% This starts numbering in Roman numerals as required for the thesis
+% style.
+\frontmatter                    % Mandatory
+
+% The order of the following components should be preserved.  The order
+% listed here is the order currently required by FoGS.
+\maketitle                      % Mandatory
+
+\begin{abstract}                % Mandatory -  maximum 350 words
+This is a sample thesis based on the \texttt{ubcthesis.cls} template
+from Michael Forbes. The thesis includes the additional style file
+\texttt{ubcostyle.sty} in accordance to the official standards for
+the UBCO College of Graduate Studies.
+This sample thesis together with the style files and templates
+produces a document that is officially accepted by the UBCO College of Graduate Studies. 
+
+If you need a package, look into ubcostyle.sty to see if it is not already loaded there. 
+See the file README.txt for additional instructions to produce the bibliography, index, and glossary automatically.
+\end{abstract}
+
+\chapter{Preface}
+Preface stuff
+
+If any part of your thesis was co-written, you must include a
+Co-Author\-ship statement. Also indicate if part of the thesis was published with the reference.
+
+\newpage
+\phantomsection \label{tableofcontent}%set anchor at right location
+\addcontentsline{toc}{chapter}{\contentsname}
+\tableofcontents                % Mandatory: generate toc
+\newpage 
+\phantomsection \label{listoftab}%set anchor at right location
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables                   % Mandatory if thesis has tables
+\newpage
+\phantomsection \label{listoffig}%set anchor at right location
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures                  % Mandatory if thesis has figures
+
+
+\chapter{Acknowledgements}      % Optional
+This is the place to thank professional colleagues and people who have
+given you the most help during the course of your graduate work.
+
+\chapter{Dedication} % Optional
+The dedication is usually quite short, and is a personal rather than
+an academic recognition.  The \emph{Dedication} does not have to be
+titled, but it must appear in the table of contents.  If you want to
+skip the chapter title but still enter it into the Table of Contents,
+use this command \verb|\chapter[Dedication]{}|.
+
+
+
+% Any other unusual prefactory material should come here before the
+% main body.
+
+% Now regular page numbering begins.
+\mainmatter
+
+% Parts are the largest structural units, but are optional.
+%\part{Thesis}
+
+% Chapters are the next main unit.
+\chapter{Introduction}
+This sample thesis\  with UBCO College of Graduate Studies standards. If you need more information about the template and LaTeX, please check out the sample thesis of Michael Forbes at
+
+
+%Include citations in your thesis as you write:
+%\cite{MR2848848,MR2461448,MR2834159,infconv,convmono,MR2668638,Bauschke:2007-PA02,proxbas}
+
+%\section{Packages}
+%There are several packages\ . So before you add a new package, check first if it is already included there.
+
+
+%\section{Epigraph}
+%If you want to add an epigraph to a chapter (epigraph in the sense of a literary inscription, not a function epigraph), you can use the command \texttt{epigraph} after the chapter. Check out the documentation of the \texttt{epigraph} package for more information.
+
+% The following are examples of how to incorporate graphics into your thesis.
+
+% \begin{figure}[ht]
+%   \begin{center}
+%     \includegraphics[width=0.4\textwidth]{figure}
+%     \caption[Sample figure.]{\label{fig:happy} This is a sample figure
+%       Note that we have
+%       used the optional argument for the caption command so that only
+%       a short version of this caption occurs in the list of figures.}
+%   \end{center}
+% \end{figure}
+
+% \begin{figure}[ht]
+%   \begin{center}
+%     \includegraphics[width=0.4\textwidth]{figure}
+%     \caption{\label{fig:happy2} This is the same sample figure with still
+% 			a long caption but this time we did not use a short caption command
+% 			in the table of figures.}
+%   \end{center}
+% \end{figure}
+
+% You should really put text in between figures so LaTeX has more flexibility to place the figure at the appropriate location.
+
+
+
+\chapter{Sample Content Using Mathematical Notations}
+
+\section{Facts and theorems}
+If we use a well established fact or theorem\ 
+
+\begin{fact}\cite[Theorem~IV.2.4.2]{Hiriart-Urruty:1993-ConvexAnalysis}\label{def:marginalfunc}
+Define the \emph{marginal function} $\gamma$ associated with $g:\R^n\times\R^m\rightarrow \R\cup
+\{+\infty\}$ by $z\mapsto \gamma(z):=\inf_x
+g(x,z)$. If $g$ is a proper convex function and is bounded below on the set  $\R^n \times \{z\}$ for all $z$, then $\gamma$ is convex.
+\end{fact}
+
+\section{Propositions and lemmas}
+Here is a lemma followed by its proof.
+\[
+D =\left\{ (x,\lambda)\in \R^d \times \R^+ : \frac{x}{\lambda} \in C\right\}.
+\]
+
+\begin{lemma}
+Assume $C$ is a nonempty closed convex set. Then the set $D$ is a nonempty closed convex cone.
+\end{lemma}
+
+\begin{proof}
+The fact that $D$ is nonempty and closed follows from $C$ being non\-empty and closed. One can check directly that $D$ is a cone....
+
+Hence $D$ is convex.
+\end{proof}
+Make sure that the qed symbol is always on the last line of the proof. If the last line is an equation, you can enforce the qed on the same line with the \texttt{qedhere} command.
+
+For citations, please use BibTex. A sample article to verify formatting and style is \cite{Bauschke:2007-PA02}. Use the bibliography style \texttt{ubco}, which is basic \texttt{alphaurl} style with inline links enabled. Please compile multiple times when generating the references. The last entry in a reference are the back references to the pages with the citation. They need an additional compilation, once the bibtex entries are generated.
+
+Note that the bibliography style is discipline dependent so feel free to use the style adopted by your discipline, for example siam for mathematics.
+
+\chapter{Landscape Mode}
+The landscape mode allows you to rotate a page through 90 degrees.  It
+is generally not a good idea to make the chapter heading landscape,
+but it can be useful for long tables etc.
+
+\begin{landscape}
+  This text should appear rotated, allowing for formatting of very
+  wide tables etc.  Note that this might only work after you convert
+  the \texttt{dvi} file to a postscript (\texttt{ps}) or \texttt{pdf}
+  file using \texttt{dvips} or \texttt{dvipdf} etc.
+\end{landscape}
+
+\chapter{Conclusion}
+Here comes the conclusion.
+\begin{table}[tbph]
+\centering
+\caption{A publication quality table. Very very very very very very very very very very long title.
+\label{table:food1}}
+\begin{tabular}{@{}llr@{}} \toprule 
+\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
+Animal & Description & Price (\$)\\ \midrule 
+Gnat & per gram & 13.65 \\ 
+& each & 0.01 \\ 
+Gnu & stuffed & 92.50 \\ 
+Emu & stuffed & 33.33 \\ 
+Armadillo & frozen & 8.99 \\ \bottomrule 
+\end{tabular}
+\end{table}
+
+\newpage
+Your conclusion can go on for several pages.
+
+
+% This file is setup to use a bibtex file sample.bib and uses the
+% plain style.  Other styles may be used depending on the conventions
+% of your field of study.
+%
+% Note: the bibliography must come before the appendices.
+
+
+%change heading ``Chapter 5 Bibliography''->''Bibliography''
+\newpage %newpage needed otherwise pagestyle applied to previous chapter. Does not actually create a new page
+\pagestyle{fancy}\chead{Bibliography}\rhead{}\cfoot{}\rfoot{\thepage}
+
+%Bibliography style is discipline dependent. Mathematic student can use e.g. SIAM
+\bibliographystyle{ubco}
+%\bibliographystyle{siam}
+\bibliography{bibliography}%name of your .bib file
+
+\newpage
+\pagestyle{headings}
+\addtocontents{toc}{%
+\protect\renewcommand*\protect\cftchappresnum{\appendixname~}}
+
+\appendix 
+\addappheadtotoc %uses the current page number when it makes the entry in the ToC
+\appendixpage 
+
+\addtocontents{toc}{
+\setlength{\cftbeforechapskip}{\cftbeforesecskip}
+\setlength{\cftchapindent}{\cftsecindent}
+\protect\renewcommand{\cftchapfont}{\cftsecfont}
+\protect\renewcommand{\protect\cftchapdotsep}{\cftsecdotsep}
+}
+
+
+\chapter{Tables}
+Here you can have additional tables. Table captions are always on top.
+
+In order to use publication quality tables, one should use the guidelines in \cite{Fear:2005manual}. In short, do not use vertical rules or double rules, units in the column heading (not in the body of the table), precede decimals with a digit, and do not use ditto signs. Table \ref{table:food} is according to the guidelines. 
+
+For tables, the caption goes on top, for figures, the caption goes on the bottom. If possible, always position tables and figures at the top of a page.\footnote{In this case, the chapter heading prevents the table from being at the top.} Use the option \verb|tbph| for the placement.
+
+\begin{table}[tbph]
+\centering
+\caption{A publication quality table. Very very very very very very very very very very long title.
+\label{table:food}}
+\begin{tabular}{@{}llr@{}} \toprule 
+\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
+Animal & Description & Price (\$)\\ \midrule 
+Gnat & per gram & 13.65 \\ 
+& each & 0.01 \\ 
+Gnu & stuffed & 92.50 \\ 
+Emu & stuffed & 33.33 \\ 
+Armadillo & frozen & 8.99 \\ \bottomrule 
+\end{tabular}
+\end{table}
+
+\newpage
+And other table materials (I needed to generate two pages for that appendix to test the formatting of the table of content).
+
+\begin{table}
+\caption{Another table}
+\end{table}
+
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+\begin{table}
+\caption{Another table}
+\end{table}
+
+\chapter{Figures}
+Here you can have additional figures. Figure captions are always at the bottom.
+
+\newpage
+
+And other additional figures (again I needed to generate two pages :-).
+% Indices come here.
+
+
+\end{document}
+\endinput
