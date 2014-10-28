@@ -1,7 +1,7 @@
 --[[
     Purpose:
         This file holds the static information about each type of power plant. All this files does is store information
-        to be assessed when needed. This is an object one will exist for each type of power.
+        to be assessed when needed. One instance of this object will exist for each type of power.
 ]]
 
 -------------------------------------------------

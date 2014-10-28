@@ -64,6 +64,8 @@ local function initalize()
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
+    gv.font = native.systemFont
+    gv.fontSize = 12
     
     gv.oilSpecs = powerPlant.new("oil")
     gv.oilSpecs:setCost(energyCost)

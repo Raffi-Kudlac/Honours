@@ -11,6 +11,7 @@ local gv       = require( "global" )
 local landTile = require( "landTile" )
 
 local scene = composer.newScene()
+local openLand = widget
 
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
@@ -28,7 +29,14 @@ local function loadOptions(event)
     }
 
     if ( "ended" == event.phase ) then
-        composer.showOverlay("landOptions",options)                                    
+      if (openLand.tile:getType() == "open") then
+          composer.showOverlay("landOptions",options)
+      elseif (openLand.tile:getType() == "city owned") then
+          composer.showOverlay("cityOptions",options)
+      elseif (openLand.tile:getType()=="forest") then
+          composer.showOverlay("forestOptions",options)
+      end
+                                          
     end    
 
 end
@@ -40,7 +48,7 @@ function scene:create( event )
 --    print("made it to the land screen")
     local d = 100
     
-    local openLand = widget.newButton
+    openLand = widget.newButton
     {        
         width       = d,
         height      = d,        
@@ -53,7 +61,7 @@ function scene:create( event )
         label = "Open Land"                
     }
     
-    openLand.tile = landTile.new("open")    
+    openLand.tile = landTile.new("forest")    
     openLand.happy = "test"
     if openLand.happy == "test" then
         openLand:setLabel("It worked")

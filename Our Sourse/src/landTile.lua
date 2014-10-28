@@ -26,5 +26,11 @@ function landTile.new(kind)  -- constructor
   
   return setmetatable( newLandTile, landTile_mt )
 end
+
+function landTile:getType()
+
+    return self.type
+
+end
  
 return landTile

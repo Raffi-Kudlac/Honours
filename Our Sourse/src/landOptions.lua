@@ -8,8 +8,8 @@
 
 
 local composer = require( "composer" )
-local widget    = require( "widget" )
-local gv              = require( "global" )
+local widget   = require( "widget" )
+local gv       = require( "global" )
 
 local scene = composer.newScene()
 local circleWidth = 30
@@ -25,8 +25,6 @@ local productionText = ""
 local prosText = ""
 local consText = ""
 local consumptionText = ""
-local font = native.systemFont
-local fontSize = 8
 local currentEnergySourse = powerPlant
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
@@ -40,20 +38,20 @@ local function createText(ffSpecs)
     currentEnergySourse = ffSpecs
     
     costText = display.newText("Costs: $"..ffSpecs:getCost(), buildOptionsLeft + 35,
-    buildOptionsTop + 20, font, fontSize )
+    buildOptionsTop + 20, gv.gv.font, gv.gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
     
-    productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,font,fontSize)
+    productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
     productionText.anchorX,productionText.anchorY = 0,0
     
-    consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,font,fontSize)
+    consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
     consumptionText.anchorX,consumptionText.anchorY = 0,0
     
-    prosText = display.newText(ffSpecs:getPros(), costText.x,consumptionText.y +30,prosWidth,prosHeight, font,fontSize)
+    prosText = display.newText(ffSpecs:getPros(), costText.x,consumptionText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
     prosText.anchorX, prosText.anchorY = 0,0    
     prosText.height = prosText.height + 15    
     
-    consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, font,fontSize)
+    consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
     consText.anchorX, consText.anchorY = 0,0
 
 end
@@ -106,11 +104,8 @@ function scene:create( event )
         defaultFile = "Images/lnd_buildOverlay.png",              
         id          = "BO",              
         left        = centerX(d),
-        top         = centerY(d),
-        --fillColor = { default={ 0.6, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
-        --label = "Build this"                
+        top         = centerY(d),        
     }
-    
     
   
     local btnoil = widget.newButton

@@ -22,6 +22,10 @@ coalSpecs     = powerPlant
 gasSpecs      = powerPlant
 nuclearSpecs  = powerPlant
 money         = 0
+fontSize      = 0
+font          = native.systemFont
+
+
 local g       = {}
 
 return g
