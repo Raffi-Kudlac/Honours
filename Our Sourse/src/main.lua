@@ -8,6 +8,7 @@
     NOTES FOR MYSELF------
   Width is along the x axis
   Height is along the y axis
+  function() return setText(gv.oilSpecs) end, used for passing parameters to a button call
 
 ]]
 
@@ -162,7 +163,7 @@ local function buildStaticBG()
   {        
       width       = w,
       height      = h,
-      defaultFile = "Images/st_UICorner.png",              
+      defaultFile = "Images/static_screen/st_UICorner.png",              
       id          = "stcBG",              
       left        = 0,
       top         = display.contentHeight - h                
@@ -185,7 +186,7 @@ local function buildScreenButtons()
       width       = circleWidth,
       height      = circleHeight, 
       id          = "rs",
-      defaultFile = "Images/st_ff.png",
+      defaultFile = "Images/static_screen/st_ff.png",
       top         = buttonFactorY,
       left        = buttonFactorX
    }
@@ -198,7 +199,7 @@ local function buildScreenButtons()
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_land.png",
+      defaultFile = "Images/static_screen/st_land.png",
       id          = "land",
       onEvent     = function() return goToScreen("land") end, 
       top         = buttonFactorY,
@@ -213,7 +214,7 @@ local function buildScreenButtons()
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_plant.png",
+      defaultFile = "Images/static_screen/st_plant.png",
       id          = "plant",
       top         = buttonFactorY,
       left        = buttonFactorX
@@ -229,7 +230,7 @@ local function buildScreenButtons()
       width       = circleWidth,
       height      = circleHeight,      
       id          = "city",
-      defaultFile = "Images/st_city.png",
+      defaultFile = "Images/static_screen/st_city.png",
       top         = buttonFactorY,
       onEvent     = function() return goToScreen("city") end,     
       left        = buttonFactorX
@@ -243,7 +244,7 @@ local function buildScreenButtons()
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_business.png",
+      defaultFile = "Images/static_screen/st_business.png",
       id          = "BS",
       top         = buttonFactorY,
       left        = buttonFactorX
@@ -266,7 +267,7 @@ local function buildMenu()
   {        
       width     = 75,
       height    = 30,
-      defaultFile = "Images/st_menu.png",        
+      defaultFile = "Images/static_screen/st_menu.png",        
       id        = "btnMenu",              
       left      = 5,      
       top       =  menuFactorY               
@@ -388,7 +389,7 @@ local function buildToolBar()
   {        
       width     = TBwidth,
       height    = 85,
-      defaultFile = "Images/st_dateControl.png",        
+      defaultFile = "Images/static_screen/st_dateControl.png",        
       id        = "btnTB",              
       left      = toolBarFactorX,      
       top       = 0              
@@ -413,7 +414,7 @@ local function buildToolBar()
   {   
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_weather_Sun.png",   
+      defaultFile = "Images/static_screen/st_weather_Sun.png",   
       id          = "weather",      
       top         = 25,
       left        = toolBarFactorX + 70,                   
@@ -426,7 +427,7 @@ local function buildToolBar()
       
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_pause.png",
+      defaultFile = "Images/static_screen/st_pause.png",
       id          = "pause",      
       top         = 25,
       left        = toolBarFactorX + 110,                  

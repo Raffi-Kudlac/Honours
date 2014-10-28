@@ -58,7 +58,7 @@ function scene:create( event )
     {        
         width       = shiftConstant -20,
         height      = shiftConstant -10,                
-        defaultFile = "Images/lnd_buildOverlay.png",              
+        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
         id          = "BO",              
         left        = centerX(shiftConstant),
         top         = centerY(shiftConstant),        

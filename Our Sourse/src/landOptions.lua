@@ -101,7 +101,7 @@ function scene:create( event )
         width       = d -20,
         height      = d -10,        
         --shape = "rect",
-        defaultFile = "Images/lnd_buildOverlay.png",              
+        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
         id          = "BO",              
         left        = centerX(d),
         top         = centerY(d),        
@@ -113,7 +113,7 @@ function scene:create( event )
         width       = circleWidth,
         height      = circleHeight, 
         id          = "btnoil",
-        defaultFile = "Images/st_ff.png",
+        defaultFile = "Images/static_screen/st_ff.png",
         onEvent     = function() return setText(gv.oilSpecs) end,
         top         = buildOptionsTop + heightShift,
         left        = buildOptionsLeft - widthShift
@@ -125,7 +125,7 @@ function scene:create( event )
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_land.png",
+      defaultFile = "Images/static_screen/st_land.png",
       id          = "btngas",           
       onEvent     = function() return setText(gv.gasSpecs) end, 
       top         = buildOptionsTop + heightShift,
@@ -138,7 +138,7 @@ function scene:create( event )
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/st_plant.png",
+      defaultFile = "Images/static_screen/st_plant.png",
       id          = "btncoal",
       onEvent     = function() return setText(gv.coalSpecs) end,
       top         = buildOptionsTop + heightShift,
@@ -151,7 +151,7 @@ function scene:create( event )
       width       = circleWidth,
       height      = circleHeight,      
       id          = "btnNP",
-      defaultFile = "Images/st_city.png",
+      defaultFile = "Images/static_screen/st_city.png",
       onEvent     = function() return setText(gv.nuclearSpecs) end,
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift

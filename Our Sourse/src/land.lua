@@ -13,6 +13,7 @@ local landTile = require( "landTile" )
 local scene = composer.newScene()
 local openLand = widget
 
+local tiles = {}
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
 -- -----------------------------------------------------------------------------------------------------------------
@@ -22,22 +23,106 @@ local openLand = widget
 -- -------------------------------------------------------------------------------
 
 
-local function loadOptions(event)
-
+local function loadOptions(counter, event)
+    
     local options = {
         isModal = true
     }
 
-    if ( "ended" == event.phase ) then
-      if (openLand.tile:getType() == "open") then
+    if ( "began" == event.phase ) then
+      if (tiles[counter].tile:getType() == "open") then
           composer.showOverlay("landOptions",options)
-      elseif (openLand.tile:getType() == "city owned") then
+      elseif (tiles[counter].tile:getType() == "city owned") then
           composer.showOverlay("cityOptions",options)
-      elseif (openLand.tile:getType()=="forest") then
+      elseif (tiles[counter].tile:getType()=="forest") then
           composer.showOverlay("forestOptions",options)
       end
                                           
     end    
+
+end
+
+
+local function buildTiles(sc)
+
+    local startX = 15
+    local startY = -30
+    local tileX = startX
+    local tileY = startY
+    local shiftX = 155
+    local shiftY = 51
+    
+    
+--    local options =
+--{
+--    --required parameters
+--    width = 120,
+--    height = 120,
+--    numFrames = 1,   
+--    
+--    sheetContentWidth = 512,  -- width of original 1x size of entire sheet
+--    sheetContentHeight = 512
+--}
+--    
+--    local buttonSheet = graphics.newImageSheet( "Images/land_screen/lnd_tile_nuke.png", options)
+    
+
+    local counter = 0
+
+    for y = 0, 4, 1 do
+        
+        if (y % 2 == 0) then
+            tileX = startX
+        else
+            tileX = 95
+        end
+          
+        for x = 0, 2, 1 do
+        
+            tiles[counter] = widget.newButton
+            {               
+                --sheet = buttonSheet,  
+                width = 120,
+                height = 120,
+                defaultFile = "Images/land_screen/lnd_tile_nuke.png",              
+                id          = "openLand",              
+                left        = 0,
+                top         = 0,
+                onEvent = function(event) return loadOptions(3*y + x,event) end,                              
+            }
+            
+            tiles[counter].anchorX = 0
+            tiles[counter].anchorY = 0
+            
+            tiles[counter].x = tileX
+            tiles[counter].y = tileY
+                            
+            tiles[counter].tile = landTile.new("forest")
+            
+            sc:insert(tiles[counter])  
+            counter = counter +1
+            tileX = tileX + shiftX  
+                    
+        end
+        
+        tileY = tileY + shiftY   
+    end
+    
+    tiles[12]:setEnabled(false)
+    tiles[12].isVisible = false
+
+
+end 
+
+
+local function buildCityTiles()
+
+   tiles[0].defaultFile = "Images/land_screen/lnd_tile_forest.png"
+--   tiles[1]
+--   tiles[6]
+--   tiles[7]
+--   tiles[9]
+    
 
 end
 
@@ -48,25 +133,17 @@ function scene:create( event )
 --    print("made it to the land screen")
     local d = 100
     
-    openLand = widget.newButton
-    {        
-        width       = d,
-        height      = d,        
-        shape = "rect",
---        defaultFile = "Images/st_UICorner.png",              
-        id          = "openLand",              
-        left        = centerX(d),
-        top         = centerY(d),
-        onEvent = loadOptions,       
-        label = "Open Land"                
-    }
+    local grid = display.newImage("Images/land_screen/lnd_grid.png")
+    grid:scale(0.6,0.6)
+    grid.x = 0
+    grid.y = 0
+    grid.anchorX = 0
+    grid.anchorY = 0
     
-    openLand.tile = landTile.new("forest")    
-    openLand.happy = "test"
-    if openLand.happy == "test" then
-        openLand:setLabel("It worked")
-    end    
-    sceneGroup:insert(openLand)
+           
+    sceneGroup:insert(grid)
+    buildTiles(sceneGroup)
+    buildCityTiles()    
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end

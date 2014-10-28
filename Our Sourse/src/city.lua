@@ -8,7 +8,7 @@ local composer  = require( "composer" )
 local scene     = composer.newScene()
 local gv        = require( "global" )
 
-local scaleOverlay = display.newImage("Images/cty_scaleOverlay.png")
+local scaleOverlay = display.newImage("Images/city_screen/cty_scaleOverlay.png")
 local maxSOHeight = 0
  
 
@@ -43,7 +43,7 @@ function scene:create( event )
     setDataBox("Demanded", gv.powerDemanded.."GW", 2)
     setDataBox("Supplied", gv.powerSupplied.."GW", 3)
     
-    local scale = display.newImage("Images/cty_scale.png")
+    local scale = display.newImage("Images/city_screen/cty_scale.png")
     
     scale.anchorX,scale.anchorY = 0,0.5
     scale.x = 15
@@ -59,7 +59,7 @@ function scene:create( event )
     scaleOverlay:setFillColor(0,1,0)
     scaleOverlayHeightCalculator()
     
-    local bg = display.newImage("Images/cty_bg.png")    
+    local bg = display.newImage("Images/city_screen/cty_bg.png")    
     bg.Height = centerY(bg.height)
     bg.Width = centerX(bg.width)
     bg.x = 40
