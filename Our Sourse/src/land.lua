@@ -96,7 +96,7 @@ local function buildTiles(sc)
             tiles[counter].y = tileY
                             
             tiles[counter].tile = landTile.new("open")
-            
+                                    
             sc:insert(tiles[counter])  
             counter = counter +1
             tileX = tileX + shiftX  
@@ -112,8 +112,43 @@ local function buildTiles(sc)
 
 end 
 
-
 function convertButton(path,location,sc,type)
+
+    local temp = tiles[location]
+    sc:remove(tiles[location])
+    
+    
+    tiles[location] = display.newImageRect(path,0,0)
+    
+    tiles[location].anchorX = 0
+    tiles[location].anchorY = 0
+    tiles[location].width = 120
+    tiles[location].height = 120
+    tiles[location].x = temp.x
+    tiles[location].y = temp.y
+    tiles[location].tile = landTile.new(type)
+    --tiles[location]:addEventListener( "tap", function(event) return loadOptions(location,event) end)
+               
+    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+            
+    tiles[location]:setMask( mask )
+    
+    --tiles[location].mask.width = 120
+    --tiles[location].mask.height = 120
+    --tiles[location].mask.anchorX = 0
+    --tiles[location].mask.anchorY = 0
+--    tiles[location].mask.x = temp.x
+--    tiles[location].mask.y = temp.y
+
+
+    sc:insert(tiles[location])    
+    
+   
+
+end
+
+
+function convertButton2(path,location,sc,type)
            
     local temp = tiles[location]
     sc:remove(tiles[location])
@@ -137,9 +172,21 @@ function convertButton(path,location,sc,type)
     tiles[location].y = temp.y
     
     tiles[location].tile = landTile.new(type)
-
-    sc:insert(tiles[location])
     
+    
+    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+            
+    tiles[location]:setMask( mask )
+    
+    --tiles[location].mask.width = 120
+    --tiles[location].mask.height = 120
+    --tiles[location].mask.anchorX = 0
+    --tiles[location].mask.anchorY = 0
+--    tiles[location].mask.x = temp.x
+--    tiles[location].mask.y = temp.y
+
+
+    sc:insert(tiles[location])    
 
 end
 
