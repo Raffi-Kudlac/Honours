@@ -11,8 +11,6 @@ local gv       = require( "global" )
 local landTile = require( "landTile" )
 
 local scene = composer.newScene()
-local openLand = widget
-
 local tiles = {}
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
@@ -84,7 +82,7 @@ local function buildTiles(sc)
                 --sheet = buttonSheet,  
                 width = 120,
                 height = 120,
-                defaultFile = "Images/land_screen/lnd_tile_nuke.png",              
+                defaultFile = "Images/land_screen/lnd_tile_plain.png",              
                 id          = "openLand",              
                 left        = 0,
                 top         = 0,
@@ -97,7 +95,7 @@ local function buildTiles(sc)
             tiles[counter].x = tileX
             tiles[counter].y = tileY
                             
-            tiles[counter].tile = landTile.new("forest")
+            tiles[counter].tile = landTile.new("open")
             
             sc:insert(tiles[counter])  
             counter = counter +1
@@ -115,15 +113,54 @@ local function buildTiles(sc)
 end 
 
 
-local function buildCityTiles()
+function convertButton(path,location,sc,type)
+           
+    local temp = tiles[location]
+    sc:remove(tiles[location])
+    
+    tiles[location] = widget.newButton
+    {
+        --sheet = buttonSheet,  
+        width = 120,
+        height = 120,
+        defaultFile = path,              
+        id          = "openLand",              
+        left        = 0,
+        top         = 0,
+        onEvent = function(event) return loadOptions(location,event) end,
+    }
+    
+    tiles[location].anchorX = 0
+    tiles[location].anchorY = 0
+    
+    tiles[location].x = temp.x
+    tiles[location].y = temp.y
+    
+    tiles[location].tile = landTile.new(type)
 
-   tiles[0].defaultFile = "Images/land_screen/lnd_tile_forest.png"
---   tiles[1]
---   tiles[6]
---   tiles[7]
---   tiles[9]
+    sc:insert(tiles[location])
     
 
+end
+
+local function buildStartingTiles(sc)
+
+    local type = "city"
+
+     convertButton("Images/land_screen/lnd_tile_forest.png",0,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",1,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",3,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",6,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",7,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",9,sc, type)
+     
+     type = "forest"
+     
+     convertButton("Images/land_screen/lnd_tile_forest.png",10,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",11,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",13,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",14,sc, type)
+   
 end
 
 -- "scene:create()"
@@ -143,7 +180,7 @@ function scene:create( event )
            
     sceneGroup:insert(grid)
     buildTiles(sceneGroup)
-    buildCityTiles()    
+    buildStartingTiles(sceneGroup)    
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end

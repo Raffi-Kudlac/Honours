@@ -32,5 +32,11 @@ function landTile:getType()
     return self.type
 
 end
+
+function landTile:setType(t)
+    
+    self.type = t
+
+end
  
 return landTile

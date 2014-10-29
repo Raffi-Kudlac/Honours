@@ -10,6 +10,7 @@
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
+local landLink = require("land")
 
 local scene = composer.newScene()
 local circleWidth = 30
@@ -38,7 +39,7 @@ local function createText(ffSpecs)
     currentEnergySourse = ffSpecs
     
     costText = display.newText("Costs: $"..ffSpecs:getCost(), buildOptionsLeft + 35,
-    buildOptionsTop + 20, gv.gv.font, gv.gv.fontSize )
+    buildOptionsTop + 20, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
     
     productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
@@ -69,12 +70,16 @@ end
 
 local function purchasedConfirmed()
 
+    gv.money = gv.money - currentEnergySourse:getCost()
+    landLink.convertButton()
+        
+
 end
 
 local function buy( event )
 
     if(currentEnergySourse:getCost()<=gv.money) then
-      purchasedConfirmed()
+      --purchasedConfirmed()
       composer.hideOverlay()    
     end
 
