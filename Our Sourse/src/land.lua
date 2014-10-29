@@ -22,14 +22,14 @@ local tiles = {}
 
 
 local function loadOptions(counter, event)
-    
+   
     local options = {
         isModal = true
     }
 
     if ( "began" == event.phase ) then
       if (tiles[counter].tile:getType() == "open") then
-          composer.showOverlay("landOptions",options)
+          composer.showOverlay("landOptions", options)
       elseif (tiles[counter].tile:getType() == "city owned") then
           composer.showOverlay("cityOptions",options)
       elseif (tiles[counter].tile:getType()=="forest") then
@@ -132,13 +132,9 @@ function convertButton(path,location,sc,type)
     local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
             
     tiles[location]:setMask( mask )
-    
-    --tiles[location].mask.width = 120
-    --tiles[location].mask.height = 120
-    --tiles[location].mask.anchorX = 0
-    --tiles[location].mask.anchorY = 0
---    tiles[location].mask.x = temp.x
---    tiles[location].mask.y = temp.y
+--    tiles[location].maskX = tiles[location].x
+--    tiles[location].maskY = tiles[location].y
+      
 
 
     sc:insert(tiles[location])    
