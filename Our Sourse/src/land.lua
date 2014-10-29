@@ -127,7 +127,7 @@ function convertButton(path,location,sc,type)
     tiles[location].x = temp.x
     tiles[location].y = temp.y
     tiles[location].tile = landTile.new(type)
-    --tiles[location]:addEventListener( "tap", function(event) return loadOptions(location,event) end)
+    tiles[location]:addEventListener( "tap", function(event) return loadOptions(location,event) end)
                
     local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
             
