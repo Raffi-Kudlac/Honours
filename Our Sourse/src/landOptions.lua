@@ -10,7 +10,7 @@
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
-local landLink = require("land")
+--local landLink = require("land")
 
 local scene = composer.newScene()
 local circleWidth = 30
@@ -57,8 +57,9 @@ local function createText(ffSpecs)
 
 end
 
-local function setText(ffSpecs)
-
+local function setText(ffSpecs, kind)
+        
+    currentEnergySourse = ffSpecs
     costText.text = "Costs: $"..ffSpecs:getCost()
     productionText.text = "Produces: "..ffSpecs:getProduces().."GW"
     consumptionText.text = "Consumes: "..ffSpecs:getConsumption()
@@ -71,16 +72,27 @@ end
 local function purchasedConfirmed()
 
     gv.money = gv.money - currentEnergySourse:getCost()
-    landLink.convertButton()
-        
-
+    local kind = "owned"
+    
+    if(currentEnergySourse:getType()=="oil") then
+        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)
+    elseif(currentEnergySourse:getType()=="coal") then
+        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind)
+    elseif(currentEnergySourse:getType()=="gas") then
+        convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind)
+    elseif(currentEnergySourse:getType()=="nuclear") then
+        convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind)
+    end        
 end
 
 local function buy( event )
 
-    if(currentEnergySourse:getCost()<=gv.money) then
-      --purchasedConfirmed()
-      composer.hideOverlay()    
+    if (event.phase == "began") then
+        if(currentEnergySourse:getCost()<=gv.money) then
+          purchasedConfirmed()
+          setMoney()
+          composer.hideOverlay()    
+        end
     end
 
 end
@@ -119,7 +131,7 @@ function scene:create( event )
         height      = circleHeight, 
         id          = "btnoil",
         defaultFile = "Images/static_screen/st_ff.png",
-        onEvent     = function() return setText(gv.oilSpecs) end,
+        onEvent     = function() return setText(gv.oilSpecs, "oil") end,
         top         = buildOptionsTop + heightShift,
         left        = buildOptionsLeft - widthShift
     }
@@ -132,7 +144,7 @@ function scene:create( event )
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_land.png",
       id          = "btngas",           
-      onEvent     = function() return setText(gv.gasSpecs) end, 
+      onEvent     = function() return setText(gv.gasSpecs, "gas") end, 
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift
    }
@@ -145,7 +157,7 @@ function scene:create( event )
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_plant.png",
       id          = "btncoal",
-      onEvent     = function() return setText(gv.coalSpecs) end,
+      onEvent     = function() return setText(gv.coalSpecs, "coal") end,
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift
    }
@@ -157,7 +169,7 @@ function scene:create( event )
       height      = circleHeight,      
       id          = "btnNP",
       defaultFile = "Images/static_screen/st_city.png",
-      onEvent     = function() return setText(gv.nuclearSpecs) end,
+      onEvent     = function() return setText(gv.nuclearSpecs, "nuc") end,
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift
    }

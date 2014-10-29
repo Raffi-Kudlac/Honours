@@ -9,9 +9,12 @@ local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
 local landTile = require( "landTile" )
+require "landOptions"
 
 local scene = composer.newScene()
+local grid = display
 local tiles = {}
+local sceneGroup = 0
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
 -- -----------------------------------------------------------------------------------------------------------------
@@ -26,7 +29,10 @@ local function loadOptions(counter, event)
     local options = {
         isModal = true
     }
-
+    
+    gv.marker = counter
+    gv.tileClicked = tiles[counter]
+    
     if ( "began" == event.phase ) then
       if (tiles[counter].tile:getType() == "open") then
           composer.showOverlay("landOptions", options)
@@ -34,6 +40,8 @@ local function loadOptions(counter, event)
           composer.showOverlay("cityOptions",options)
       elseif (tiles[counter].tile:getType()=="forest") then
           composer.showOverlay("forestOptions",options)
+      elseif(tiles[counter].tile:getType()=="owned") then
+           composer.showOverlay("ownedOptions",options)
       end
                                           
     end    
@@ -41,7 +49,7 @@ local function loadOptions(counter, event)
 end
 
 
-local function buildTiles(sc)
+local function buildTiles()
 
     local startX = 15
     local startY = -30
@@ -97,7 +105,7 @@ local function buildTiles(sc)
                             
             tiles[counter].tile = landTile.new("open")
                                     
-            sc:insert(tiles[counter])  
+            sceneGroup:insert(tiles[counter])  
             counter = counter +1
             tileX = tileX + shiftX  
                     
@@ -145,10 +153,10 @@ function convertButton2(path,location,sc,type)
 end
 
 
-function convertButton(path,location,sc,type)
+function convertButton(path,location,type)
            
     local temp = tiles[location]
-    sc:remove(tiles[location])
+    sceneGroup:remove(tiles[location])
     
     tiles[location] = widget.newButton
     {
@@ -174,46 +182,38 @@ function convertButton(path,location,sc,type)
     local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
             
     tiles[location]:setMask( mask )
---    tiles[location].isHitTestMasked = false
-    
-    
---    tiles[location].maskScaleX = 120/512
---    tiles[location].maskScaleY = 120/512
-    
 
-
-    sc:insert(tiles[location])    
+    sceneGroup:insert(tiles[location])        
 
 end
 
-local function buildStartingTiles(sc)
+local function buildStartingTiles()
 
     local type = "city owned"
 
-     convertButton("Images/land_screen/lnd_tile_forest.png",0,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",1,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",3,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",6,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",7,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",9,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",0, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",1, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",3, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",6, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",7, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",9, type)
      
      type = "forest"
      
-     convertButton("Images/land_screen/lnd_tile_forest.png",10,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",11,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",13,sc, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",14,sc, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",10, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",11, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",13, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",14, type)
    
 end
 
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
---    print("made it to the land screen")
+    sceneGroup = self.view
     local d = 100
     
-    local grid = display.newImage("Images/land_screen/lnd_grid.png")
+    grid = display.newImage("Images/land_screen/lnd_grid.png")
     grid:scale(0.6,0.6)
     grid.x = 0
     grid.y = 0
@@ -222,8 +222,8 @@ function scene:create( event )
     
            
     sceneGroup:insert(grid)
-    buildTiles(sceneGroup)
-    buildStartingTiles(sceneGroup)    
+    buildTiles()
+    buildStartingTiles()    
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end
@@ -233,7 +233,7 @@ end
 function scene:show( event )
 
     local sceneGroup = self.view
-    local phase = event.phase
+    local phase = event.phase      
 
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).

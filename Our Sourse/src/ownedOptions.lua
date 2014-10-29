@@ -1,15 +1,16 @@
 local composer = require( "composer" )
 local widget    = require( "widget" )
+local scene = composer.newScene()
 local gv       = require( "global" )
 
-local scene = composer.newScene()
-local cityOptionsBG = widget
-local cityOptionsLeft = 0
-local cityOptionsTop  = 0
+
+local message = ""
+local ownedOptionsBG = widget
+local ownedOptionsLeft = 0
+local ownedOptionsTop  = 0
 local shiftConstant = 280
 local prosWidth = shiftConstant*0.7
 local prosHeight = 0
-local cityMessage = ""
 local costText = ""
 local infoText = ""
 -- -----------------------------------------------------------------------------------------------------------------
@@ -22,29 +23,18 @@ local infoText = ""
 
 local function createText()
 
-    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", cityOptionsLeft + 35,
-    cityOptionsTop + 20, gv.font, gv.fontSize )
+    costText = display.newText("Costs: $4 B", ownedOptionsLeft + 35,
+    ownedOptionsTop + 20, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
 
-    infoText = display.newText(cityMessage, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
+    infoText = display.newText(message, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
     infoText.anchorX, infoText.anchorY = 0,0    
     infoText.height = infoText.height + 15        
 
 end
 
-local function buy(event)
-
-
-    if(event.phase == "began") then
-      if(gv.money >= gv.tileClicked.tile:getCost()) then
-          gv.money = gv.money - gv.tileClicked.tile:getCost()
-          setMoney()
-          convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
-          
-      end
-      composer.hideOverlay()
-    end
-    
+local function demolish()
+    composer.hideOverlay()
 end
 
 local function cancel()
@@ -54,18 +44,18 @@ end
 
 -- "scene:create()"
 function scene:create( event ) 
-    
+
+    -- Initialize the scene here.
+    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
     local sceneGroup = self.view
-    cityMessage = "The city owns this land and it must be bought from them. "..
-    "land is in high demand, everyone wants a piece so the cost is high. Once "..
-    "you buy this you can sell it again but you sell it at a lower price then what you bought it for. "..
-    "If you buy this then you still need to pay to put an istablishment on the location as well"
+    
+    message = "From here you can demlosh you power plant to make room for a bigger one if you so chose"
     
      
-    cityOptionsTop = centerY(shiftConstant)
-    cityOptionsLeft = centerX(shiftConstant) + 20
+    ownedOptionsTop = centerY(shiftConstant)
+    ownedOptionsLeft = centerX(shiftConstant) + 20
     
-    cityOptionsBG = widget.newButton
+    ownedOptionsBG = widget.newButton
     {        
         width       = shiftConstant -20,
         height      = shiftConstant -10,                
@@ -75,7 +65,7 @@ function scene:create( event )
         top         = centerY(shiftConstant),        
     }
     
-    local btnBuy = widget.newButton
+    local btnDemolish = widget.newButton
     { 
         width = 60,
         height = 20,
@@ -83,12 +73,12 @@ function scene:create( event )
         cornerRadius = 10,     
         label       = "Buy",      
         id          = "btnBuy",            
-        top         =  cityOptionsBG.height - 20,
-        left        = cityOptionsLeft+40,
-        onEvent = buy     
+        top         =  ownedOptionsBG.height - 20,
+        left        = ownedOptionsLeft+40,
+        onEvent = demolish     
     }
   
-    btnBuy.anchorY = 0
+    btnDemolish.anchorY = 0
     
     local btnCancel = widget.newButton
     {
@@ -98,20 +88,19 @@ function scene:create( event )
         cornerRadius = 10,
         label = "Cancel",
         id = "btnCancel",
-        top = btnBuy.y,
-        left = btnBuy.x + 70,
+        top = btnDemolish.y,
+        left = btnDemolish.x + 70,
         onEvent = cancel           
     }
     
     createText()
     
-    sceneGroup:insert(cityOptionsBG)
+    sceneGroup:insert(ownedOptionsBG)
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)
-    sceneGroup:insert(btnBuy)
+    sceneGroup:insert(btnDemolish)
     sceneGroup:insert(btnCancel)
-    
-    
+  
 end
 
 

@@ -121,7 +121,7 @@ local function initalize()
                           
 end
 
-local function setMoney()
+function setMoney()
 
     MB:setLabel("$ "..gv.money)
 

@@ -22,7 +22,7 @@ local infoText = ""
 
 local function createText()
 
-    costText = display.newText("Costs: $4 B", forestOptionsLeft + 35,
+    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().." B", forestOptionsLeft + 35,
     forestOptionsTop + 20, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
 
@@ -32,8 +32,17 @@ local function createText()
 
 end
 
-local function buy()
-    composer.hideOverlay()
+local function buy(event)
+
+    if(event.phase == "began") then
+      if(gv.money >= gv.tileClicked.tile:getCost()) then
+          gv.money = gv.money - gv.tileClicked.tile:getCost()
+          setMoney()
+          convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+          
+      end
+      composer.hideOverlay()
+    end
 end
 
 local function cancel()
