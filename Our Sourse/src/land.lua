@@ -112,12 +112,13 @@ local function buildTiles(sc)
 
 end 
 
-function convertButton(path,location,sc,type)
+function convertButton2(path,location,sc,type)
 
     local temp = tiles[location]
     sc:remove(tiles[location])
     
     
+    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
     tiles[location] = display.newImageRect(path,0,0)
     
     tiles[location].anchorX = 0
@@ -127,16 +128,16 @@ function convertButton(path,location,sc,type)
     tiles[location].x = temp.x
     tiles[location].y = temp.y
     tiles[location].tile = landTile.new(type)
-    tiles[location]:addEventListener( "tap", function(event) return loadOptions(location,event) end)
+    --tiles[location]:addEventListener( "tap", function(event) return loadOptions(location,event) end)
                
-    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+    
             
-    tiles[location]:setMask( mask )
+    tiles[location]:setMask( mask )    
 --    tiles[location].maskX = tiles[location].x
 --    tiles[location].maskY = tiles[location].y
-      
-
-
+--    tiles[location].maskScaleY = 0.234
+--    tiles[location].maskScaleX = 0.234
+        
     sc:insert(tiles[location])    
     
    
@@ -144,7 +145,7 @@ function convertButton(path,location,sc,type)
 end
 
 
-function convertButton2(path,location,sc,type)
+function convertButton(path,location,sc,type)
            
     local temp = tiles[location]
     sc:remove(tiles[location])
@@ -173,13 +174,12 @@ function convertButton2(path,location,sc,type)
     local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
             
     tiles[location]:setMask( mask )
+--    tiles[location].isHitTestMasked = false
     
-    --tiles[location].mask.width = 120
-    --tiles[location].mask.height = 120
-    --tiles[location].mask.anchorX = 0
-    --tiles[location].mask.anchorY = 0
---    tiles[location].mask.x = temp.x
---    tiles[location].mask.y = temp.y
+    
+--    tiles[location].maskScaleX = 120/512
+--    tiles[location].maskScaleY = 120/512
+    
 
 
     sc:insert(tiles[location])    
@@ -188,7 +188,7 @@ end
 
 local function buildStartingTiles(sc)
 
-    local type = "city"
+    local type = "city owned"
 
      convertButton("Images/land_screen/lnd_tile_forest.png",0,sc, type)
      convertButton("Images/land_screen/lnd_tile_forest.png",1,sc, type)
