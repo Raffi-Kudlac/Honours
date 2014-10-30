@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="forestOptions" key="selection"/>
+		<item value="kind" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="cityOptions"/>
-			<item value="prosText"/>
-			<item value="font"/>
-			<item value="gas"/>
-			<item value="coal"/>
-			<item value="oil"/>
-			<item value="landTile"/>
-			<item value="15"/>
+			<item value="me.type"/>
+			<item value="me.cost"/>
+			<item value="self"/>
+			<item value="cityType"/>
+			<item value="function"/>
+			<item value="display.n"/>
+			<item value="display."/>
+			<item value="display.newImage"/>
 		</list>
 		<list key="replacehistory">
+			<item value="kind"/>
+			<item value="temp"/>
+			<item value="me"/>
+			<item value="type"/>
 			<item value="forestOptions"/>
 			<item value="infoText"/>
 			<item value="gv.font"/>
 			<item value="nulclear"/>
-			<item value="gas"/>
-			<item value="coal"/>
-			<item value="powerPlant"/>
-			<item value="rad"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="263" key="DIALOG_WIDTH"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="509" key="DIALOG_X_ORIGIN"/>
-		<item value="89" key="DIALOG_Y_ORIGIN"/>
+		<item value="561" key="DIALOG_X_ORIGIN"/>
+		<item value="156" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -38,9 +38,11 @@ function landTile.new(kind)  -- constructor
     
     
     local temp = 0
+    local b = false
     
   if (kind == "owned") then
       temp = 0
+      b = true
   elseif(kind == "forest") then
       temp = 4
   elseif (kind == "city owned") then
@@ -54,7 +56,7 @@ function landTile.new(kind)  -- constructor
    
   local newLandTile = {
     type = kind,
-    built = false,
+    built = b,
     owned = false,
     cost = temp,    
   }

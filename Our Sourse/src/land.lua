@@ -48,6 +48,32 @@ local function loadOptions(counter, event)
 
 end
 
+local function setDataLabels()
+    
+    local openOwnedSpace = -1
+    local percentUsed = 0
+    local areaUsed    = 0
+    
+    for i = 0,14,1 do
+        
+        if(tiles[i].tile:getType()=="owned")then
+            areaUsed = areaUsed + 1
+             openOwnedSpace = openOwnedSpace + 1            
+        elseif(tiles[i].tile:getType()=="open")then
+            openOwnedSpace = openOwnedSpace + 1            
+        end    
+    end
+    
+    percentUsed = (areaUsed/14)*100
+    
+    percentUsed = math.round(percentUsed)
+    
+    setDataBox("Area Owned", openOwnedSpace, 1)
+    setDataBox("Built on", areaUsed, 2)
+    setDataBox(percentUsed.."% ","land used", 3)
+    
+
+end
 
 local function buildTiles()
 
@@ -183,7 +209,8 @@ function convertButton(path,location,type)
             
     tiles[location]:setMask( mask )
 
-    sceneGroup:insert(tiles[location])        
+    sceneGroup:insert(location+2,tiles[location])
+    setDataLabels()           
 
 end
 
@@ -223,7 +250,8 @@ function scene:create( event )
            
     sceneGroup:insert(grid)
     buildTiles()
-    buildStartingTiles()    
+    buildStartingTiles()
+    setDataLabels()    
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end
