@@ -1,17 +1,25 @@
-local composer = require( "composer" )
-local widget    = require( "widget" )
-local gv       = require( "global" )
+--[[
+    Purpose:    
+        This screen appears on top of the land screen (layOver screen) and is responcible
+        for displaying the choice to the user of buying the land so it could be built on
 
-local scene = composer.newScene()
-local forestOptionsBG = widget
+]]
+
+local composer  = require( "composer" )
+local widget    = require( "widget" )
+local gv        = require( "global" )
+
+local scene             = composer.newScene()
+local forestOptionsBG   = widget
 local forestOptionsLeft = 0
 local forestOptionsTop  = 0
-local shiftConstant = 280
-local prosWidth = shiftConstant*0.7
-local prosHeight = 0
+local shiftConstant     = 280
+local prosWidth         = shiftConstant*0.7
+local prosHeight        = 0
+
 local forestMessage = ""
-local costText = ""
-local infoText = ""
+local costText      = ""
+local infoText      = ""
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
 -- -----------------------------------------------------------------------------------------------------------------
@@ -29,21 +37,23 @@ local function createText()
     infoText = display.newText(forestMessage, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
     infoText.anchorX, infoText.anchorY = 0,0    
     infoText.height = infoText.height + 15        
-
 end
+
 
 local function buy(event)
 
     if(event.phase == "began") then
-      if(gv.money >= gv.tileClicked.tile:getCost()) then
-          gv.money = gv.money - gv.tileClicked.tile:getCost()
-          setMoney()
-          convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
-          
-      end
+    
+        if(gv.money >= gv.tileClicked.tile:getCost()) then
+            gv.money = gv.money - gv.tileClicked.tile:getCost()
+            setMoney()
+            convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")           
+        end
+        
       composer.hideOverlay()
     end
 end
+
 
 local function cancel()
     composer.hideOverlay()
@@ -59,7 +69,7 @@ function scene:create( event )
     "usable."
     
      
-    forestOptionsTop = centerY(shiftConstant)
+    forestOptionsTop  = centerY(shiftConstant)
     forestOptionsLeft = centerX(shiftConstant) + 20
     
     forestOptionsBG = widget.newButton
@@ -74,30 +84,30 @@ function scene:create( event )
     
     local btnBuy = widget.newButton
     { 
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,     
-        label       = "Buy",      
-        id          = "btnBuy",            
-        top         =  forestOptionsBG.height - 20,
-        left        = forestOptionsLeft+40,
-        onEvent = buy     
+        width         = 60,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,     
+        label         = "Buy",      
+        id            = "btnBuy",            
+        top           =  forestOptionsBG.height - 20,
+        left          = forestOptionsLeft+40,
+        onEvent       = buy     
     }
   
     btnBuy.anchorY = 0
     
     local btnCancel = widget.newButton
     {
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,
-        label = "Cancel",
-        id = "btnCancel",
-        top = btnBuy.y,
-        left = btnBuy.x + 70,
-        onEvent = cancel           
+        width         = 60,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,
+        label         = "Cancel",
+        id            = "btnCancel",
+        top           = btnBuy.y,
+        left          = btnBuy.x + 70,
+        onEvent       = cancel           
     }
     
     createText()
@@ -106,9 +116,7 @@ function scene:create( event )
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)
     sceneGroup:insert(btnBuy)
-    sceneGroup:insert(btnCancel)
-    
-    
+    sceneGroup:insert(btnCancel)      
 end
 
 

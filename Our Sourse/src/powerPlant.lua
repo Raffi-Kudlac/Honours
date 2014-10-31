@@ -18,12 +18,12 @@ local powerPlant_mt = { __index = powerPlant }  -- metatable
 function powerPlant.new(kind)  -- constructor
     
   local newPowerPlant = {
-    type = kind,
-    cost = 0,
-    produces = 0,
-    pros = "",
+    type        = kind,
+    cost        = 0,
+    produces    = 0,
+    pros        = "",
     consumption = 0,
-    cons = ""
+    cons        = ""
   }
   
   return setmetatable( newPowerPlant, powerPlant_mt )
@@ -35,62 +35,65 @@ function powerPlant:setCost(money)
     self.cost = money
 end
 
+
 function powerPlant:setPros(advantage)
 
-    self.pros = advantage
-    
+    self.pros = advantage    
 end
+
 
 function powerPlant:setCons(disadvantage)
 
     self.cons = disadvantage
-
 end 
+
 
 function powerPlant:setProduction(production)
 
   self.produces = production
-
 end
+
 
 function powerPlant:setConsumption(c)
 
     self.consumption = c
-
 end
+
 
 function powerPlant:getPros()
 
     return self.pros
-
 end
+
 
 function powerPlant:getCons()
 
     return self.cons
-end 
+end
+ 
 
 function powerPlant:getCost()
 
     return self.cost
-
 end
+
 
 function powerPlant:getProduces()
 
     return self.produces    
 end
 
+
 function powerPlant:getType()
 
-    return self.type
-    
+    return self.type    
 end
+
 
 function powerPlant:getConsumption()
 
-    return self.consumption
-    
+    return self.consumption    
 end
+
  
 return powerPlant

@@ -1,18 +1,25 @@
+--[[
+    Purpose:    
+        This screen appears on top of the land screen (layOver screen) and is responcible
+        for displaying the option of demolishing the power plant to the user
+
+]]
+
 local composer = require( "composer" )
-local widget    = require( "widget" )
-local scene = composer.newScene()
+local widget   = require( "widget" )
+local scene    = composer.newScene()
 local gv       = require( "global" )
 
+local ownedOptionsBG    = widget
+local ownedOptionsLeft  = 0
+local ownedOptionsTop   = 0
+local shiftConstant     = 280
+local prosWidth         = shiftConstant*0.7
+local prosHeight        = 0
 
-local message = ""
-local ownedOptionsBG = widget
-local ownedOptionsLeft = 0
-local ownedOptionsTop  = 0
-local shiftConstant = 280
-local prosWidth = shiftConstant*0.7
-local prosHeight = 0
-local costText = ""
-local infoText = ""
+local message   = ""
+local costText  = ""
+local infoText  = ""
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
 -- -----------------------------------------------------------------------------------------------------------------
@@ -30,12 +37,22 @@ local function createText()
     infoText = display.newText(message, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
     infoText.anchorX, infoText.anchorY = 0,0    
     infoText.height = infoText.height + 15        
-
 end
 
-local function demolish()
-    composer.hideOverlay()
+
+local function demolish(event)
+
+    if(event.phase == "began") then
+        
+        if(gv.money >= 4) then
+            gv.money = gv.money - 4
+            convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+            composer.hideOverlay()
+        end
+                
+    end
 end
+
 
 local function cancel()
     composer.hideOverlay()
@@ -67,30 +84,30 @@ function scene:create( event )
     
     local btnDemolish = widget.newButton
     { 
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,     
-        label       = "Buy",      
-        id          = "btnBuy",            
-        top         =  ownedOptionsBG.height - 20,
-        left        = ownedOptionsLeft+40,
-        onEvent = demolish     
+        width         = 60,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,     
+        label         = "Buy",      
+        id            = "btnBuy",            
+        top           =  ownedOptionsBG.height - 20,
+        left          = ownedOptionsLeft+40,
+        onEvent       = demolish     
     }
   
     btnDemolish.anchorY = 0
     
     local btnCancel = widget.newButton
     {
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,
-        label = "Cancel",
-        id = "btnCancel",
-        top = btnDemolish.y,
-        left = btnDemolish.x + 70,
-        onEvent = cancel           
+        width         = 60,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,
+        label         = "Cancel",
+        id            = "btnCancel",
+        top           = btnDemolish.y,
+        left          = btnDemolish.x + 70,
+        onEvent       = cancel           
     }
     
     createText()
@@ -99,8 +116,7 @@ function scene:create( event )
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)
     sceneGroup:insert(btnDemolish)
-    sceneGroup:insert(btnCancel)
-  
+    sceneGroup:insert(btnCancel)  
 end
 
 

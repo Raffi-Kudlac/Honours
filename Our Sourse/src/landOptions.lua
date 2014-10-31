@@ -6,26 +6,24 @@
 
 ]]
 
-
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
---local landLink = require("land")
 
-local scene = composer.newScene()
-local circleWidth = 30
-local circleHeight = 30
-local buildOptionsTop = 0
-local buildOptionsLeft = 0
-local d = 280
-local prosWidth = d*0.7
-local prosHeight = 0
+local scene             = composer.newScene()
+local circleWidth       = 30
+local circleHeight      = 30
+local buildOptionsTop   = 0
+local buildOptionsLeft  = 0
+local d                 = 280
+local prosWidth         = d*0.7
+local prosHeight        = 0
 
-local costText = ""
-local productionText = ""
-local prosText = ""
-local consText = ""
-local consumptionText = ""
+local costText          = ""
+local productionText    = ""
+local prosText          = ""
+local consText          = ""
+local consumptionText   = ""
 local currentEnergySourse = powerPlant
 -- -----------------------------------------------------------------------------------------------------------------
 -- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
@@ -71,16 +69,16 @@ end
 
 local function purchasedConfirmed()
 
-    gv.money = gv.money - currentEnergySourse:getCost()
-    local kind = "owned"
+    gv.money    = gv.money - currentEnergySourse:getCost()
+    local kind  = "owned"
     
-    if(currentEnergySourse:getType()=="oil") then
+    if(currentEnergySourse:getType() =="oil") then
         convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)
-    elseif(currentEnergySourse:getType()=="coal") then
+    elseif(currentEnergySourse:getType() =="coal") then
         convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind)
-    elseif(currentEnergySourse:getType()=="gas") then
+    elseif(currentEnergySourse:getType() =="gas") then
         convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind)
-    elseif(currentEnergySourse:getType()=="nuclear") then
+    elseif(currentEnergySourse:getType() =="nuclear") then
         convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind)
     end        
 end
@@ -106,18 +104,16 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
-
-    buildOptionsTop = centerY(d)
-    buildOptionsLeft = centerX(d) + 20
-    local widthShift = 10
+    local sceneGroup  = self.view
+    buildOptionsTop   = centerY(d)
+    buildOptionsLeft  = centerX(d) + 20
+    local widthShift  = 10
     local heightShift = 20
     
     local buildOptions = widget.newButton
     {        
         width       = d -20,
-        height      = d -10,        
-        --shape = "rect",
+        height      = d -10,                
         defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
         id          = "BO",              
         left        = centerX(d),
@@ -136,9 +132,9 @@ function scene:create( event )
         left        = buildOptionsLeft - widthShift
     }
     
-    heightShift = heightShift + 40
+    heightShift  = heightShift + 40
     
-    local btngas = widget.newButton
+   local btngas = widget.newButton
    {
       width       = circleWidth,
       height      = circleHeight,
@@ -174,53 +170,47 @@ function scene:create( event )
       left        = buildOptionsLeft - widthShift
    }
   
-  local btnBuy = widget.newButton
-  { 
-      width = 50,
-      height = 20,
-      shape = "roundedRect",
-      cornerRadius = 10,     
-      label       = "Buy",      
-      id          = "btnBuy",            
-      top         =  buildOptions.height - 20,
-      left        = buildOptionsLeft+40,
-      onEvent = buy     
-  }
-  
-  btnBuy.anchorY = 0
-  
-  local btnCancel = widget.newButton
-  {
-      width = 60,
-      height = 20,
-      shape = "roundedRect",
-      cornerRadius = 10,
-      label = "Cancel",
-      id = "btnCancel",
-      top = btnBuy.y,
-      left = btnBuy.x + 70,
-      onEvent = cancel  
-          
-  
-  }
-  createText(gv.oilSpecs)
-   
-  sceneGroup:insert(buildOptions)
-  sceneGroup:insert(btnoil)
-  sceneGroup:insert(btngas)
-  sceneGroup:insert(btncoal)
-  sceneGroup:insert(btnNP)
-  sceneGroup:insert(costText)
-  sceneGroup:insert(productionText)
-  sceneGroup:insert(consumptionText)
-  sceneGroup:insert(prosText)
-  sceneGroup:insert(consText)
-  sceneGroup:insert(btnBuy)
-  sceneGroup:insert(btnCancel)
-  
+    local btnBuy = widget.newButton
+    { 
+        width         = 50,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,     
+        label         = "Buy",      
+        id            = "btnBuy",            
+        top           =  buildOptions.height - 20,
+        left          = buildOptionsLeft+40,
+        onEvent       = buy     
+    }
     
-    -- Initialize the scene here.
-    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
+    btnBuy.anchorY = 0
+    
+    local btnCancel = widget.newButton
+    {
+        width         = 60,
+        height        = 20,
+        shape         = "roundedRect",
+        cornerRadius  = 10,
+        label         = "Cancel",
+        id            = "btnCancel",
+        top           = btnBuy.y,
+        left          = btnBuy.x + 70,
+        onEvent       = cancel           
+    }
+    createText(gv.oilSpecs)
+     
+    sceneGroup:insert(buildOptions)
+    sceneGroup:insert(btnoil)
+    sceneGroup:insert(btngas)
+    sceneGroup:insert(btncoal)
+    sceneGroup:insert(btnNP)
+    sceneGroup:insert(costText)
+    sceneGroup:insert(productionText)
+    sceneGroup:insert(consumptionText)
+    sceneGroup:insert(prosText)
+    sceneGroup:insert(consText)
+    sceneGroup:insert(btnBuy)
+    sceneGroup:insert(btnCancel)          
 end
 
 
