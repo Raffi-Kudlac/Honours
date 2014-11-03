@@ -4,7 +4,8 @@
 % CHANGE THE FOLLOWING ACCORDING TO YOUR PROGRAM/THESIS
 % ================================================================================
 \institution{The University Of British Columbia}
-\faculty{Computer Science}
+\program{Computer Science}
+\faculty{THE IRVING K. BARBER SCHOOL OF ARTS AND SCIENCES}
 \institutionaddress{Okanagan}
 
 % For an Honours thesis, use \documentclasss[msc,oneside]{ubcthesis} above and
@@ -52,24 +53,6 @@
 % listed here is the order currently required by FoGS.
 \maketitle                      % Mandatory
 
-\begin{abstract}                % Mandatory -  maximum 350 words
-This is a sample thesis based on the \texttt{ubcthesis.cls} template
-from Michael Forbes. The thesis includes the additional style file
-\texttt{ubcostyle.sty} in accordance to the official standards for
-the UBCO College of Graduate Studies.
-This sample thesis together with the style files and templates
-produces a document that is officially accepted by the UBCO College of Graduate Studies. 
-
-If you need a package, look into ubcostyle.sty to see if it is not already loaded there. 
-See the file README.txt for additional instructions to produce the bibliography, index, and glossary automatically.
-\end{abstract}
-
-\chapter{Preface}
-Preface stuff
-
-If any part of your thesis was co-written, you must include a
-Co-Author\-ship statement. Also indicate if part of the thesis was published with the reference.
-
 \newpage
 \phantomsection \label{tableofcontent}%set anchor at right location
 \addcontentsline{toc}{chapter}{\contentsname}
@@ -83,20 +66,6 @@ Co-Author\-ship statement. Also indicate if part of the thesis was published wit
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures                  % Mandatory if thesis has figures
 
-
-\chapter{Acknowledgements}      % Optional
-This is the place to thank professional colleagues and people who have
-given you the most help during the course of your graduate work.
-
-\chapter{Dedication} % Optional
-The dedication is usually quite short, and is a personal rather than
-an academic recognition.  The \emph{Dedication} does not have to be
-titled, but it must appear in the table of contents.  If you want to
-skip the chapter title but still enter it into the Table of Contents,
-use this command \verb|\chapter[Dedication]{}|.
-
-
-
 % Any other unusual prefactory material should come here before the
 % main body.
 
@@ -108,8 +77,133 @@ use this command \verb|\chapter[Dedication]{}|.
 
 % Chapters are the next main unit.
 \chapter{Introduction}
-This sample thesis\  with UBCO College of Graduate Studies standards. If you need more information about the template and LaTeX, please check out the sample thesis of Michael Forbes at
+	“The Source” is an interactive simulation model where the user is charged with the task of providing 
+energy to a growing population. The purpose of the simulation is to show the benefits and detriments of 
+each type of energy source. Although the game targets young adults, primarily around high school and 
+College/university students; anyone can play and and have a learning experience. Two intended outcomes of 
+the simulation are to demonstrate the ratio of energy output to energy source type, and show the inner 
+workings of each. A third outcome of the simulation is show that each type of energy works in the same way 
+at its most basic level, with the exception of solar power converting kinetic energy into electrical energy.
+\bigskip
 
+The user will accomplish the task of providing energy by choosing to invest in different types of energy. 
+The energy types that are at the users' disposal are solar, wind, hydro, coal, oil, gas and nuclear. Users 
+can choose to build any of these power plants, but each type has consequences that others may not have. For 
+example, if a user decided to build a power plant that ran off of coal, environmentalists would be 
+displeased because the burning of coal introduces pollutants into the atmosphere. As well as considering 
+the consequences of their actions, the users must also consider what fuels each power plant and how long 
+each power plant can be sustained for. Fossil fuels and nuclear power are not infinite; the user must find 
+resources to fuel these power plants. Users can choose to invest in renewable resources such as solar, wind 
+and hydro, but the problem the user encounters with these types of resources is that they don't output as 
+much energy as fossil fuels. The users' main objective is to survive for as long as possible and to beat 
+their previous time. 
+
+\chapter{Energy Today}
+	In our society today almost all electrical energy is converted in the same way, converting kinetic 	
+to moving this magnet. In almost all designs the magnet is connected to a turbine,which can be rotated, so 
+that if the turbine obtains kinetic energy it can be transferred to the magnet. How the turbine acquires 
+kinetic energy is different depending on the sours of energy. In the case of Fossil fuels and nuclear 
+power, all that is happening is that water is being turned into steam and then the steam is used like wind 
+to turn the turbine to make power. In the case of hydro power, the flowing water turns the turbine and in 
+the case of wind power the turbine is physically connected to the rotating blades throughout the shaft of 
+the windmill. 
+\bigskip
+
+The exception, solar power. Solar Power works a little different, the general idea is that when beamsof 
+light hit the solar panels some of the energy from the light doesn’t get transferred into heat and is 
+instead transferred into the electrons. With their newly obtained energy the electrons become free and able 
+to move around. This makes a current possible and from here it is just a matter of extracting it.
+\bigskip
+
+It could be argued that nuclear power plants, fossil fuel plants and big hydro dams are these big complex 
+systems that generate our power for us but they all work off the one basic idea of moving a magnet through 
+a copper coil. This centuries old idea has fundamentally redirected the evolutionary direction of our 
+society today. 
+
+
+\chapter{The Sourse}
+
+The design of the system, as illustrated in figure 3.1 below, is straightforward. The user interacts with 
+the system by purchasing power plants. This is done on a designated screen when there is land for the user 
+to build on. Once the user has picked a type of power he/she must then provide the resources necessary for 
+the power plant to function. The user can obtain fossil fuels by mining for them on the screen designated 
+to represent the land that is currently available for the user to excavate. Once resources have been 
+obtained and a power plant is built, energy can then be created and supplied to the population.
+\bigskip
+
+Another option that the user has is that he/she can purchase advertisements or public services to help 
+him/her flourish in the simulation. For example, a user could purchase an advertisement that educates the 
+population to not waste power. This advertisement would reduce the usage of power and allow the user to 
+more easily meet the demand. Users can also buy public services. An example would be a geologist that would 
+survey the land and tell the user where to mine for a specific resource. Both of these purchases can 
+influence groups within the game, such as environmentalists or public opinion. 
+\bigskip
+
+Users choices in the game affect groups as well, for example if a user invested in coal fueled power plants then the environmentalists group would not be displeased. Groups provide small perks or punishments to the user, usually in the form of grants or fines, which are dependent on the users play style and choices within the simulation. 
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=1\textwidth]{DFDDiagram}
+    \caption[Figure 1]{\label{DFD Diagram} }
+  \end{center}
+\end{figure}
+
+
+\section{Screen Layout}
+“The Source” is composed of 8 different screen. The first five mentioned below are know as the five core screens. You can get to any of these screens from any other screen in the game. 
+\bigskip
+
+\noindent \large \textbf{ The Business Screen (one of the five core screens):} \newline
+\indent In this screen the user is able to purchase advertisements and pubic services to help him/her 
+progress through the simulation. Here the user is also able to see their progress throughout the game. The 
+user will be able to see data like, money and energy made over time.  
+\bigskip
+
+\noindent The City Screen (one of the five core screens): \newline
+\indent Here the user is able to see how the population is doing, the amount of power currently demanded and the amount supplied. This screens purpose is to purely display information.
+\bigskip
+
+\noindent The Power Plant Screen (one of the five core screens): \newline
+\indent This screen, possibly the most education screen shows the workings of each type of energy as well as the inner workings of a generator. As well as seeing this information this screen allows the user to 
+see specifics on the current power plants that he/she has built. Specifics being information such as 
+amount of power produced, cost to maintain, resources required to maintain and more. 
+\bigskip
+
+\noindent The Land Screen (one of the five core screens): \newline
+\indent From this screen the user can build power power plants that run off of fossil fuels and uranium. The user will have some designated land to start but he/she also has the option to buy more land to build 
+on if the starting land is all used up.
+\bigskip
+
+\noindent The Resource Screen (one of the five core screens): \newline
+\indent The purpose of this screen is to act like a map for the resources at the users disposal. From this 
+screen the user can see all the resource that will be needed and the user can get at the three resource 
+screens that will allow the user to extract the resources.
+\bigskip
+
+\noindent The Hydro Screen: \newline
+\indent From here the user can view numerous rives that could be damned in order to generate power. Once a 
+river is damned it will be shown on the screen. Rivers can only be damed once. 
+\bigskip
+
+\noindent Solar/wind Power Screen: \newline
+\indent This screen shows land in the form of a grid that the user has at his/her to build windmills on or 
+solar canals. Building will have a cost. Once something is built it can be dismantled to open the land 
+to have something else built. 
+\bigskip
+
+
+\noindent The Fossil Fuels Screen: \newline
+\indent Here land that the user can mine will be shown. This will be one large grid that will hold all the 
+fossil fuels and uranium. The user can mine a section by selecting it and he or she will have a chance 
+of discovering any one of the four resources. The resource discovered will go towards fueling the built 
+power plants. Once a section is mined it can not be reused. 
+\bigskip
+
+\noindent The Static Screen: \newline
+\indent The static screen is not really a screen at all but a combination of static images that remain on 
+top of all other screens for the entire duration of the game. This serves as the means of navigation 	
+between the five core screens. As well as displaying some information such as money and time. 
+\bigskip
 
 %Include citations in your thesis as you write:
 %\cite{MR2848848,MR2461448,MR2834159,infconv,convmono,MR2668638,Bauschke:2007-PA02,proxbas}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 OCT 2014 21:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 NOV 2014 10:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -694,20 +694,20 @@ File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 (./ubc_2015_spring_kudlac_raffi.aux)
 \openout1 = `ubc_2015_spring_kudlac_raffi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 
 (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -738,8 +738,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box70
-Package backref Info: ** backref set up for natbib ** on input line 45.
-Package hyperref Info: Link coloring OFF on input line 45.
+Package backref Info: ** backref set up for natbib ** on input line 46.
+Package hyperref Info: Link coloring OFF on input line 46.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -749,32 +749,27 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 46.
+LaTeX Info: Redefining \pageref on input line 46.
+LaTeX Info: Redefining \nameref on input line 46.
 
 (./ubc_2015_spring_kudlac_raffi.out) (./ubc_2015_spring_kudlac_raffi.out)
 \@outlinefile=\write4
 \openout4 = `ubc_2015_spring_kudlac_raffi.out'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 54.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 55.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 54.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 55.
  [1
 Non-PDF special ignored!
 
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-
-] [3
-
-
-] (./ubc_2015_spring_kudlac_raffi.toc
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./ubc_
+2015_spring_kudlac_raffi.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 1.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -788,98 +783,126 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `ubc_2015_spring_kudlac_raffi.toc'.
 
- [4]
+ [2
+
+]
 (./ubc_2015_spring_kudlac_raffi.lot)
 \tf@lot=\write6
 \openout6 = `ubc_2015_spring_kudlac_raffi.lot'.
 
- [5] (./ubc_2015_spring_kudlac_raffi.lof)
+ [3] (./ubc_2015_spring_kudlac_raffi.lof)
 \tf@lof=\write7
 \openout7 = `ubc_2015_spring_kudlac_raffi.lof'.
 
 
-[6] [7
-
-] [8
-
-]
+[4]
 Chapter 1.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
 [1
 
 
 ]
 Chapter 2.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
 [2
 
-] [3]
-Chapter 3.
-[4
-
-] [5
-
 ]
+Chapter 3.
+<DFDDiagram.pdf, id=139, 722.7pt x 542.025pt>
+File: DFDDiagram.pdf Graphic file (type pdf)
+ <use DFDDiagram.pdf>
+Package pdftex.def Info: DFDDiagram.pdf used on input line 146.
+(pdftex.def)             Requested size: 360.0pt x 270.0028pt.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+ [3
+
+] [4 <./DFDDiagram.pdf>] [5]
 Chapter 4.
 [6
 
+] [7]
+Chapter 5.
+[8
 
-] [7] (./ubc_2015_spring_kudlac_raffi.bbl (./ubc_2015_spring_kudlac_raffi.brf)
+] [9
+
+]
+Chapter 6.
+[10
+
+
+] [11] (./ubc_2015_spring_kudlac_raffi.bbl
+(./ubc_2015_spring_kudlac_raffi.brf)
 \tf@brf=\write8
 \openout8 = `ubc_2015_spring_kudlac_raffi.brf'.
 
-) [8
+) [12
 
-] [9
+] [13
 
 
 ]
 Appendix A.
-[10
+[14
 
-] [11] [12]
+] [15] [16]
 Appendix B.
-[13
+[17
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 314.
- [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 314.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
+ [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
  (./ubc_2015_spring_kudlac_raffi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 314.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 314.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: 31A05CA0B7B610D4A6B023DEF3A45ECD;896.
+(rerunfilecheck)             Checksum: A16C7A5A9058E0F309225243097DA2D6;869.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.brf' has not ch
 anged.
-(rerunfilecheck)             Checksum: 07FA9B1AF943AC60C264E1274B31C0E2;173.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 314.
+(rerunfilecheck)             Checksum: 69C137C32056C0A69E49D9DCF9B2EF64;173.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 408.
  ) 
 Here is how much of TeX's memory you used:
- 10690 strings out of 493117
- 152108 string characters out of 6135433
- 277502 words of memory out of 5000000
- 13894 multiletter control sequences out of 15000+600000
- 13470 words of font info for 51 fonts, out of 8000000 for 9000
+ 10705 strings out of 493117
+ 152311 string characters out of 6135433
+ 277556 words of memory out of 5000000
+ 13906 multiletter control sequences out of 15000+600000
+ 15324 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,55p,509b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,55p,509b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
 usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
 r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loc
-al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
-texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texl
-ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ubc_2015_spring_kudlac_raffi.pdf (22 pages, 182551 bytes).
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texliv
+e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ubc_2015_spring_kudlac_raffi.pdf (22 pages, 230628 bytes).
 PDF statistics:
- 299 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
+ 312 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
  58 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 

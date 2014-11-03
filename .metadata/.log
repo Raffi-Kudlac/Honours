@@ -4275,3 +4275,23 @@ java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a 
 	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
 	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+!SESSION 2014-10-31 14:09:58.169 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-10-31 14:10:03.384
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-10-31 14:12:41.506 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-10-31 14:12:45.205
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
