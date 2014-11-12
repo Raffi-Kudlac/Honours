@@ -10,7 +10,6 @@ local widget   = require( "widget" )
 local gv       = require( "global" )
 local landTile = require( "landTile" )
 require "landOptions"
-
 local scene       = composer.newScene()
 local grid        = display
 local tiles       = {}

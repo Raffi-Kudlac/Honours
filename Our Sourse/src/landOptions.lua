@@ -96,8 +96,10 @@ local function buy( event )
 end
 
 local function cancel( event )
-
-    composer.hideOverlay()
+	
+	if (event.phase == "began") then
+    	composer.hideOverlay()
+    end
 end 
 
 

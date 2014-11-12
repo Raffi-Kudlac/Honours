@@ -8,6 +8,8 @@
     NOTES FOR MYSELF------
   Width is along the x axis
   Height is along the y axis
+  top = height
+  left = width
   function() return setText(gv.oilSpecs) end, used for passing parameters to a button call
 
 ]]
@@ -67,6 +69,11 @@ local function initalize()
     gv.screen = "city"
     gv.font = native.systemFont
     gv.fontSize = 8
+    gv.resourseAmount = {}
+    gv.resourseAmount[0] = 0
+    gv.resourseAmount[1] = 0
+    gv.resourseAmount[2] = 0
+    gv.resourseAmount[3] = 0
     
     gv.oilSpecs = powerPlant.new("oil")
     gv.oilSpecs:setCost(energyCost)
@@ -147,11 +154,11 @@ end
 function goToScreen(destination)
     
     
-        if gv.screen ~= destination then
-          gv.screen = destination    
-          print(destination)          
-          composer.gotoScene(destination)      
-        end                
+    if gv.screen ~= destination then
+      gv.screen = destination    
+      print(destination)          
+      composer.gotoScene(destination)      
+    end                
 end
 
 local function buildStaticBG()
@@ -188,7 +195,8 @@ local function buildScreenButtons()
       id          = "rs",
       defaultFile = "Images/static_screen/st_ff.png",
       top         = buttonFactorY,
-      left        = buttonFactorX
+      left        = buttonFactorX,
+      onEvent     = function() return goToScreen("resourseMap") end, 
    }
    
    buttonFactorY = buttonFactorY + 15

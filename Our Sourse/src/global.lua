@@ -24,7 +24,11 @@ nuclearSpecs  = powerPlant
 money         = 0
 fontSize      = 0
 font          = native.systemFont
+resourseAmount =  0	-- holds the amount of resourses found for each type
 
+--for i = 0,3,1 do
+--	resourseAmount[i] = 0
+--end
 
 local g       = {}
 
