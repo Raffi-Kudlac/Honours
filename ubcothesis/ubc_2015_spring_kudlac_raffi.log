@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 NOV 2014 10:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  14 NOV 2014 11:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -808,79 +808,112 @@ Missing character: There is no ù in font cmr10!
 
 ]
 Chapter 2.
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ô in font cmr10!
-[2
+<Induction.jpg, id=178, 232.87pt x 174.6525pt>
+File: Induction.jpg Graphic file (type jpg)
+ <use Induction.jpg>
+Package pdftex.def Info: Induction.jpg used on input line 123.
+(pdftex.def)             Requested size: 108.0011pt x 80.99936pt.
+ [2
 
-]
+ <./Induction.jpg>] <fossil_fuel.png, id=184, 2007.5pt x 1245.65375pt>
+File: fossil_fuel.png Graphic file (type png)
+
+<use fossil_fuel.png>
+Package pdftex.def Info: fossil_fuel.png used on input line 147.
+(pdftex.def)             Requested size: 360.0pt x 223.37169pt.
+ [3 <./fossil_fuel.png>]
+<nuclear.png, id=195, 665.48625pt x 340.27126pt>
+File: nuclear.png Graphic file (type png)
+ <use nuclear.png>
+Package pdftex.def Info: nuclear.png used on input line 188.
+(pdftex.def)             Requested size: 360.0pt x 184.07603pt.
+ [4] [5 <./nuclear.png>] <hydro.png, id=205, 537.00626pt x 347.2975pt>
+File: hydro.png Graphic file (type png)
+ <use hydro.png>
+Package pdftex.def Info: hydro.png used on input line 229.
+(pdftex.def)             Requested size: 360.0pt x 232.82059pt.
+
+[6] <windmill.png, id=211, 328.22626pt x 254.9525pt>
+File: windmill.png Graphic file (type png)
+ <use windmill.png>
+Package pdftex.def Info: windmill.png used on input line 253.
+(pdftex.def)             Requested size: 360.0pt x 279.63553pt.
+
+[7 <./hydro.png>] [8 <./windmill.png>]
+<solar.png, id=221, 426.59375pt x 277.035pt>
+File: solar.png Graphic file (type png)
+ <use solar.png>
+Package pdftex.def Info: solar.png used on input line 278.
+(pdftex.def)             Requested size: 360.0pt x 233.80266pt.
+ [9 <./solar.png>]
 Chapter 3.
-<DFDDiagram.pdf, id=139, 722.7pt x 542.025pt>
+<DFDDiagram.pdf, id=227, 722.7pt x 542.025pt>
 File: DFDDiagram.pdf Graphic file (type pdf)
  <use DFDDiagram.pdf>
-Package pdftex.def Info: DFDDiagram.pdf used on input line 146.
-(pdftex.def)             Requested size: 360.0pt x 270.0028pt.
+Package pdftex.def Info: DFDDiagram.pdf used on input line 297.
+(pdftex.def)             Requested size: 323.9978pt x 242.99922pt.
+ [10
+
+ <./DFDDiagram.pdf>]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
- [3
-
-] [4 <./DFDDiagram.pdf>] [5]
+ [11] [12]
 Chapter 4.
-[6
+[13
 
-] [7]
+] [14]
 Chapter 5.
-[8
+[15
 
-] [9
+] [16
 
 ]
 Chapter 6.
-[10
+[17
 
 
-] [11] (./ubc_2015_spring_kudlac_raffi.bbl
+] [18] (./ubc_2015_spring_kudlac_raffi.bbl
 (./ubc_2015_spring_kudlac_raffi.brf)
 \tf@brf=\write8
 \openout8 = `ubc_2015_spring_kudlac_raffi.brf'.
 
-) [12
+) [19
 
-] [13
+] [20
 
 
 ]
 Appendix A.
-[14
+[21
 
-] [15] [16]
+] [22] [23]
 Appendix B.
-[17
+[24
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 408.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 408.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 571.
+ [25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 571.
  (./ubc_2015_spring_kudlac_raffi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 408.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 571.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 571.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: A16C7A5A9058E0F309225243097DA2D6;869.
+(rerunfilecheck)             Checksum: E1F9EE2C089C0BE5A3C63CA5AF0A4257;1242.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.brf' has not ch
 anged.
-(rerunfilecheck)             Checksum: 69C137C32056C0A69E49D9DCF9B2EF64;173.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 408.
+(rerunfilecheck)             Checksum: BC23499A689B5F4886335E782836C8AF;175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 571.
  ) 
 Here is how much of TeX's memory you used:
- 10705 strings out of 493117
- 152311 string characters out of 6135433
- 277556 words of memory out of 5000000
- 13906 multiletter control sequences out of 15000+600000
+ 10767 strings out of 493117
+ 153110 string characters out of 6135433
+ 278805 words of memory out of 5000000
+ 13942 multiletter control sequences out of 15000+600000
  15324 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,55p,509b,369s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -896,13 +929,14 @@ cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
 xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
 ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texliv
 e/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
-2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ubc_2015_spring_kudlac_raffi.pdf (22 pages, 230628 bytes).
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ubc_2015_spring_kudlac_raffi.pdf (29 pages, 1728416 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 267 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 344 compressed objects within 4 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
