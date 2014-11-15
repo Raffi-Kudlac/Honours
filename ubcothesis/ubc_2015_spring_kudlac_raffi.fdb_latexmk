@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex ubc_2015_spring_kudlac_raffi"] 1415991515 "ubc_2015_spring_kudlac_raffi.aux" "ubc_2015_spring_kudlac_raffi.bbl" "ubc_2015_spring_kudlac_raffi" 1415991624
+["bibtex ubc_2015_spring_kudlac_raffi"] 1416081633 "ubc_2015_spring_kudlac_raffi.aux" "ubc_2015_spring_kudlac_raffi.bbl" "ubc_2015_spring_kudlac_raffi" 1416081638
   "./ubco.bst" 1271653930 32117 6d3f0dab86231eb48770e59aa637f9eb ""
   "bibliography.bib" 1367015226 42599 33988638eeb4a4a03f847556714587b1 ""
-  "ubc_2015_spring_kudlac_raffi.aux" 1415991623 7532 22400073b1c777683af17ff5dce2231f ""
+  "ubc_2015_spring_kudlac_raffi.aux" 1416081636 7534 db0d0dd0d6e022a92cb1dcd23d00fc8e ""
   "ubc_2015_spring_kudlac_raffi.bcf" 0 -1 0 ""
   (generated)
   "ubc_2015_spring_kudlac_raffi.blg"
   "ubc_2015_spring_kudlac_raffi.bbl"
-["pdflatex"] 1415991621 "ubc_2015_spring_kudlac_raffi.tex" "ubc_2015_spring_kudlac_raffi.pdf" "ubc_2015_spring_kudlac_raffi" 1415991624
+["pdflatex"] 1416081634 "ubc_2015_spring_kudlac_raffi.tex" "ubc_2015_spring_kudlac_raffi.pdf" "ubc_2015_spring_kudlac_raffi" 1416081638
   "/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -86,14 +86,14 @@
   "hydro.png" 1415951995 260832 eb210543271f9ad51f3d37e1354ee2b0 ""
   "nuclear.png" 1415950932 357907 6833f2231b516ddc6d80b38c894c3ff6 ""
   "solar.png" 1415986920 477952 c8d6ad4692212d7ab0e1f1c35d60685a ""
-  "ubc_2015_spring_kudlac_raffi.aux" 1415991623 7532 22400073b1c777683af17ff5dce2231f ""
-  "ubc_2015_spring_kudlac_raffi.bbl" 1415991515 878 23eaac944e8199517c15e0e9397ca280 "bibtex ubc_2015_spring_kudlac_raffi"
-  "ubc_2015_spring_kudlac_raffi.brf" 1415991623 175 bc23499a689b5f4886335e782836c8af ""
-  "ubc_2015_spring_kudlac_raffi.lof" 1415991623 776 89ed7d15b6cc4f608d7b8b3deb2817a0 ""
-  "ubc_2015_spring_kudlac_raffi.lot" 1415991623 1340 aa89efceec62f0b5579b0232451c6896 ""
-  "ubc_2015_spring_kudlac_raffi.out" 1415991623 1242 e1f9ee2c089c0be5a3c63ca5af0a4257 ""
-  "ubc_2015_spring_kudlac_raffi.tex" 1415991621 28854 3cc4ffa88e49b51e9d735d5c1fb5d09c ""
-  "ubc_2015_spring_kudlac_raffi.toc" 1415991623 1766 693644affef67668aeca23be4f2b632a ""
+  "ubc_2015_spring_kudlac_raffi.aux" 1416081636 7534 db0d0dd0d6e022a92cb1dcd23d00fc8e ""
+  "ubc_2015_spring_kudlac_raffi.bbl" 1416081634 878 23eaac944e8199517c15e0e9397ca280 "bibtex ubc_2015_spring_kudlac_raffi"
+  "ubc_2015_spring_kudlac_raffi.brf" 1416081636 175 ce8af9a399c585e4d52dc93fd323962b ""
+  "ubc_2015_spring_kudlac_raffi.lof" 1416081636 777 0da3e60706505fd2c0c6907795c1df66 ""
+  "ubc_2015_spring_kudlac_raffi.lot" 1416081636 1340 b76dc6a0c1de418ff15a60138bb45ded ""
+  "ubc_2015_spring_kudlac_raffi.out" 1416081636 1242 e1f9ee2c089c0be5a3c63ca5af0a4257 ""
+  "ubc_2015_spring_kudlac_raffi.tex" 1416081632 29498 2f49c7c662c8a6c9104b77d589a66918 ""
+  "ubc_2015_spring_kudlac_raffi.toc" 1416081636 1766 b80f688c9712d2a0c7afa17c021f2f86 ""
   "ubcostyle.sty" 1373490258 3990 273ac2510b92948b5e33f10313b90907 ""
   "ubcthesis.cls" 1269023566 3685 4f3c2bc8b3405f35058e45a900660df2 ""
   "windmill.png" 1415986526 91308 8e8336ed22a1317b7af0600ef4fb6078 ""

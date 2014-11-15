@@ -6,19 +6,19 @@
 \contentsline {section}{\numberline {2.1}{Generators}}{2}{section.2.1}
 \contentsline {section}{\numberline {2.2}{Fossil Fuels}}{3}{section.2.2}
 \contentsline {section}{\numberline {2.3}{Nuclear Power}}{4}{section.2.3}
-\contentsline {section}{\numberline {2.4}{Hydro Power}}{6}{section.2.4}
-\contentsline {section}{\numberline {2.5}{Wind Power}}{7}{section.2.5}
-\contentsline {section}{\numberline {2.6}{Solar Power}}{8}{section.2.6}
-\contentsline {chapter}{\numberline {3}{The Sourse}}{10}{chapter.3}
-\contentsline {section}{\numberline {3.1}{Screen Layout}}{11}{section.3.1}
-\contentsline {chapter}{\numberline {4}{Sample Content Using Mathematical Notations}}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}{Facts and theorems}}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}{Propositions and lemmas}}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}{Landscape Mode}}{15}{chapter.5}
-\contentsline {chapter}{\numberline {6}{Conclusion}}{17}{chapter.6}
-\contentsline {chapter}{{Bibliography}}{19}{chapter*.4}
+\contentsline {section}{\numberline {2.4}{Hydro Power}}{7}{section.2.4}
+\contentsline {section}{\numberline {2.5}{Wind Power}}{8}{section.2.5}
+\contentsline {section}{\numberline {2.6}{Solar Power}}{9}{section.2.6}
+\contentsline {chapter}{\numberline {3}{The Sourse}}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}{Screen Layout}}{12}{section.3.1}
+\contentsline {chapter}{\numberline {4}{Sample Content Using Mathematical Notations}}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}{Facts and theorems}}{14}{section.4.1}
+\contentsline {section}{\numberline {4.2}{Propositions and lemmas}}{14}{section.4.2}
+\contentsline {chapter}{\numberline {5}{Landscape Mode}}{16}{chapter.5}
+\contentsline {chapter}{\numberline {6}{Conclusion}}{18}{chapter.6}
+\contentsline {chapter}{{Bibliography}}{20}{chapter*.4}
 \renewcommand *\cftchappresnum {Appendix\nobreakspace {}}
-\contentsline {chapter}{Appendix}{20}{section*.5}
+\contentsline {chapter}{Appendix}{21}{section*.5}
  \setlength {\cftbeforechapskip }{\cftbeforesecskip } \setlength {\cftchapindent }{\cftsecindent } \renewcommand {\bfseries }{\normalfont } \renewcommand {\cftchapdotsep }{4.5} 
-\contentsline {chapter}{\numberline {A}{Tables}}{21}{appendix.A}
-\contentsline {chapter}{\numberline {B}{Figures}}{24}{appendix.B}
+\contentsline {chapter}{\numberline {A}{Tables}}{22}{appendix.A}
+\contentsline {chapter}{\numberline {B}{Figures}}{25}{appendix.B}
