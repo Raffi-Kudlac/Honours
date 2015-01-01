@@ -1,6 +1,7 @@
 --[[
     Purpose:    
-        This screen is the menu screen currently only holding the play button.
+        This screen is the busness screen. This is where the user can purchase advertisements and
+        see the current status of the groups in the game. Here the user can also purchase public servises.
 
 ]]
 
@@ -13,13 +14,13 @@ local scene     = composer.newScene()
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function play( event )
+local function miniScreen(event, destination)
 
-    if ( "ended" == event.phase ) then
-        composer.gotoScene("city")                             
-    end    
+    if ( "ended" == event.phase ) then        
+       composer.showOverlay( destination )
+    end
+
 end
-
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -29,21 +30,70 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
+    local tempWidth = 130
+    local tempHeight = 100
+    local tempShift = 30
     
-    local btnPlay = widget.newButton
+    local scrollView = widget.newScrollView
+    {
+        top = centerY(tempHeight),
+        left = centerX(tempWidth),
+        width = tempWidth,
+        height = tempHeight,
+        scrollWidth = tempWidth*2,
+        scrollHeight = tempHeight*2,
+        --listener = scrollListener,        
+    }
+    
+    
+    local btnGroupStatus = widget.newButton
     {        
         width     = 100,
         height    = 50,
         shape     = "roundedRect",
         fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
         id        = "btnPlay",
-        label     = "PLay",
-        left      = centerX(100),
-        top       = centerY(50),
-        onEvent   = play        
-    }    
+        label     = "Groups",
+        --left      = centerX(100) + 150,
+        --top       = centerY(50),
+        onEvent   = function( event ) miniScreen(event, "groupScreen") end        
+    }
+    
+    local btnAdvertisements = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btnAdvertisements",
+        label     = "Adds",
+        --left      = centerX(100) - 150,
+        top       = btnGroupStatus.y + tempShift,
+        onEvent   = function( event ) miniScreen(event, "advertismentScreen") end        
+    }
+    
+    local btnPublicServises = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btnAdvertisements",
+        label     = "PublicServis",
+        --left      = centerX(100),
+        top       = btnAdvertisements.y + tempShift,
+        onEvent   = function( event ) miniScreen(event, "publicServisesScreen") end        
+    }
+    
+    
+    scrollView:insert( btnGroupStatus )
+    scrollView:insert( btnAdvertisements )
+    scrollView:insert( btnPublicServises )
+    sceneGroup:insert( scrollView )
         
-    sceneGroup:insert(btnPlay)         
+    --sceneGroup:insert(btnGroupStatus)
+    --sceneGroup:insert(btnAdvertisments)
+    --sceneGroup:insert(btnPublicServises)         
 end
 
 

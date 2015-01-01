@@ -4,33 +4,53 @@
         he/she is meeting the demand.
 ]]
 
-local composer  = require( "composer" )
-local scene     = composer.newScene()
-local gv        = require( "global" )
+local composer      = require( "composer" )
+local scene         = composer.newScene()
+local gv            = require( "global" )
+local scaleOverlay  = display.newImage("Images/city_screen/cty_scaleOverlay.png")
+local maxSOHeight   = 0
+local showProduced  = timer 
 
-local scaleOverlay = display.newImage("Images/city_screen/cty_scaleOverlay.png")
-local maxSOHeight = 0
- 
-
-
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
-
--- local forward references should go here
-
--- -------------------------------------------------------------------------------
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 
 local function scaleOverlayHeightCalculator()
   
     -- conversion ratio for now is maxHeight = 5Gw 
     local net = gv.powerSupplied - gv.powerDemanded
     
-    local percent = net/5
+    if (net > 25) then
+        net = 25
+    end
+    
+    local percent = net/25
     
     scaleOverlay.height = maxSOHeight*percent
 
 end
+
+
+local function producing(event)
+  
+  setDataBox("Demanded", gv.powerDemanded.."GW", 2)
+  setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+  scaleOverlayHeightCalculator()
+
+  showProduced = timer.performWithDelay(1000, producing)
+end
+
+
+-------------------------------------------------
+-- PUBLIC FUNCTIONS
+-------------------------------------------------
+function netPower()
+    return gv.powerSupplied - gv.powerDemanded 
+end
+
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event )
@@ -39,9 +59,6 @@ function scene:create( event )
     print("Made it to the city Screen")
     buildStaticScreen()    
     timeStart()
-    setDataBox("Population", gv.population, 1)
-    setDataBox("Demanded", gv.powerDemanded.."GW", 2)
-    setDataBox("Supplied", gv.powerSupplied.."GW", 3)
     
     local scale = display.newImage("Images/city_screen/cty_scale.png")
     
@@ -71,7 +88,6 @@ function scene:create( event )
     sceneGroup:insert(scaleOverlay)
 end
 
-
 -- "scene:show()"
 function scene:show( event )
 
@@ -79,14 +95,17 @@ function scene:show( event )
     local phase = event.phase
 
     if ( phase == "will" ) then
-        -- Called when the scene is still off screen (but is about to come on screen).
+        setDataBox("Population", gv.population, 1)
+        setDataBox("Demanded", gv.powerDemanded.."GW", 2)
+        setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+        
+        showProduced = timer.performWithDelay( 1, producing );
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
     end
 end
-
 
 -- "scene:hide()"
 function scene:hide( event )
@@ -98,11 +117,11 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
+        timer.cancel(showProduced)
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
     end
 end
-
 
 -- "scene:destroy()"
 function scene:destroy( event )
@@ -115,12 +134,6 @@ function scene:destroy( event )
 end
 
 -- -------------------------------------------------------------------------------
-
-function netPower()
-
-    return gv.powerSupplied - gv.powerDemanded 
-
-end
 
 -- Listener setup
 scene:addEventListener( "create", scene )

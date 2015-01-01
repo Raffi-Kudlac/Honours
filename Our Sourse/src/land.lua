@@ -5,24 +5,20 @@
         He/She can also buy more land if more is needed. 
 ]]
 
-local composer = require( "composer" )
-local widget   = require( "widget" )
-local gv       = require( "global" )
-local landTile = require( "landTile" )
-require "landOptions"
+local composer    = require( "composer" )
+local widget      = require( "widget" )
+local gv          = require( "global" )
+local landTile    = require( "landTile" )
 local scene       = composer.newScene()
 local grid        = display
 local tiles       = {}
 local sceneGroup  = 0
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
 
--- local forward references should go here
+require "landOptions"
 
--- -------------------------------------------------------------------------------
-
-
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 local function loadOptions(counter, event)
    
     local options = {
@@ -47,7 +43,6 @@ local function loadOptions(counter, event)
     end    
 end
 
-
 local function setDataLabels()
     
     local openOwnedSpace  = -1
@@ -69,16 +64,15 @@ local function setDataLabels()
     setDataBox(percentUsed.."% ","land used", 3)    
 end
 
-
 --Builds the tiles. All tiles start open but are changed later
 local function buildTiles()
 
-    local startX  = 15
+    local startX  = 0 
     local startY  = -30
     local tileX   = startX
     local tileY   = startY
-    local shiftX  = 155
-    local shiftY  = 51
+    local shiftX  = 0.3 * display.contentWidth
+    local shiftY  = 0.17 * display.contentHeight
     local counter = 0
 
     for y = 0, 4, 1 do
@@ -86,8 +80,9 @@ local function buildTiles()
         if (y % 2 == 0) then
             tileX = startX
         else
-            tileX = 95
+            tileX = shiftX/2
         end
+
           
         for x = 0, 2, 1 do
         
@@ -121,6 +116,28 @@ local function buildTiles()
 
 end 
 
+local function buildStartingTiles()
+
+     local type = "city owned"
+    
+     convertButton("Images/land_screen/lnd_tile_forest.png",0, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",1, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",3, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",6, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",7, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",9, type)
+     
+     type = "forest"
+     
+     convertButton("Images/land_screen/lnd_tile_forest.png",10, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",11, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",13, type)
+     convertButton("Images/land_screen/lnd_tile_forest.png",14, type) 
+end
+
+-------------------------------------------------
+-- PUBLIC FUNCTIONS
+-------------------------------------------------
 function convertButton2(path,location,sc,type)
 
     local temp = tiles[location]
@@ -183,44 +200,37 @@ function convertButton(path,location,type)
     setDataLabels()           
 end
 
-
-local function buildStartingTiles()
-
-     local type = "city owned"
-    
-     convertButton("Images/land_screen/lnd_tile_forest.png",0, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",1, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",3, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",6, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",7, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",9, type)
-     
-     type = "forest"
-     
-     convertButton("Images/land_screen/lnd_tile_forest.png",10, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",11, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",13, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",14, type) 
-end
-
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event )
 
     sceneGroup = self.view    
     
-    grid          = display.newImage("Images/land_screen/lnd_grid.png")
-    grid:scale(0.6,0.6)
-    grid.x        = 0
-    grid.y        = 0
-    grid.anchorX  = 0
-    grid.anchorY  = 0
-    
+    --grid          = display.newImage("Images/land_screen/lnd_grid.png")    
+    --grid.width = display.contentWidth
+    --grid.height = display.contentHeight
+--    grid.x        = 0
+--    grid.y        = 0
+--    grid.anchorX  = 0
+--    grid.anchorY  = 0
+
+  grid = widget.newButton
+  {
+    width       = display.contentWidth,
+    height      = display.contentHeight,
+    defaultFile = "Images/land_screen/lnd_grid.png",              
+    id          = "grid",              
+    left        =50,
+    top         = 40,        
+  }   
+  grid:scale(1.2,1.2)
            
     sceneGroup:insert(grid)
     buildTiles()
-    buildStartingTiles()
-    setDataLabels()    
+    buildStartingTiles()    
     -- Initialize the scene here.
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end
@@ -234,6 +244,7 @@ function scene:show( event )
 
     if ( phase == "will" ) then
         -- Called when the scene is still off screen (but is about to come on screen).
+        setDataLabels()
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
@@ -268,15 +279,11 @@ function scene:destroy( event )
     -- Example: remove display objects, save state, etc.
 end
 
-
--- -------------------------------------------------------------------------------
-
+-- -------------------------------------------
 -- Listener setup
 scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
-
--- -------------------------------------------------------------------------------
 
 return scene

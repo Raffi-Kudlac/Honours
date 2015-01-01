@@ -2,22 +2,14 @@
     Purpose:
         This file is an object for the land Screen. Each grid section holds a object of this file.
         Here all the information is held of what kind of tile it is and other characteristic.
-
+        
+        NOTE TO SELF:
+        --  the contians array holds the amount of resourses that the cell holds
+        -- 0 - oil
+        -- 1 - gas
+        -- 2 - coal
+        -- 3 - uranium
 ]]
-
--------------------------------------------------
---
--- landTile.lua
---
---
--------------------------------------------------
- --[[
- --	the contians array holds the amount of resourses that the cell holds
- --	0 - oil
- --	1 - gas
- --	2 - coal
- --	3 - uranium
- --]]
  
  
 local miningCell = {}

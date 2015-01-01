@@ -1,7 +1,7 @@
 --[[
     Purpose:    
-        This screen is responcible for confirming that the user wants to mine a location on the grid.
-        It will disply the cost and general info to the user.
+        This screen is for displaying specific info to the user about the river he/she has selected.
+        The user will also be presented with the option to dam the current river. 
 ]]
 
 local composer = require( "composer" )
@@ -10,8 +10,8 @@ local gv       = require( "global" )
 
 local scene           = composer.newScene()
 local d               = 280
-local mineOptionsLeft = 0 
-local mineOptionsTop  = 0 
+local damOptionsLeft  = 0 
+local damOptionsTop   = 0 
 local textWidth       = d*0.7
 local textHeight      = 0
 
@@ -21,42 +21,71 @@ local textHeight      = 0
 
 local function createText(sceneGroup)
 
-	local costText = display.newText("It costs 1 B to mine", mineOptionsLeft + 55,
-    	mineOptionsTop + 20, gv.font, gv.fontSize )
-    	costText.anchorX,costText.anchorY = 0,0
-    	
-    local miningInfo = "Coal, Gas, Oil and Uranium are all resourses that our power plants run off of today. They all come from " .. 
-    "the earth and there is only a limited amount of them. Once we run out. There will be none left."
+    local textVerticalShift = 15
     
-    local info = display.newText(miningInfo, mineOptionsLeft + 55, costText.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
+    
+    local nme = " The " .. gv.rivers[gv.riverSelected]:getName() .. " river"
+    
+    local riverName = display.newText(nme, damOptionsLeft + 55,
+        damOptionsTop + 20, gv.font, gv.fontSize )
+        riverName.anchorX,riverName.anchorY = 0,0
+
+    local costMessage = "Cost to build: $" .. tostring(gv.rivers[gv.riverSelected]:getCost()) .. " B"
+  
+    local costText = display.newText(costMessage, damOptionsLeft + 55,
+        riverName.y + textVerticalShift, gv.font, gv.fontSize )
+        costText.anchorX,costText.anchorY = 0,0
+        
+    local destruction = "Area flooded: " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " m cubed"
+    
+    local adText = display.newText(destruction, damOptionsLeft + 55,
+        costText.y + textVerticalShift, gv.font, gv.fontSize )
+        adText.anchorX,adText.anchorY = 0,0
+        
+    local powerProduced = "Power Produced: " .. tostring(gv.rivers[gv.riverSelected]:getPowerGenerated()) .. " GW"
+    
+    local powerText = display.newText(powerProduced, damOptionsLeft + 55,
+        adText.y + textVerticalShift, gv.font, gv.fontSize )
+        powerText.anchorX,powerText.anchorY = 0,0       
+            
+    
+    local info = display.newText(gv.rivers[gv.riverSelected]:getData(), damOptionsLeft + 55, costText.y + 100,textWidth, textHeight, gv.font,gv.fontSize)
     info.anchorX, info.anchorY = 0,0
+    
+    sceneGroup:insert(riverName)
     sceneGroup:insert(costText)
+    sceneGroup:insert(adText)
+    sceneGroup:insert(powerText)    
     sceneGroup:insert(info)     
-end
-
-
-local function mine(event)
-
-	if event.phase == "began" then
-		if (gv.money >= 1)then
-			gv.money = gv.money - 1
-			setMoney()
-			changeCell()
-			gatherResourses()
-			composer.hideOverlay()
-		end
-	end
-
 end
 
 
 local function cancel(event)
 
-	if(event.phase == "began") then
-		composer.hideOverlay()
-	end
+  if(event.phase == "began") then
+    composer.hideOverlay()
+  end
 end
 
+
+local function confirmPurchase()
+    
+    gv.money = gv.money - gv.rivers[gv.riverSelected]:getCost()    
+    gv.rivers[gv.riverSelected]:setBuilt()      
+    setMoney()
+end
+
+
+local function damed(event)
+
+    if (event.phase == "began") then        
+        if (gv.money >= gv.rivers[gv.riverSelected]:getCost()) then
+            confirmPurchase()
+            changeImage()            
+            composer.hideOverlay()
+        end
+    end
+end
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -66,10 +95,10 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
-    mineOptionsLeft = centerX(d)
-    mineOptionsTop = centerY(d)
+    damOptionsLeft = centerX(d)
+    damOptionsTop = centerY(d)
 
-   	local mineOptions = widget.newButton
+    local damOptions = widget.newButton
     {        
         width       = d -20,
         height      = d -10,                
@@ -79,17 +108,17 @@ function scene:create( event )
         top         = centerY(d),        
     }
     
-    local btnMine = widget.newButton
+    local btnDam = widget.newButton
     { 
         width         = 50,
         height        = 20,
         shape         = "roundedRect",
         cornerRadius  = 10,     
-        label         = "Mine",      
+        label         = "Dam",      
         id            = "btnMine",            
-        top           =  mineOptions.height - 20,
-        left          =  mineOptionsLeft+80,
-        onEvent       = mine     
+        top           =  damOptions.height - 20,
+        left          =  damOptionsLeft+80,
+        onEvent       = damed     
     }
     
     local btnCancel = widget.newButton
@@ -100,15 +129,17 @@ function scene:create( event )
         cornerRadius  = 10,
         label         = "Cancel",
         id            = "btnCancel",
-        top           = btnMine.y,
-        left          = btnMine.x + 70,
+        top           = btnDam.y,
+        left          = btnDam.x + 70,
         onEvent       = cancel           
     }
     
-    btnMine.anchorY = 0
+    btnDam.anchorY = 0
+    
    
-    sceneGroup:insert(mineOptions)
-    sceneGroup:insert(btnMine)
+   
+    sceneGroup:insert(damOptions)
+    sceneGroup:insert(btnDam)
     sceneGroup:insert(btnCancel)
    
     createText(sceneGroup)

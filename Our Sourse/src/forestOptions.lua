@@ -20,14 +20,11 @@ local prosHeight        = 0
 local forestMessage = ""
 local costText      = ""
 local infoText      = ""
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
 
--- local forward references should go here
 
--- -------------------------------------------------------------------------------
-
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 local function createText()
 
     costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().." B", forestOptionsLeft + 35,
@@ -59,6 +56,10 @@ local function cancel()
     composer.hideOverlay()
 end
 
+
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event ) 

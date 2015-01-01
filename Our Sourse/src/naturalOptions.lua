@@ -10,21 +10,22 @@ local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
 
-local scene             = composer.newScene()
-local circleWidth       = 30
-local circleHeight      = 30
-local buildOptionsTop   = 0
-local buildOptionsLeft  = 0
-local d                 = 280
-local prosWidth         = d*0.7
-local prosHeight        = 0
+local scene               = composer.newScene()
+local circleWidth         = 30
+local circleHeight        = 30
+local buildOptionsTop     = 0
+local buildOptionsLeft    = 0
+local d                   = 280
+local prosWidth           = d*0.7
+local prosHeight          = 0
 
-local costText          = ""
-local productionText    = ""
-local prosText          = ""
-local consText          = ""
-local consumptionText   = ""
+local costText            = ""
+local productionText      = ""
+local prosText            = ""
+local consText            = ""
+local consumptionText     = ""
 local currentEnergySourse = powerPlant
+
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -50,7 +51,6 @@ local function createText(ffSpecs)
     
     consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
     consText.anchorX, consText.anchorY = 0,0
-
 end
 
 
@@ -68,21 +68,16 @@ end
 
 local function purchasedConfirmed()
 
-    gv.money    = gv.money - currentEnergySourse:getCost()
-    local kind  = "owned"
+    gv.money    = gv.money - currentEnergySourse:getCost()    
     
-    if(currentEnergySourse:getType() =="oil") then
-        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)   
-        gv.oilBuildCounter = gv.oilBuildCounter + 1      
-    elseif(currentEnergySourse:getType() =="coal") then    
-        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind)
-        gv.coalBuildCounter = gv.coalBuildCounter + 1
-    elseif(currentEnergySourse:getType() =="gas") then
-        convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind)
-        gv.gasBuildCounter = gv.gasBuildCounter + 1
-    elseif(currentEnergySourse:getType() =="nuclear") then
-        convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind)
-        gv.nuclearBuildCounter = gv.nuclearBuildCounter + 1
+    if(currentEnergySourse:getType() =="solar") then
+        gv.solarBuildCounter = gv.solarBuildCounter + 1
+        gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1        
+        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, "solar")                 
+    elseif(currentEnergySourse:getType() =="wind") then
+        gv.windBuildCounter = gv.windBuildCounter + 1
+        gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1
+        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, "wind")            
     end
             
 end
@@ -108,9 +103,8 @@ local function cancel( event )
     end
 end 
 
-
 -------------------------------------------------
--- COMPOSER FUNCTIONS
+-- PUBLIC FUNCTIONS
 -------------------------------------------------
 
 -- "scene:create()"
@@ -133,54 +127,30 @@ function scene:create( event )
     }
     
   
-    local btnoil = widget.newButton
+    local btnsolar = widget.newButton
     {           
         width       = circleWidth,
         height      = circleHeight, 
-        id          = "btnoil",
+        id          = "btnsolar",
         defaultFile = "Images/static_screen/st_ff.png",
-        onEvent     = function() return setText(gv.oilSpecs, "oil") end,
+        onEvent     = function() return setText(gv.solarSpecs, "solar") end,
         top         = buildOptionsTop + heightShift,
         left        = buildOptionsLeft - widthShift
     }
     
     heightShift  = heightShift + 40
     
-   local btngas = widget.newButton
+   local btnwind = widget.newButton
    {
       width       = circleWidth,
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_land.png",
-      id          = "btngas",           
-      onEvent     = function() return setText(gv.gasSpecs, "gas") end, 
+      id          = "btnwind",           
+      onEvent     = function() return setText(gv.windSpecs, "wind") end, 
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift
    }
-   
-   heightShift = heightShift + 40
-   
-   local btncoal = widget.newButton
-   {
-      width       = circleWidth,
-      height      = circleHeight,
-      defaultFile = "Images/static_screen/st_plant.png",
-      id          = "btncoal",
-      onEvent     = function() return setText(gv.coalSpecs, "coal") end,
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
-   }
-   heightShift = heightShift + 40
-   
-   local btnNP = widget.newButton
-   {      
-      width       = circleWidth,
-      height      = circleHeight,      
-      id          = "btnNP",
-      defaultFile = "Images/static_screen/st_city.png",
-      onEvent     = function() return setText(gv.nuclearSpecs, "nuc") end,
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
-   }
+      
   
     local btnBuy = widget.newButton
     { 
@@ -190,7 +160,7 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Buy",      
         id            = "btnBuy",            
-        top           =  buildOptions.height - 20,
+        top           = buildOptions.height - 20,
         left          = buildOptionsLeft+40,
         onEvent       = buy     
     }
@@ -209,13 +179,10 @@ function scene:create( event )
         left          = btnBuy.x + 70,
         onEvent       = cancel           
     }
-    createText(gv.oilSpecs)
-     
+    createText(gv.solarSpecs)     
     sceneGroup:insert(buildOptions)
-    sceneGroup:insert(btnoil)
-    sceneGroup:insert(btngas)
-    sceneGroup:insert(btncoal)
-    sceneGroup:insert(btnNP)
+    sceneGroup:insert(btnsolar)
+    sceneGroup:insert(btnwind)    
     sceneGroup:insert(costText)
     sceneGroup:insert(productionText)
     sceneGroup:insert(consumptionText)
@@ -267,7 +234,6 @@ function scene:destroy( event )
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
 end
-
 
 -- -------------------------------------------------------------------------------
 

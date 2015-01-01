@@ -1,23 +1,81 @@
-local composer = require( "composer" )
+--[[
+    Purpose:
+        This screen shows the user what rivers he/she can dam. Here the hydro plants are displayed.
+        Hydro plants can't be dismantled and are perminant.
+]]
 
-local scene = composer.newScene()
 
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
+local composer  = require( "composer")
+local widget    = require( "widget" )
+local gv        = require( "global" )
+local scene     = composer.newScene()
+local streams   = {}
 
--- local forward references should go here
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 
--- -------------------------------------------------------------------------------
+local function dam(riverSelected,event)
 
+    local options = {
+        isModal = true
+    }
+
+    if ( "began" == event.phase ) then
+        if (streams[riverSelected].river:getBuilt() == false) then
+            gv.riverSelected = riverSelected            
+            composer.showOverlay("hydroOptions", options)
+        end
+    
+    end
+end
+
+function changeImage()
+
+  streams[gv.riverSelected]:setLabel("damed")
+
+end
+
+
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event )
 
     local sceneGroup = self.view
-
-    -- Initialize the scene here.
-    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
+    
+    streams[0] = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",               
+        id        = "btnRiver1",
+        label     = "River1",
+        left      = centerX(100) - 100,
+        top       = centerY(50),
+        onEvent   = function(event) return dam(0,event) end,        
+    }
+    
+    streams[0].river =  gv.rivers[0]
+    
+    streams[1] = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",               
+        id        = "btnRiver2",
+        label     = "River2",
+        left      = centerX(100) + 50,
+        top       = centerY(50),
+        onEvent   = function(event) return dam(1,event) end,
+    }
+    
+    streams[1].river = gv.rivers[1]
+    
+    sceneGroup:insert(streams[0])
+    sceneGroup:insert(streams[1])       
 end
 
 

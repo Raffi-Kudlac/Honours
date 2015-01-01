@@ -1,17 +1,20 @@
+--[[
+    Purpose:
+        This screen is a hub for the user to more specifically choose what resource he/she would like to invest in
+]]
+
+
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
-local scene = composer.newScene()
-local width = 150
-local height = 150
+local scene    = composer.newScene()
+local width    = 150
+local height   = 150
 
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
 
--- local forward references should go here
-
--- -------------------------------------------------------------------------------
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event )

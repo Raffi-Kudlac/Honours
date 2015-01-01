@@ -1,25 +1,21 @@
-local composer = require( "composer" )
+local composer  = require( "composer" )
 local widget    = require( "widget" )
-local gv       = require( "global" )
+local gv        = require( "global" )
 
-local scene = composer.newScene()
-local cityOptionsBG = widget
+local scene           = composer.newScene()
+local cityOptionsBG   = widget
 local cityOptionsLeft = 0
 local cityOptionsTop  = 0
-local shiftConstant = 280
-local prosWidth = shiftConstant*0.7
-local prosHeight = 0
-local cityMessage = ""
-local costText = ""
-local infoText = ""
--- -----------------------------------------------------------------------------------------------------------------
--- All code outside of the listener functions will only be executed ONCE unless "composer.removeScene()" is called.
--- -----------------------------------------------------------------------------------------------------------------
+local shiftConstant   = 280
+local prosWidth       = shiftConstant*0.7
+local prosHeight      = 0
+local cityMessage     = ""
+local costText        = ""
+local infoText        = ""
 
--- local forward references should go here
-
--- -------------------------------------------------------------------------------
-
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 local function createText()
 
     costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", cityOptionsLeft + 35,
@@ -29,11 +25,9 @@ local function createText()
     infoText = display.newText(cityMessage, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
     infoText.anchorX, infoText.anchorY = 0,0    
     infoText.height = infoText.height + 15        
-
 end
 
 local function buy(event)
-
 
     if(event.phase == "began") then
       if(gv.money >= gv.tileClicked.tile:getCost()) then
@@ -43,14 +37,16 @@ local function buy(event)
           
       end
       composer.hideOverlay()
-    end
-    
+    end   
 end
 
 local function cancel()
     composer.hideOverlay()
 end
 
+-------------------------------------------------
+-- COMPOSER FUNCTIONS
+-------------------------------------------------
 
 -- "scene:create()"
 function scene:create( event ) 
@@ -62,7 +58,7 @@ function scene:create( event )
     "If you buy this then you still need to pay to put an istablishment on the location as well"
     
      
-    cityOptionsTop = centerY(shiftConstant)
+    cityOptionsTop  = centerY(shiftConstant)
     cityOptionsLeft = centerX(shiftConstant) + 20
     
     cityOptionsBG = widget.newButton
@@ -109,9 +105,7 @@ function scene:create( event )
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)
     sceneGroup:insert(btnBuy)
-    sceneGroup:insert(btnCancel)
-    
-    
+    sceneGroup:insert(btnCancel)       
 end
 
 

@@ -2,20 +2,17 @@
     Purpose:
         This file is an object for the land Screen. Each grid section holds a object of this file.
         Here all the information is held of what kind of tile it is and other characteristic.
-
 ]]
 
--------------------------------------------------
---
--- landTile.lua
---
---
--------------------------------------------------
  
 local landTile = {}
 local me
-
 local landTile_mt = { __index = landTile }  -- metatable
+
+
+-------------------------------------------------
+-- PRIVATE FUNCTIONS
+-------------------------------------------------
 
 local function setCost()
 
@@ -31,7 +28,6 @@ local function setCost()
           me.cost = -1
       end
 end
-
 
 
 function landTile.new(kind)  -- constructor
@@ -65,11 +61,13 @@ function landTile.new(kind)  -- constructor
   return setmetatable( newLandTile, landTile_mt )
 end
 
+
 function landTile:getType()
 
     return self.type
 
 end
+
 
 function landTile:setType(t)
     
@@ -78,11 +76,13 @@ function landTile:setType(t)
     setCost()
 end
 
+
 function landTile:setCost(c)
 
     self.cost = c
 
 end
+
 
 function landTile:getCost()
 

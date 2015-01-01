@@ -21,15 +21,30 @@ oilSpecs      = powerPlant
 coalSpecs     = powerPlant
 gasSpecs      = powerPlant
 nuclearSpecs  = powerPlant
+solarSpecs    = powerPlant
+windSpecs     = powerPlant
 money         = 0
 fontSize      = 0
 font          = native.systemFont
 resourseAmount =  0	-- holds the amount of resourses found for each type
+resourcesHeld = 0   --holds the current amount of each resource. oil, gas, coal, uranium
+coalBuildCounter = 0 
+oilBuildCounter = 0
+gasBuildCounter = 0 
+nuclearBuildCounter = 0 
+solarBuildCOunter = 0
+windBuildCounter = 0
+naturalLandUsedCounter = 0
+rivers = 0
+hydroCounter = 0
+groups = 0 
+groupCounter = 4
+advertisements = 0
+addCounter = 5
+publicServises = 0
+servisCounter = 5
 
---for i = 0,3,1 do
---	resourseAmount[i] = 0
---end
+
 
 local g       = {}
-
 return g

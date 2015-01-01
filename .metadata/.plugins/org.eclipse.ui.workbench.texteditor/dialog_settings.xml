@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="kind" key="selection"/>
+		<item value="river" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="dog"/>
+			<item value="solar"/>
+			<item value="nuclear"/>
+			<item value="landTile"/>
 			<item value="me.type"/>
 			<item value="me.cost"/>
 			<item value="self"/>
 			<item value="cityType"/>
-			<item value="function"/>
-			<item value="display.n"/>
-			<item value="display."/>
-			<item value="display.newImage"/>
 		</list>
 		<list key="replacehistory">
+			<item value="river"/>
+			<item value="wind"/>
+			<item value="solar"/>
+			<item value="naturalTile"/>
 			<item value="kind"/>
 			<item value="temp"/>
 			<item value="me"/>
 			<item value="type"/>
-			<item value="forestOptions"/>
-			<item value="infoText"/>
-			<item value="gv.font"/>
-			<item value="nulclear"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

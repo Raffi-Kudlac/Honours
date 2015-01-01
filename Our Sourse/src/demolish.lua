@@ -1,7 +1,6 @@
 --[[
     Purpose:    
-        This screen appears on top of the land screen (layOver screen) and is responcible
-        for displaying the option of demolishing the power plant to the user
+        This screen is repsoncible for demolishing built solor and wind structures
 ]]
 
 local composer = require( "composer" )
@@ -24,7 +23,6 @@ local infoText  = ""
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
-
 local function createText()
 
     costText = display.newText("Costs: $4 B", ownedOptionsLeft + 35,
