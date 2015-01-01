@@ -2,30 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="river" key="selection"/>
+		<item value=" )" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="dog"/>
-			<item value="solar"/>
-			<item value="nuclear"/>
-			<item value="landTile"/>
-			<item value="me.type"/>
-			<item value="me.cost"/>
-			<item value="self"/>
-			<item value="cityType"/>
+			<item value=")"/>
+			<item value=" )"/>
+			<item value="("/>
+			<item value="( "/>
+			<item value="advertisements"/>
+			<item value="addCounter"/>
+			<item value="tiles[location]"/>
+			<item value="tempWidth"/>
 		</list>
 		<list key="replacehistory">
-			<item value="river"/>
-			<item value="wind"/>
-			<item value="solar"/>
-			<item value="naturalTile"/>
-			<item value="kind"/>
-			<item value="temp"/>
-			<item value="me"/>
-			<item value="type"/>
+			<item value=" )"/>
+			<item value=")"/>
+			<item value="( "/>
+			<item value="("/>
+			<item value="publicServises"/>
+			<item value="servisCounter"/>
+			<item value="boughtButton[index]"/>
+			<item value="scrollWidth"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
