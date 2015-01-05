@@ -28,7 +28,15 @@ function groups:getName()
 end
 
 function groups:setStatus(n)
-    self.status = self.status + n
+    -- 10 is really happy. -10 is really mad
+    -- could have done this all in the first check but i thought it would have been too long
+    if (self.status < 10 and self.status > -10) then
+        self.status = self.status + n
+    elseif ( self.status > 10 and n < 0) then
+        self.status = self.status + n
+    elseif ( self.status < -10 and n > 0) then
+        self.status = self.status + n       
+    end    
 end
 
 function groups:getNumberStatus()
@@ -43,7 +51,9 @@ function groups:getStatus()
       return ":("
   elseif(self.status > -5) then
       return " :x"
-  elseif(self.status > 0 and self.status <=10 ) then
+  elseif(self.status > 0 and self.status < 5 ) then
+      return ":)"
+  elseif (self.status > 10 ) then
       return "XD"
   else
       return "X"

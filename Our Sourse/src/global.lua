@@ -44,6 +44,11 @@ addCounter = 5
 publicServises = 0
 servisCounter = 5
 
+nuclearInfluence = 2    -- the amount of influence that will effect the envirmental group
+coalInfluence = 3
+gasInfluence = 2
+oilInfluence = 2
+
 
 
 local g       = {}

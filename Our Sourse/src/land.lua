@@ -101,7 +101,7 @@ local function buildTiles()
             tiles[counter].anchorY  = 0            
             tiles[counter].x        = tileX
             tiles[counter].y        = tileY                            
-            tiles[counter].tile     = landTile.new("open")                                    
+            tiles[counter].tile     = landTile.new("open", "none")                                    
             sceneGroup:insert(tiles[counter])  
             counter                 = counter +1
             tileX = tileX + shiftX                      
@@ -138,6 +138,21 @@ end
 -------------------------------------------------
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
+function groupCheck()
+
+   if ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "oil" ) then
+      gv.group[0]:setStatus(gv.oilInfluence)
+   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "coal" ) then
+      gv.group[0]:setStatus(gv.coalInfluence)
+   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "nuclear" ) then
+      gv.group[1]:setStatus(gv.nuclearInfluence)
+   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "gas" ) then
+      gv.group[0]:setStatus(gv.gasInfluence)
+   end
+
+
+end
+
 function convertButton2(path,location,sc,type)
 
     local temp = tiles[location]
@@ -171,7 +186,7 @@ function convertButton2(path,location,sc,type)
 end
 
 
-function convertButton(path,location,type)
+function convertButton(path,location,type, ppType)
            
     local temp = tiles[location]
     local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
@@ -193,7 +208,7 @@ function convertButton(path,location,type)
     tiles[location].anchorY = 0    
     tiles[location].x       = temp.x
     tiles[location].y       = temp.y    
-    tiles[location].tile    = landTile.new(type)
+    tiles[location].tile    = landTile.new(type, ppType)
                     
     tiles[location]:setMask( mask )
     sceneGroup:insert(location+2,tiles[location])

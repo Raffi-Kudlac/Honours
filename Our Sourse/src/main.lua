@@ -217,6 +217,12 @@ local function initalize()
     gv.groups[2] = organization.new( "Population" )
     gv.groups[3] = organization.new( "anti_Windmillists" )
     
+    gv.nuclearInfluence = 2
+    gv.coalInfluence = 3
+    gv.gasInfluence = 2
+    gv.oilInfluence = 2
+    
+    
     gv.advertisements = {}
     gv.addCounter = 5
     gv.advertisements[0] = adds.new( "Save Power", 2 )

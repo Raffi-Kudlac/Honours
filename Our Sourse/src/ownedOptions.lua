@@ -41,9 +41,11 @@ local function demolish(event)
 
     if(event.phase == "began") then
         
-        if(gv.money >= 4) then
+        if( gv.money >= 4 ) then            
             gv.money = gv.money - 4
-            convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+            groupCheck()            
+            convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open", "none")
+            
             composer.hideOverlay()
         end
                 

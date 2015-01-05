@@ -72,15 +72,19 @@ local function purchasedConfirmed()
     local kind  = "owned"
     
     if(currentEnergySourse:getType() =="oil") then
-        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)   
+        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)  
+        gv.groups[0]:setStatus(2) 
         gv.oilBuildCounter = gv.oilBuildCounter + 1      
     elseif(currentEnergySourse:getType() =="coal") then    
         convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind)
+        gv.groups[0]:setStatus(3)
         gv.coalBuildCounter = gv.coalBuildCounter + 1
     elseif(currentEnergySourse:getType() =="gas") then
+        gv.groups[0]:setStatus(1)
         convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind)
         gv.gasBuildCounter = gv.gasBuildCounter + 1
     elseif(currentEnergySourse:getType() =="nuclear") then
+        gv.groups[1]:setStatus(2)
         convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind)
         gv.nuclearBuildCounter = gv.nuclearBuildCounter + 1
     end
@@ -138,7 +142,7 @@ function scene:create( event )
         width       = circleWidth,
         height      = circleHeight, 
         id          = "btnoil",
-        defaultFile = "Images/static_screen/st_ff.png",
+        defaultFile = "Images/land_screen/lnd_oil.png",
         onEvent     = function() return setText(gv.oilSpecs, "oil") end,
         top         = buildOptionsTop + heightShift,
         left        = buildOptionsLeft - widthShift
@@ -150,7 +154,7 @@ function scene:create( event )
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_land.png",
+      defaultFile = "Images/land_screen/lnd_gas.png",
       id          = "btngas",           
       onEvent     = function() return setText(gv.gasSpecs, "gas") end, 
       top         = buildOptionsTop + heightShift,
@@ -163,7 +167,7 @@ function scene:create( event )
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_plant.png",
+      defaultFile = "Images/land_screen/lnd_coal.png",
       id          = "btncoal",
       onEvent     = function() return setText(gv.coalSpecs, "coal") end,
       top         = buildOptionsTop + heightShift,
@@ -176,7 +180,7 @@ function scene:create( event )
       width       = circleWidth,
       height      = circleHeight,      
       id          = "btnNP",
-      defaultFile = "Images/static_screen/st_city.png",
+      defaultFile = "Images/land_screen/lnd_nuclear.png",
       onEvent     = function() return setText(gv.nuclearSpecs, "nuc") end,
       top         = buildOptionsTop + heightShift,
       left        = buildOptionsLeft - widthShift

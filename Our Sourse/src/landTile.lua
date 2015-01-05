@@ -29,8 +29,8 @@ local function setCost()
       end
 end
 
-
-function landTile.new(kind)  -- constructor
+-- ppType can be oil, gas, nuclear, coal or none.
+function landTile.new(kind, ppType)  -- constructor
     
     
     local temp = 0
@@ -54,7 +54,8 @@ function landTile.new(kind)  -- constructor
     type = kind,
     built = b,
     owned = false,
-    cost = temp,    
+    cost = temp,  
+    typeOfPowerPlant = ppType,  
   }
   
   
@@ -66,6 +67,11 @@ function landTile:getType()
 
     return self.type
 
+end
+
+function landTile:getTypeOfPowerPlant()
+
+    return self.typeOfPowerPlant
 end
 
 

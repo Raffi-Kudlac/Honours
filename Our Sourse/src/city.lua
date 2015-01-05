@@ -76,10 +76,13 @@ function scene:create( event )
     scaleOverlay:setFillColor(0,1,0)
     scaleOverlayHeightCalculator()
     
-    local bg = display.newImage("Images/city_screen/cty_bg.png")    
-    bg.Height = centerY(bg.height)
-    bg.Width = centerX(bg.width)
-    bg.x = 40
+    local bg = display.newImage("Images/city_screen/cty_bg.png")
+    bg.anchorX, bg.anchorY = 0,0    
+    
+    bg.height = display.contentHeight
+    bg.width = display.contentWidth
+    
+    bg.x = 0
     bg.y = 0
         
         

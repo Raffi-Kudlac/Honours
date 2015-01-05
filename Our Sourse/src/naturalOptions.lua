@@ -75,6 +75,7 @@ local function purchasedConfirmed()
         gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1        
         convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, "solar")                 
     elseif(currentEnergySourse:getType() =="wind") then
+        gv.groups[3]:setStatus(2)
         gv.windBuildCounter = gv.windBuildCounter + 1
         gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1
         convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, "wind")            
@@ -132,7 +133,7 @@ function scene:create( event )
         width       = circleWidth,
         height      = circleHeight, 
         id          = "btnsolar",
-        defaultFile = "Images/static_screen/st_ff.png",
+        defaultFile = "Images/natural_resource_screen/nr_solar.png",
         onEvent     = function() return setText(gv.solarSpecs, "solar") end,
         top         = buildOptionsTop + heightShift,
         left        = buildOptionsLeft - widthShift
@@ -144,7 +145,7 @@ function scene:create( event )
    {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_land.png",
+      defaultFile = "Images/natural_resource_screen/nr_wind.png",
       id          = "btnwind",           
       onEvent     = function() return setText(gv.windSpecs, "wind") end, 
       top         = buildOptionsTop + heightShift,
