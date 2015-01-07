@@ -43,6 +43,9 @@ advertisements = 0
 addCounter = 5
 publicServises = 0
 servisCounter = 5
+demandFactor = 1.2
+monthlyPopulationIncrease = 0
+onCityScreen = true
 
 nuclearInfluence = 2    -- the amount of influence that will effect the envirmental group
 coalInfluence = 3

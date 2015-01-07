@@ -72,22 +72,25 @@ local function purchasedConfirmed()
     local kind  = "owned"
     
     if(currentEnergySourse:getType() =="oil") then
-        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind)  
-        gv.groups[0]:setStatus(2) 
+        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, kind, "oil")  
+        gv.groups[0]:setStatus(-gv.oilInfluence) 
         gv.oilBuildCounter = gv.oilBuildCounter + 1      
     elseif(currentEnergySourse:getType() =="coal") then    
-        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind)
-        gv.groups[0]:setStatus(3)
+        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, kind, "coal")
+        gv.groups[0]:setStatus(-gv.coalInfluence)
         gv.coalBuildCounter = gv.coalBuildCounter + 1
     elseif(currentEnergySourse:getType() =="gas") then
-        gv.groups[0]:setStatus(1)
-        convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind)
+        gv.groups[0]:setStatus(-gv.gasInfluence)
+        convertButton("Images/land_screen/lnd_tile_gas.png",gv.marker, kind, "gas")
         gv.gasBuildCounter = gv.gasBuildCounter + 1
     elseif(currentEnergySourse:getType() =="nuclear") then
-        gv.groups[1]:setStatus(2)
-        convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind)
+        gv.groups[1]:setStatus(-gv.nuclearInfluence)
+        convertButton("Images/land_screen/lnd_tile_nuke.png",gv.marker, kind, "nuclear")
         gv.nuclearBuildCounter = gv.nuclearBuildCounter + 1
     end
+    
+    print("The envirementalists level is")
+    print(gv.groups[0]:getNumberStatus())
             
 end
 

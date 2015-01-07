@@ -32,9 +32,9 @@ function groups:setStatus(n)
     -- could have done this all in the first check but i thought it would have been too long
     if (self.status < 10 and self.status > -10) then
         self.status = self.status + n
-    elseif ( self.status > 10 and n < 0) then
+    elseif ( self.status < 10 and n < 0) then
         self.status = self.status + n
-    elseif ( self.status < -10 and n > 0) then
+    elseif ( self.status > -10 and n > 0) then
         self.status = self.status + n       
     end    
 end

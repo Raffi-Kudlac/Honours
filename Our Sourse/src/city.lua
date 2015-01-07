@@ -93,10 +93,11 @@ end
 
 -- "scene:show()"
 function scene:show( event )
-
+    
+    gv.onCityScreen = true
     local sceneGroup = self.view
     local phase = event.phase
-
+    gv.powerSupplied = math.round (gv.powerSupplied *10)/10
     if ( phase == "will" ) then
         setDataBox("Population", gv.population, 1)
         setDataBox("Demanded", gv.powerDemanded.."GW", 2)
@@ -117,6 +118,7 @@ function scene:hide( event )
     local phase = event.phase
 
     if ( phase == "will" ) then
+        gv.onCityScreen = false
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
@@ -130,7 +132,7 @@ end
 function scene:destroy( event )
 
     local sceneGroup = self.view
-
+    gv.onCityScreen = false
     -- Called prior to the removal of scene's view ("sceneGroup").
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.

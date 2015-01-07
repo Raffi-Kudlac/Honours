@@ -120,19 +120,19 @@ local function buildStartingTiles()
 
      local type = "city owned"
     
-     convertButton("Images/land_screen/lnd_tile_forest.png",0, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",1, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",3, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",6, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",7, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",9, type)
+     convertButton("Images/land_screen/lnd_tile_city01.png",0, type, "none")
+     convertButton("Images/land_screen/lnd_tile_city01.png",1, type, "none")
+     convertButton("Images/land_screen/lnd_tile_city01.png",3, type, "none")
+     convertButton("Images/land_screen/lnd_tile_city01.png",6, type, "none")
+     convertButton("Images/land_screen/lnd_tile_city01.png",7, type, "none")
+     convertButton("Images/land_screen/lnd_tile_city01.png",9, type, "none")
      
      type = "forest"
      
-     convertButton("Images/land_screen/lnd_tile_forest.png",10, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",11, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",13, type)
-     convertButton("Images/land_screen/lnd_tile_forest.png",14, type) 
+     convertButton("Images/land_screen/lnd_tile_forest.png",10, type, "none")
+     convertButton("Images/land_screen/lnd_tile_forest.png",11, type, "none")
+     convertButton("Images/land_screen/lnd_tile_forest.png",13, type, "none")
+     convertButton("Images/land_screen/lnd_tile_forest.png",14, type, "none") 
 end
 
 -------------------------------------------------

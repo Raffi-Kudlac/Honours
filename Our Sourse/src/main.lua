@@ -31,6 +31,7 @@ local monthCounter    = 1
 local circleWidth     = 30
 local circleHeight    = 30
 local MB = widget
+local populationVariable = 1.05
 local month           = {
     "January",
     "February",
@@ -45,6 +46,20 @@ local month           = {
     "November",
     "December"
 }
+
+-- year not being used right now. 
+local function populationFunction(year)
+
+    return math.round (gv.population*populationVariable)
+
+end
+
+
+local function calculateMonthlyPopulationIncrease()
+
+   return  math.round ( (populationFunction(year+1)*populationVariable - populationFunction(gv.year))/12) 
+
+end
 
 
 local function main()
@@ -72,7 +87,12 @@ local function initalize()
     gv.month         = 5000 --each month is five seconds
     gv.secondsTimer  = timer
     gv.yearTimer     = timer
-    gv.population    = 10000
+    gv.population    = 10000--populationFunction(year)
+    gv.onCityScreen  = true
+    
+    gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()    
+    
+    gv.demandFactor  = 1.2
     gv.money = 10
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
@@ -247,25 +267,31 @@ local function initalize()
     gv.publicServises[6] = publicServises.new("Corupt Education",6)
     gv.publicServises[7] = publicServises.new("Generator Advances",3)
     gv.publicServises[8] = publicServises.new("Corrupt Envirmentalists",8) 
-    
-    
-    
-    
-                     
+              
+end
+
+
+function alterDemand(shouldBeAltered)
+
+    if(shouldBeAltered) then
+        gv.demandFactor = 1
+    else
+        gv.demandFactor = 1.2
+    end
+
 end
 
 
 function setMoney()
 
-    MB:setLabel("$ "..gv.money)
+    MB:setLabel("$ "..math.round( gv.money))
 end
 
 
 function calcPowerDemanded()
     
     -- power demanded = population + a little more for businesses and such
-    gv.powerDemanded = gv.population*1.2/1000
-
+     gv.powerDemanded = math.round ( 10*(gv.population*1.2/1000) )/10
 end
 
 function centerY(height)
@@ -583,10 +609,12 @@ end
 local function productionFunction(passing, specs)
 
   gv.powerSupplied = gv.powerSupplied + passing* specs:getProduces()
+  
+  math.round (gv.powerSupplied)
 
 end
 
-local function CalculatemaintenenceCost(pass,specs)
+local function calculateMaintenenceCost(pass,specs)
 
     return specs:getMaintenenceCost()*pass 
 end
@@ -613,7 +641,7 @@ local function docResources()
     end
   
     productionFunction(pass, gv.coalSpecs)
-    docMoney = docMoney + CalculatemaintenenceCost(pass,gv.coalSpecs)
+    docMoney = docMoney + calculateMaintenenceCost(pass,gv.coalSpecs)
   
   
     -- gas
@@ -632,7 +660,7 @@ local function docResources()
     end
       
     productionFunction(pass, gv.gasSpecs)
-    docMoney = docMoney + CalculatemaintenenceCost(pass,gv.gasSpecs)
+    docMoney = docMoney + calculateMaintenenceCost(pass,gv.gasSpecs)
   
     -- oil
     pass = 0
@@ -649,7 +677,7 @@ local function docResources()
     end
   
     productionFunction(pass,gv.oilSpecs)
-    docMoney = docMoney + CalculatemaintenenceCost(pass,gv.oilSpecs)
+    docMoney = docMoney + calculateMaintenenceCost(pass,gv.oilSpecs)
   
     -- nuclear
     pass = 0
@@ -666,7 +694,7 @@ local function docResources()
     end
   
     productionFunction(pass,gv.nuclearSpecs)
-    docMoney = docMoney + CalculatemaintenenceCost(pass,gv.nuclearSpecs)
+    docMoney = docMoney + calculateMaintenenceCost(pass,gv.nuclearSpecs)
     
     --solar    
     productionFunction(gv.solarBuildCounter,gv.solarSpecs)
@@ -685,6 +713,7 @@ local function docResources()
     
     gv.money = gv.money -docMoney
     setMoney()
+    gv.powerSupplied = math.round (gv.powerSupplied *10)/10
     
 end
 
@@ -700,6 +729,20 @@ function buildStaticScreen()
 end
 
 
+local function advertisementFee()
+
+    local temp = 0
+
+    for i = 0, gv.addCounter - 1,1 do
+        if( gv.advertisements[i]:getBought() ) then            
+            temp = temp + gv.advertisements[i]:getCost()
+        end
+    end
+    
+    return temp
+
+end
+
 local function calculateMoney()
 
     local add = (gv.powerSupplied + gv.powerDemanded)/2
@@ -707,25 +750,49 @@ local function calculateMoney()
     add = add - math.abs((gv.powerSupplied - gv.powerDemanded)/2)
     
     gv.money = gv.money + add
+    
+    local addFee = advertisementFee()
+    
+    gv.money = gv.money - addFee
     setMoney()
     
 end
 
 
+local function advertisementEffects()
+    
+    --if (gv.advertisements[1]:getBought()) then
+        
+
+end
+
 -- Responcible for the month/year timer
 local function timerFunction(event) 
-  
+    
   timeLabel:setLabel(month[monthCounter] .. " " .. gv.year)
  
   monthCounter = monthCounter + 1
   
-  if monthCounter == 13 then
-      gv.year = gv.year +1      
+  if monthCounter == 13 then      
+      gv.year = gv.year +1  
+      gv.population = populationFunction(gv.year) 
+      gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()      
       monthCounter = 1
-  end  
+  end
+  
+  gv.population = gv.population + gv.monthlyPopulationIncrease   
   docResources()
+  advertisementEffects()
   calculateMoney()
   showData()
+  
+  if(gv.onCityScreen) then
+      setDataBox("Population", gv.population, 1)
+      calcPowerDemanded()
+      setDataBox("Demanded", gv.powerDemanded.."GW", 2)
+      setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+  end
+  
   timer.performWithDelay(gv.month,timerFunction)
 end
 
