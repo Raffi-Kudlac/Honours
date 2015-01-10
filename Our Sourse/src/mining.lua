@@ -35,7 +35,7 @@ local function mined(n,event)
 end
 
 
-local function numberOfTilesMined()
+function numberOfTilesMined()
 
     local counter = 0
 
@@ -49,6 +49,13 @@ local function numberOfTilesMined()
 
 end
 
+
+function isMined(index)
+
+  print("The index is " .. tostring(index))
+  return grid[index].cell:isMined()
+
+end 
 
 local function setText()
 	
@@ -221,6 +228,17 @@ end
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
 
+
+function alterFoundResourses()
+
+    for x = 0, 24, 1 do      
+         if (gv.foundResourses[x] == cellClicked ) then
+            gv.foundResourses[x] = -1
+         end      
+    end
+
+end
+
 function gatherResourses()
 
 	local amountFound = 0
@@ -233,7 +251,7 @@ function gatherResourses()
 		amountFound = grid[cellClicked].cell:getAmount(i)
 		gv.resourseAmount[i] = gv.resourseAmount[i] + amountFound
 		gv.resourcesHeld[i] = gv.resourcesHeld[i] + amountFound 
-	end 
+	end 		
 	
 	setText()
 
@@ -332,7 +350,10 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-    sceneGroup = self.view
+  buildStaticScreen()    
+  timeStart()    
+    
+  sceneGroup = self.view
 	local empty = 5
 	local full = 24 - empty
 	local numberToBePopulated = 0

@@ -27,6 +27,10 @@ local stream          = require( "river" )
 local organization    = require( "groups" )
 local adds            = require( "advertisements" )
 local publicServises  = require( "publicServises" )
+ require( "mining" ) 
+
+local isPaused = false
+local btnPausePlay 
 local monthCounter    = 1
 local circleWidth     = 30
 local circleHeight    = 30
@@ -54,7 +58,6 @@ local function populationFunction(year)
 
 end
 
-
 local function calculateMonthlyPopulationIncrease()
 
    return  math.round ( (populationFunction(year+1)*populationVariable - populationFunction(gv.year))/12) 
@@ -81,6 +84,8 @@ local function initalize()
     local energyMaintenence = 1
     
     
+    gv.monthTimer    = 0
+    gv.secondsTimer  = 0 
     gv.stage         = display.getCurrentStage()
     gv.seconds       = 0
     gv.year          = 2000
@@ -227,6 +232,7 @@ local function initalize()
     
     gv.groups = {}    
     gv.groupCounter = 4
+    gv.groupActionWinner = -1
     
     gv.groups[0] = organization.new( "Envirmentalists" )
     gv.groups[0]:setAbout("This organization is deticated to protecting the earth and to care for the " .. 
@@ -253,9 +259,10 @@ local function initalize()
     gv.advertisements[2] = adds.new( "Pro Windmills", 2 )
     gv.advertisements[3] = adds.new( "Pro Hydro", 3 )
     gv.advertisements[4] = adds.new( "Fossil Power", 2 )
-    
+    gv.advertisements[5] = adds.new( "Public Appeal", 4 )
+           
     gv.publicServises = {}
-    gv.servisCounter = 9
+    gv.servisCounter = 8
     gv.publicServises[0] = publicServises.new("Geologist",4)
     gv.publicServises[0]:setAbout("Hire a Geologist to analise the land and tell you where resourses are. Say goodbye to guessing")
     
@@ -263,13 +270,35 @@ local function initalize()
     gv.publicServises[2] = publicServises.new("Nuclear Advances",4)
     gv.publicServises[3] = publicServises.new("Wind Power Advances",3)
     gv.publicServises[4] = publicServises.new("Solar Advances",4)
-    gv.publicServises[5] = publicServises.new("Hydro Advances",5)
-    gv.publicServises[6] = publicServises.new("Corupt Education",6)
-    gv.publicServises[7] = publicServises.new("Generator Advances",3)
-    gv.publicServises[8] = publicServises.new("Corrupt Envirmentalists",8) 
-              
+    gv.publicServises[5] = publicServises.new("Hydro Advances",5)    
+    gv.publicServises[6] = publicServises.new("Generator Advances",3)
+    gv.publicServises[7] = publicServises.new("Corrupt Envirmentalists",8)
+    
+    gv.foundResourses = {}
+    
+    for x = 0, 23,1 do
+        gv.foundResourses[x] = -1
+    end
+    
+    gv.publicServisText = {}
+    
+    for x =0, gv.servisCounter, 1 do
+        gv.publicServisText[x] = ""
+    end
+          
 end
 
+
+function pause()
+  timer.pause(gv.monthTimer)
+  timer.pause(gv.secondsTimer)
+end
+
+
+function resume()
+    timer.resume(gv.monthTimer)
+    timer.resume(gv.secondsTimer)
+end
 
 function alterDemand(shouldBeAltered)
 
@@ -419,6 +448,43 @@ local function buildScreenButtons()
  
 end
 
+
+local function pausedPressed(event)
+
+    if ( event.phase == "began") then
+        if (isPaused) then
+            changePauseImage("Images/static_screen/st_pause.png")
+            resume()
+            isPaused = false
+        else
+            changePauseImage("Images/static_screen/st_play.png")
+            isPaused = true
+            pause()
+        end 
+    end      
+end
+
+function changePauseImage(imagePath)
+    
+  local x = btnPausePlay.x - btnPausePlay.width/2
+  
+  gv.stage:remove( btnPausePlay )
+    
+  btnPausePlay = widget.newButton
+  {
+      
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = imagePath,
+      id          = "pausePlay",      
+      top         = 25,
+      left        = x,    
+      onEvent     = pausedPressed,              
+  }
+  
+  gv.stage:insert(btnPausePlay)
+
+end
 
 local function buildMenu()
 
@@ -583,15 +649,16 @@ local function buildToolBar()
   
   
   -- The pause/play button. When pause is pressed it will turn into the play button.
-  local btnPause = widget.newButton
+  btnPausePlay = widget.newButton
   {
       
       width       = circleWidth,
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_pause.png",
-      id          = "pause",      
+      id          = "pausePlay",      
       top         = 25,
-      left        = toolBarFactorX + 110,                  
+      left        = toolBarFactorX + 110,    
+      onEvent     = pausedPressed,              
   }
   
   
@@ -602,7 +669,7 @@ local function buildToolBar()
   gv.stage:insert( TBBG )
   gv.stage:insert( timeLabel )
   gv.stage:insert( weather )  
-  gv.stage:insert( btnPause )
+  gv.stage:insert( btnPausePlay )
 
 end
 
@@ -743,6 +810,25 @@ local function advertisementFee()
 
 end
 
+
+local function publicServisFee()
+
+    local minus = 0
+
+    for i = 0, servisCounter, 1 do
+            
+        if (gv.publicServises[i]:getBought()) then
+            --minus = minus + gv.publicServises[i]:getCost()
+            
+            print ( "The cost of the add is " .. gv.publicServises[i]:getCost())
+        end    
+    end
+    
+    return minus
+    
+
+end
+
 local function calculateMoney()
 
     local add = (gv.powerSupplied + gv.powerDemanded)/2
@@ -752,17 +838,246 @@ local function calculateMoney()
     gv.money = gv.money + add
     
     local addFee = advertisementFee()
+    local publicServisFee = publicServisFee()
     
+    gv.money = gv.money - publicServisFee
     gv.money = gv.money - addFee
     setMoney()
     
 end
 
 
-local function advertisementEffects()
+local function isResearched(index)
+
+    for x = 0, 23, 1 do
     
-    --if (gv.advertisements[1]:getBought()) then
+        if (gv.foundResourses[x] == index ) then
+            return true
+        end    
+    end
+    
+    return false
+end
+
+
+local function geologist()
+    
+    
+    -- 50% 2 tiles are found
+    -- 10% 3 tiles are found
+    -- 40% 1 tile is found
+    
+    local numberOfTilesToBeFound = 0
+    local randomNumber = math.random(0,100)
+    local justFound = ""
+    
+    if (randomNumber <= 50 ) then
+        numberOfTilesToBeFound = 2
+    elseif (randomNumber > 50 and randomNumber <= 60 ) then
+        numberOfTilesToBeFound = 3
+    else
+        numberOfTilesToBeFound = 1
+    end
+    
+    local index = 0
+    
+    while ( numberOfTilesToBeFound > 0 and numberOfTilesMined() <= (24 - numberOfTilesToBeFound) ) do
+    
+        index = math.random(0,23)
         
+        if( isMined(index) == false and isResearched(index) == false) then
+            
+            for x = 0, 23,1 do
+                if (gv.foundResourses[x] == -1 ) then
+                    gv.foundResourses[x] = index
+                    justFound = justFound .. tostring(index + 1) ..", "
+                    break
+                end
+            end
+            
+            numberOfTilesToBeFound = numberOfTilesToBeFound - 1 
+        end
+    
+    end
+    
+    return justFound
+end
+
+
+local function corruptEnvirmentalists()
+
+    gv.money = gv.money - 10
+    gv.groups[0]:setStatus(2)
+
+end
+
+local function checkPublicServisPercent()
+
+    local randomNumber = math.random(1,10)
+    local pass = false
+    
+    --for x = 0, servisCounter -1, 1 do
+      for x = 0, 0, 1 do    
+        if( gv.publicServises[x]:getBought() and gv.publicServises[x]:calculatePassFail() ) then
+              pass = true
+              if(x == 0 ) then
+              
+                  local text = geologist()                  
+                  if(text == "") then
+                      gv.publicServisText[0] = " there are no more resources for us to find. You should fire the " .. 
+                      "geologist"
+                  else
+                      gv.publicServisText[0] = " The Geologist you hired found resources in tiles " .. text .. 
+                      "take at the mining screen to see what was found"
+                  end
+                  
+                  
+              elseif (x == 1) then
+                                                      
+                  if (randomNumber > 5) then
+                      gv.coalSpecs:setMaintenenceCost( gv.coalSpecs:getMaintenenceCost() - 1)
+                      gv.gasSpecs:setMaintenenceCost( gv.gasSpecs:getMaintenenceCost() - 1)
+                      gv.oilSpecs:setMaintenenceCost( gv.oilSpecs:getMaintenenceCost() - 1)
+                      gv.publicServisText[1] = "Due to improvements in technologie the maintenence cost " .. 
+                      " of all fossile fueled power plants has decreased by 1"
+                  else
+                      gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 1)
+                      gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 1)
+                      gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 1)
+                      gv.publicServisText[1] = "Due to improvements in technologie " .. 
+                      "all fossile fueled power plants now produce 1 GW more power"
+                  end
+                  
+                  -- inform user of change
+              
+              elseif ( x == 2 ) then 
+                  
+                  if ( randomNumber > 5) then
+                      gv.nuclearSpecs:setMaintenenceCost(gv.nuclearSpecs:getsetMaintenenceCost() - 2)
+                      gv.publicServisText[2] = "Due to improvements in technologie the maintenence cost " .. 
+                      " of all nuclear power plants has decreased by 2"
+                  else
+                      gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 2)
+                      gv.publicServisText[2] = "Due to improvements in technologie " .. 
+                      "all nuclear power plants now produce 2 GW more power"
+                  end
+              elseif ( x == 3 ) then
+                  
+                  gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 2)
+                  gv.publicServisText[3] = "Due to improvements in technologie " .. 
+                      "all windmills have become more efficient and produce 2 GW more power"
+                                                      
+              elseif ( x == 4 ) then
+                  
+                  gv.solarSpecs:setProduction(gv.solarSpecs:getProduction() + 2)
+                  gv.publicServisText[4] = "Due to improvements in technologie " .. 
+                      "all solar panals have become more efficient and produce 2 GW more power"
+              elseif ( x == 5) then
+              
+                  if ( randomNumber > 5) then
+                      gv.hydroSpecs:setMaintenenceCost(gv.hydroSpecs:getsetMaintenenceCost() - 2)
+                      gv.publicServisText[5] = "Due to improvements in technologie the maintenence cost " .. 
+                      " of all hydro power plants has decreased by 2"
+                  else
+                      gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 2)
+                      gv.publicServisText[5] = "Due to improvements in technologie " .. 
+                      "all hydro plants have become more efficient and produce 2 GW more power"
+                  end
+              elseif ( x == 6) then
+                    
+                  gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 1)
+                  gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 1)
+                  gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 1)
+                  gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 1)                  
+                  gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 1)
+                  gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 1)
+                  gv.publicServisText[6] = "Due to your investment in researching more efficient generators " .. 
+                      "all energy sources except solar panels can produce an extra GW of power"                  
+              elseif ( x == 7) then                  
+                  corruptEnvirmentalists()
+                  gv.publicServisText[7] = " You have been successful in briding the envirmentalists to get off your back " .. 
+                  "for all intence of purposes thier happyness with you has increased"                                                          
+              end  
+              
+              local options = {
+                  isModal = true
+              }
+              
+              composer.showOverlay("advancements", options)          
+        end    
+    end
+end
+
+
+local function checkGroupActionPercent()
+
+    local spaceArray = {}
+    local percent = math.random(1,100)
+    
+    for x = 0, gv.groupCounter -1, 1 do
+      spaceArray[x] = x*10
+    end
+    
+    
+    for x = 0, gv.groupCounter -1, 1 do
+        
+        if (percent < spaceArray[x] + gv.groups[x]:getActionPercent() and
+            percent >= spaceArray[x]) then                        
+        
+            if(x == 0) then
+                if (gv.groups[0]:getNumberStatus() > 0) then
+                    gv.coalSpecs:addMaintenenceCost(-1)
+                    gv.oilSpecs:addMaintenenceCost(-1)
+                    gv.gasSpecs:addMaintenenceCost(-1)
+                    gv.nuclearSpecs:addMaintenenceCost(-1)
+                    gv.hydroSpecs:addMaintenenceCost(-1)                    
+                else
+                    gv.coalSpecs:addMaintenenceCost(1)
+                    gv.oilSpecs:addMaintenenceCost(1)
+                    gv.gasSpecs:addMaintenenceCost(1)
+                    gv.nuclearSpecs:addMaintenenceCost(1)
+                    gv.hydroSpecs:addMaintenenceCost(1)                
+                end
+            
+            elseif (x == 1) then
+            
+                if ( gv.groups[1]:getNumberStatus() > 0 ) then
+                     gv.nuclearSpecs:addMaintenenceCost(-3)                   
+                else
+                    gv.nuclearSpecs:addMaintenenceCost(3)
+                end
+            
+            elseif (x == 2) then
+            
+                if ( gv.groups[2]:getNumberStatus() > 0 ) then
+                                        
+                else
+                    gv.money = gv.money - 10
+                end
+            
+            elseif (x == 3) then
+            
+                if ( gv.groups[3]:getNumberStatus() > 0 ) then                    
+                    gv.windSpecs:setCost(gv.windSpecs:getCost() - 2)              
+                else
+                    gv.windSpecs:setCost(gv.windSpecs:getCost() + 2)
+                end                         
+            
+            end
+            
+            local options = {
+                isModal = true
+            }
+            
+            gv.groupActionWinner = x
+            composer.show("groupAction", options)
+            
+            break
+        
+        end
+    
+    
+    end
 
 end
 
@@ -781,9 +1096,10 @@ local function timerFunction(event)
   end
   
   gv.population = gv.population + gv.monthlyPopulationIncrease   
-  docResources()
-  advertisementEffects()
+  docResources()  
   calculateMoney()
+  checkPublicServisPercent()
+  checkGroupActionPercent()
   showData()
   
   if(gv.onCityScreen) then
@@ -793,7 +1109,7 @@ local function timerFunction(event)
       setDataBox("Supplied", gv.powerSupplied.."GW", 3)
   end
   
-  timer.performWithDelay(gv.month,timerFunction)
+  gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)
 end
 
 
@@ -802,7 +1118,7 @@ end
 local function secondsCounter(event)
 
     gv.seconds = gv.seconds + 1
-    timer.performWithDelay(1000, secondsCounter)
+    gv.secondsTimer = timer.performWithDelay(1000, secondsCounter)
 end
 
 

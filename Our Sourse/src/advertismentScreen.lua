@@ -70,6 +70,12 @@ local function buy(event, index)
             gv.groups[0]:setStatus(-5)
         end
         
+        if (index == 5 and gv.advertisement[5]:getBought() ) then
+            gv.groups[2]:setStatus(3)
+        elseif (index == 4 and gv.advertisement[4]:getBought() == false ) then
+            gv.groups[0]:setStatus(-3)
+        end
+        
     end
 end
 
@@ -200,6 +206,7 @@ function scene:create( event )
         top = centerY(scrollHeight),
         left = centerX(scrollWidth),
         width = scrollWidth,
+        backgroundColor = { 0.8, 0.8, 0.8 },        
         height = scrollHeight,
         scrollWidth = scrollWidth*2,
         scrollHeight = scrollHeight*2,    

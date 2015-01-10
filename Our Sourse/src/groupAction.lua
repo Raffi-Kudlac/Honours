@@ -1,61 +1,30 @@
 --[[
     Purpose:    
-        This screen is responcible for confirming that the user wants to mine a location on the grid.
-        It will disply the cost and general info to the user.
+        This screen is the menu screen currently only holding the play button.
+
 ]]
 
-local composer = require( "composer" )
-local widget   = require( "widget" )
-local gv       = require( "global" )
+local composer  = require( "composer" )
+local gv        = require( "global" )
+local widget    = require( "widget" )
+local scene     = composer.newScene()
 
-local scene           = composer.newScene()
 local d               = 280
-local mineOptionsLeft = 0 
-local mineOptionsTop  = 0 
 local textWidth       = d*0.7
 local textHeight      = 0
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
--------------------------------------------------    
+-------------------------------------------------
 
-local function createText(sceneGroup)
+local function text( event )
 
-	local costText = display.newText("It costs 1 B to mine", mineOptionsLeft + 55,
-    	mineOptionsTop + 20, gv.font, gv.fontSize )
-    	costText.anchorX,costText.anchorY = 0,0
-    	
-    local miningInfo = "Coal, Gas, Oil and Uranium are all resourses that our power plants run off of today. They all come from " .. 
-    "the earth and there is only a limited amount of them. Once we run out. There will be none left."
+    if ( event.phase == "began") then
     
-    local info = display.newText(miningInfo, mineOptionsLeft + 55, costText.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
-    info.anchorX, info.anchorY = 0,0
-    sceneGroup:insert(costText)
-    sceneGroup:insert(info)     
-end
+        gv.groupActionWinner = -1        
+        composer.hideOverlay()    
+    end
 
-
-local function mine(event)
-
-	if event.phase == "began" then
-		if (gv.money >= 1)then
-			gv.money = gv.money - 1
-			setMoney()
-			changeCell()
-			gatherResourses()
-			alterFoundResourses()					
-			composer.hideOverlay()
-		end
-	end
-
-end
-
-
-local function cancel(event)
-
-	if(event.phase == "began") then
-		composer.hideOverlay()
-	end
 end
 
 
@@ -65,12 +34,18 @@ end
 
 -- "scene:create()"
 function scene:create( event )
-
     local sceneGroup = self.view
-    mineOptionsLeft = centerX(d)
-    mineOptionsTop = centerY(d)
-
-   	local mineOptions = widget.newButton
+    local message = 0
+    
+    pause()
+    
+    if ( groups[gv.groupActionWinner]:getNumberStatus() > 0) then 
+        message = groups[gv.groupActionWinner]:getHappyText()
+    else
+        message = groups[gv.groupActionWinner]:getMadText()
+    end
+    
+    local groupDisplay = widget.newButton
     {        
         width       = d -20,
         height      = d -10,                
@@ -79,8 +54,11 @@ function scene:create( event )
         left        = centerX(d),
         top         = centerY(d),        
     }
+        
+    local text = display.newText(message, groupDisplay.x + 10, groupDisplay.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
+    text.anchorX, txet.anchorY = 0,0
     
-    local btnMine = widget.newButton
+    local btnOkay = widget.newButton
     { 
         width         = 50,
         height        = 20,
@@ -88,31 +66,15 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Mine",      
         id            = "btnMine",            
-        top           =  mineOptions.height - 20,
-        left          =  mineOptionsLeft+80,
-        onEvent       = mine     
+        top           =  groupDisplay.height - 20,
+        left          =  (groupDisplay.x + groupDisplay.width)/2,
+        onEvent       = okay     
     }
-    
-    local btnCancel = widget.newButton
-    {
-        width         = 60,
-        height        = 20,
-        shape         = "roundedRect",
-        cornerRadius  = 10,
-        label         = "Cancel",
-        id            = "btnCancel",
-        top           = btnMine.y,
-        left          = btnMine.x + 70,
-        onEvent       = cancel           
-    }
-    
-    btnMine.anchorY = 0
-   
-    sceneGroup:insert(mineOptions)
-    sceneGroup:insert(btnMine)
-    sceneGroup:insert(btnCancel)
-   
-    createText(sceneGroup)
+        
+    sceneGroup:insert( groupDisplay )
+    sceneGroup:insert( text )
+    sceneGroup:insert (btnOkay )
+                
 end
 
 
@@ -139,6 +101,7 @@ function scene:hide( event )
     local phase = event.phase
 
     if ( phase == "will" ) then
+        resume()
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
@@ -157,6 +120,7 @@ function scene:destroy( event )
     -- Insert code here to clean up the scene.
     -- Example: remove display objects, save state, etc.
 end
+
 
 -- -------------------------------------------------------------------------------
 

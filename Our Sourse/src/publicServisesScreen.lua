@@ -32,7 +32,7 @@ local function buy(event, index)
             changeBoughtImage(index,"Images/static_screen/st_land.png")
         else
             changeBoughtImage(index,"Images/static_screen/st_money.png")
-        end
+        end                        
     end
 end
 

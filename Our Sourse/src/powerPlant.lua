@@ -16,7 +16,7 @@ function powerPlant.new(kind)  -- constructor
     
   local newPowerPlant = {
     type        = kind,
-    cost        = 0,
+    cost        = 0,      -- cost to build
     produces    = 0,
     pros        = "",
     consumption = 0,
@@ -34,6 +34,10 @@ end
 
 function powerPlant:getMaintenenceCost()
     return self.maintenence
+end
+
+function powerPlant:addMaintenenceCost(a)
+    self.maintenence = self.maintenence + a
 end
 
 function powerPlant:setCost(money)

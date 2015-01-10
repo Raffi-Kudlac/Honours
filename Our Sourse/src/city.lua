@@ -55,11 +55,7 @@ end
 -- "scene:create()"
 function scene:create( event )
     
-    local sceneGroup = self.view
-    print("Made it to the city Screen")
-    buildStaticScreen()    
-    timeStart()
-    
+    local sceneGroup = self.view            
     local scale = display.newImage("Images/city_screen/cty_scale.png")
     
     scale.anchorX,scale.anchorY = 0,0.5

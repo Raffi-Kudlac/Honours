@@ -46,13 +46,19 @@ servisCounter = 5
 demandFactor = 1.2
 monthlyPopulationIncrease = 0
 onCityScreen = true
+groupActionWinner = -1
 
 nuclearInfluence = 2    -- the amount of influence that will effect the envirmental group
 coalInfluence = 3
 gasInfluence = 2
 oilInfluence = 2
+monthTimer = 0 
+secondsTimer = 0
 
 
+foundResourses = 0
+-- an array holding text that will be displayed if a public servise passes 
+publicServisText = 0
 
 local g       = {}
 return g

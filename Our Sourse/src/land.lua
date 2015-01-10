@@ -10,7 +10,7 @@ local widget      = require( "widget" )
 local gv          = require( "global" )
 local landTile    = require( "landTile" )
 local scene       = composer.newScene()
-local grid        = display
+local bg          = display
 local tiles       = {}
 local sceneGroup  = 0
 
@@ -224,30 +224,29 @@ function scene:create( event )
 
     sceneGroup = self.view    
     
-    --grid          = display.newImage("Images/land_screen/lnd_grid.png")    
-    --grid.width = display.contentWidth
-    --grid.height = display.contentHeight
---    grid.x        = 0
---    grid.y        = 0
---    grid.anchorX  = 0
---    grid.anchorY  = 0
+    local bg = display.newImage("Images/land_screen/lnd_bg.png")
+    bg.anchorX, bg.anchorY = 0,0    
+    
+    bg.height = display.contentHeight
+    bg.width = display.contentWidth
+    
+    bg.x = 0
+    bg.y = 0
 
-  grid = widget.newButton
-  {
-    width       = display.contentWidth,
-    height      = display.contentHeight,
-    defaultFile = "Images/land_screen/lnd_grid.png",              
-    id          = "grid",              
-    left        =50,
-    top         = 40,        
-  }   
-  grid:scale(1.2,1.2)
+--  bg = widget.newButton
+--  {
+--    width       = display.contentWidth,
+--    height      = display.contentHeight,
+--    defaultFile = "Images/land_screen/lnd_bg.png",              
+--    id          = "bg",              
+--    left        =50,
+--    top         = 40,        
+--  }   
+  --grid:scale(1.2,1.2)
            
-    sceneGroup:insert(grid)
+    sceneGroup:insert(bg)
     buildTiles()
-    buildStartingTiles()    
-    -- Initialize the scene here.
-    -- Example: add display objects to "sceneGroup", add touch listeners, etc.
+    buildStartingTiles()        
 end
 
 
