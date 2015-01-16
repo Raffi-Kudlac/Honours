@@ -31,6 +31,10 @@ function river:getMainteneceCost()
     return self.costToMaintain
 end
 
+function river:addMaintenenceCost(a)
+    self.costToMaintain = self.costToMaintain + a
+end
+
 function river:getBuilt()
     return self.built 
 end

@@ -27,7 +27,8 @@ local stream          = require( "river" )
 local organization    = require( "groups" )
 local adds            = require( "advertisements" )
 local publicServises  = require( "publicServises" )
- require( "mining" ) 
+require( "mining" ) 
+require( "naturalOptions" )
 
 local isPaused = false
 local btnPausePlay 
@@ -65,8 +66,33 @@ local function calculateMonthlyPopulationIncrease()
 end
 
 
-local function main()
+function startingPower()
+    
+    composer.gotoScene("natural")
+    setNaturalCurrentEnergySourse(gv.windSpecs)    
+    for x = 1, 4, 1 do 
+      gv.marker = x
+      naturalPurchasedConfirmed()
+    end    
+    gv.money = gv.money + gv.windSpecs:getCost()*4    
+    
+    setNaturalCurrentEnergySourse(gv.solarSpecs)
+    for x = 1, 2, 1 do 
+        gv.marker = 5 + x
+        naturalPurchasedConfirmed()            
+    end
+    gv.money = gv.money + gv.solarSpecs:getCost()*2
+    
+    
+    composer.gotoScene("land")
+    gv.marker = 2
+    setLandCurrentEnergySourse(gv.coalSpecs)
+    landPurchasedConfirmed()
+    gv.money = gv.money + gv.coalSpecs:getCost()
 
+end
+
+local function main()  
   display.setStatusBar( display.HiddenStatusBar )
   composer.gotoScene("menu")
 end
@@ -75,9 +101,10 @@ end
 local function initalize()
   
     local energyPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
-    "It burns fairly well compared to coal."            
+    " In comparison to coal it will burn faily well and not polute the air as much."            
     local energyCons = "Oil has many other purposes other then just fueling power plants. Such as fueling cars and heating homes."..
-    "These other uses drain the amount of oil that can be used"    
+    "These other uses drain the amount of oil that can be used. Investing in this kind of power plant will wont make envirmentalist ".. 
+    " particularily happy."    
     local energyCost = 2    
     local energyProduction = 1
     local energyConsumption = 10
@@ -136,11 +163,11 @@ local function initalize()
     
     -- For Hydro
     gv.rivers = {}
-    gv.hydroCounter = 0           
+    gv.hydroCounter = 2          
     gv.rivers[0] =  stream.new("Hudson",10,5,10,1)
     gv.rivers[1] =  stream.new("Tidal",20,7,13,1)
     
-    local r0Data = "Dams produce clean energy at the expence of destroying large amounts of habital land. " .. 
+    local r0Data = "Dams produce clean energy at the expence of destroying large amounts of usable land. " .. 
     "although no gasses are expelled envirmentalists still dislike dams being built"
     
     gv.rivers[0]:setData(r0Data)
@@ -486,6 +513,16 @@ function changePauseImage(imagePath)
 
 end
 
+
+local function showMenu( event )
+
+    if (event.phase == "began") then
+        pause()
+        composer.showOverlay("inGameMenu")
+    end
+
+end
+
 local function buildMenu()
 
   local menuFactorY = display.contentHeight - h + 55 
@@ -497,12 +534,21 @@ local function buildMenu()
       defaultFile = "Images/static_screen/st_menu.png",        
       id        = "btnMenu",              
       left      = 5,      
-      top       =  menuFactorY               
+      top       =  menuFactorY,
+      onEvent   = showMenu               
   }
   gv.stage:insert( btnMenu )
 
 end
 
+
+local function showMoneyData( event )
+
+    if (event.phase == "began") then
+        composer.showOverlay("moneyData")
+    end
+
+end
     
 local function buildMoneyBar()
     
@@ -519,11 +565,11 @@ local function buildMoneyBar()
       id            = "btnMB",              
       left          = 5,
       label         = "$ ",
-      top           =  moneyBarFactorY              
+      top           =  moneyBarFactorY,
+      onEvent       = showMoneyData              
   }
   
-  setMoney()
-  MB:setEnabled( false )
+  setMoney()  
   gv.stage:insert( MB )
     
 
@@ -796,9 +842,9 @@ function buildStaticScreen()
 end
 
 
-local function advertisementFee()
+function advertisementFee()
 
-    local temp = 0
+    local temp = 0    
 
     for i = 0, gv.addCounter - 1,1 do
         if( gv.advertisements[i]:getBought() ) then            
@@ -811,16 +857,15 @@ local function advertisementFee()
 end
 
 
-local function publicServisFee()
+function publicServisFee()
 
     local minus = 0
 
     for i = 0, servisCounter, 1 do
             
         if (gv.publicServises[i]:getBought()) then
-            --minus = minus + gv.publicServises[i]:getCost()
-            
-            print ( "The cost of the add is " .. gv.publicServises[i]:getCost())
+            minus = minus + gv.publicServises[i]:getCost()            
+            --print ( "The cost of the add is " .. gv.publicServises[i]:getCost())
         end    
     end
     
@@ -868,7 +913,7 @@ local function geologist()
     -- 40% 1 tile is found
     
     local numberOfTilesToBeFound = 0
-    local randomNumber = math.random(0,100)
+    local randomNumber = math.random(1,100)
     local justFound = ""
     
     if (randomNumber <= 50 ) then
@@ -1030,13 +1075,17 @@ local function checkGroupActionPercent()
                     gv.oilSpecs:addMaintenenceCost(-1)
                     gv.gasSpecs:addMaintenenceCost(-1)
                     gv.nuclearSpecs:addMaintenenceCost(-1)
-                    gv.hydroSpecs:addMaintenenceCost(-1)                    
+                    for k = 0, gv.hydroCounter -1, 1 do
+                        gv.river[k]:addMaintenenceCost(-1)
+                    end                                    
                 else
                     gv.coalSpecs:addMaintenenceCost(1)
                     gv.oilSpecs:addMaintenenceCost(1)
                     gv.gasSpecs:addMaintenenceCost(1)
-                    gv.nuclearSpecs:addMaintenenceCost(1)
-                    gv.hydroSpecs:addMaintenenceCost(1)                
+                    gv.nuclearSpecs:addMaintenenceCost(1)                    
+                    for k = 0, gv.hydroCounter -1, 1 do
+                        gv.river[k]:addMaintenenceCost(1)
+                    end                
                 end
             
             elseif (x == 1) then
@@ -1070,7 +1119,7 @@ local function checkGroupActionPercent()
             }
             
             gv.groupActionWinner = x
-            composer.show("groupAction", options)
+            composer.showOverlay("groupAction", options)
             
             break
         
@@ -1100,7 +1149,7 @@ local function timerFunction(event)
   calculateMoney()
   checkPublicServisPercent()
   checkGroupActionPercent()
-  showData()
+  --showData()
   
   if(gv.onCityScreen) then
       setDataBox("Population", gv.population, 1)

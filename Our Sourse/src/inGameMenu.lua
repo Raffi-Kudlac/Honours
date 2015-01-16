@@ -8,20 +8,21 @@ local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )
 local scene     = composer.newScene()
-
+local BG
+local sizeConstant = 280
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function play( event )
 
-    if ( "ended" == event.phase ) then
-        composer.gotoScene("mining")  
-        startingPower()      
-        composer.gotoScene("city")                        
-    end    
+local function resumePlay( event )
+
+
+    if (event.phase == "began") then                
+        composer.hideOverlay()    
+    end
+
 end
-
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -31,22 +32,65 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
+    local verticalShift = 40
     
-    local btnPlay = widget.newButton
+    BG = widget.newButton
+    {        
+        width       = sizeConstant -20,
+        height      = sizeConstant -10,                
+        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        id          = "BO",              
+        left        = centerX(sizeConstant),
+        top         = centerY(sizeConstant),        
+    }        
+    
+    
+    local btnNewGame = widget.newButton
     {        
         width     = 100,
         height    = 50,
         shape     = "roundedRect",
         fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
         id        = "btnPlay",
-        label     = "PLay",
-        left      = centerX(100),
-        top       = centerY(50),
-        onEvent   = play        
-    }    
-        
-        
-    sceneGroup:insert(btnPlay)         
+        label     = "New Game",
+        left      = BG.x - 50,
+        top       = BG.y - BG.height/3,
+        --onEvent   = newGame -- to be made later responcible for restarting the game         
+    }
+    btnNewGame.anchorx, btnNewGame.anchory = 0,0    
+    
+    
+    local btnQuit = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btnPlay",
+        label     = "Quit",
+        left      = BG.x - 50,
+        top       = btnNewGame.y + verticalShift, 
+        --onEvent = quit -- to be made later responcible for ending the game       
+    } 
+    
+    local btnResume = widget.newButton
+    {        
+        width     = 100,
+        height    = 50,
+        shape     = "roundedRect",
+        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
+        id        = "btnPlay",
+        label     = "Resume",
+        left      = BG.x - 50,
+        top       = btnQuit.y + verticalShift, 
+        onEvent   = resumePlay,       
+    }     
+    
+    sceneGroup:insert(BG)
+    sceneGroup:insert(btnNewGame)
+    sceneGroup:insert(btnQuit)
+    sceneGroup:insert(btnResume)
+    
 end
 
 
@@ -76,6 +120,7 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
+        resume()
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
     end

@@ -54,8 +54,6 @@ gasInfluence = 2
 oilInfluence = 2
 monthTimer = 0 
 secondsTimer = 0
-
-
 foundResourses = 0
 -- an array holding text that will be displayed if a public servise passes 
 publicServisText = 0

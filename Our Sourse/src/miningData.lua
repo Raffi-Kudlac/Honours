@@ -13,15 +13,6 @@ local scene     = composer.newScene()
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function play( event )
-
-    if ( "ended" == event.phase ) then
-        composer.gotoScene("mining")  
-        startingPower()      
-        composer.gotoScene("city")                        
-    end    
-end
-
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -30,23 +21,48 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
+    local sceneGroup = self.view       
+    local infoText = {}    
+    local shiftConstant = 280
+    local counter = 0
+    local amount = {} 
+    local message = ""
+    local pass = false
     
-    local btnPlay = widget.newButton
+    BG = widget.newButton
     {        
-        width     = 100,
-        height    = 50,
-        shape     = "roundedRect",
-        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
-        id        = "btnPlay",
-        label     = "PLay",
-        left      = centerX(100),
-        top       = centerY(50),
-        onEvent   = play        
-    }    
+        width       = shiftConstant -20,
+        height      = shiftConstant -10,                
+        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        id          = "BO",              
+        left        = centerX(shiftConstant),
+        top         = centerY(shiftConstant),        
+    }
+    
+    sceneGroup:insert(BG)
+    local xPosition = (BG.x + BG.width) /2 + 20
+    local yPosition = BG.y - BG.height/2 + 10
+    
+    for x = 0, 23, 1 do
         
-        
-    sceneGroup:insert(btnPlay)         
+        if ( gv.foundResourses[x] ~= -1) then
+            pass = true
+            amount = getCellData(gv.foundResourses[x])
+            message = "Tile " .. (gv.foundResourses[x] + 1) .. " contains " .. amount[0] .. " Oil, " .. amount[1] .. " gas, " .. 
+            amount[2] .. " coal and " .. amount[3] .. " uranium "            
+            infoText[counter] = display.newText(message, xPosition, yPosition, gv.font, gv.fontSize )
+            infoText.anchorX, infoText.anchorY = 0,0             
+            yPosition = yPosition + 20
+            sceneGroup:insert(infoText[counter])
+            counter = counter + 1
+        end    
+    end
+    
+    if (pass == false) then    
+        local emptyText = display.newText("Sorry, You do not know anyting about any tiles", xPosition, yPosition, gv.font, gv.fontSize)
+        sceneGroup:insert(emptyText)
+    end
+              
 end
 
 

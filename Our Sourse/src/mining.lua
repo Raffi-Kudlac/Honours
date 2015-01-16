@@ -34,6 +34,19 @@ local function mined(n,event)
 
 end
 
+function getCellData( index )
+  
+  local data = {}
+  
+  data[0] = grid[index].cell:getAmount(0)
+  data[1] = grid[index].cell:getAmount(1)
+  data[2] = grid[index].cell:getAmount(2)
+  data[3] = grid[index].cell:getAmount(3)
+  
+  return data
+  
+
+end
 
 function numberOfTilesMined()
 
@@ -56,6 +69,13 @@ function isMined(index)
   return grid[index].cell:isMined()
 
 end 
+
+local function miningData( event )
+
+    if(event.phase == "began") then
+      composer.showOverlay("miningData")    
+    end
+end
 
 local function setText()
 	
@@ -171,6 +191,21 @@ local function buildGrid(sceneGroup)
     sceneGroup:insert(grid[i])
   
   end
+  
+  
+  local info = widget.newButton
+  {
+    top = grid[23].y - square/2,
+    left = grid[23].x - square*1.5 - gap,
+    width = square,
+    height = square,
+    --defaultFile = "buttonDefault.png",
+    shape = "rect",     
+    label = "info",   
+    onEvent = miningData, 
+  }  
+  
+  sceneGroup:insert(info)
 
 end
 

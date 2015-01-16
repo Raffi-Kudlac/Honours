@@ -12,7 +12,7 @@ local advertisements_mt = { __index = advertisements }  -- metatable
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
 
-function advertisements.new( nme, CostToUse )  -- constructor
+function advertisements.new( nme, costToUse )  -- constructor
     
   local newAdvertisement = {
     bought = false,

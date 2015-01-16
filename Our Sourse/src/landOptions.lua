@@ -53,6 +53,9 @@ local function createText(ffSpecs)
 
 end
 
+function setLandCurrentEnergySourse(ffSpecs)
+    currentEnergySourse = ffSpecs
+end
 
 local function setText(ffSpecs, kind)
         
@@ -66,7 +69,7 @@ local function setText(ffSpecs, kind)
 end
 
 
-local function purchasedConfirmed()
+function landPurchasedConfirmed()
 
     gv.money    = gv.money - currentEnergySourse:getCost()
     local kind  = "owned"
@@ -99,7 +102,7 @@ local function buy( event )
 
     if (event.phase == "began") then
         if(currentEnergySourse:getCost()<=gv.money) then
-          purchasedConfirmed()
+          landPurchasedConfirmed()
           setMoney()
           composer.hideOverlay()    
         end

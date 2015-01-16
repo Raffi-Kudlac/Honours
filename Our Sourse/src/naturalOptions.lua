@@ -53,6 +53,9 @@ local function createText(ffSpecs)
     consText.anchorX, consText.anchorY = 0,0
 end
 
+function setNaturalCurrentEnergySourse(ffSpecs)
+    currentEnergySourse = ffSpecs
+end
 
 local function setText(ffSpecs, kind)
         
@@ -66,19 +69,19 @@ local function setText(ffSpecs, kind)
 end
 
 
-local function purchasedConfirmed()
+function naturalPurchasedConfirmed()
 
-    gv.money    = gv.money - currentEnergySourse:getCost()    
+    gv.money    = gv.money - currentEnergySourse:getCost()        
     
     if(currentEnergySourse:getType() =="solar") then
         gv.solarBuildCounter = gv.solarBuildCounter + 1
         gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1        
-        convertButton("Images/land_screen/lnd_tile_oil.png",gv.marker, "solar")                 
-    elseif(currentEnergySourse:getType() =="wind") then
+        convertButton("Images/natural_resource_screen/nr_tile_solar.png",gv.marker, "solar")                 
+    elseif(currentEnergySourse:getType() =="wind") then       
         gv.groups[3]:setStatus(2)
         gv.windBuildCounter = gv.windBuildCounter + 1
         gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1
-        convertButton("Images/land_screen/lnd_tile_coal.png",gv.marker, "wind")            
+        convertButton("Images/natural_resource_screen/nr_tile_wind.png",gv.marker, "wind")            
     end
             
 end
@@ -88,7 +91,7 @@ local function buy( event )
 
     if (event.phase == "began") then
         if(currentEnergySourse:getCost()<=gv.money) then
-          purchasedConfirmed()
+          naturalPurchasedConfirmed()
           setMoney()
           composer.hideOverlay()    
         end

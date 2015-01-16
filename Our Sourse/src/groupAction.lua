@@ -39,10 +39,10 @@ function scene:create( event )
     
     pause()
     
-    if ( groups[gv.groupActionWinner]:getNumberStatus() > 0) then 
-        message = groups[gv.groupActionWinner]:getHappyText()
+    if ( gv.groups[gv.groupActionWinner]:getNumberStatus() > 0) then 
+        message = gv.groups[gv.groupActionWinner]:getHappyText()
     else
-        message = groups[gv.groupActionWinner]:getMadText()
+        message = gv.groups[gv.groupActionWinner]:getMadText()
     end
     
     local groupDisplay = widget.newButton
@@ -56,7 +56,7 @@ function scene:create( event )
     }
         
     local text = display.newText(message, groupDisplay.x + 10, groupDisplay.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
-    text.anchorX, txet.anchorY = 0,0
+    text.anchorX, text.anchorY = 0,0
     
     local btnOkay = widget.newButton
     { 

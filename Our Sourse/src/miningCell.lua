@@ -25,7 +25,7 @@ function miningCell.new(kind)  -- constructor
   		contains = {},
   	}
   
-  	miningCell.contains[0] = 0
+  miningCell.contains[0] = 0
 	miningCell.contains[1] = 0
 	miningCell.contains[2] = 0
 	miningCell.contains[3] = 0

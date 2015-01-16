@@ -34,45 +34,45 @@ local function buy(event, index)
         end
         
         -- save power advertisement. effects the demand function
-        if (index == 0 and gv.advertisement[0]:getBought() ) then
+        if (index == 0 and gv.advertisements[0]:getBought() ) then
             alterDemand(true)
-        elseif (index == 0 and gv.advertisement[0]:getBought() == false ) then
+        elseif (index == 0 and gv.advertisements[0]:getBought() == false ) then
             alterDemand(false)
         end
         
         -- safe nuclear power advertisement. effects the nuclear group.
-        if (index == 1 and gv.advertisement[1]:getBought() ) then
+        if (index == 1 and gv.advertisements[1]:getBought() ) then
             gv.groups[1]:setStatus(5)
-        elseif (index == 1 and gv.advertisement[1]:getBought() == false ) then
+        elseif (index == 1 and gv.advertisements[1]:getBought() == false ) then
             gv.groups[1]:setStatus(-5)
         end
         
         -- pro windmill advertisement. effects the anti windmill group. 
-        if (index == 2 and gv.advertisement[2]:getBought() ) then
+        if (index == 2 and gv.advertisements[2]:getBought() ) then
             gv.groups[3]:setStatus(5)
-        elseif (index == 1 and gv.advertisement[2]:getBought() == false ) then
+        elseif (index == 1 and gv.advertisements[2]:getBought() == false ) then
             gv.groups[3]:setStatus(-5)
         end
         
         
         -- pro hydro advertisement. effects envirmentalists group. 
-        if (index == 3 and gv.advertisement[3]:getBought() ) then
+        if (index == 3 and gv.advertisements[3]:getBought() ) then
             gv.groups[0]:setStatus(5)
-        elseif (index == 3 and gv.advertisement[3]:getBought() == false and gv.hydroCounter > 0 ) then
+        elseif (index == 3 and gv.advertisements[3]:getBought() == false and gv.hydroCounter > 0 ) then
             gv.groups[0]:setStatus(-5)
         end
         
         
         -- Fossil Power advertisement. effects the envirementalists group.
-        if (index == 4 and gv.advertisement[4]:getBought() ) then
+        if (index == 4 and gv.advertisements[4]:getBought() ) then
             gv.groups[0]:setStatus(5)
-        elseif (index == 4 and gv.advertisement[4]:getBought() == false ) then
+        elseif (index == 4 and gv.advertisements[4]:getBought() == false ) then
             gv.groups[0]:setStatus(-5)
         end
         
-        if (index == 5 and gv.advertisement[5]:getBought() ) then
+        if (index == 5 and gv.advertisements[5]:getBought() ) then
             gv.groups[2]:setStatus(3)
-        elseif (index == 4 and gv.advertisement[4]:getBought() == false ) then
+        elseif (index == 4 and gv.advertisements[4]:getBought() == false ) then
             gv.groups[0]:setStatus(-3)
         end
         
@@ -137,6 +137,7 @@ local function makeEntries()
     
     local startingX = 5
     local startingY = 0
+    local path = ""
 
     for x=0, gv.addCounter - 1, 1 do
         entry[x] = widget.newButton
@@ -152,15 +153,22 @@ local function makeEntries()
         }
         
         
+        if gv.advertisements[x]:getBought() then           
+           path = "Images/static_screen/st_land.png"
+        else
+          path = "Images/static_screen/st_money.png"
+        end
+          
         boughtButton[x] = widget.newButton
         {        
             width     = scrollWidth*0.2,
             height    = 40,            
             left      = entry[x].x*2 + scrollWidth*0.05,
             top       = x*55 + 5,
-            defaultFile = "Images/static_screen/st_money.png",                
-            onEvent   =   function(event) buy(event, x + 0) end    
-        }    
+            defaultFile = path,                
+            onEvent   = function(event) buy(event, (x + 0)) end    
+        }
+                        
         entry[x]:setLabel(gv.advertisements[x]:getName())
         
 --        entryData[x] = widget.newButton
