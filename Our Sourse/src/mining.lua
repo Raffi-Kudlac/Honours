@@ -26,9 +26,7 @@ local function mined(n,event)
         isModal = true
     }
     cellClicked = n
-	if event.phase == "began" and grid[cellClicked].cell:isMined() == false then
-		print("making it inside")
-		
+	if event.phase == "began" and grid[cellClicked].cell:isMined() == false then				
 		composer.showOverlay("mineOptions",options)
 	end
 
@@ -44,8 +42,6 @@ function getCellData( index )
   data[3] = grid[index].cell:getAmount(3)
   
   return data
-  
-
 end
 
 function numberOfTilesMined()

@@ -145,6 +145,14 @@ local function makeEntries()
 end
 
 
+local function back (event)
+
+    if (event.phase == "began") then
+        composer.hideOverlay()
+    end
+
+end
+
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
 -------------------------------------------------
@@ -163,6 +171,19 @@ function scene:create( event )
         scrollWidth = scrollWidth*2,
         scrollHeight = scrollHeight*2,    
     }
+    
+    local btnBack = widget.newButton
+    {
+        left = (scrollView.x - scrollView.width/2) - 120,
+        top = scrollView.y - scrollView.height/2,
+        id = "back",
+        label = "back",
+        width = 80,
+        height = 40,
+        shape = "rect",
+        onEvent = back
+    }
+    sceneGroup:insert(btnBack)
     
     makeEntries()        
     sceneGroup:insert(scrollView)         

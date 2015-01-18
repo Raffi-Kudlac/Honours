@@ -19,47 +19,54 @@ local height   = 150
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
-
-	print("made it to the map")
+  local sceneGroup = self.view
+  
+  local bg = display.newImage("Images/resource_screen/rec_hub_screen.png")
+  bg.anchorX, bg.anchorY = 0,0    
+  
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+  
+  bg.x = 0
+  bg.y = 0
     
 	local fossile_fuels = widget.newButton
 	{
-		top = centerY(height),
-		left = centerX(width),
-	    width = width,
-	    height = height,
-	    --defaultFile = "buttonDefault.png",
-	    shape = "rect",	    
-	    label = "Fossile Fuels",	 
-	    onEvent = function() return goToScreen("mining") end,   
+		top = bg.height* 0.02,
+		left = bg.width*0.55,
+    width = width,
+    height = height,
+    defaultFile = "Images/resource_screen/rec_fossil.png",    	 
+    onEvent = function() return goToScreen("mining") end,   
 	}
 	
-	local hydro = widget.newButton
-	{
-		top = centerY(height),
-		left = centerX(width) - 200,
-	    width = width,
-	    height = height,
-	    --defaultFile = "buttonDefault.png",
-	    shape = "rect",	    
-	    label = "water",	 
-	    onEvent = function() return goToScreen("hydro") end,   
-	}
+	fossile_fuels.anchorX, fossile_fuels.anchorY = 0,0	
 	
 	local natural = widget.newButton
 	{
-		top = centerY(height),
-		left = centerX(width)+200,
-	    width = width,
-	    height = height,
-	    --defaultFile = "buttonDefault.png",
-	    shape = "rect",	    
-	    label = "natural",	 
-	    onEvent = function() return goToScreen("natural") end,   
+		top = bg.height*0.1,
+		left = bg.width*0.06,
+    width = width,
+    height = height,
+    defaultFile = "Images/resource_screen/rec_natural.png",	    	 
+    onEvent = function() return goToScreen("natural") end,   
 	}
+	natural.anchorX, natural.anchorY = 0,0
 	
 	
+	local hydro = widget.newButton
+  {
+    top = centerY(height) - 20,
+    left = centerX(width) + 10,
+    width = 100,
+    height = 100,
+    defaultFile = "Images/resource_screen/rec_hydro.png",        
+    onEvent = function() return goToScreen("hydro") end,   
+  }
+  
+  --hydro.anchorX, hydro.anchorY = 0,0
+	
+	sceneGroup:insert(bg)
 	sceneGroup:insert(fossile_fuels)
 	sceneGroup:insert(hydro)
 	sceneGroup:insert(natural)

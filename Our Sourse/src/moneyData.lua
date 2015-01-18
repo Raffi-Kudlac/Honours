@@ -69,7 +69,7 @@ local function makeText(sceneGroup)
     
     local docMoney = 0 
     --Hydro    
-    for i = 1, gv.hydroCounter, 1 do        
+    for i = 1, gv.hydroCounter - 1, 1 do        
         if( gv.rivers[i]:getBuilt() ) then            
             docMoney = docMoney + gv.rivers[i]:getMainteneceCost()         
         end

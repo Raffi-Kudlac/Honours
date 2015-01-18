@@ -264,11 +264,59 @@ local function initalize()
     gv.groups[0] = organization.new( "Envirmentalists" )
     gv.groups[0]:setAbout("This organization is deticated to protecting the earth and to care for the " .. 
     "envirment. Poluting the atmosphere or destroying the land in any way will generally make this organization " .. 
-    "angry with you. It is very hard to keep them happy forever.")
+    "angry with you. This organization is effected and effects almost all forms of power It is very hard to keep them happy forever.")
     
-    gv.groups[1] = organization.new( "anti-Nuclear" )
-    gv.groups[2] = organization.new( "Population" )
-    gv.groups[3] = organization.new( "anti_Windmillists" )
+    
+    gv.groups[0]:setHappyText("The Envirmentalists are happy with you and have convinced the goverment to reduce taxes for you. " .. 
+    "as a result the maintenence cost of fossile fueled and nuclear power plants has decreased by 1B")
+    
+    gv.groups[0]:setMadText("The Envirmentalists are mad that you are polluting the planet. They have convinced the goverment to " ..
+    "add more taxes to your power plant. As a result the maintenence cost of your Nuclear and fossil fueled power plants has " .. 
+    "inceased by 1B")
+    
+    gv.groups[1] = organization.new( "Anti-Nuclear" )
+    gv.groups[1]:setAbout("This organization of people is composed of people who are scared of nuclear power and believe that it " .. 
+    "is to dangerious to be used close to thier homes and loved ones. Building nuclear power plants will upset this group. " .. 
+    "A good way to deal with them would be to educate them and assure them that although nuclear power is dangerious, all " .. 
+    "the safety procations are being taken so there is nothing to fear.")
+    
+    gv.groups[1]:setHappyText("The Anti-Nuclear group aren't seaming so Anti-Nuclear any more and they have gotten off your ".. 
+    "back for the time being. With some extra breathing room and not having to deal with them you have reduced the maintenece cost" .. 
+    "of nuclear power Plants by 3B")
+    
+    gv.groups[1]:setMadText("The Anti-Nuclear groups is mad at you for building nuclear power plants. They feel unsafe and worried. "
+    .. "They have complained to the goverment and as a result you have been forced to increase security checks and add " .. 
+    "extra safety procations. This has increased the maintenence cost of all nuclear power plants by 3B")
+    
+        
+    gv.groups[2] = organization.new( "The Population" )
+    gv.groups[2]:setAbout("The people you serve generally don't care how they get thier power as long as they get it. " .. 
+    "Keeping the lights on will keep them happy but if blackouts occure then they are going to get mad. If too many blackouts" .. 
+    "happen then you have to give some money back to the people to compinsate. Be careful, if to many blackouts " .. 
+    "happen to frequently then you lose the game")
+    
+    gv.groups[2]:setHappyText("The people are happy with your production of power. You don't get anything but at least" .. 
+    "they are not rioting and making your life difficult.")
+    
+    gv.groups[2]:setMadText("To many blackouts have happened and the people have rioted and made inpropriate signs" .. 
+    "protesting your capabilities of producing power. You paya fine of 10B for the damages and getting rid of the protestors.")
+    
+    gv.groups[3] = organization.new( "Anti-Windmillists" )
+--    gv.groups[3]:setAbout("You would think, 'Who protests Windmills. Clean energy and no envirmental hazards' well " .. 
+--    "aparently living by windmills is not the most pleasent expeareance, they are loud noisy machines that generally don't " .. 
+--    "give the landscape any beauty points eigher. They are also the reason for a lot avian deaths when they don't like to ".. 
+--    "look where they are flying." )
+
+    gv.groups[3]:setAbout("You would think, 'Who protests Windmills. Clean energy and no envirmental hazards' well you can't " ..
+    "everybody happy. This groups is usually composed of people who live around windmills. They don't like the noise and the " ..
+    "appearence of these big machines. This population of this groups is generally small and they don't a lot of attention " .. 
+    "as windmills are a source of clean energy.")
+    
+    gv.groups[3]:setHappyText("although windmills are noisy and not nice to live around you have convinced the " .. 
+    "Anti-Windmillists that they are worth it. The cost of building windmills has reduced by 2B.")
+    
+    gv.groups[3]:setMadText("Farmers and countrymen are not happy about the windmills that you have been putting up." .. 
+    "They have rallied and spoken to the goverment. The cost of building future windmills has increased by 2B")
     
     gv.nuclearInfluence = 2
     gv.coalInfluence = 3
@@ -347,7 +395,7 @@ end
 function calcPowerDemanded()
     
     -- power demanded = population + a little more for businesses and such
-     gv.powerDemanded = math.round ( 10*(gv.population*1.2/1000) )/10
+     gv.powerDemanded = math.round ( 10*(gv.population*2.4/1000) )/10 --1.2
 end
 
 function centerY(height)
@@ -736,7 +784,7 @@ end
 -- should doc resources depending on how many plants are built
 local function docResources()
 
-    gv.powerSupplied = gv.powerDemanded*1.1  
+    gv.powerSupplied = 0  
     local docMoney = 0  
     -- coal
 
@@ -817,7 +865,7 @@ local function docResources()
     
     --Hydro
     
-    for i = 1,gv.hydroCounter,1 do        
+    for i = 1,gv.hydroCounter - 1,1 do        
         if( gv.rivers[i]:getBuilt() ) then
             gv.powerSupplied = gv.powerSupplied + gv.rivers[i]:getPowerGenerated()
             docMoney = docMoney + gv.rivers[i]:getMainteneceCost()         
@@ -1067,7 +1115,7 @@ local function checkGroupActionPercent()
     for x = 0, gv.groupCounter -1, 1 do
         
         if (percent < spaceArray[x] + gv.groups[x]:getActionPercent() and
-            percent >= spaceArray[x]) then                        
+            percent > spaceArray[x]) then                        
         
             if(x == 0) then
                 if (gv.groups[0]:getNumberStatus() > 0) then
@@ -1076,7 +1124,7 @@ local function checkGroupActionPercent()
                     gv.gasSpecs:addMaintenenceCost(-1)
                     gv.nuclearSpecs:addMaintenenceCost(-1)
                     for k = 0, gv.hydroCounter -1, 1 do
-                        gv.river[k]:addMaintenenceCost(-1)
+                        gv.rivers[k]:addMaintenenceCost(-1)
                     end                                    
                 else
                     gv.coalSpecs:addMaintenenceCost(1)
@@ -1084,7 +1132,7 @@ local function checkGroupActionPercent()
                     gv.gasSpecs:addMaintenenceCost(1)
                     gv.nuclearSpecs:addMaintenenceCost(1)                    
                     for k = 0, gv.hydroCounter -1, 1 do
-                        gv.river[k]:addMaintenenceCost(1)
+                        gv.rivers[k]:addMaintenenceCost(1)
                     end                
                 end
             
@@ -1097,7 +1145,7 @@ local function checkGroupActionPercent()
                 end
             
             elseif (x == 2) then
-            
+            -- this is for the population group, thinking this should be taken out and replaced in the blackout Method
                 if ( gv.groups[2]:getNumberStatus() > 0 ) then
                                         
                 else

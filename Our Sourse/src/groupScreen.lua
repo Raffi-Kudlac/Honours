@@ -13,7 +13,7 @@ local entryData = {}
 local scrollView 
 local expanded = false
 local pressedGroup 
-local expandShift = 80
+local expandShift = 150
 
 local scrollWidth = 230
 local scrollHeight = 200
@@ -82,18 +82,25 @@ local function makeEntries()
 --            label = gv.groups[x]:getAbout(),
 --            isEnabled = false,                            
 --        }
---        entryData[x].isVisible = false
+        
 
-        entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, scrollWidth*0.9, 60,
-        (x+1)*55, gv.font, gv.fontSize )
+        entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, (x+1)*55, scrollWidth*0.9, expandShift
+        , gv.font, gv.fontSize )
+        entryData[x]:setFillColor( 0, 0, 0 )
+        entryData[x].isVisible = false
         entryData[x].anchorX,entryData[x].anchorY = 0,0
                                 
         scrollView:insert(entry[x])
         scrollView:insert(entryData[x])
     
     end
-    
-    
+end
+
+local function back (event)
+
+    if (event.phase == "began") then
+        composer.hideOverlay()
+    end
 
 end
 
@@ -118,8 +125,21 @@ function scene:create( event )
     
     }
     
-    makeEntries()        
-    sceneGroup:insert(scrollView)         
+    makeEntries()  
+    
+    local btnBack = widget.newButton
+    {
+        left = (scrollView.x - scrollView.width/2) - 120,
+        top = scrollView.y - scrollView.height/2,
+        id = "back",
+        label = "back",
+        width = 80,
+        height = 40,
+        shape = "rect",
+        onEvent = back
+    }       
+    sceneGroup:insert(scrollView)
+    sceneGroup:insert(btnBack)         
 end
 
 

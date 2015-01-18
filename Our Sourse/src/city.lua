@@ -19,15 +19,25 @@ local function scaleOverlayHeightCalculator()
   
     -- conversion ratio for now is maxHeight = 5Gw 
     local net = gv.powerSupplied - gv.powerDemanded
+    local limit = 25
     
-    if (net > 25) then
-        net = 25
+    if (net > limit) then
+        net = limit
+    elseif (net < -limit) then
+        net = -limit
     end
     
-    local percent = net/25
+    local percent = net/limit
+    
+    if (net < 0 and scaleOverlay.rotation == 0) then
+        scaleOverlay.rotation = 180
+        scaleOverlay:setFillColor(1,0,0)
+    elseif ( net > 0 and scaleOverlay.rotation == 180) then
+        scaleOverlay.rotation = 0
+        scaleOverlay:setFillColor(0,1,0) 
+    end
     
     scaleOverlay.height = maxSOHeight*percent
-
 end
 
 
@@ -64,10 +74,11 @@ function scene:create( event )
     scale:scale(0.3,0.18)
     
    
-    scaleOverlay.anchorX,scaleOverlay.anchorY = 0,1    
-    scaleOverlay.x = scale.x 
-    scaleOverlay.y = scale.y    
+    --scaleOverlay.anchorX,scaleOverlay.anchorY = 0,1
+    scaleOverlay.anchorX,scaleOverlay.anchorY = 0.5,0.5            
     scaleOverlay:scale(0.3,0.18)
+    scaleOverlay.x = scale.x + scaleOverlay.width*0.3/2
+    scaleOverlay.y = scale.y
     maxSOHeight = scaleOverlay.height       
     scaleOverlay:setFillColor(0,1,0)
     scaleOverlayHeightCalculator()

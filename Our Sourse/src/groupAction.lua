@@ -17,7 +17,7 @@ local textHeight      = 0
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function text( event )
+local function okay( event )
 
     if ( event.phase == "began") then
     
@@ -53,9 +53,9 @@ function scene:create( event )
         id          = "BO",              
         left        = centerX(d),
         top         = centerY(d),        
-    }
-        
-    local text = display.newText(message, groupDisplay.x + 10, groupDisplay.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
+    }    
+    local text = display.newText(message, groupDisplay.x - groupDisplay.width/2, groupDisplay.y - groupDisplay.height/2,
+    textWidth, textHeight, gv.font,gv.fontSize)
     text.anchorX, text.anchorY = 0,0
     
     local btnOkay = widget.newButton
@@ -64,7 +64,7 @@ function scene:create( event )
         height        = 20,
         shape         = "roundedRect",
         cornerRadius  = 10,     
-        label         = "Mine",      
+        label         = "Okay",      
         id            = "btnMine",            
         top           =  groupDisplay.height - 20,
         left          =  (groupDisplay.x + groupDisplay.width)/2,
