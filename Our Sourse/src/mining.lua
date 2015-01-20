@@ -99,6 +99,18 @@ local function buildGrid(sceneGroup)
   local currentX = startx
   local currentY = display.contentHeight*0.75
   
+  
+  local bg = display.newImage("Images/mining_screen/mining_bg.png")
+  bg.anchorX, bg.anchorY = 0,0    
+  
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+  
+  bg.x = 0
+  bg.y = 0
+  sceneGroup:insert(bg)
+     
+  
   --first row, at bottom of screen
   for i = 0,4,1 do
   
@@ -106,17 +118,16 @@ local function buildGrid(sceneGroup)
     {
       top = currentY,
       left = currentX,
-        width = square,
-        height = square,
-        --defaultFile = "buttonDefault.png",
-        shape = "rect",     
-        label = i+1,
-        onEvent = function(event) return mined(i+0,event) end,    
+      width = square,
+      height = square,
+      defaultFile = "Images/mining_screen/mining_digTile.png",        
+      label = i+1,
+      onEvent = function(event) return mined(i+0,event) end,    
     }
     
     currentX = currentX - square - gap
     grid[i].cell = miningCell.new()
-    sceneGroup:insert(grid[i])
+    sceneGroup:insert(grid[i])    
   end
   
   currentY = currentY - square -gap
@@ -128,12 +139,11 @@ local function buildGrid(sceneGroup)
     {
       top = currentY,
       left = currentX,
-        width = square,
-        height = square,
-        --defaultFile = "buttonDefault.png",
-        shape = "rect",     
-        label = i+1,
-        onEvent = function(event) return mined(i+0,event) end,    
+      width = square,
+      height = square,
+      defaultFile = "Images/mining_screen/mining_digTile.png",            
+      label = i+1,
+      onEvent = function(event) return mined(i+0,event) end,    
     }
     
     currentX = currentX - square - gap
@@ -151,12 +161,11 @@ local function buildGrid(sceneGroup)
     {
       top = currentY,
       left = currentX,
-        width = square,
-        height = square,
-        --defaultFile = "buttonDefault.png",
-        shape = "rect",     
-        label = i+1,
-        onEvent = function(event) return mined(i+0,event) end,    
+      width = square,
+      height = square,
+      defaultFile = "Images/mining_screen/mining_digTile.png",             
+      label = i+1,
+      onEvent = function(event) return mined(i+0,event) end,    
     }
     
     currentX = currentX - square - gap
@@ -176,8 +185,7 @@ local function buildGrid(sceneGroup)
       left = currentX,
         width = square,
         height = square,
-        --defaultFile = "buttonDefault.png",
-        shape = "rect",     
+        defaultFile = "Images/mining_screen/mining_digTile.png",            
         label = i+1,   
         onEvent = function(event) return mined(i+0,event) end, 
     }
@@ -382,7 +390,7 @@ end
 function scene:create( event )
 
   buildStaticScreen()    
-  timeStart()    
+  timeStart()
     
   sceneGroup = self.view
 	local empty = 5
@@ -408,7 +416,7 @@ function scene:create( event )
   populateCells(numberToBePopulated, 1, 2, 5)
   populateCells(numberToBePopulated, 2, 2, 5)
 	populateCells(numberToBePopulated, 3, 2, 5)
-	
+		
 	setData()
 	setText()
     

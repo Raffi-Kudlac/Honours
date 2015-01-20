@@ -30,6 +30,8 @@ local publicServises  = require( "publicServises" )
 require( "mining" ) 
 require( "naturalOptions" )
 
+local startBlackoutTimeYear = 0
+local startBlackoutTimeMonth = 0
 local isPaused = false
 local btnPausePlay 
 local monthCounter    = 1
@@ -360,7 +362,14 @@ local function initalize()
     for x =0, gv.servisCounter, 1 do
         gv.publicServisText[x] = ""
     end
-          
+    
+    gv.blackoutLengthCounter = 0 -- the length of the blackout in number of months
+    gv.blackoutCounter = 0       -- a counter holding the number of total blackouts that has occured
+    gv.blackoutLengthSum = 0
+    gv.blackoutAmountRate = 5        
+    gv.blackoutTimeRate   = 3    -- this varible and the one above represents the rate of blackouts. 5 blackouts in three years    
+    gv.blackoutTimes = {}
+    
 end
 
 
@@ -1101,6 +1110,75 @@ local function checkPublicServisPercent()
     end
 end
 
+local function calculateYearDifferene(index)
+
+    local yearDiff = gv.year - gv.blackoutTimes[index][0]
+    local monthDiff = gv.month - gv.blackoutTimes[index][1]
+    
+    if (monthDiff  < 0 ) then
+        yearDiff = yearDiff - 1
+        monthDiff = -1*MonthDiff
+    end
+        
+    return yearDiff       
+end
+
+local function addBlackoutTime()
+
+    -- wipes out any blackouts outside of the time range
+    for x = 1, #gv.blachoutTimes, 1 do
+        if( calculateYearDifferene(1) > gv.blackoutTimeRate ) then
+            table.remove(gv.blackoutTimes, 1)
+        end
+    end
+    
+    
+    -- insert new blackout time
+    if(#gv.blackoutTimes == 5) then
+        -- game over
+    else
+        timeData = {startBlackoutTimeYear, startBlackoutTimeMonth, gv.blackoutLengthCounter}
+        table.insert(gv.blackoutTimes,timeData)
+    end                     
+end
+
+local function isBlackout()
+
+    if (gv.powerDemanded > gv.powerSupplied) then   -- there is a blackout
+    
+        gv.blackoutLengthCounter = gv.blackoutLengthCounter + 1
+        gv.blackoutCounter = gv.blackoutCounter + 1        
+
+        if(gv.blackoutLengthCounter >= 10) then
+            -- game over
+        elseif (gv.blackoutLengthCounter == 1) then
+            startBlackoutTimeYear = gv.year
+            startBlackoutTimeMonth = gv.month            
+        end
+        
+        if ( gv.blackoutLengthSum + gv.blackoutLengthCounter >= 12) then
+            -- game over
+        end
+        
+    else
+        
+        if(gv.blackoutLengthCounter ~= 0) then
+            addBlackoutTime()
+            gv.blackoutLengthCounter = 0
+        end
+                
+    end
+end
+
+local function isGameOver()
+
+    local isGameOver = false
+
+    if (gv.money <= -30) then
+        isGameOver = true
+    end
+
+end
 
 local function checkGroupActionPercent()
 
@@ -1205,6 +1283,8 @@ local function timerFunction(event)
       setDataBox("Demanded", gv.powerDemanded.."GW", 2)
       setDataBox("Supplied", gv.powerSupplied.."GW", 3)
   end
+  
+  --isGameOver()
   
   gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)
 end

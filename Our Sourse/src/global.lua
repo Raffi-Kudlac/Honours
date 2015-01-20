@@ -47,6 +47,15 @@ demandFactor = 1.2
 monthlyPopulationIncrease = 0
 onCityScreen = true
 groupActionWinner = -1
+blackoutLengthCounter = 0 -- the length of the blackout in number of months, if over 10 then game over
+blackoutCounter = 0       -- a counter holding the number of total blackouts that has occured
+blackoutTracker = 0       -- a tracker holding the number of blackout to be compared against the blackout rate
+                          -- if the user triggers a certain number of blackouts within a certain time then, the game is over
+blackoutAmountRate = 0
+blackoutTimeRate   = 0    -- unit is in years
+
+blackoutTimes ={}       -- beacuse this array uses provided functions the starting index is 1
+blackoutLengthSum = 0   -- holds the sum of the lengths of all blackouts in units of months. note does not hold the current blackout
 
 nuclearInfluence = 2    -- the amount of influence that will effect the envirmental group
 coalInfluence = 3
