@@ -15,10 +15,11 @@ local circleWidth       = 30
 local circleHeight      = 30
 local buildOptionsTop   = 0
 local buildOptionsLeft  = 0
-local d                 = 280
-local prosWidth         = d*0.7
+local buildOverlayWidth = 260
+local prosWidth         = buildOverlayWidth*0.7
 local prosHeight        = 0
 
+local scrollText        = 0
 local costText          = ""
 local productionText    = ""
 local prosText          = ""
@@ -37,19 +38,44 @@ local function createText(ffSpecs)
     costText = display.newText("Costs: $"..ffSpecs:getCost(), buildOptionsLeft + 35,
     buildOptionsTop + 20, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
     productionText.anchorX,productionText.anchorY = 0,0
+    productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
+    consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     consumptionText.anchorX,consumptionText.anchorY = 0,0
     
-    prosText = display.newText(ffSpecs:getPros(), costText.x,consumptionText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
-    prosText.anchorX, prosText.anchorY = 0,0    
-    prosText.height = prosText.height + 15    
+--    display.newText("Marker", costText.x + 50, consumptionText.y + 30, 100, 100)
     
-    consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
+    scrollText = widget.newScrollView
+    {        
+        width = buildOverlayWidth*0.75,
+        height = buildOverlayWidth*0.5,
+        horizontalScrollDisabled = true,
+--        scrollWidth = buildOverlayWidth*0.9,
+        scrollHeight = buildOverlayWidth*0.5,     
+        hideBackground = true,          
+    }
+    scrollText.anchorX, scrollText.anchorY = 0,0
+    scrollText.x = costText.x
+    scrollText.y = consumptionText.y + 30
+    
+    prosText = display.newText(ffSpecs:getPros(), 5,10,scrollText.width*0.95,prosHeight, gv.font,gv.fontSize)
+    prosText.anchorX, prosText.anchorY = 0,0    
+    prosText.height = prosText.height + 15
+    prosText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+    
+    scrollText:insert(prosText)
+    
+    consText = display.newText(ffSpecs:getCons(), prosText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
     consText.anchorX, consText.anchorY = 0,0
+    consText.height = consText.height + 25
+    consText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+    
+    scrollText:insert(consText)
 
 end
 
@@ -127,19 +153,19 @@ end
 function scene:create( event )
 
     local sceneGroup  = self.view
-    buildOptionsTop   = centerY(d)
-    buildOptionsLeft  = centerX(d) + 20
+    buildOptionsTop   = centerY(buildOverlayWidth)
+    buildOptionsLeft  = centerX(buildOverlayWidth) + 20
     local widthShift  = 10
     local heightShift = 20
     
     local buildOptions = widget.newButton
     {        
-        width       = d -20,
-        height      = d -10,                
+        width       = buildOverlayWidth,
+        height      = buildOverlayWidth +10,                
         defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
         id          = "BO",              
-        left        = centerX(d),
-        top         = centerY(d),        
+        left        = centerX(buildOverlayWidth),
+        top         = centerY(buildOverlayWidth),        
     }
     
   
@@ -219,18 +245,25 @@ function scene:create( event )
         left          = btnBuy.x + 70,
         onEvent       = cancel           
     }
-    createText(gv.oilSpecs)
+    
+    
+    createText(gv.oilSpecs)         
      
     sceneGroup:insert(buildOptions)
     sceneGroup:insert(btnoil)
     sceneGroup:insert(btngas)
     sceneGroup:insert(btncoal)
     sceneGroup:insert(btnNP)
+    
+    
     sceneGroup:insert(costText)
     sceneGroup:insert(productionText)
-    sceneGroup:insert(consumptionText)
-    sceneGroup:insert(prosText)
-    sceneGroup:insert(consText)
+    sceneGroup:insert(consumptionText)       
+--    scrollText:insert(prosText)
+--    scrollText:insert(consText)
+--    sceneGroup:insert(prosText)
+--    sceneGroup:insert(consText)
+    sceneGroup:insert(scrollText)
     sceneGroup:insert(btnBuy)
     sceneGroup:insert(btnCancel)          
 end

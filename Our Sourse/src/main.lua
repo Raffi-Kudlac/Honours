@@ -131,8 +131,11 @@ local function initalize()
     calcPowerDemanded()
     gv.powerSupplied = gv.powerDemanded*1.1    
     gv.screen = "city"
-    gv.font = native.systemFont
-    gv.fontSize = 8
+    gv.font = native.newFont( "Chunkfive Ex", 8 )--"Chunkfive Ex"--native.systemFontBold
+    gv.fontSize = 10
+    gv.fontColourR = 0/255
+    gv.fontColourG = 255/255
+    gv.fontColourB = 255/255
     gv.resourseAmount = {}
     gv.resourcesHeld = {}
     
