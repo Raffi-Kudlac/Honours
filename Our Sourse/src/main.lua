@@ -1112,8 +1112,8 @@ end
 
 local function calculateYearDifferene(index)
 
-    local yearDiff = gv.year - gv.blackoutTimes[index][0]
-    local monthDiff = gv.month - gv.blackoutTimes[index][1]
+    local yearDiff = gv.year - gv.blackoutTimes[index][1]
+    local monthDiff = gv.month - gv.blackoutTimes[index][2]
     
     if (monthDiff  < 0 ) then
         yearDiff = yearDiff - 1
@@ -1139,7 +1139,13 @@ local function addBlackoutTime()
     else
         timeData = {startBlackoutTimeYear, startBlackoutTimeMonth, gv.blackoutLengthCounter}
         table.insert(gv.blackoutTimes,timeData)
-    end                     
+    end
+    
+    gv.blackoutLengthSum = 0
+    for x = 1, #gv.blackoutTimes, 1 do 
+        gv.blackoutLengthSum = gv.blackoutTimes[x][3] + gv.blackoutLengthSum
+    end
+     
 end
 
 local function isBlackout()
@@ -1170,12 +1176,18 @@ local function isBlackout()
     end
 end
 
-local function isGameOver()
+local function gameOver()
+
+    composer.gotoScene("gameOver")
+
+end
+
+local function inDept()
 
     local isGameOver = false
 
     if (gv.money <= -30) then
-        isGameOver = true
+        --gameOver()
     end
 
 end
@@ -1284,7 +1296,7 @@ local function timerFunction(event)
       setDataBox("Supplied", gv.powerSupplied.."GW", 3)
   end
   
-  --isGameOver()
+  --inDept()
   
   gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)
 end
