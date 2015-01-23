@@ -7,7 +7,7 @@ local cityOptionsBG   = widget
 local cityOptionsLeft = 0
 local cityOptionsTop  = 0
 local shiftConstant   = 280
-local prosWidth       = shiftConstant*0.7
+local prosWidth       = 0
 local prosHeight      = 0
 local cityMessage     = ""
 local costText        = ""
@@ -18,12 +18,17 @@ local infoText        = ""
 -------------------------------------------------
 local function createText()
 
-    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", cityOptionsLeft + 35,
-    cityOptionsTop + 20, gv.font, gv.fontSize )
-    costText.anchorX,costText.anchorY = 0,0
+    local xPosition = (cityOptionsBG.x - cityOptionsBG.width/2) + cityOptionsBG.x*0.1
+    local yPosition = (cityOptionsBG.y - cityOptionsBG.height/2) + cityOptionsBG.y*0.1
 
-    infoText = display.newText(cityMessage, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
-    infoText.anchorX, infoText.anchorY = 0,0    
+    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", xPosition,
+    yPosition, gv.font, gv.fontSize )
+    costText.anchorX,costText.anchorY = 0,0
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+
+    infoText = display.newText(cityMessage, costText.x,costText.y +20,prosWidth,prosHeight, gv.font,gv.fontSize)
+    infoText.anchorX, infoText.anchorY = 0,0
+    infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )    
     infoText.height = infoText.height + 15        
 end
 
@@ -63,13 +68,16 @@ function scene:create( event )
     
     cityOptionsBG = widget.newButton
     {        
-        width       = shiftConstant -20,
-        height      = shiftConstant -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.6),
+        height      = heightCalculator(0.6),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(shiftConstant),
-        top         = centerY(shiftConstant),        
+        left        = centerX(widthCalculator(0.5)),
+        top         = centerY(heightCalculator(0.5) + heightCalculator(0.1) ),        
     }
+    
+    prosWidth = cityOptionsBG.width*0.8
+    createText()    
     
     local btnBuy = widget.newButton
     { 
@@ -79,8 +87,8 @@ function scene:create( event )
         cornerRadius = 10,     
         label       = "Buy",      
         id          = "btnBuy",            
-        top         =  cityOptionsBG.height - 20,
-        left        = cityOptionsLeft+40,
+        top         = infoText.y + infoText.height,
+        left        = costText.x,
         onEvent = buy     
     }
   
@@ -95,12 +103,10 @@ function scene:create( event )
         label = "Cancel",
         id = "btnCancel",
         top = btnBuy.y,
-        left = btnBuy.x + 70,
+        left = btnBuy.x + cityOptionsBG.width*0.4,
         onEvent = cancel           
     }
-    
-    createText()
-    
+  
     sceneGroup:insert(cityOptionsBG)
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)

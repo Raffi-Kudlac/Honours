@@ -61,6 +61,17 @@ local function populationFunction(year)
 
 end
 
+function widthCalculator(percent)
+
+    return display.contentWidth*percent
+end
+
+function heightCalculator(percent)
+
+    return display.contentHeight*percent
+end
+
+
 local function calculateMonthlyPopulationIncrease()
 
    return  math.round ( (populationFunction(year+1)*populationVariable - populationFunction(gv.year))/12) 
@@ -304,7 +315,7 @@ local function initalize()
     "they are not rioting and making your life difficult.")
     
     gv.groups[2]:setMadText("To many blackouts have happened and the people have rioted and made inpropriate signs" .. 
-    "protesting your capabilities of producing power. You paya fine of 10B for the damages and getting rid of the protestors.")
+    "protesting your capabilities of producing power. You pay a fine of 10B for the damages and getting rid of the protestors.")
     
     gv.groups[3] = organization.new( "Anti-Windmillists" )
 --    gv.groups[3]:setAbout("You would think, 'Who protests Windmills. Clean energy and no envirmental hazards' well " .. 
@@ -312,9 +323,9 @@ local function initalize()
 --    "give the landscape any beauty points eigher. They are also the reason for a lot avian deaths when they don't like to ".. 
 --    "look where they are flying." )
 
-    gv.groups[3]:setAbout("You would think, 'Who protests Windmills. Clean energy and no envirmental hazards' well you can't " ..
+    gv.groups[3]:setAbout("You would think, 'Who would protests Windmills. Clean energy and no envirmental hazards' well you can't " ..
     "everybody happy. This groups is usually composed of people who live around windmills. They don't like the noise and the " ..
-    "appearence of these big machines. This population of this groups is generally small and they don't a lot of attention " .. 
+    "appearence of these big machines. This population of this groups is generally small and they don't get a lot of attention " .. 
     "as windmills are a source of clean energy.")
     
     gv.groups[3]:setHappyText("although windmills are noisy and not nice to live around you have convinced the " .. 
@@ -348,7 +359,7 @@ local function initalize()
     
     gv.publicServises[1] = publicServises.new("Fossil Fuel Advances",4)
     gv.publicServises[2] = publicServises.new("Nuclear Advances",4)
-    gv.publicServises[3] = publicServises.new("Wind Power Advances",3)
+    gv.publicServises[3] = publicServises.new("Wind Advances",3)
     gv.publicServises[4] = publicServises.new("Solar Advances",4)
     gv.publicServises[5] = publicServises.new("Hydro Advances",5)    
     gv.publicServises[6] = publicServises.new("Generator Advances",3)

@@ -14,6 +14,9 @@ local mineOptionsLeft = 0
 local mineOptionsTop  = 0 
 local textWidth       = d*0.7
 local textHeight      = 0
+local mineOptions = 0
+local costText = 0
+local info = 0
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -21,17 +24,22 @@ local textHeight      = 0
 
 local function createText(sceneGroup)
 
-	local costText = display.newText("It costs 1 B to mine", mineOptionsLeft + 55,
-    	mineOptionsTop + 20, gv.font, gv.fontSize )
+    
+    local xPosition = (mineOptions.x - mineOptions.width/2) + mineOptions.width*0.1
+    local yPosition = (mineOptions.y - mineOptions.height/2) + mineOptions.height*0.1
+    
+    costText = display.newText("It costs 1 B to mine", xPosition,
+    	yPosition, gv.font, gv.fontSize )
     	costText.anchorX,costText.anchorY = 0,0
+    	costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     	
     local miningInfo = "Coal, Gas, Oil and Uranium are all resourses that our power plants run off of today. They all come from " .. 
     "the earth and there is only a limited amount of them. Once we run out. There will be none left."
     
-    local info = display.newText(miningInfo, mineOptionsLeft + 55, costText.y + 40,textWidth, textHeight, gv.font,gv.fontSize)
+    info = display.newText(miningInfo, costText.x, costText.y + 20,mineOptions.width*0.85, textHeight, gv.font,gv.fontSize)
     info.anchorX, info.anchorY = 0,0
-    sceneGroup:insert(costText)
-    sceneGroup:insert(info)     
+    info.height = info.height + 10
+    info:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )   
 end
 
 
@@ -66,19 +74,19 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
-    mineOptionsLeft = centerX(d)
-    mineOptionsTop = centerY(d)
+    local sceneGroup = self.view    
 
-   	local mineOptions = widget.newButton
+   	mineOptions = widget.newButton
     {        
-        width       = d -20,
-        height      = d -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.6),
+        height      = heightCalculator(0.5),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(d),
-        top         = centerY(d),        
+        left        = centerX(widthCalculator(0.6)),
+        top         = centerY(heightCalculator(0.5)),        
     }
+    
+    createText(sceneGroup)
     
     local btnMine = widget.newButton
     { 
@@ -88,8 +96,8 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Mine",      
         id            = "btnMine",            
-        top           =  mineOptions.height - 20,
-        left          =  mineOptionsLeft+80,
+        top           =  info.y + info.height,
+        left          =  costText.x,
         onEvent       = mine     
     }
     
@@ -102,17 +110,19 @@ function scene:create( event )
         label         = "Cancel",
         id            = "btnCancel",
         top           = btnMine.y,
-        left          = btnMine.x + 70,
+        left          = btnMine.x + mineOptions.width*0.4,
         onEvent       = cancel           
     }
     
     btnMine.anchorY = 0
    
     sceneGroup:insert(mineOptions)
+    sceneGroup:insert(costText)
+    sceneGroup:insert(info)     
     sceneGroup:insert(btnMine)
     sceneGroup:insert(btnCancel)
    
-    createText(sceneGroup)
+    
 end
 
 

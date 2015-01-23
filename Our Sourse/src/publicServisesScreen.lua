@@ -64,12 +64,13 @@ local function showSpecifics(event, index)
     if (event.phase == "ended") then
     
         local yMarker = entry[index].y + expandShift
-      
+        local shift = scrollView.height*0.22
+            
         if expanded == false then
             for  x = index + 1, gv.servisCounter -1,1 do 
                
-               entry[x].y = yMarker + (x - index - 1 )*55
-               boughtButton[x].y = yMarker + (x - index - 1 )*55
+               entry[x].y = yMarker + (x - index - 1)*shift
+               boughtButton[x].y = yMarker + (x - index - 1 )*shift
             end
             pressedGroup = index
             entryData[index].isVisible = true
@@ -77,33 +78,32 @@ local function showSpecifics(event, index)
         else
              for x = pressedGroup +1, gv.servisCounter -1, 1 do
              
-                entry[x].y = entry[x-1].y + 55 
-                boughtButton[x].y = boughtButton[x-1].y +55
+                entry[x].y = entry[x-1].y + shift 
+                boughtButton[x].y = boughtButton[x-1].y + shift
              end
              
              entryData[pressedGroup].isVisible = false
              expanded = false
         end
     end
-    
 
 end
 
 
 local function makeEntries()
     
-    local startingX = 5
-    local startingY = 0
+    local startingX = scrollView.width*0.08
+    local startingY = scrollView.height*0.08
 
     for x=0, gv.servisCounter - 1, 1 do
         entry[x] = widget.newButton
         {        
-            width     = scrollWidth*0.7,
-            height    = 50,
+            width     = scrollView.width*0.6,
+            height    = scrollView.height*0.2,
             shape     = "roundedRect",
             fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },                    
             left      = startingX,
-            top       = x*55,
+            top       = x*scrollView.height*0.22 + startingY,
             labelAlign = "center",    
             onEvent   =   function(event) showSpecifics(event, x + 0) end    
         }
@@ -111,31 +111,20 @@ local function makeEntries()
         
         boughtButton[x] = widget.newButton
         {        
-            width     = scrollWidth*0.2,
-            height    = 40,            
-            left      = entry[x].x*2 + scrollWidth*0.05,
-            top       = x*55 + 5,
+            width     = scrollView.width*0.15,
+            height    = scrollView.height*0.15,
+            left      = entry[x].width + scrollView.width*0.15,
+            top       = entry[x].y - scrollView.height*0.15/2,
             defaultFile = "Images/static_screen/st_money.png",                
             onEvent   =   function(event) buy(event, x + 0) end    
         }    
         entry[x]:setLabel(gv.publicServises[x]:getName())
         
---        entryData[x] = widget.newButton
---        {
---            width = scrollWidth*0.9,
---            height = 100,
---            shape = "roundedRect",
---            left = startingX,
---            top = (x+1)*55,
---            labelAlign = "left",
---            label = gv.groups[x]:getAbout(),
---            isEnabled = false,                            
---        }
---        entryData[x].isVisible = false
-
-        entryData[x] = display.newText(gv.publicServises[x]:getAbout(), startingX, scrollWidth*0.9, 60,
-        (x+1)*55, gv.font, gv.fontSize )
+        entryData[x] = display.newText(gv.publicServises[x]:getAbout(), startingX, entry[x].y + entry[x].height/2,
+        scrollView.width*0.75, 0, gv.font, gv.fontSize )
         entryData[x].anchorX,entryData[x].anchorY = 0,0
+        entryData[x].isVisible = false
+        entryData[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
                                                                         
         scrollView:insert(entry[x])
         scrollView:insert(boughtButton[x])
@@ -161,16 +150,41 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
+    local widthValue = widthCalculator(0.45)
+    local heightValue = heightCalculator(0.8)
+    local padding = 5
     
+    
+    local BG = widget.newButton
+    {        
+        width       = widthValue,
+        height      = heightValue,                
+        defaultFile = "Images/global_images/Vertical_Box.png",              
+        id          = "BO",              
+        left        = centerX(widthValue),
+        top         = centerY(heightValue),        
+    }
+    
+    sceneGroup:insert(BG)
+
     scrollView = widget.newScrollView
     {
-        top = centerY(scrollHeight),
-        left = centerX(scrollWidth),
-        width = scrollWidth,
-        height = scrollHeight,
-        scrollWidth = scrollWidth*2,
-        scrollHeight = scrollHeight*2,    
+        top = centerY(heightValue),
+        left = centerX(widthValue),
+        width = widthValue,
+        height = heightValue*0.95,        
+        scrollHeight = heightValue*10,
+        hideBackground = true,
+        horizontalScrollDisabled = true,
+        topPadding = padding,
+        bottomPadding = padding,
+        rightPadding = padding,
+        leftPadding = padding,
     }
+    
+    expandShift = scrollView.height*0.4
+    makeEntries()  
+
     
     local btnBack = widget.newButton
     {
@@ -183,9 +197,7 @@ function scene:create( event )
         shape = "rect",
         onEvent = back
     }
-    sceneGroup:insert(btnBack)
-    
-    makeEntries()        
+    sceneGroup:insert(btnBack)           
     sceneGroup:insert(scrollView)         
 end
 

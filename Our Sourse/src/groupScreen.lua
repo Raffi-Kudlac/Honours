@@ -13,7 +13,7 @@ local entryData = {}
 local scrollView 
 local expanded = false
 local pressedGroup 
-local expandShift = 150
+local expandShift = 0
 
 local scrollWidth = 230
 local scrollHeight = 200
@@ -28,11 +28,12 @@ local function showSpecifics(event, index)
     if (event.phase == "ended") then
     
         local yMarker = entry[index].y + expandShift
+        local shift = scrollView.height*0.22
       
         if expanded == false then
             for  x = index + 1, gv.groupCounter -1,1 do 
                
-               entry[x].y = yMarker + (x - index - 1 )*55
+               entry[x].y = yMarker + (x - index - 1 )*shift
             end
             pressedGroup = index
             entryData[index].isVisible = true
@@ -40,7 +41,7 @@ local function showSpecifics(event, index)
         else
              for x = pressedGroup +1, gv.groupCounter -1, 1 do
              
-                entry[x].y = entry[x-1].y + 55 
+                entry[x].y = entry[x-1].y + shift
              end
              
              entryData[pressedGroup].isVisible = false
@@ -54,39 +55,26 @@ end
 
 local function makeEntries()
 
-    local startingX = 0
-    local startingY = 0
+    local startingX = scrollView.width*0.08
+    local startingY = scrollView.height*0.08
 
     for x=0, gv.groupCounter - 1, 1 do
         entry[x] = widget.newButton
         {        
-            width     = scrollWidth*0.9,
-            height    = 50,
+            width     = scrollView.width*0.8,
+            height    = scrollView.height*0.2,
             shape     = "roundedRect",
             fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },                    
             left      = startingX,
-            top       = x*55,
+            top       = x*scrollView.height*0.22 + startingY,
             labelAlign = "left",    
             onEvent   =   function(event) showSpecifics(event, x + 0) end    
         }    
-        entry[x]:setLabel(gv.groups[x]:getName() .. "\t\t\t" .. gv.groups[x]:getStatus())
-        
---        entryData[x] = widget.newButton
---        {
---            width = scrollWidth*0.9,
---            height = 100,
---            shape = "roundedRect",
---            left = startingX,
---            top = (x+1)*55,
---            labelAlign = "left",
---            label = gv.groups[x]:getAbout(),
---            isEnabled = false,                            
---        }
-        
+        entry[x]:setLabel(gv.groups[x]:getName() .. "\t\t\t" .. gv.groups[x]:getStatus()) 
 
-        entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, (x+1)*55, scrollWidth*0.9, expandShift
-        , gv.font, gv.fontSize )
-        entryData[x]:setFillColor( 0, 0, 0 )
+        entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, (x+1)*scrollView.height*0.21 + startingY,
+        scrollView.width*0.85, expandShift, gv.font, gv.fontSize )
+        entryData[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
         entryData[x].isVisible = false
         entryData[x].anchorX,entryData[x].anchorY = 0,0
                                 
@@ -113,18 +101,41 @@ end
 function scene:create( event )
 
     local sceneGroup = self.view
+    local widthValue = widthCalculator(0.45)
+    local heightValue = heightCalculator(0.8)
+    local padding = 5
+    
+    
+    local BG = widget.newButton
+    {        
+        width       = widthValue,
+        height      = heightValue,                
+        defaultFile = "Images/global_images/Vertical_Box.png",              
+        id          = "BO",              
+        left        = centerX(widthValue),
+        top         = centerY(heightValue),        
+    }
+    
+    sceneGroup:insert(BG)
 
     scrollView = widget.newScrollView
     {
-        top = centerY(scrollHeight),
-        left = centerX(scrollWidth),
-        width = scrollWidth,
-        height = scrollHeight,
-        scrollWidth = scrollWidth*2,
-        scrollHeight = scrollHeight*2,
+        top = centerY(heightValue),
+        left = centerX(widthValue),
+        width = widthValue,
+        height = heightValue,
+        --scrollWidth = scrollWidth*2,
+        scrollHeight = heightValue*2,
+        hideBackground = true,
+        horizontalScrollDisabled = true,
+        topPadding = padding,
+        bottomPadding = padding,
+        rightPadding = padding,
+        leftPadding = padding,
     
     }
     
+    expandShift = scrollView.height*0.75
     makeEntries()  
     
     local btnBack = widget.newButton

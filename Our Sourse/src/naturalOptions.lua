@@ -16,8 +16,10 @@ local circleHeight        = 30
 local buildOptionsTop     = 0
 local buildOptionsLeft    = 0
 local d                   = 280
-local prosWidth           = d*0.7
+local prosWidth           = 0
 local prosHeight          = 0
+local buildOptions = 0
+local scrollText = 0
 
 local costText            = ""
 local productionText      = ""
@@ -35,22 +37,43 @@ local function createText(ffSpecs)
     
     currentEnergySourse = ffSpecs
     
-    costText = display.newText("Costs: $"..ffSpecs:getCost(), buildOptionsLeft + 35,
-    buildOptionsTop + 20, gv.font, gv.fontSize )
+    local textX = (buildOptions.x - buildOptions.width/2) + buildOptions.width*0.25
+    local textY = (buildOptions.y - buildOptions.height/2) + buildOptions.height*0.06
+    
+    costText = display.newText("Costs: $"..ffSpecs:getCost(), textX,
+    textY, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
     productionText.anchorX,productionText.anchorY = 0,0
-    
+    productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+        
     consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
     consumptionText.anchorX,consumptionText.anchorY = 0,0
+    consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
-    prosText = display.newText(ffSpecs:getPros(), costText.x,consumptionText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
+    scrollText = widget.newScrollView
+    {        
+        width = buildOptions.width*0.65,
+        height = buildOptions.height*0.5,
+        horizontalScrollDisabled = true,
+--        scrollWidth = buildOverlayWidth*0.9,
+        --scrollHeight = buildOverlayWidth*0.5,     
+        hideBackground = true,
+        top = consumptionText.y + 20,
+        left = costText.x          
+    }
+    
+    prosText = display.newText(ffSpecs:getPros(), 5,10,scrollText.width*0.95,prosHeight, gv.font,gv.fontSize)
     prosText.anchorX, prosText.anchorY = 0,0    
-    prosText.height = prosText.height + 15    
+    prosText.height = prosText.height + 15
+    prosText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
-    consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
+    consText = display.newText(ffSpecs:getCons(), 5,prosText.y + prosText.height, scrollText.width*0.95,prosHeight, gv.font,gv.fontSize)
     consText.anchorX, consText.anchorY = 0,0
+    consText.height = consText.height + 15
+    consText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 end
 
 function setNaturalCurrentEnergySourse(ffSpecs)
@@ -116,22 +139,25 @@ function scene:create( event )
 
     local sceneGroup  = self.view
     buildOptionsTop   = centerY(d)
-    buildOptionsLeft  = centerX(d) + 20
+    buildOptionsLeft  = centerX(widthCalculator(0.5))
     local widthShift  = 10
     local heightShift = 20
     
-    local buildOptions = widget.newButton
+    buildOptions = widget.newButton
     {        
-        width       = d -20,
-        height      = d -10,                
+        width       = widthCalculator(0.5),
+        height      = heightCalculator(0.85),                
         defaultFile = "Images/natural_resource_screen/nr_buildOverlay.png",              
         id          = "BO",              
-        left        = centerX(d),
-        top         = centerY(d),        
+        left        = centerX(widthCalculator(0.5)),
+        top         = centerY(heightCalculator(0.85)),        
     }
-    
+    prosWidth = buildOptions.width * 0.7
+    local buttonX = (buildOptions.x - buildOptions.width/2) + buildOptions.width*0.04
+    local buttonY = (buildOptions.y - buildOptions.height/2) + buildOptions.height*0.05
+    createText(gv.solarSpecs)      
   
-    local btnsolar = widget.newButton
+    local btnSolar = widget.newButton
     {           
         width       = circleWidth,
         height      = circleHeight, 
@@ -139,20 +165,20 @@ function scene:create( event )
         defaultFile = "Images/natural_resource_screen/nr_solar.png",
         onEvent     = function() return setText(gv.solarSpecs, "solar") end,
         top         = buildOptionsTop + heightShift,
-        left        = buildOptionsLeft - widthShift
+        left        = buttonX
     }
     
     heightShift  = heightShift + 40
     
-   local btnwind = widget.newButton
+   local btnWind = widget.newButton
    {
       width       = circleWidth,
       height      = circleHeight,
       defaultFile = "Images/natural_resource_screen/nr_wind.png",
       id          = "btnwind",           
       onEvent     = function() return setText(gv.windSpecs, "wind") end, 
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
+      top         = btnSolar.y + 30,
+      left        = buttonX
    }
       
   
@@ -164,8 +190,8 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Buy",      
         id            = "btnBuy",            
-        top           = buildOptions.height - 20,
-        left          = buildOptionsLeft+40,
+        top           = (scrollText.y + scrollText.height/2) + buildOptions.height*0.05,
+        left          = costText.x,
         onEvent       = buy     
     }
     
@@ -180,18 +206,21 @@ function scene:create( event )
         label         = "Cancel",
         id            = "btnCancel",
         top           = btnBuy.y,
-        left          = btnBuy.x + 70,
+        left          = btnBuy.x + buildOptions.width*0.3,
         onEvent       = cancel           
     }
-    createText(gv.solarSpecs)     
+    
     sceneGroup:insert(buildOptions)
-    sceneGroup:insert(btnsolar)
-    sceneGroup:insert(btnwind)    
+    sceneGroup:insert(btnSolar)
+    sceneGroup:insert(btnWind)    
     sceneGroup:insert(costText)
     sceneGroup:insert(productionText)
     sceneGroup:insert(consumptionText)
-    sceneGroup:insert(prosText)
-    sceneGroup:insert(consText)
+    scrollText:insert(prosText)
+    scrollText:insert(consText)
+--    sceneGroup:insert(prosText)
+--    sceneGroup:insert(consText)
+    sceneGroup:insert(scrollText)
     sceneGroup:insert(btnBuy)
     sceneGroup:insert(btnCancel)          
 end
