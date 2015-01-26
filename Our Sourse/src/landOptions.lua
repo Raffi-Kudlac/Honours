@@ -15,10 +15,13 @@ local circleWidth       = 30
 local circleHeight      = 30
 local buildOptionsTop   = 0
 local buildOptionsLeft  = 0
-local d                 = 280
-local prosWidth         = d*0.7
+local buildOverlayWidth = 260
+local prosWidth         = buildOverlayWidth*0.7
 local prosHeight        = 0
 
+local buildOptions = 0
+
+local scrollText        = 0
 local costText          = ""
 local productionText    = ""
 local prosText          = ""
@@ -34,22 +37,49 @@ local function createText(ffSpecs)
     
     currentEnergySourse = ffSpecs
     
-    costText = display.newText("Costs: $"..ffSpecs:getCost(), buildOptionsLeft + 35,
-    buildOptionsTop + 20, gv.font, gv.fontSize )
+    local textX = (buildOptions.x - buildOptions.width/2) + buildOptions.width*0.25
+    local textY = (buildOptions.y - buildOptions.height/2) + buildOptions.height*0.06
+    
+    costText = display.newText("Costs: $"..ffSpecs:getCost(), textX,
+    textY, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
     productionText.anchorX,productionText.anchorY = 0,0
+    productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
+    consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     consumptionText.anchorX,consumptionText.anchorY = 0,0
     
-    prosText = display.newText(ffSpecs:getPros(), costText.x,consumptionText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
-    prosText.anchorX, prosText.anchorY = 0,0    
-    prosText.height = prosText.height + 15    
     
-    consText = display.newText(ffSpecs:getCons(), costText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
+    scrollText = widget.newScrollView
+    {        
+        width = buildOverlayWidth*0.75,
+        height = buildOverlayWidth*0.5,
+        horizontalScrollDisabled = true,
+--        scrollWidth = buildOverlayWidth*0.9,
+       -- scrollHeight = buildOverlayWidth*0.5,     
+        hideBackground = true,          
+    }
+    scrollText.anchorX, scrollText.anchorY = 0,0
+    scrollText.x = costText.x
+    scrollText.y = consumptionText.y + 30
+    
+    prosText = display.newText(ffSpecs:getPros(), 5,10,scrollText.width*0.95,prosHeight, gv.font,gv.fontSize)
+    prosText.anchorX, prosText.anchorY = 0,0    
+    prosText.height = prosText.height + 15
+    prosText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+    
+    scrollText:insert(prosText)
+    
+    consText = display.newText(ffSpecs:getCons(), prosText.x,prosText.y + prosText.height, prosWidth,prosHeight, gv.font,gv.fontSize)
     consText.anchorX, consText.anchorY = 0,0
+    consText.height = consText.height + 15
+    consText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+    
+    scrollText:insert(consText)
 
 end
 
@@ -127,59 +157,59 @@ end
 function scene:create( event )
 
     local sceneGroup  = self.view
-    buildOptionsTop   = centerY(d)
-    buildOptionsLeft  = centerX(d) + 20
+    buildOptionsTop   = centerY(buildOverlayWidth)
+    buildOptionsLeft  = centerX(buildOverlayWidth) + 20    
     local widthShift  = 10
     local heightShift = 20
     
-    local buildOptions = widget.newButton
+    buildOptions = widget.newButton
     {        
-        width       = d -20,
-        height      = d -10,                
+        width       = widthCalculator(0.5),
+        height      = heightCalculator(0.85),                
         defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
         id          = "BO",              
-        left        = centerX(d),
-        top         = centerY(d),        
+        left        = centerX(widthCalculator(0.5)),
+        top         = centerY(heightCalculator(0.85)),        
     }
     
+    local buttonX = (buildOptions.x - buildOptions.width/2) + buildOptions.width*0.04
+    local buttonY = (buildOptions.y - buildOptions.height/2) + buildOptions.height*0.05
   
-    local btnoil = widget.newButton
+    local btnOil = widget.newButton
     {           
         width       = circleWidth,
         height      = circleHeight, 
         id          = "btnoil",
         defaultFile = "Images/land_screen/lnd_oil.png",
         onEvent     = function() return setText(gv.oilSpecs, "oil") end,
-        top         = buildOptionsTop + heightShift,
-        left        = buildOptionsLeft - widthShift
+        top         = buttonY,
+        left        = buttonX
     }
+        
     
-    heightShift  = heightShift + 40
-    
-   local btngas = widget.newButton
+   local btnGas = widget.newButton
    {
       width       = circleWidth,
       height      = circleHeight,
       defaultFile = "Images/land_screen/lnd_gas.png",
       id          = "btngas",           
       onEvent     = function() return setText(gv.gasSpecs, "gas") end, 
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
+      top         = btnOil.y + heightShift,
+      left        = buttonX
    }
+      
    
-   heightShift = heightShift + 40
-   
-   local btncoal = widget.newButton
+   local btnCoal = widget.newButton
    {
       width       = circleWidth,
       height      = circleHeight,
       defaultFile = "Images/land_screen/lnd_coal.png",
       id          = "btncoal",
       onEvent     = function() return setText(gv.coalSpecs, "coal") end,
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
+      top         = btnGas.y + heightShift,
+      left        = buttonX
    }
-   heightShift = heightShift + 40
+   
    
    local btnNP = widget.newButton
    {      
@@ -188,9 +218,11 @@ function scene:create( event )
       id          = "btnNP",
       defaultFile = "Images/land_screen/lnd_nuclear.png",
       onEvent     = function() return setText(gv.nuclearSpecs, "nuc") end,
-      top         = buildOptionsTop + heightShift,
-      left        = buildOptionsLeft - widthShift
+      top         = btnCoal.y + heightShift,
+      left        = buttonX
    }
+   
+   createText(gv.oilSpecs)         
   
     local btnBuy = widget.newButton
     { 
@@ -200,8 +232,8 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Buy",      
         id            = "btnBuy",            
-        top           =  buildOptions.height - 20,
-        left          = buildOptionsLeft+40,
+        top           = (scrollText.y + scrollText.height) + buildOptions.height*0.05,
+        left          = costText.x,
         onEvent       = buy     
     }
     
@@ -216,21 +248,26 @@ function scene:create( event )
         label         = "Cancel",
         id            = "btnCancel",
         top           = btnBuy.y,
-        left          = btnBuy.x + 70,
+        left          = btnBuy.x + buildOptions.width*0.3,
         onEvent       = cancel           
     }
-    createText(gv.oilSpecs)
+    
      
     sceneGroup:insert(buildOptions)
-    sceneGroup:insert(btnoil)
-    sceneGroup:insert(btngas)
-    sceneGroup:insert(btncoal)
+    sceneGroup:insert(btnOil)
+    sceneGroup:insert(btnGas)
+    sceneGroup:insert(btnCoal)
     sceneGroup:insert(btnNP)
+    
+    
     sceneGroup:insert(costText)
     sceneGroup:insert(productionText)
-    sceneGroup:insert(consumptionText)
-    sceneGroup:insert(prosText)
-    sceneGroup:insert(consText)
+    sceneGroup:insert(consumptionText)       
+--    scrollText:insert(prosText)
+--    scrollText:insert(consText)
+--    sceneGroup:insert(prosText)
+--    sceneGroup:insert(consText)
+    sceneGroup:insert(scrollText)
     sceneGroup:insert(btnBuy)
     sceneGroup:insert(btnCancel)          
 end

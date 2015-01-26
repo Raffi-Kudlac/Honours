@@ -142,7 +142,7 @@ end
 local function displayText(data, sceneGroup)
 
     local text = 0
-    local xPosition = (BG.x - BG.width/2) + BG.width*0.25
+    local xPosition = (BG.x - BG.width/2) + BG.width*0.1
     local yPosition = (BG.y - BG.height/2) + 10
     local total = 0
 
@@ -150,7 +150,8 @@ local function displayText(data, sceneGroup)
     
         if (data[x][0] ~= 0 ) then        
            text = display.newText(data[x][1] .. "$".. math.round(data[x][0]).."B", xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize )
-           text.anchorX,text.anchorY = 0,0           
+           text.anchorX,text.anchorY = 0,0 
+           text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )         
            sceneGroup:insert(text)           
            yPosition = yPosition + 20
            total = total + data[x][0]           
@@ -162,6 +163,7 @@ local function displayText(data, sceneGroup)
     
     text = display.newText("Your total income is: $" .. total, xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize)
     text.anchorX,text.anchorY = 0,0
+    text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     sceneGroup:insert(text)    
 
 end
@@ -179,12 +181,12 @@ function scene:create( event )
     
     BG = widget.newButton
     {        
-        width       = dimension -20,
-        height      = dimension -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.5),
+        height      = heightCalculator(0.5),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(dimension),
-        top         = centerY(dimension),        
+        left        = centerX(widthCalculator(0.5)),
+        top         = centerY(heightCalculator(0.5)),        
     }
     
     
@@ -196,8 +198,8 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Okay",      
         id            = "btnOkay",
-        top           = BG.y,
-        left          = BG.x + BG.width/2,                    
+        top           = BG.y + (BG.height/2)*0.5,
+        left          = (BG.x - BG.width/2) + BG.width*0.1,                    
         onEvent       = okay     
     }       
         

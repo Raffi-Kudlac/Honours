@@ -63,9 +63,9 @@ function groups:setStatus(n)
     if (temp == 0) then
         self.actionPercent = 0 
     elseif(temp > 0 and temp < 5 ) then
-        self.actionPercent = 5
+        self.actionPercent = 2
     elseif (temp > 5 ) then
-        self.actionPercent = 10    
+        self.actionPercent = 4    
     end
     
 end

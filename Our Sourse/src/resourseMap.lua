@@ -1,6 +1,11 @@
 --[[
     Purpose:
         This screen is a hub for the user to more specifically choose what resource he/she would like to invest in
+        
+        The middle pixle of the overlay waterfall in reference to the 
+        background is x = 1016 and y = 519. The top left is x = 791 and the y = 294
+        
+        The width and height of the overlay waterfall sqaure is 450 pxl.
 ]]
 
 

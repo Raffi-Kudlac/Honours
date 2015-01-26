@@ -12,7 +12,7 @@ local ownedOptionsBG    = widget
 local ownedOptionsLeft  = 0
 local ownedOptionsTop   = 0
 local shiftConstant     = 280
-local prosWidth         = shiftConstant*0.7
+local prosWidth         = 0
 local prosHeight        = 0
 
 local message   = ""
@@ -24,14 +24,19 @@ local infoText  = ""
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 local function createText()
-
-    costText = display.newText("Costs: $4 B", ownedOptionsLeft + 35,
-    ownedOptionsTop + 20, gv.font, gv.fontSize )
+    
+    local xPosition = (ownedOptionsBG.x - ownedOptionsBG.width/2) + ownedOptionsBG.x*0.1
+    local yPosition = (ownedOptionsBG.y - ownedOptionsBG.height/2) + ownedOptionsBG.y*0.1
+    
+    costText = display.newText("Costs: $4 B", xPosition,
+    yPosition, gv.font, gv.fontSize )
     costText.anchorX,costText.anchorY = 0,0
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-    infoText = display.newText(message, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
+    infoText = display.newText(message, costText.x,costText.y +20,prosWidth,prosHeight, gv.font,gv.fontSize)
     infoText.anchorX, infoText.anchorY = 0,0    
-    infoText.height = infoText.height + 15        
+    infoText.height = infoText.height + 15    
+    infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )    
 end
 
 
@@ -65,7 +70,9 @@ function scene:create( event )
     -- Example: add display objects to "sceneGroup", add touch listeners, etc.
     local sceneGroup = self.view
     
-    message = "From here you can demlosh you power plant to make room for a bigger one if you so chose"
+    message = "From here you can demlosh you power plant, returning the land to the open state. " .. 
+    "It costs money to demolish a power plant but it could be worth it if the current one isn't generating any power. " .. 
+    " After the plant is gone you can chose to build another plant in its stead. "
     
      
     ownedOptionsTop = centerY(shiftConstant)
@@ -73,24 +80,26 @@ function scene:create( event )
     
     ownedOptionsBG = widget.newButton
     {        
-        width       = shiftConstant -20,
-        height      = shiftConstant -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.6),
+        height      = heightCalculator(0.5),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(shiftConstant),
-        top         = centerY(shiftConstant),        
+        left        = centerX(widthCalculator(0.6)),
+        top         = centerY(heightCalculator(0.6)),        
     }
+    prosWidth = ownedOptionsBG.width*0.8
+    createText()
     
     local btnDemolish = widget.newButton
     { 
-        width         = 60,
+        width         = 80,
         height        = 20,
         shape         = "roundedRect",
         cornerRadius  = 10,     
         label         = "Demolish",      
         id            = "btnBuy",            
-        top           =  ownedOptionsBG.height - 20,
-        left          = ownedOptionsLeft+40,
+        top           =  infoText.y + infoText.height,
+        left          = costText.x,
         onEvent       = demolish     
     }
   
@@ -105,12 +114,10 @@ function scene:create( event )
         label         = "Cancel",
         id            = "btnCancel",
         top           = btnDemolish.y,
-        left          = btnDemolish.x + 70,
+        left          = btnDemolish.x + ownedOptionsBG.width*0.4,
         onEvent       = cancel           
     }
-    
-    createText()
-    
+
     sceneGroup:insert(ownedOptionsBG)
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)

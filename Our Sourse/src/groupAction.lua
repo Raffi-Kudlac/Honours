@@ -47,16 +47,19 @@ function scene:create( event )
     
     local groupDisplay = widget.newButton
     {        
-        width       = d -20,
-        height      = d -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.4),
+        height      = heightCalculator(0.35),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(d),
-        top         = centerY(d),        
-    }    
-    local text = display.newText(message, groupDisplay.x - groupDisplay.width/2, groupDisplay.y - groupDisplay.height/2,
-    textWidth, textHeight, gv.font,gv.fontSize)
+        left        = centerX(widthCalculator(0.4)),
+        top         = centerY(heightCalculator(0.35)),        
+    }
+        
+            
+    local text = display.newText(message, (groupDisplay.x - groupDisplay.width/2) + groupDisplay.width*0.05,
+     (groupDisplay.y - groupDisplay.height/2) + groupDisplay.height*0.05, groupDisplay.width*0.85, textHeight, gv.font,gv.fontSize)
     text.anchorX, text.anchorY = 0,0
+    text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     
     local btnOkay = widget.newButton
     { 
@@ -65,9 +68,9 @@ function scene:create( event )
         shape         = "roundedRect",
         cornerRadius  = 10,     
         label         = "Okay",      
-        id            = "btnMine",            
-        top           =  groupDisplay.height - 20,
-        left          =  (groupDisplay.x + groupDisplay.width)/2,
+        id            = "btnOkay",            
+        top           =  text.y + text.height*1.1,
+        left          =  groupDisplay.x - 25,
         onEvent       = okay     
     }
         

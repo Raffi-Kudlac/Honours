@@ -14,7 +14,7 @@ local forestOptionsBG   = widget
 local forestOptionsLeft = 0
 local forestOptionsTop  = 0
 local shiftConstant     = 280
-local prosWidth         = shiftConstant*0.7
+local prosWidth         = 0
 local prosHeight        = 0
 
 local forestMessage = ""
@@ -27,12 +27,17 @@ local infoText      = ""
 -------------------------------------------------
 local function createText()
 
-    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().." B", forestOptionsLeft + 35,
-    forestOptionsTop + 20, gv.font, gv.fontSize )
+    local xPosition = (forestOptionsBG.x - forestOptionsBG.width/2) + forestOptionsBG.x*0.1
+    local yPosition = (forestOptionsBG.y - forestOptionsBG.height/2) + forestOptionsBG.y*0.1
+    
+    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().." B", xPosition,
+    yPosition, gv.font, gv.fontSize )
+    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     costText.anchorX,costText.anchorY = 0,0
 
-    infoText = display.newText(forestMessage, costText.x,costText.y +30,prosWidth,prosHeight, gv.font,gv.fontSize)
-    infoText.anchorX, infoText.anchorY = 0,0    
+    infoText = display.newText(forestMessage, costText.x, costText.y + 20,prosWidth,prosHeight, gv.font,gv.fontSize)
+    infoText.anchorX, infoText.anchorY = 0,0
+    infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )    
     infoText.height = infoText.height + 15        
 end
 
@@ -75,13 +80,16 @@ function scene:create( event )
     
     forestOptionsBG = widget.newButton
     {        
-        width       = shiftConstant -20,
-        height      = shiftConstant -10,                
-        defaultFile = "Images/land_screen/lnd_buildOverlay.png",              
+        width       = widthCalculator(0.5),
+        height      = heightCalculator(0.5),                
+        defaultFile = "Images/global_images/Horizontal_Box.png",              
         id          = "BO",              
-        left        = centerX(shiftConstant),
-        top         = centerY(shiftConstant),        
+        left        = centerX(widthCalculator(0.5)),
+        top         = centerY(heightCalculator(0.5)),        
     }
+    
+    prosWidth = forestOptionsBG.width*0.8
+    createText()
     
     local btnBuy = widget.newButton
     { 
@@ -91,8 +99,8 @@ function scene:create( event )
         cornerRadius  = 10,     
         label         = "Buy",      
         id            = "btnBuy",            
-        top           =  forestOptionsBG.height - 20,
-        left          = forestOptionsLeft+40,
+        top           = infoText.y + infoText.height,
+        left          = costText.x,
         onEvent       = buy     
     }
   
@@ -107,12 +115,10 @@ function scene:create( event )
         label         = "Cancel",
         id            = "btnCancel",
         top           = btnBuy.y,
-        left          = btnBuy.x + 70,
+        left          = btnBuy.x + forestOptionsBG.width*0.4,
         onEvent       = cancel           
     }
-    
-    createText()
-    
+
     sceneGroup:insert(forestOptionsBG)
     sceneGroup:insert(costText)
     sceneGroup:insert(infoText)
