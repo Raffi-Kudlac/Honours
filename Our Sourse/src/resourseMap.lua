@@ -31,7 +31,13 @@ function scene:create( event )
 
   bg.height = display.contentHeight
   bg.width = display.contentWidth
-
+  
+  local BGwidthScale = bg.width/2400
+  local BGheightScale = bg.height/1600
+  
+  local xMatchUp = BGwidthScale*791
+  local yMatchUp = BGheightScale*294
+  
   bg.x = 0
   bg.y = 0
 
@@ -61,15 +67,15 @@ function scene:create( event )
 
   local hydro = widget.newButton
     {
-      top = centerY(height) - 20,
-      left = centerX(width) + 10,
-      width = 100,
-      height = 100,
+      top = yMatchUp,
+      left = xMatchUp,
+      width = 450*BGwidthScale,
+      height = 450*BGheightScale,
       defaultFile = "Images/resource_screen/rec_hydro.png",
       onEvent = function() return goToScreen("hydro") end,
   }
 
-  --hydro.anchorX, hydro.anchorY = 0,0
+  hydro.anchorX, hydro.anchorY = 0.5,0.5
 
   sceneGroup:insert(bg)
   sceneGroup:insert(fossile_fuels)
