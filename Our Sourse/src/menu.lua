@@ -1,6 +1,6 @@
 --[[
-    Purpose:    
-        This screen is the menu screen currently only holding the play button.
+Purpose:
+This screen is the menu screen currently only holding the play button.
 
 ]]
 
@@ -15,11 +15,11 @@ local scene     = composer.newScene()
 
 local function play( event )
 
-    if ( "ended" == event.phase ) then
-        composer.gotoScene("mining")  
-        startingPower()      
-        composer.gotoScene("city")                        
-    end    
+  if ( "ended" == event.phase ) then
+    composer.gotoScene("mining")
+    startingPower()
+    composer.gotoScene("city")
+  end
 end
 
 
@@ -30,66 +30,66 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-    local sceneGroup = self.view
-    
-    local btnPlay = widget.newButton
-    {        
-        width     = 100,
-        height    = 50,
-        shape     = "roundedRect",
-        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },        
-        id        = "btnPlay",
-        label     = "PLay",
-        left      = centerX(100),
-        top       = centerY(50),
-        onEvent   = play        
-    }    
-        
-        
-    sceneGroup:insert(btnPlay)         
+  local sceneGroup = self.view
+
+  local btnPlay = widget.newButton
+    {
+      width     = 100,
+      height    = 50,
+      shape     = "roundedRect",
+      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      id        = "btnPlay",
+      label     = "PLay",
+      left      = centerX(100),
+      top       = centerY(50),
+      onEvent   = play
+  }
+
+
+  sceneGroup:insert(btnPlay)
 end
 
 
 -- "scene:show()"
 function scene:show( event )
 
-    local sceneGroup = self.view
-    local phase = event.phase
+  local sceneGroup = self.view
+  local phase = event.phase
 
-    if ( phase == "will" ) then
-        -- Called when the scene is still off screen (but is about to come on screen).
-    elseif ( phase == "did" ) then
-        -- Called when the scene is now on screen.
-        -- Insert code here to make the scene come alive.
-        -- Example: start timers, begin animation, play audio, etc.
-    end
+  if ( phase == "will" ) then
+  -- Called when the scene is still off screen (but is about to come on screen).
+  elseif ( phase == "did" ) then
+  -- Called when the scene is now on screen.
+  -- Insert code here to make the scene come alive.
+  -- Example: start timers, begin animation, play audio, etc.
+  end
 end
 
 
 -- "scene:hide()"
 function scene:hide( event )
 
-    local sceneGroup = self.view
-    local phase = event.phase
+  local sceneGroup = self.view
+  local phase = event.phase
 
-    if ( phase == "will" ) then
-        -- Called when the scene is on screen (but is about to go off screen).
-        -- Insert code here to "pause" the scene.
-        -- Example: stop timers, stop animation, stop audio, etc.
-    elseif ( phase == "did" ) then
-        -- Called immediately after scene goes off screen.
-    end
+  if ( phase == "will" ) then
+  -- Called when the scene is on screen (but is about to go off screen).
+  -- Insert code here to "pause" the scene.
+  -- Example: stop timers, stop animation, stop audio, etc.
+  elseif ( phase == "did" ) then
+  -- Called immediately after scene goes off screen.
+  end
 end
 
 
 -- "scene:destroy()"
 function scene:destroy( event )
 
-    local sceneGroup = self.view
+  local sceneGroup = self.view
 
-    -- Called prior to the removal of scene's view ("sceneGroup").
-    -- Insert code here to clean up the scene.
-    -- Example: remove display objects, save state, etc.
+  -- Called prior to the removal of scene's view ("sceneGroup").
+  -- Insert code here to clean up the scene.
+  -- Example: remove display objects, save state, etc.
 end
 
 

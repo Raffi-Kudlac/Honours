@@ -18,35 +18,35 @@ local infoText        = ""
 -------------------------------------------------
 local function createText()
 
-    local xPosition = (cityOptionsBG.x - cityOptionsBG.width/2) + cityOptionsBG.x*0.1
-    local yPosition = (cityOptionsBG.y - cityOptionsBG.height/2) + cityOptionsBG.y*0.1
+  local xPosition = (cityOptionsBG.x - cityOptionsBG.width/2) + cityOptionsBG.x*0.1
+  local yPosition = (cityOptionsBG.y - cityOptionsBG.height/2) + cityOptionsBG.y*0.1
 
-    costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", xPosition,
+  costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", xPosition,
     yPosition, gv.font, gv.fontSize )
-    costText.anchorX,costText.anchorY = 0,0
-    costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  costText.anchorX,costText.anchorY = 0,0
+  costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-    infoText = display.newText(cityMessage, costText.x,costText.y +20,prosWidth,prosHeight, gv.font,gv.fontSize)
-    infoText.anchorX, infoText.anchorY = 0,0
-    infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )    
-    infoText.height = infoText.height + 15        
+  infoText = display.newText(cityMessage, costText.x,costText.y +20,prosWidth,prosHeight, gv.font,gv.fontSize)
+  infoText.anchorX, infoText.anchorY = 0,0
+  infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  infoText.height = infoText.height + 15
 end
 
 local function buy(event)
 
-    if(event.phase == "began") then
-      if(gv.money >= gv.tileClicked.tile:getCost()) then
-          gv.money = gv.money - gv.tileClicked.tile:getCost()
-          setMoney()
-          convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
-          
-      end
-      composer.hideOverlay()
-    end   
+  if(event.phase == "began") then
+    if(gv.money >= gv.tileClicked.tile:getCost()) then
+      gv.money = gv.money - gv.tileClicked.tile:getCost()
+      setMoney()
+      convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+
+    end
+    composer.hideOverlay()
+  end
 end
 
 local function cancel()
-    composer.hideOverlay()
+  composer.hideOverlay()
 end
 
 -------------------------------------------------
@@ -54,107 +54,107 @@ end
 -------------------------------------------------
 
 -- "scene:create()"
-function scene:create( event ) 
-    
-    local sceneGroup = self.view
-    cityMessage = "The city owns this land and it must be bought from them. "..
+function scene:create( event )
+
+  local sceneGroup = self.view
+  cityMessage = "The city owns this land and it must be bought from them. "..
     "land is in high demand, everyone wants a piece so the cost is high. Once "..
     "you buy this you can sell it again but you sell it at a lower price then what you bought it for. "..
     "If you buy this then you still need to pay to put an istablishment on the location as well"
-    
-     
-    cityOptionsTop  = centerY(shiftConstant)
-    cityOptionsLeft = centerX(shiftConstant) + 20
-    
-    cityOptionsBG = widget.newButton
-    {        
-        width       = widthCalculator(0.6),
-        height      = heightCalculator(0.6),                
-        defaultFile = "Images/global_images/Horizontal_Box.png",              
-        id          = "BO",              
-        left        = centerX(widthCalculator(0.5)),
-        top         = centerY(heightCalculator(0.5) + heightCalculator(0.1) ),        
-    }
-    
-    prosWidth = cityOptionsBG.width*0.8
-    createText()    
-    
-    local btnBuy = widget.newButton
-    { 
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,     
-        label       = "Buy",      
-        id          = "btnBuy",            
-        top         = infoText.y + infoText.height,
-        left        = costText.x,
-        onEvent = buy     
-    }
-  
-    btnBuy.anchorY = 0
-    
-    local btnCancel = widget.newButton
+
+
+  cityOptionsTop  = centerY(shiftConstant)
+  cityOptionsLeft = centerX(shiftConstant) + 20
+
+  cityOptionsBG = widget.newButton
     {
-        width = 60,
-        height = 20,
-        shape = "roundedRect",
-        cornerRadius = 10,
-        label = "Cancel",
-        id = "btnCancel",
-        top = btnBuy.y,
-        left = btnBuy.x + cityOptionsBG.width*0.4,
-        onEvent = cancel           
-    }
-  
-    sceneGroup:insert(cityOptionsBG)
-    sceneGroup:insert(costText)
-    sceneGroup:insert(infoText)
-    sceneGroup:insert(btnBuy)
-    sceneGroup:insert(btnCancel)       
+      width       = widthCalculator(0.6),
+      height      = heightCalculator(0.6),
+      defaultFile = "Images/global_images/Horizontal_Box.png",
+      id          = "BO",
+      left        = centerX(widthCalculator(0.5)),
+      top         = centerY(heightCalculator(0.5) + heightCalculator(0.1) ),
+  }
+
+  prosWidth = cityOptionsBG.width*0.8
+  createText()
+
+  local btnBuy = widget.newButton
+    {
+      width = 60,
+      height = 20,
+      shape = "roundedRect",
+      cornerRadius = 10,
+      label       = "Buy",
+      id          = "btnBuy",
+      top         = infoText.y + infoText.height,
+      left        = costText.x,
+      onEvent = buy
+  }
+
+  btnBuy.anchorY = 0
+
+  local btnCancel = widget.newButton
+    {
+      width = 60,
+      height = 20,
+      shape = "roundedRect",
+      cornerRadius = 10,
+      label = "Cancel",
+      id = "btnCancel",
+      top = btnBuy.y,
+      left = btnBuy.x + cityOptionsBG.width*0.4,
+      onEvent = cancel
+  }
+
+  sceneGroup:insert(cityOptionsBG)
+  sceneGroup:insert(costText)
+  sceneGroup:insert(infoText)
+  sceneGroup:insert(btnBuy)
+  sceneGroup:insert(btnCancel)
 end
 
 
 -- "scene:show()"
 function scene:show( event )
 
-    local sceneGroup = self.view
-    local phase = event.phase
+  local sceneGroup = self.view
+  local phase = event.phase
 
-    if ( phase == "will" ) then
-        -- Called when the scene is still off screen (but is about to come on screen).
-    elseif ( phase == "did" ) then
-        -- Called when the scene is now on screen.
-        -- Insert code here to make the scene come alive.
-        -- Example: start timers, begin animation, play audio, etc.
-    end
+  if ( phase == "will" ) then
+  -- Called when the scene is still off screen (but is about to come on screen).
+  elseif ( phase == "did" ) then
+  -- Called when the scene is now on screen.
+  -- Insert code here to make the scene come alive.
+  -- Example: start timers, begin animation, play audio, etc.
+  end
 end
 
 
 -- "scene:hide()"
 function scene:hide( event )
 
-    local sceneGroup = self.view
-    local phase = event.phase
+  local sceneGroup = self.view
+  local phase = event.phase
 
-    if ( phase == "will" ) then
-        -- Called when the scene is on screen (but is about to go off screen).
-        -- Insert code here to "pause" the scene.
-        -- Example: stop timers, stop animation, stop audio, etc.
-    elseif ( phase == "did" ) then
-        -- Called immediately after scene goes off screen.
-    end
+  if ( phase == "will" ) then
+  -- Called when the scene is on screen (but is about to go off screen).
+  -- Insert code here to "pause" the scene.
+  -- Example: stop timers, stop animation, stop audio, etc.
+  elseif ( phase == "did" ) then
+  -- Called immediately after scene goes off screen.
+  end
 end
 
 
 -- "scene:destroy()"
 function scene:destroy( event )
 
-    local sceneGroup = self.view
+  local sceneGroup = self.view
 
-    -- Called prior to the removal of scene's view ("sceneGroup").
-    -- Insert code here to clean up the scene.
-    -- Example: remove display objects, save state, etc.
+  -- Called prior to the removal of scene's view ("sceneGroup").
+  -- Insert code here to clean up the scene.
+  -- Example: remove display objects, save state, etc.
 end
 
 

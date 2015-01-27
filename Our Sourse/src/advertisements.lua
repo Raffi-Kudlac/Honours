@@ -1,10 +1,10 @@
 --[[
-    Purpose:
-        This file is an object for the different kinds of advertisements that the
-        user can purchase throughout the game to help influence the groups. 
+Purpose:
+This file is an object for the different kinds of advertisements that the
+user can purchase throughout the game to help influence the groups.
 ]]
 
- 
+
 local advertisements = {}
 local advertisements_mt = { __index = advertisements }  -- metatable
 
@@ -13,53 +13,53 @@ local advertisements_mt = { __index = advertisements }  -- metatable
 -------------------------------------------------
 
 function advertisements.new( nme, costToUse )  -- constructor
-    
+
   local newAdvertisement = {
     bought = false,
     name = nme,
     cost = costToUse,
     effect = ""
   }
-  
-  return setmetatable( newAdvertisement, advertisements_mt )
+
+return setmetatable( newAdvertisement, advertisements_mt )
 end
 
 function advertisements:getName( )
-    return self.name
+  return self.name
 end
 
 function advertisements:setEffect( information )
-      self.effect = information
+  self.effect = information
 end
 
 function advertisements:getEffect( )
-      return self.effect
+  return self.effect
 end
 
 function advertisements:getBought( )
-      return self.bought
+  return self.bought
 end
 
 function advertisements:setBought( status )
-      self.bought = status
+  self.bought = status
 end
 
 function advertisements:flipBought( )
 
-      if self.bought then
-        self.bought = false
-      else
-        self.bought = true
-      end
+  if self.bought then
+    self.bought = false
+  else
+    self.bought = true
+  end
 end
 
 function advertisements:getCost( )
-      return self.cost
+  return self.cost
 end
 
 function advertisements:setCost( costToUse )
-      self.cost = costToUse
+  self.cost = costToUse
 end
 
- 
+
 return advertisements

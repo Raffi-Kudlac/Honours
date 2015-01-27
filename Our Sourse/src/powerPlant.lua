@@ -1,10 +1,10 @@
 --[[
-    Purpose:
-        This file holds the static information about each type of power plant. All this files does is store information
-        to be assessed when needed. One instance of this object will exist for each type of power.
+Purpose:
+This file holds the static information about each type of power plant. All this files does is store information
+to be assessed when needed. One instance of this object will exist for each type of power.
 ]]
 
- 
+
 local powerPlant = {}
 local powerPlant_mt = { __index = powerPlant }  -- metatable
 
@@ -13,7 +13,7 @@ local powerPlant_mt = { __index = powerPlant }  -- metatable
 -------------------------------------------------
 
 function powerPlant.new(kind)  -- constructor
-    
+
   local newPowerPlant = {
     type        = kind,
     cost        = 0,      -- cost to build
@@ -23,39 +23,39 @@ function powerPlant.new(kind)  -- constructor
     cons        = "",
     maintenence = 0,      -- cost payed monthly to maintain
   }
-  
-  return setmetatable( newPowerPlant, powerPlant_mt )
+
+return setmetatable( newPowerPlant, powerPlant_mt )
 end
 
 
 function powerPlant:setMaintenenceCost(m)
-    self.maintenence = m
+  self.maintenence = m
 end
 
 function powerPlant:getMaintenenceCost()
-    return self.maintenence
+  return self.maintenence
 end
 
 function powerPlant:addMaintenenceCost(a)
-    self.maintenence = self.maintenence + a
+  self.maintenence = self.maintenence + a
 end
 
 function powerPlant:setCost(money)
 
-    self.cost = money
+  self.cost = money
 end
 
 
 function powerPlant:setPros(advantage)
 
-    self.pros = advantage    
+  self.pros = advantage
 end
 
 
 function powerPlant:setCons(disadvantage)
 
-    self.cons = disadvantage
-end 
+  self.cons = disadvantage
+end
 
 
 function powerPlant:setProduction(production)
@@ -66,44 +66,44 @@ end
 
 function powerPlant:setConsumption(c)
 
-    self.consumption = c
+  self.consumption = c
 end
 
 
 function powerPlant:getPros()
 
-    return self.pros
+  return self.pros
 end
 
 
 function powerPlant:getCons()
 
-    return self.cons
+  return self.cons
 end
- 
+
 
 function powerPlant:getCost()
 
-    return self.cost
+  return self.cost
 end
 
 
 function powerPlant:getProduces()
 
-    return self.produces    
+  return self.produces
 end
 
 
 function powerPlant:getType()
 
-    return self.type    
+  return self.type
 end
 
 
 function powerPlant:getConsumption()
 
-    return self.consumption    
+  return self.consumption
 end
 
- 
+
 return powerPlant
