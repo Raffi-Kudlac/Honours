@@ -28,7 +28,7 @@ local function buy(event, index)
     gv.advertisements[index]:flipBought()
 
     if gv.advertisements[index]:getBought() then
-      changeBoughtImage(index,"Images/static_screen/st_land.png")
+      changeBoughtImage(index,"Images/static_screen/st_purchased.png")
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end
