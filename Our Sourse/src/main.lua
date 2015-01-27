@@ -137,7 +137,7 @@ local function initalize()
   gv.screen = "city"
   gv.font = native.newFont( "Chunkfive Ex", 8 )--"Chunkfive Ex"--native.systemFontBold
   gv.fontSize = 10
-  gv.fontColourR = 0/255
+  gv.fontColourR = 255/255
   gv.fontColourG = 255/255
   gv.fontColourB = 255/255
   gv.resourseAmount = {}
@@ -477,7 +477,7 @@ local function buildScreenButtons()
       width       = circleWidth,
       height      = circleHeight,
       id          = "rs",
-      defaultFile = "Images/static_screen/st_ff.png",
+      defaultFile = "Images/static_screen/st_map.png",
       top         = buttonFactorY,
       left        = buttonFactorX,
       onEvent     = function() return goToScreen("resourseMap") end,
@@ -731,13 +731,14 @@ end
 local function buildToolBar()
 
   local TBwidth         = display.contentWidth*0.28
+  local TBheight        = TBwidth*0.17     
   local toolBarFactorX  = display.contentWidth-TBwidth
 
   -- Tool bar Background
   local TBBG = widget.newButton
     {
       width     = TBwidth,
-      height    = 85,
+      height    = TBheight,
       defaultFile = "Images/static_screen/st_dateControl.png",
       id        = "btnTB",
       left      = toolBarFactorX,
@@ -757,6 +758,19 @@ local function buildToolBar()
       top           = 2,
       left          = toolBarFactorX + 10
   }
+  
+  local timeBarWidth = TBwidth*0.57
+  local timeBarHeight = 30
+  
+  local timeBar = widget.newButton
+    {
+      width     = TBwidth,
+      height    = timeBarHeight,
+      defaultFile = "Images/static_screen/st_speedControl.png",      
+      left      = display.contentWidth - timeBarWidth,
+      top       = TBBG.y + TBheight/2,
+  }
+  
 
   -- the weather icon
   local weather = widget.newButton
@@ -789,6 +803,7 @@ local function buildToolBar()
   weather:setEnabled( false )
 
   gv.stage:insert( TBBG )
+  gv.stage:insert(timeBar)
   gv.stage:insert( timeLabel )
   gv.stage:insert( weather )
   gv.stage:insert( btnPausePlay )
