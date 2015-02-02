@@ -7,6 +7,7 @@ This screen is the menu screen currently only holding the play button.
 local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )
+local parse     = require ( "mod_parse")
 local scene     = composer.newScene()
 
 
@@ -19,37 +20,33 @@ local currentTotalMonths = (gv.year-2000)*12 + gv.month
 local tempMonths = 0
 local nameField = ""
 local submit = ""
+local congrats = 0
 local sceneGroup = ""
+local globalPositionValue = 0
 local winningData = {}
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function textListener()
+local function textListener( event )
 
   if (event.phase == "ended" or event.phase == "submitted") then
-    name = event.target.text
+    gv.submitionName = event.target.text
 
     if (name == nil ) then
-      name = "Player 1"
+      gv.submitionName = "Player 1"
     end
 
   end
 end
 
-local function back( event )
 
-  composer.gotoScene("menu")
-end
-
-local function newGame( event )
-
---    destoryAllScenes()
---    initalize()
---    composer.gotoScene("mining")
---    startingPower()
---    composer.gotoScene("city")
+local function goGlobal( event )
+     
+    if (event.phase == "began" ) then
+        composer.gotoScene("gameOverGlobalScores")
+    end 
 
 end
 
@@ -60,58 +57,202 @@ local function createText()
   local dataX = display.contentWidth*0.1
   local dataY = display.contentHeight*0.2
   local tempText = {}
-  local label = "Name \t\t Years \t\t Month \t\t Total BlackOut Months"
+  local labels = {}
+  local labelText = 0
+  local message = ""
+  
+  labels[1] = "Name"
+  labels[2] = "Years"
+  labels[3] = "Months"
+  labels[4] = "BlackOut Months"
+  
+  local function globalPosition( event )
+        
+      if not event.error then
+          local place = (#event.results) + 1
+          local prefix = ""
+          local spot = place % 10
+          
+          if spot == 1 then
+              
+              prefix = "st"          
+          elseif spot == 2 then
+          
+              prefix = "nd"
+          elseif spot == 3 then
+              
+              prefix = "rd"
+          else
+          
+              prefix = "th"
+          end
+          message = "Game Over: You came in " .. tostring(place) .. prefix .. " in the world" 
+          print("The global position valie is " .. place)
+          
+          local title = display.newText(message, startingX,
+            startingY, gv.font, gv.fontSize*2 )
+          --title.anchorX, title.anchorY = 0,0
+          title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  local title = display.newText("Game Over", startingX,
-    startingY, gv.font, gv.fontSize*2 )
-  --title.anchorX, title.anchorY = 0,0
-  title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-
-  sceneGroup:insert(title)
-
-  local labelText = display.newText(label, dataX, display.contentHeight*0.12, gv.font, gv.fontSize*2)
-
-
-  for x = 1, 5, 1 do
-
-    if(heighScoreData[x][0] ~= -1 ) then
-      message = heighScoreData[x][0] .."\t\t" .. heighScoreData[x][1] .. "\t\t" ..
-        heighScoreData[x][2] .. "\t\t" .. heighScoreData[x][3]
-      tempText[x] = display.newText(message, dataX,
-        dataY, gv.font, gv.fontSize*2 )
-      tempText[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-      sceneGroup:insert(tempText[x])
-      dataY = dataY + heightCalculator(0.1)
-    end
+          sceneGroup:insert(title)          
+      end                              
   end
+  
+  
+  local query = { 
+          ["where"] = {["totalTime"] = {["$gt"]= currentTotalMonths}},
+          ["order"] = "-totalTime,totalBlackoutTime",              
+        }
+  
+  parse:getObjects( "sample", query, globalPosition )
 
+    
+  -- Printing names
+  labelText = display.newText(labels[1], dataX,
+        dataY, gv.font, gv.fontSize*2 )        
+  labelText.anchorX, labelText.anchorY = 0,0        
+  labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
+  dataY = dataY +heightCalculator(0.05)
+        
+  sceneGroup:insert(labelText)      
+  
+  for k = 1, 5, 1 do
+      if ( heighScoreData[k][1] ~= -1) then
+          message = heighScoreData[k][1]
+          dataY = dataY + heightCalculator(0.1)
+          tempText[k] = display.newText(message, dataX,
+            dataY, gv.font, gv.fontSize*1.5 )
+          tempText[k].anchorX, tempText.anchorY = 0,0
+          tempText[k]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          sceneGroup:insert(tempText[k])
+       end    
+  end
+  
+  
+  -- Printing Years
+  dataX = dataX + widthCalculator(0.2)
+  dataY = display.contentHeight*0.2
+  
+  labelText = display.newText(labels[2], dataX,
+        dataY, gv.font, gv.fontSize*2 )        
+  labelText.anchorX, labelText.anchorY = 0,0        
+  labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
+  dataY = dataY +heightCalculator(0.05)
+        
+  sceneGroup:insert(labelText) 
+  dataX = dataX + labelText.width/2     
+  
+  for k = 1, 5, 1 do
+      if ( heighScoreData[k][2] ~= -1) then
+          message = heighScoreData[k][2]
+          dataY = dataY + heightCalculator(0.1)
+          tempText[k] = display.newText(message, dataX,
+            dataY, gv.font, gv.fontSize*1.5 )
+          tempText[k].anchorX, tempText.anchorY = 0.5,0
+          tempText[k]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          sceneGroup:insert(tempText[k])
+       end    
+  end
+  
+  
+  -- Printing Months
+  dataX = dataX + widthCalculator(0.2) - labelText.width/2
+  dataY = display.contentHeight*0.2
+  
+  labelText = display.newText(labels[3], dataX,
+        dataY, gv.font, gv.fontSize*2 )        
+  labelText.anchorX, labelText.anchorY = 0,0        
+  labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
+  dataY = dataY +heightCalculator(0.05)
+        
+  sceneGroup:insert(labelText)
+  dataX = dataX + labelText.width/2      
+  
+  for k = 1, 5, 1 do
+      if ( heighScoreData[k][3] ~= -1) then
+          message = heighScoreData[k][3]
+          dataY = dataY + heightCalculator(0.1)
+          tempText[k] = display.newText(message, dataX,
+            dataY, gv.font, gv.fontSize*1.5 )
+          tempText[k].anchorX, tempText.anchorY = 0.5,0
+          tempText[k]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          sceneGroup:insert(tempText[k])
+       end    
+  end
+  
+  
+  -- Printing BlackOut Months
+  dataX = dataX + widthCalculator(0.2) - labelText.width/2
+  dataY = display.contentHeight*0.2
+  
+  labelText = display.newText(labels[4], dataX,
+        dataY, gv.font, gv.fontSize*2 )        
+  labelText.anchorX, labelText.anchorY = 0,0        
+  labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
+  dataY = dataY +heightCalculator(0.05)
+        
+  sceneGroup:insert(labelText)
+  
+  dataX = dataX + labelText.width/2      
+  
+  for k = 1, 5, 1 do
+      if ( heighScoreData[k][4] ~= -1) then
+          message = heighScoreData[k][4]
+          dataY = dataY + heightCalculator(0.1)
+          tempText[k] = display.newText(message, dataX,
+            dataY, gv.font, gv.fontSize*1.5 )
+          tempText[k].anchorX, tempText.anchorY = 0.5,0
+          tempText[k]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          sceneGroup:insert(tempText[k])
+       end    
+  end
+  
+  local btnWidth = widthCalculator(0.2)
+  local btnHeight = heightCalculator(0.1)
+  local increaseHorizontalShift = 1.1 
+  
   local back = widget.newButton
     {
-      width     = 100,
-      height    = 100,
+      width     = btnWidth,
+      height    = btnHeight,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      left      = centerX(100) - widthCalculator(0.1),
+      left      = centerX(btnWidth) - btnWidth*increaseHorizontalShift,
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "Back",
-      onEvent   =   back,
+      onEvent   =   returnToMainMenu,
   }
 
   local newGame = widget.newButton
     {
-      width     = 100,
-      height    = 100,
+      width     = btnWidth,
+      height    = btnHeight,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      left      = centerX(100) + widthCalculator(0.1),
+      left      = centerX(btnWidth),
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "New Game",
       onEvent   =   newGame,
   }
+  
+  
+  local goGlobal = widget.newButton
+    {
+      width     = btnWidth,
+      height    = btnHeight,
+      shape     = "roundedRect",
+      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      left      = centerX(btnWidth) + btnWidth*increaseHorizontalShift,
+      top       = display.contentHeight - heightCalculator(0.1),
+      labelAlign = "center",
+      label     = "Go Global",
+      onEvent   =   goGlobal,
+  }
 
   sceneGroup:insert(back)
+  sceneGroup:insert(goGlobal)
   sceneGroup:insert(newGame)
   sceneGroup:insert(labelText)
 end
@@ -143,7 +284,7 @@ local function close( event )
 
   if(event.phase == "ended") then
 
-    local winningData = {name,winningYear, winningMonth, winningBlackoutCounter}
+    local winningData = {gv.submitionName,(gv.year-2000), gv.month, gv.blackoutLengthSum}
     table.insert(heighScoreData, position, winningData)
 
 
@@ -155,6 +296,7 @@ local function close( event )
     write()
     sceneGroup:remove(nameField)
     sceneGroup:remove(submit)
+    sceneGroup:remove(congrats)
     createText()
   end
 
@@ -162,19 +304,36 @@ end
 
 
 local function getNameFromUser()
+  
+  
+  local congratsText = "Contratulations, You have made a high Score. Please enter a name below"
+  local textFieldWidth = widthCalculator(0.2)
+  local textFieldHeight = heightCalculator(0.06)
 
-  nameField = native.newTextField( 100,50, centerX(100), centerY(50) )
+  nameField = native.newTextField( centerX(textFieldWidth),centerY(textFieldHeight),textFieldWidth ,textFieldHeight)
+  nameField.align = "center"
+  nameField.size = 28
+  nameField:setTextColor( 0, 0, 0 )
+  nameField.anchorX, nameField.anchorY = 0,0
   nameField:addEventListener( "userInput", textListener )
+  
+  
+  
+   congrats = display.newText(congratsText, nameField.x + nameField.width/2,
+            nameField.y - nameField.height, gv.font, gv.fontSize)
+  congrats:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  
+  sceneGroup:insert(congrats)
 
 
   submit = widget.newButton
     {
-      width     = 100,
-      height    = 100,
+      width     = textFieldWidth*0.9,
+      height    = nameField.height*1.1,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      left      = nameField.x,
-      top       = nameField.y + nameField.height*2,
+      left      = centerX(textFieldWidth*0.9),
+      top       = nameField.y + nameField.height*1.2,
       labelAlign = "center",
       label     = "Submit",
       onEvent   =   close,
@@ -254,7 +413,6 @@ function scene:create( event )
         getNameFromUser()
         break
       elseif ( tempMonths > currentTotalMonths ) then
-
         createText()
       end
     end

@@ -62,6 +62,15 @@ local function populationFunction(year)
 
 end
 
+
+function  returnToMainMenu( event )
+
+    if ( event.phase == "began" ) then
+        composer.gotoScene("menu")        
+    end
+
+end
+
 function widthCalculator(percent)
 
   return display.contentWidth*percent
@@ -128,7 +137,8 @@ local function initalize()
   gv.onCityScreen  = true
 
   gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
-
+  
+  gv.submitionName = ""
   gv.demandFactor  = 1.2
   gv.money = 10
   gv.moneyMadeFactor = 0.6
@@ -351,11 +361,27 @@ local function initalize()
   gv.advertisements[0]:setEffect("Educate the population to intelligently use power so they don't waste it."..
     "This add is useful if you are having trouble keeping up with demand and it makes the envirmentalists happy")
 
-  gv.advertisements[1] = adds.new( "Safe Nuclear Power", 3 )
+  gv.advertisements[1] = adds.new( "Safe Nuclear Power", 3 )  
+  gv.advertisements[1]:setEffect("Advertise to the population about the workings of nuclear power. Show them that " .. 
+    "although nuclear power can be dangerious, you have all the nessisary safety procations in place and that thier " .. 
+    "safety is your first priority")
+  
   gv.advertisements[2] = adds.new( "Pro Windmills", 2 )
+      gv.advertisements[2]:setEffect( "Are those anti-Windmillists causing trouble for you? Hire this add and it will " .. 
+      "them how lucky they are to have a eneregy generating machine in thier backyard")
+  
   gv.advertisements[3] = adds.new( "Pro Hydro", 3 )
+  gv.advertisements[3]:setEffect("Advertise what the world would be like without hydro power and all the perks it bring us. " ..
+   " Yeah some land gets a little wet but hey, fish have to live somewhere too right")
+  
   gv.advertisements[4] = adds.new( "Fossil Power", 2 )
+  gv.advertisements[4]:setEffect( "Yes fossil fueled power plants pollute the planet on massive scales and are no " .. 
+  "friend to wildlife but it's cheap and effective. You want the cost of energy to be 10 times what it is now. Thats " ..
+   "what it would be without fossil fuels")
+  
   gv.advertisements[5] = adds.new( "Public Appeal", 4 )
+  gv.advertisements[5]:setEffect("Is the population pissed at you? Are they complaining about your capability to provide power? " .. 
+    "I'll calm the public down and show them that creating energy is no easy task")
 
   gv.publicServises = {}
   gv.servisCounter = 8
@@ -390,6 +416,23 @@ local function initalize()
   gv.blackoutTimes = {}
 
 end
+
+
+
+function newGame( event )
+
+    if (event.phase == "began" ) then
+    
+        composer.gotoScene("menu")
+        composer.removeHidden()    
+        initalize()    
+        composer.gotoScene("mining")
+        startingPower()
+        composer.gotoScene("city")
+    end
+
+end
+
 
 
 function pause()

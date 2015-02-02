@@ -67,6 +67,7 @@ secondsTimer = 0
 foundResourses = 0
 -- an array holding text that will be displayed if a public servise passes
 publicServisText = 0
+submitionName = ""
 
 local g       = {}
 return g

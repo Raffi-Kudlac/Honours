@@ -7,6 +7,7 @@ This screen is the menu screen currently only holding the play button.
 local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )
+local parse     = require ( "mod_parse")
 local scene     = composer.newScene()
 
 -------------------------------------------------
@@ -16,9 +17,13 @@ local scene     = composer.newScene()
 local function play( event )
 
   if ( "ended" == event.phase ) then
-    composer.gotoScene("mining")
-    startingPower()
-    composer.gotoScene("city")
+    --composer.gotoScene("mining")
+    --startingPower()
+    --composer.gotoScene("city")
+    gv.year = 2018
+    gv.month = 8
+    gv.blackoutLengthSum = 6
+    composer.gotoScene("gameOver")
   end
 end
 
@@ -47,6 +52,31 @@ function scene:create( event )
 
 
   sceneGroup:insert(btnPlay)
+  
+  
+  local function onSample( event )
+      
+      --print("The count is: " .. #event.results)
+      
+      print("Index\tTotalTime")      
+      for i = 1,#event.results,1  do
+          print(i .. "\t\t" .. event.results[i].totalTime)
+      end
+        
+      --print( " Harry's year record is: " .. event.results[1].year )
+  end
+
+local queryTable3 = { 
+    ["where"] = {["totalTime"] = {["$gt"]= 250}},
+    ["order"] = "-totalTime",    
+    ["limit"] = 20,            
+  }
+  
+  --parse:getObjects( "sample", queryTable3, onSample )
+  
+--  local data = { ["name"] = "joe",["year"] = 5, ["month"]=12, ["totalBlackoutTime"]=3} 
+--  parse:createObject( "sample", data, onCreateObject )  
+--  print("Should have been pushed")
 end
 
 
@@ -55,6 +85,7 @@ function scene:show( event )
 
   local sceneGroup = self.view
   local phase = event.phase
+  composer.removeHidden()
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).

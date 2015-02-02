@@ -82,8 +82,12 @@ end
 
 function changeBoughtImage( index, image )
 
-  local temp = boughtButton[index]
-  scrollView:remove(boughtButton[index])
+  local tempx = boughtButton[index].x
+  local tempy = boughtButton[index].y
+  
+  --scrollView:remove(boughtButton[index])
+  
+  boughtButton[index]:removeSelf()
 
   boughtButton[index] = widget.newButton
     {
@@ -95,8 +99,8 @@ function changeBoughtImage( index, image )
       onEvent   =   function(event) buy(event, index + 0) end
   }
 
-  boughtButton[index].x       = temp.x
-  boughtButton[index].y       = temp.y
+  boughtButton[index].x       = tempx
+  boughtButton[index].y       = tempy
 
   --scrollView:insert(location+2,boughtButton[index])
   scrollView:insert(boughtButton[index])

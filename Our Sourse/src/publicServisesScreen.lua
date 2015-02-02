@@ -39,8 +39,8 @@ end
 
 function changeBoughtImage( index, image )
 
-  local temp = boughtButton[index]
-  scrollView:remove(boughtButton[index])
+  local temp = boughtButton[index]  
+  boughtButton[index]:removeSelf()
 
   boughtButton[index] = widget.newButton
     {
