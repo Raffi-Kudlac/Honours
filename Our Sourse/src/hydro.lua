@@ -80,11 +80,11 @@ function scene:create( event )
   streams[0].maskY = streams[0].height/2
 
 
-  bg:setMask( mask )
-  bg.maskScaleX = 0.5 
-  bg.maskScaleY = 0.5
-  bg.maskX = 0
-  bg.maskY = 0
+--  bg:setMask( mask )
+--  bg.maskScaleX = xScale 
+--  bg.maskScaleY = yScale
+--  bg.maskX = 0
+--  bg.maskY = 0
   
   
     sceneGroup:insert(bg)
