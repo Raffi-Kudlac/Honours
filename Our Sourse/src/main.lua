@@ -30,6 +30,26 @@ local publicServises  = require( "publicServises" )
 require( "mining" )
 require( "naturalOptions" )
 
+local stcBG
+local btnBNS
+local btnCY
+local btnPP
+local btnLND
+local btnRS
+local btnPausePlay
+local btnMenu
+local MB
+local dataBar
+local dataBox1
+local dataBox2
+local dataBox3
+local TBBG
+local timeBar
+local timeLabel
+local weather
+local btnPausePlay
+    
+
 local startBlackoutTimeYear = 0
 local startBlackoutTimeMonth = 0
 local isPaused = false
@@ -62,12 +82,28 @@ local function populationFunction(year)
 
 end
 
+local function removeStage()
+    
 
-function  returnToMainMenu( event )
-
-    if ( event.phase == "began" ) then
-        composer.gotoScene("menu")        
-    end
+    gv.stage:remove( stcBG )
+    gv.stage:remove(btnBNS)
+    gv.stage:remove(btnCY)
+    gv.stage:remove(btnPP)
+    gv.stage:remove(btnLND)
+    gv.stage:remove(btnRS)
+    gv.stage:remove(btnPausePlay)
+    gv.stage:remove( btnMenu )
+    gv.stage:remove( MB )
+    gv.stage:remove( dataBar )
+    gv.stage:remove( dataBox1)
+    gv.stage:remove( dataBox2)
+    gv.stage:remove( dataBox3)
+    
+    gv.stage:remove( TBBG )
+    gv.stage:remove(timeBar)
+    gv.stage:remove( timeLabel )
+    gv.stage:remove( weather )
+    gv.stage:remove( btnPausePlay )
 
 end
 
@@ -125,6 +161,7 @@ end
 -- Initalizing the global variables
 local function initalize()
 
+  monthCounter = 1
   gv.monthTimer    = 0
   gv.secondsTimer  = 0
   gv.stage         = display.getCurrentStage()
@@ -419,21 +456,37 @@ end
 
 
 
+function  returnToMainMenu( event )
+
+    if ( event.phase == "ended" ) then
+        
+        composer.gotoScene("menu")       
+        composer.removeHidden()
+        removeStage()
+        cancelTimers()
+        initalize()                 
+        composer.removeScene("mining")
+    end
+end
+
 function newGame( event )
 
-    if (event.phase == "began" ) then
-    
-        composer.gotoScene("menu")
-        composer.removeHidden()    
-        initalize()    
-        composer.gotoScene("mining")
+    if (event.phase == "ended" ) then
+            
+        returnToMainMenu( event )        
+        composer.gotoScene("mining")    
         startingPower()
         composer.gotoScene("city")
     end
 
 end
 
+function cancelTimers()
 
+  timer.cancel(gv.monthTimer)
+  timer.cancel(gv.secondsTimer)
+
+end
 
 function pause()
   timer.pause(gv.monthTimer)
@@ -493,7 +546,7 @@ local function buildStaticBG()
   h = 120
   w = 175
 
-  local stcBG = widget.newButton
+  stcBG = widget.newButton
     {
       width       = w,
       height      = h,
@@ -515,7 +568,7 @@ local function buildScreenButtons()
   local buttonFactorX = 5
 
   -- this is the resourse screen button
-  local btnRS = widget.newButton
+  btnRS = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -530,7 +583,7 @@ local function buildScreenButtons()
   buttonFactorX = buttonFactorX + 35
 
   --This is the Land screen button
-  local btnLND = widget.newButton
+  btnLND = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -545,7 +598,7 @@ local function buildScreenButtons()
   buttonFactorX = buttonFactorX + 35
 
   --This is the power plant screen button
-  local btnPP = widget.newButton
+  btnPP = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -560,7 +613,7 @@ local function buildScreenButtons()
   buttonFactorX = buttonFactorX + 30
 
   --This is the city screen button
-  local btnCY = widget.newButton
+  btnCY = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -575,7 +628,7 @@ local function buildScreenButtons()
   buttonFactorX = buttonFactorX + 25
 
   --This is the busness screen button
-  local btnBNS = widget.newButton
+  btnBNS = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -646,7 +699,7 @@ local function buildMenu()
 
   local menuFactorY = display.contentHeight - h + 55
 
-  local btnMenu = widget.newButton
+  btnMenu = widget.newButton
     {
       width     = 75,
       height    = 30,
@@ -703,7 +756,7 @@ local function buildDataBar()
   local dataBoxWidth = ((dataBarX/3) - 20)
   local dataBoxHeightPos = 17
 
-  local dataBar = widget.newButton
+  dataBar = widget.newButton
     {
       width     = dataBarX,
       height    = 30,
@@ -778,7 +831,7 @@ local function buildToolBar()
   local toolBarFactorX  = display.contentWidth-TBwidth
 
   -- Tool bar Background
-  local TBBG = widget.newButton
+  TBBG = widget.newButton
     {
       width     = TBwidth,
       height    = TBheight,
@@ -805,7 +858,7 @@ local function buildToolBar()
   local timeBarWidth = TBwidth*0.57
   local timeBarHeight = 30
   
-  local timeBar = widget.newButton
+  timeBar = widget.newButton
     {
       width     = TBwidth,
       height    = timeBarHeight,
@@ -816,7 +869,7 @@ local function buildToolBar()
   
 
   -- the weather icon
-  local weather = widget.newButton
+  weather = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
@@ -965,7 +1018,7 @@ local function docResources()
 end
 
 
-function buildStaticScreen()
+function buildStaticScreen() 
   gv.stage = display.getCurrentStage()
   buildStaticBG()
   buildScreenButtons()
@@ -1260,6 +1313,7 @@ end
 
 local function gameOver()
 
+  removeStage()
   composer.gotoScene("gameOver")
 
 end

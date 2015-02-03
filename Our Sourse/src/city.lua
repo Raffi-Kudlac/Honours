@@ -96,6 +96,7 @@ function scene:create( event )
   sceneGroup:insert(bg)
   sceneGroup:insert(scale)
   sceneGroup:insert(scaleOverlay)
+  print("The number of elements in stage is " .. #gv.stage)
 end
 
 -- "scene:show()"

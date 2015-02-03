@@ -428,6 +428,7 @@ function scene:create( event )
   buildStaticScreen()
   timeStart()
 
+  print("create got ran in mining")
   sceneGroup = self.view
   local empty = 5
   local full = 24 - empty

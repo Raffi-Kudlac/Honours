@@ -9,7 +9,6 @@ local gv        = require( "global" )
 local widget    = require( "widget" )
 local scene     = composer.newScene()
 local BG
-local sizeConstant = 280
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
@@ -32,56 +31,63 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
-  local verticalShift = 40
+  local boxWidth = widthCalculator(0.25)
+  local boxHeight = heightCalculator(0.7)
+  local btnWidth = boxWidth*0.8
+  local btnHeight = boxHeight*0.2
+  
 
   BG = widget.newButton
     {
-      width       = sizeConstant -20,
-      height      = sizeConstant -10,
-      defaultFile = "Images/land_screen/lnd_buildOverlay.png",
+      width       = boxWidth,
+      height      = boxHeight,
+      defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
-      left        = centerX(sizeConstant),
-      top         = centerY(sizeConstant),
+      left        = centerX(boxWidth),
+      top         = centerY(boxHeight),
   }
 
+  local verticalShift = BG.height*0.2
 
   local btnNewGame = widget.newButton
     {
-      width     = 100,
-      height    = 50,
+      width     = btnWidth,
+      height    = btnHeight,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "btnPlay",
       label     = "New Game",
-      left      = BG.x - 50,
-      top       = BG.y - BG.height/3,
-  --onEvent   = newGame -- to be made later responcible for restarting the game
+      left      = BG.x - BG.width/2 + BG.width*0.1,
+      top       = BG.y - BG.height/2 + BG.height*0.1,
+      onEvent   = newGame, 
   }
   btnNewGame.anchorx, btnNewGame.anchory = 0,0
 
 
   local btnQuit = widget.newButton
     {
-      width     = 100,
-      height    = 50,
+      width     = btnWidth,
+      height    = btnHeight,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "btnPlay",
       label     = "Quit",
-      left      = BG.x - 50,
+      left      = btnNewGame.x - btnWidth/2,
       top       = btnNewGame.y + verticalShift,
-  --onEvent = quit -- to be made later responcible for ending the game
+      onEvent   = returnToMainMenu, 
   }
+  
+  btnQuit.anchorx, btnQuit.anchory = 0,0
 
   local btnResume = widget.newButton
     {
-      width     = 100,
-      height    = 50,
+      width     = btnWidth,
+      height    = btnHeight,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "btnPlay",
       label     = "Resume",
-      left      = BG.x - 50,
+      left      = btnNewGame.x - btnWidth/2,
       top       = btnQuit.y + verticalShift,
       onEvent   = resumePlay,
   }

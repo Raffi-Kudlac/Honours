@@ -188,8 +188,7 @@ end
 
 function convertButton(path,location,type, ppType)
 
-  local temp = tiles[location]
-  local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+  local temp = tiles[location]  
   sceneGroup:remove(tiles[location])
 
   tiles[location] = widget.newButton
@@ -209,8 +208,20 @@ function convertButton(path,location,type, ppType)
   tiles[location].x       = temp.x
   tiles[location].y       = temp.y
   tiles[location].tile    = landTile.new(type, ppType)
-
-  tiles[location]:setMask( mask )
+  
+  if (type == "forest") then
+      local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+      local xScale = tiles[location].width/512
+      local yScale = tiles[location].height/512
+      
+      tiles[location]:setMask( mask )
+      
+      tiles[location].maskScaleX = xScale
+      tiles[location].maskScaleY = yScale
+      tiles[location].maskX = tiles[location].width/2  
+      tiles[location].maskY = tiles[location].height/2  
+  end
+  
   sceneGroup:insert(location+2,tiles[location])
   setDataLabels()
 end

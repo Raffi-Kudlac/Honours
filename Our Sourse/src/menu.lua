@@ -16,14 +16,15 @@ local scene     = composer.newScene()
 
 local function play( event )
 
-  if ( "ended" == event.phase ) then
-    --composer.gotoScene("mining")
-    --startingPower()
-    --composer.gotoScene("city")
-    gv.year = 2018
-    gv.month = 8
-    gv.blackoutLengthSum = 6
-    composer.gotoScene("gameOver")
+  if ( "ended" == event.phase ) then       
+    composer.gotoScene("mining")    
+    startingPower()
+    composer.gotoScene("city")
+    
+--    gv.year = 2018
+--    gv.month = 8
+--    gv.blackoutLengthSum = 6
+--    composer.gotoScene("gameOver")
   end
 end
 
@@ -49,34 +50,59 @@ function scene:create( event )
       top       = centerY(50),
       onEvent   = play
   }
-
-
-  sceneGroup:insert(btnPlay)
   
   
-  local function onSample( event )
+    
+--    local myRectangle = display.newRect( 300, 
+--    150, display.contentWidth, display.contentHeight )
+--    myRectangle.strokeWidth = 1
+--    myRectangle:setFillColor( 1 )
+--    myRectangle:setStrokeColor( 1, 0, 0 )
+    
+--    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+--    
+--    local btnPlay = widget.newButton
+--        {
+--          width       = 120,
+--          height      = 120,
+--          defaultFile = "Images/land_screen/lnd_tile_forest.png",
+--          id          = "openLand",
+--          left        = centerX(120),
+--          top         = centerY(120),
+--          onEvent = play,          
+--      }
+--      btnPlay.anchorX, btnPlay.anchorY = 0,0      
+--      local xScale = btnPlay.width/512
+--      local yScale = btnPlay.height/512
+--      
+--      btnPlay:setMask( mask )
+--      --myRectangle:setMask(mask)
+--      
+--      
+--      
+----      myRectangle.maskScaleX = 0.5
+----      myRectangle.maskScaleY = 0.5
+--
+--      btnPlay.maskScaleX = xScale
+--      btnPlay.maskScaleY = yScale
+------      
+--      btnPlay.maskX = btnPlay.width/2  
+--      btnPlay.maskY = btnPlay.height/2
+------      
+--      
+--      print("The masks x is " .. btnPlay.maskX)
+--      print("The masks y is " .. btnPlay.maskY)
+--      print("The masks xscale is " .. btnPlay.maskScaleX)
+--      print("The masks yscale is " .. btnPlay.maskScaleY)
+--      
+
+
+
+  
+  
       
-      --print("The count is: " .. #event.results)
-      
-      print("Index\tTotalTime")      
-      for i = 1,#event.results,1  do
-          print(i .. "\t\t" .. event.results[i].totalTime)
-      end
-        
-      --print( " Harry's year record is: " .. event.results[1].year )
-  end
-
-local queryTable3 = { 
-    ["where"] = {["totalTime"] = {["$gt"]= 250}},
-    ["order"] = "-totalTime",    
-    ["limit"] = 20,            
-  }
-  
-  --parse:getObjects( "sample", queryTable3, onSample )
-  
---  local data = { ["name"] = "joe",["year"] = 5, ["month"]=12, ["totalBlackoutTime"]=3} 
---  parse:createObject( "sample", data, onCreateObject )  
---  print("Should have been pushed")
+      --sceneGroup:insert(myRectangle)
+      sceneGroup:insert(btnPlay)
 end
 
 
