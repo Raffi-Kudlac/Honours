@@ -46,36 +46,79 @@ function scene:create( event )
 
   local sceneGroup = self.view
 
+  local bg = display.newImage("Images/hydro_screen/hy_screen_bg.png")
+  bg.anchorX, bg.anchorY = 0,0
+
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+
+  bg.x = 0
+  bg.y = 0
+  
+  -- river 1
+  
   streams[0] = widget.newButton
-    {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      id        = "btnRiver1",
-      label     = "River1",
-      left      = centerX(100) - 100,
-      top       = centerY(50),
-      onEvent   = function(event) return dam(0,event) end,
+  {
+      width = display.contentWidth,
+      height = display.contentHeight,
+      left = 0,
+      top = 0,
+      defaultFile = "Images/hydro_screen/hy_screen_river1.png"
   }
+  streams[0].anchorY, streams[0].anchorX = 0,0
+  streams[0].x = 0
+  streams[0].y = 0
+  
+  local mask = graphics.newMask( "Images/hydro_screen/hy_screen_river1_mask.png" )
+  local xScale = streams[0].width/2400
+  local yScale = streams[0].height/1600
+  
+  streams[0]:setMask( mask )
+  streams[0].maskScaleX = xScale
+  streams[0].maskScaleY = yScale
+  streams[0].maskX = streams[0].width/2
+  streams[0].maskY = streams[0].height/2
 
-  streams[0].river =  gv.rivers[0]
 
-  streams[1] = widget.newButton
-    {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      id        = "btnRiver2",
-      label     = "River2",
-      left      = centerX(100) + 50,
-      top       = centerY(50),
-      onEvent   = function(event) return dam(1,event) end,
-  }
-
-  streams[1].river = gv.rivers[1]
-
+  bg:setMask( mask )
+  bg.maskScaleX = 0.5 
+  bg.maskScaleY = 0.5
+  bg.maskX = 0
+  bg.maskY = 0
+  
+  
+    sceneGroup:insert(bg)
   sceneGroup:insert(streams[0])
-  sceneGroup:insert(streams[1])
+--  sceneGroup:insert(streams[1])
+
+--  streams[0] = widget.newButton
+--    {
+--      width     = 100,
+--      height    = 50,
+--      shape     = "roundedRect",
+--      id        = "btnRiver1",
+--      label     = "River1",
+--      left      = centerX(100) - 100,
+--      top       = centerY(50),
+--      onEvent   = function(event) return dam(0,event) end,
+--  }
+--
+--  streams[0].river =  gv.rivers[0]
+--
+--  streams[1] = widget.newButton
+--    {
+--      width     = 100,
+--      height    = 50,
+--      shape     = "roundedRect",
+--      id        = "btnRiver2",
+--      label     = "River2",
+--      left      = centerX(100) + 50,
+--      top       = centerY(50),
+--      onEvent   = function(event) return dam(1,event) end,
+--  }
+--
+--  streams[1].river = gv.rivers[1]
+
 end
 
 
