@@ -78,7 +78,40 @@ function scene:create( event )
   streams[0].maskScaleY = yScale
   streams[0].maskX = streams[0].width/2
   streams[0].maskY = streams[0].height/2
-
+  
+  streams[0].river =  gv.rivers[0]
+  -- river 2
+  
+  
+  streams[1] = widget.newButton
+  {
+      width = display.contentWidth,
+      height = display.contentHeight,
+      left = 0,
+      top = 0,
+      defaultFile = "Images/hydro_screen/hy_screen_river2.png"
+  }
+  streams[1].anchorY, streams[1].anchorX = 0,0
+  streams[1].x = 0
+  streams[1].y = 0
+  
+  local mask = graphics.newMask( "Images/hydro_screen/hy_screen_river2_mask.png" )
+  local xScale = streams[1].width/2400
+  local yScale = streams[1].height/1600
+  
+  streams[1]:setMask( mask )
+  streams[1].maskScaleX = xScale
+  streams[1].maskScaleY = yScale
+  streams[1].maskX = streams[1].width/2
+  streams[1].maskY = streams[1].height/2
+  
+  streams[1].river = gv.rivers[1]
+  
+  sceneGroup:insert(bg)
+  sceneGroup:insert(streams[0])
+  sceneGroup:insert(streams[1])
+  
+  
 
 --  bg:setMask( mask )
 --  bg.maskScaleX = xScale 
@@ -87,7 +120,7 @@ function scene:create( event )
 --  bg.maskY = 0
   
   
-    sceneGroup:insert(bg)
+  sceneGroup:insert(bg)
   sceneGroup:insert(streams[0])
 --  sceneGroup:insert(streams[1])
 
