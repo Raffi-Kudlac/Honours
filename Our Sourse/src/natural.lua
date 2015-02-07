@@ -157,9 +157,6 @@ function scene:create( event )
   grid:scale(1.2,1.2)
   sceneGroup:insert(grid)
   buildTiles()
-  setDataLabels()
-
-
   -- Initialize the scene here.
   -- Example: add display objects to "sceneGroup", add touch listeners, etc.
 end
@@ -173,6 +170,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+    setDataLabels()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

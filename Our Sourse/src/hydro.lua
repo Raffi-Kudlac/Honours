@@ -10,10 +10,58 @@ local widget    = require( "widget" )
 local gv        = require( "global" )
 local scene     = composer.newScene()
 local streams   = {}
+local sceneGroup
+
+local damnedRivers = {}
+
+damnedRivers[0] = 0
+damnedRivers[1] = 0
+damnedRivers[2] = 0
+damnedRivers[3] = 0
+damnedRivers[4] = 0
+damnedRivers[5] = 0
+
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
+
+local function setDataLabels()
+
+    local totalPower = 0
+    local areaDestroyed = 0
+    local totalMaintenence = 0
+    local status  = 0
+    
+    for x = 0, 5, 1 do
+    
+        if (gv.rivers[x]:getBuilt()) then        
+            totalPower = totalPower + gv.rivers[x]:getPowerGenerated()
+            areaDestroyed = areaDestroyed + gv.rivers[x]getAD()
+            totalMaintenence = totalMaintenence + gv.rivers[x]:getMainteneceCost() 
+        end    
+    end
+    
+    status = gv.groups[0]:getNumberStatus()
+    
+    if (status < 0 and status >= -5 ) then
+        status = "Displeased"
+    elseif (status < -5 ) then
+        status = "Mad"
+    elseif (status > 0 and status <= 5 ) then
+        status = "Pleased"
+    elseif (status > 5) then
+        status = "Happy"
+    elseif (status == 0 ) then
+        status = "Neutral"
+    end
+    
+    setDataBox("Hydro Power", totalPower.. " GW", 1)
+    setDataBox("Area Destroyed", areaDestroyed, 2)
+    setDataBox("Maintence Cost",totalMaintenence, 3)
+
+end
+
 
 local function dam(riverSelected,event)
 
@@ -32,8 +80,26 @@ end
 
 function changeImage()
 
-  streams[gv.riverSelected]:setLabel("damed")
-
+  --streams[gv.riverSelected]:setLabel("damed")
+  
+--  local temp = streams[gv.riverSelected]  
+--  sceneGroup:remove(streams[gv.riverSelected])
+--
+--  streams[gv.riverSelected] = widget.newButton
+--    {      
+--      width = display.contentWidth,
+--      height = display.contentHeight,
+--      left = 0,
+--      top = 0,
+--      defaultFile = damnedRivers[gv.riverSelected],      
+--  }
+--
+--  streams[gv.riverSelected].anchorY, streams[gv.riverSelected].anchorX = 0,0
+--  streams[gv.riverSelected].x = 0
+--  streams[gv.riverSelected].y = 0
+--  streams[gv.riverSelected].river  = gv.rivers[gv.riverSelected]
+-- 
+--  sceneGroup:insert(streams[gv.riverSelected])
 end
 
 
@@ -44,7 +110,7 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-  local sceneGroup = self.view
+  sceneGroup = self.view
 
   local bg = display.newImage("Images/hydro_screen/hy_screen_bg.png")
   bg.anchorX, bg.anchorY = 0,0
@@ -55,62 +121,54 @@ function scene:create( event )
   bg.x = 0
   bg.y = 0
   
-  -- river 1
   
-  streams[0] = widget.newButton
-  {
-      width = display.contentWidth,
-      height = display.contentHeight,
-      left = 0,
-      top = 0,
-      defaultFile = "Images/hydro_screen/hy_screen_river1.png"
-  }
-  streams[0].anchorY, streams[0].anchorX = 0,0
-  streams[0].x = 0
-  streams[0].y = 0
+  sceneGroup:insert(bg)  
+  local defaultFileArray = {}
+  defaultFileArray[0] = "Images/hydro_screen/hy_screen_river1.png"
+  defaultFileArray[1] = "Images/hydro_screen/hy_screen_river2.png"  
+  defaultFileArray[2] = "Images/hydro_screen/hy_screen_river3.png"
+  defaultFileArray[3] = "Images/hydro_screen/hy_screen_river4.png"
+  defaultFileArray[4] = "Images/hydro_screen/hy_screen_river5.png"
+  defaultFileArray[5] = "Images/hydro_screen/hy_screen_river6.png"
   
-  local mask = graphics.newMask( "Images/hydro_screen/hy_screen_river1_mask.png" )
-  local xScale = streams[0].width/2400
-  local yScale = streams[0].height/1600
+  local maskFileArray = {}
+  maskFileArray[0] = "Images/hydro_screen/hy_screen_river1_mask.png"
+  maskFileArray[1] = "Images/hydro_screen/hy_screen_river2_mask.png"
+  maskFileArray[2] = "Images/hydro_screen/hy_screen_river3_mask.png"
+  maskFileArray[3] = "Images/hydro_screen/hy_screen_river4_mask.png"
+  maskFileArray[4] = "Images/hydro_screen/hy_screen_river5_mask.png"
+  maskFileArray[5] = "Images/hydro_screen/hy_screen_river6_mask.png"
+    
   
-  streams[0]:setMask( mask )
-  streams[0].maskScaleX = xScale
-  streams[0].maskScaleY = yScale
-  streams[0].maskX = streams[0].width/2
-  streams[0].maskY = streams[0].height/2
-  
-  streams[0].river =  gv.rivers[0]
-  -- river 2
-  
-  
-  streams[1] = widget.newButton
-  {
-      width = display.contentWidth,
-      height = display.contentHeight,
-      left = 0,
-      top = 0,
-      defaultFile = "Images/hydro_screen/hy_screen_river2.png"
-  }
-  streams[1].anchorY, streams[1].anchorX = 0,0
-  streams[1].x = 0
-  streams[1].y = 0
-  
-  local mask = graphics.newMask( "Images/hydro_screen/hy_screen_river2_mask.png" )
-  local xScale = streams[1].width/2400
-  local yScale = streams[1].height/1600
-  
-  streams[1]:setMask( mask )
-  streams[1].maskScaleX = xScale
-  streams[1].maskScaleY = yScale
-  streams[1].maskX = streams[1].width/2
-  streams[1].maskY = streams[1].height/2
-  
-  streams[1].river = gv.rivers[1]
-  
-  sceneGroup:insert(bg)
-  sceneGroup:insert(streams[0])
-  sceneGroup:insert(streams[1])
-  
+  for x = 0, 5, 1 do 
+   
+      streams[x] = widget.newButton
+      {
+          width = display.contentWidth,
+          height = display.contentHeight,
+          left = 0,
+          top = 0,
+          defaultFile = defaultFileArray[x],
+          onEvent   = function(event) return dam(x + 0,event) end,
+          
+      }
+      streams[x].anchorY, streams[x].anchorX = 0,0
+      streams[x].x = 0
+      streams[x].y = 0
+      
+      local mask = graphics.newMask( maskFileArray[x] )
+      local xScale = streams[x].width/2400
+      local yScale = streams[x].height/1600
+      
+      streams[x]:setMask( mask )
+      streams[x].maskScaleX = xScale
+      streams[x].maskScaleY = yScale
+      streams[x].maskX = streams[x].width/2
+      streams[x].maskY = streams[x].height/2
+      
+      streams[x].river =  gv.rivers[x]
+      sceneGroup:insert(streams[x])
+  end
   
 
 --  bg:setMask( mask )
@@ -118,11 +176,6 @@ function scene:create( event )
 --  bg.maskScaleY = yScale
 --  bg.maskX = 0
 --  bg.maskY = 0
-  
-  
-  sceneGroup:insert(bg)
-  sceneGroup:insert(streams[0])
---  sceneGroup:insert(streams[1])
 
 --  streams[0] = widget.newButton
 --    {
@@ -163,6 +216,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      setDataLabels()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

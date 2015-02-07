@@ -12,8 +12,10 @@ local uraniumText     = widget
 local tilesExisting   = 24
 local foundEmpties    = 0
 local grid            = {}
+local switch = false
 local scene           = composer.newScene()
 local sceneGroup      = 0
+local miningTimer
 
 
 -------------------------------------------------
@@ -113,18 +115,29 @@ end
 
 local function setText()
 
-  oilText:setLabel("Oil: "..tostring(gv.resourseAmount[0]).."/"..tostring(totalResourses[4]))
-  gasText:setLabel("Gas: "..tostring(gv.resourseAmount[1]).."/"..tostring(totalResourses[5]))
-  coalText:setLabel("Coal: "..tostring(gv.resourseAmount[2]).."/"..tostring(totalResourses[6]))
-  uraniumText:setLabel("Uranium: "..tostring(gv.resourseAmount[3]).."/"..tostring(totalResourses[7]))
+--  oilText:setLabel("Oil: "..tostring(gv.resourseAmount[0]).."/"..tostring(totalResourses[4]))
+--  gasText:setLabel("Gas: "..tostring(gv.resourseAmount[1]).."/"..tostring(totalResourses[5]))
+--  coalText:setLabel("Coal: "..tostring(gv.resourseAmount[2]).."/"..tostring(totalResourses[6]))
+--  uraniumText:setLabel("Uranium: "..tostring(gv.resourseAmount[3]).."/"..tostring(totalResourses[7]))
+--  local tilesMined = numberOfTilesMined()
+    
+      if (switch) then
+          setDataBox("Coal Mined", gv.resourseAmount[2], 1)
+          setDataBox("Gas Mined", gv.resourseAmount[1], 2)
+          setDataBox("Oil Mined", gv.resourseAmount[0], 3)
+          switch = false
+      else
+          setDataBox("Uranium Mined", gv.resourseAmount[3], 1)
+          setDataBox("Gas Mined", gv.resourseAmount[1], 2)
+          setDataBox("Oil Mined", gv.resourseAmount[0], 3)
+          switch = true
+      end  
 
 
-  local tilesMined = numberOfTilesMined()
-
-  setDataBox("Areas Mined", tilesMined, 1)
-  setDataBox("Cells Remaining", tilesExisting - tilesMined, 2)
-  setDataBox("Empty Cells found", foundEmpties, 3)
-
+  for x = 1, 3, 1 do
+      print("The resource amount for " .. x .. "is " .. tostring(gv.resourseAmount[x]))
+  end
+  
 end
 
 
@@ -359,65 +372,6 @@ function changeCell()
 end
 
 
-local function setData()
-
-  local posHeight = 10
-  local width = display.contentWidth*0.13
-  local height = 20
-  local gap = 5
-  oilText = widget.newButton
-    {
-      width = width,
-      height = height,
-      top = posHeight,
-      left = 0,
-      shape = "rect",
-      label = " Oil: 0/50",
-      isEnabled = false,
-  }
-
-  gasText = widget.newButton
-    {
-      width = width + 10,
-      height = height,
-      top = posHeight,
-      left = oilText.x + oilText.width/2 + gap,
-      shape = "rect",
-      label = " Gas: 0/50",
-      isEnabled = false,
-  }
-
-  coalText = widget.newButton
-    {
-      width = width + 20,
-      height = height,
-      top = posHeight,
-      left =  gasText.x + gasText.width/2 + gap,
-      shape = "rect",
-      label = " Coal: 0/50",
-      isEnabled = false,
-  }
-
-  uraniumText = widget.newButton
-    {
-      width = width + 40,
-      height = height,
-      top = posHeight,
-      left = coalText.x + coalText.width/2 + gap,
-      shape = "rect",
-      label = "Uranium: 0/50",
-      isEnabled = false,
-  }
-
-  sceneGroup:insert(oilText)
-  sceneGroup:insert(gasText)
-  sceneGroup:insert(coalText)
-  sceneGroup:insert(uraniumText)
-
-
-end
-
-
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
 -------------------------------------------------
@@ -433,10 +387,10 @@ function scene:create( event )
   local empty = 5
   local full = 24 - empty
   local numberToBePopulated = 0
-  totalResourses[0] = 300   -- oil
-  totalResourses[1] = 400   -- gas
-  totalResourses[2] = 600   -- coal
-  totalResourses[3] = 550   -- uranium
+  totalResourses[0] = math.random(250,400)--300   -- oil
+  totalResourses[1] = math.random(300,500)--400   -- gas
+  totalResourses[2] = math.random(500,700)--600   -- coal
+  totalResourses[3] = math.random(450,650)--550   -- uranium
 
   -- the values in the array below are just for holding the initial values
   totalResourses[4] = totalResourses[0]
@@ -460,8 +414,7 @@ function scene:create( event )
 
   average = math.round(totalResourses[3]/full)
   populateCells(numberToBePopulated, 3, math.round(average*0.7), math.round(average*1.3))
-
-  setData()
+  
   setText()
 
 end
@@ -475,6 +428,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
     setText()
+    miningTimer = timer.performWithDelay( 4000, setText, -1 );
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -493,6 +447,7 @@ function scene:hide( event )
   -- Called when the scene is on screen (but is about to go off screen).
   -- Insert code here to "pause" the scene.
   -- Example: stop timers, stop animation, stop audio, etc.
+  timer.cancel(miningTimer)
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
   end

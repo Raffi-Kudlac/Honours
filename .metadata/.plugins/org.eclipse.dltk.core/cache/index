@@ -42,12 +42,6 @@
   <entries path="C:/Users/raffi/Documents/GitHub/Honours/Our Sourse/src/miningCell.lua" timestamp="1415770175494" lastAccessTime="1415770176028"/>
   <entries path="C:/Users/raffi/Documents/GitHub/Honours/Our Sourse/src/global.lua" timestamp="1415773251203" lastAccessTime="1415773251729"/>
   <entries path="C:/Users/raffi/Documents/GitHub/Honours/Our Sourse/src/main.lua" timestamp="1415773393923" lastAccessTime="1415773394444"/>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/advertisements.lua" timestamp="1422322913000" lastAccessTime="1422839674724">
-    <attributes name="indexed" location="2838196607/2461244955/633.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/busness.lua" timestamp="1422322913000" lastAccessTime="1422839680714">
-    <attributes name="indexed" location="2838196607/2461244955/705.idx"/>
-  </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/cityOptions.lua" timestamp="1422322913000" lastAccessTime="1422839674754">
     <attributes name="indexed" location="2838196607/2461244955/637.idx"/>
   </entries>
@@ -62,18 +56,6 @@
   </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/groupAction.lua" timestamp="1422322913000" lastAccessTime="1422839674919">
     <attributes name="indexed" location="2838196607/2461244955/641.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/groupScreen.lua" timestamp="1422322913000" lastAccessTime="1422839677768">
-    <attributes name="indexed" location="2838196607/2461244955/675.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/groups.lua" timestamp="1422322913000" lastAccessTime="1422839680557">
-    <attributes name="indexed" location="2838196607/2461244955/701.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/hydroOptions.lua" timestamp="1422322913000" lastAccessTime="1422839679415">
-    <attributes name="indexed" location="2838196607/2461244955/691.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/landOptions.lua" timestamp="1422322913000" lastAccessTime="1422839679036">
-    <attributes name="indexed" location="2838196607/2461244955/689.idx"/>
   </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/landTile.lua" timestamp="1422322913000" lastAccessTime="1422839680799">
     <attributes name="indexed" location="2838196607/2461244955/707.idx"/>
@@ -90,9 +72,6 @@
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/moneyData.lua" timestamp="1422322913000" lastAccessTime="1422839674298">
     <attributes name="indexed" location="2838196607/2461244955/629.idx"/>
   </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/natural.lua" timestamp="1422322913000" lastAccessTime="1422839675785">
-    <attributes name="indexed" location="2838196607/2461244955/653.idx"/>
-  </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/naturalOptions.lua" timestamp="1422322913000" lastAccessTime="1422839677953">
     <attributes name="indexed" location="2838196607/2461244955/677.idx"/>
   </entries>
@@ -102,23 +81,8 @@
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/ownedOptions.lua" timestamp="1422322913000" lastAccessTime="1422839677550">
     <attributes name="indexed" location="2838196607/2461244955/671.idx"/>
   </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/powerPlant.lua" timestamp="1422322913000" lastAccessTime="1422839678638">
-    <attributes name="indexed" location="2838196607/2461244955/681.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/publicServises.lua" timestamp="1422322913000" lastAccessTime="1422839676969">
-    <attributes name="indexed" location="2838196607/2461244955/667.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/river.lua" timestamp="1422322913000" lastAccessTime="1422839675909">
-    <attributes name="indexed" location="2838196607/2461244955/655.idx"/>
-  </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/test.lua" timestamp="1422322913000" lastAccessTime="1422839680531">
     <attributes name="indexed" location="2838196607/2461244955/699.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/advertismentScreen.lua" timestamp="1422383210000" lastAccessTime="1422839675348">
-    <attributes name="indexed" location="2838196607/2461244955/647.idx"/>
-  </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/publicServisesScreen.lua" timestamp="1422383259000" lastAccessTime="1422839678771">
-    <attributes name="indexed" location="2838196607/2461244955/685.idx"/>
   </entries>
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/gameOver.lua" timestamp="1422822983000" lastAccessTime="1422839678178">
     <attributes name="indexed" location="2838196607/2461244955/679.idx"/>
@@ -137,17 +101,17 @@
   <entries path="/Users/raffi/Github/Honours/Our Sourse/src/parse.lua" timestamp="1422394828000" lastAccessTime="1422839677119">
     <attributes name="indexed" location="2838196607/2461244955/669.idx"/>
   </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/resourseMap.lua" timestamp="1422382788000" lastAccessTime="1422839675281">
-    <attributes name="indexed" location="2838196607/2461244955/645.idx"/>
-  </entries>
   <entries path="/Users/raffi/Github/Honours/testFile/src/main.lua" timestamp="1422322913000" lastAccessTime="1422839680949">
     <attributes name="indexed" location="2838196607/1072528727/709.idx"/>
   </entries>
   <entries path="/Users/raffi/Github/Honours/testFile/src" timestamp="1422322913000" lastAccessTime="1422839680950">
     <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/730611420/711.idx"/>
   </entries>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/menu.lua" timestamp="1422942459000" lastAccessTime="1422942459909"/>
-  <entries path="/Users/raffi/Github/Honours/Our Sourse/src" timestamp="1422945560000" lastAccessTime="1422986864709">
+  <entries path="/Users/raffi/Github/Honours/Our Sourse/src" timestamp="1422945560000" lastAccessTime="1423340441669">
     <attributes name=".dltk.core.archive.cache.lastaccess" location="2838196607/1530866885/717.idx"/>
   </entries>
+  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/main.lua" timestamp="1423002218000" lastAccessTime="1423002218853"/>
+  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/menu.lua" timestamp="1423246659000" lastAccessTime="1423246660250"/>
+  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/resourseMap.lua" timestamp="1423338818000" lastAccessTime="1423338818579"/>
+  <entries path="/Users/raffi/Github/Honours/Our Sourse/src/natural.lua" timestamp="1423338834000" lastAccessTime="1423338834700"/>
 </cache:CacheIndex>

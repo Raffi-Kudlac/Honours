@@ -16,6 +16,27 @@ local scene    = composer.newScene()
 local width    = 150
 local height   = 150
 
+local function setText()
+
+    local hydroCount = 0
+    local fossilCount = 0
+    local naturalCount = 0
+    
+    
+    fossilCount = gv.coalBuildCounter + gv.oilBuildCounter + gv.gasBuildCounter + gv.nuclearBuildCounter
+    local naturalCount = gv.windBuildCounter + gv.solarBuildCounter
+    
+    for x = 0, 5, 1 do 
+        if gv.rivers[x]:getBuilt() then
+            hydroCounter = hydroCounter + 1
+        end
+    end
+    
+    setDataBox("Natural Land Used", naturalCount, 1)
+    setDataBox("Rivers Damned", hydroCount, 2)
+    setDataBox("Plants Built",fossilCount, 3)
+
+end
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -76,7 +97,7 @@ function scene:create( event )
   }
 
   hydro.anchorX, hydro.anchorY = 0.5,0.5
-
+    
   sceneGroup:insert(bg)
   sceneGroup:insert(fossile_fuels)
   sceneGroup:insert(hydro)
@@ -93,6 +114,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      setText()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

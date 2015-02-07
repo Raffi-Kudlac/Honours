@@ -9,11 +9,13 @@ local widget   = require( "widget" )
 local gv       = require( "global" )
 
 local scene           = composer.newScene()
-local d               = 280
 local damOptionsLeft  = 0
 local damOptionsTop   = 0
-local textWidth       = d*0.7
+local textWidth       
 local textHeight      = 0
+local damWidth 
+local damHeight
+local scrollText 
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -21,42 +23,69 @@ local textHeight      = 0
 
 local function createText(sceneGroup)
 
-  local textVerticalShift = 15
+  local textVerticalShift = damHeight*0.1
+  
+  textWidth = damWidth*0.8
 
+  local nme = gv.rivers[gv.riverSelected]:getName()
 
-  local nme = " The " .. gv.rivers[gv.riverSelected]:getName() .. " river"
-
-  local riverName = display.newText(nme, damOptionsLeft + 55,
+  local riverName = display.newText(nme, damOptionsLeft,
     damOptionsTop + 20, gv.font, gv.fontSize )
   riverName.anchorX,riverName.anchorY = 0,0
+  
+  riverName:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  local costMessage = "Cost to build: $" .. tostring(gv.rivers[gv.riverSelected]:getCost()) .. " B"
+  local costMessage = "Cost to build: $" .. tostring(gv.rivers[gv.riverSelected]:getCost())
 
-  local costText = display.newText(costMessage, damOptionsLeft + 55,
+  local costText = display.newText(costMessage, damOptionsLeft,
     riverName.y + textVerticalShift, gv.font, gv.fontSize )
   costText.anchorX,costText.anchorY = 0,0
+  
+  costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  local destruction = "Area flooded: " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " m cubed"
+  local destruction = "Area flooded: " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " km squared"
 
-  local adText = display.newText(destruction, damOptionsLeft + 55,
-    costText.y + textVerticalShift, gv.font, gv.fontSize )
+  local adText = display.newText(destruction, damOptionsLeft,
+    costText.y + textVerticalShift, damWidth*0.3, 0, gv.font, gv.fontSize )
   adText.anchorX,adText.anchorY = 0,0
+  
+  adText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
   local powerProduced = "Power Produced: " .. tostring(gv.rivers[gv.riverSelected]:getPowerGenerated()) .. " GW"
 
-  local powerText = display.newText(powerProduced, damOptionsLeft + 55,
-    adText.y + textVerticalShift, gv.font, gv.fontSize )
+  local powerText = display.newText(powerProduced, damOptionsLeft,
+    adText.y + textVerticalShift*1.5, gv.font, gv.fontSize )
   powerText.anchorX,powerText.anchorY = 0,0
+  
+  powerText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
+  
+  scrollText = widget.newScrollView
+    {
+      width = damWidth*0.75,
+      height = damHeight*0.25,
+      horizontalScrollDisabled = true,
+      --        scrollWidth = buildOverlayWidth*0.9,
+      -- scrollHeight = buildOverlayWidth*0.5,
+      hideBackground = true,
+  }
+  scrollText.anchorX, scrollText.anchorY = 0,0
+  scrollText.x = powerText.x
+  scrollText.y = powerText.y + textVerticalShift
+  
 
-  local info = display.newText(gv.rivers[gv.riverSelected]:getData(), damOptionsLeft + 55, costText.y + 100,textWidth, textHeight, gv.font,gv.fontSize)
+  local info = display.newText(gv.rivers[gv.riverSelected]:getData(), 0, 0 ,
+  textWidth, textHeight, gv.font,gv.fontSize)
   info.anchorX, info.anchorY = 0,0
+  
+  info:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
   sceneGroup:insert(riverName)
   sceneGroup:insert(costText)
   sceneGroup:insert(adText)
   sceneGroup:insert(powerText)
-  sceneGroup:insert(info)
+  scrollText:insert(info)
+  sceneGroup:insert(scrollText)
 end
 
 
@@ -94,20 +123,23 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-  local sceneGroup = self.view
-  damOptionsLeft = centerX(d)
-  damOptionsTop = centerY(d)
+  local sceneGroup = self.view  
+  damWidth = widthCalculator(0.45)
+  damHeight = heightCalculator(0.75)
+  
+  damOptionsTop = centerY(damHeight)
 
   local damOptions = widget.newButton
     {
-      width       = d -20,
-      height      = d -10,
-      defaultFile = "Images/land_screen/lnd_buildOverlay.png",
+      width       = damWidth,
+      height      = damHeight,
+      defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
-      left        = centerX(d),
-      top         = centerY(d),
+      left        = centerX(damWidth),
+      top         = centerY(damHeight),
   }
-
+  
+  damOptionsLeft = damOptions.x - damWidth/2.5
   local btnDam = widget.newButton
     {
       width         = 50,
@@ -116,8 +148,8 @@ function scene:create( event )
       cornerRadius  = 10,
       label         = "Dam",
       id            = "btnMine",
-      top           =  damOptions.height - 20,
-      left          =  damOptionsLeft+80,
+      top           =  damOptions.height - 10,
+      left          =  damOptionsLeft,
       onEvent       = damed
   }
 

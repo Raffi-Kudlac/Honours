@@ -231,14 +231,48 @@ local function initalize()
   -- For Hydro
   gv.rivers = {}
   gv.hydroCounter = 2
-  gv.rivers[0] =  stream.new("Hudson",10,5,10,1)
-  gv.rivers[1] =  stream.new("Tidal",20,7,13,1)
+  -- name, area Distroyed, cost to build, power generated, cost to mainTain
+  gv.rivers[0] =  stream.new("Hudson",15,120,4.0,3)
+  gv.rivers[1] =  stream.new("The Amazon River",25,150,4.5,3)  
+  gv.rivers[2] =  stream.new("Colorado River",20,130,3.8,3)
+  gv.rivers[3] =  stream.new("The Nial",30,170,4.6,3)
+  gv.rivers[4] =  stream.new("Niagra Falls",5,140,3.8,3)
+  gv.rivers[5] =  stream.new("Mississippi River",17,120,4.3,3)
 
-  local r0Data = "Dams produce clean energy at the expence of destroying large amounts of usable land. " ..
-    "although no gasses are expelled envirmentalists still dislike dams being built"
+  local r0Data = "The Hudson river is a prime source of clean hydro electric power. Only destroying 15 sqaure killometers " .. 
+  "the envirmentalist will protest but there are worse places to build damns. "
 
   gv.rivers[0]:setData(r0Data)
+  
+  r0Data = "A water source with high power outage but unfortunatly destroys a large amount of " .. 
+  "habited land. If we build here the envirmentalist will go nuts. Only " ..
+  "build here if we have no other options."
   gv.rivers[1]:setData(r0Data)
+  
+  r0Data = "The Colorada River. Similar to the hudson but because of geography slightly more area is destroyed if " .. 
+  "we deside to build here."
+  
+  gv.rivers[2]:setData(r0Data)
+  
+  r0Data = "The Nial. A river of life and prosparity. damning this river would have hudge envirmental effects and " .. 
+  "repricutions as well as a shift in the stability in the enviroment after the damn was built due to the chnage in " ..
+  "levels of water. Building here is not recomended."
+  
+  gv.rivers[3]:setData(r0Data)
+  
+  
+  r0Data = "Niagra Falls. Due to the height of the falls, the speed of the water and the amount of flowing water we can build a " ..
+  "damn here for minimal envirmental effects and get decent amounts of power back. It would be nice if all damns could be built " .. 
+  "on sites like these but they are rare. Building here is strongly recomended." 
+  
+  gv.rivers[4]:setData(r0Data)
+  
+  
+  r0Data = "A river with the capability to produce clean energy and not to destroy too much land in the " ..
+  "process. Envirmentalists will be displeased but we can live with that. People need power."
+  
+  gv.rivers[5]:setData(r0Data)
+  
 
   energyPros = "This Fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossle fuels."..
     "Coal is cheap and fairly easy to obtain."

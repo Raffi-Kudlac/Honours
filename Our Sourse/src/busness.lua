@@ -14,6 +14,40 @@ local scene     = composer.newScene()
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
+function setText()
+
+    local happyGroups = 0
+    local adsRunning = 0
+    local publicServisesRunning = 0
+    
+    
+    for i=0, gv.groupCounter -1, 1 do        
+        if( gv.groups[i]:getNumberStatus() > 0) then
+            happyGroups = happyGroups + 1
+        end
+    end
+    
+    
+    for i = 0, gv.addCounter -1, 1 do 
+    
+        if(gv.advertisements[i]:getBought()) then        
+            adsRunning = adsRunning + 1
+        end    
+    end
+    
+    for i = 0, gv.servisCounter -1, 1 do
+    
+        if( gv.publicServises[i]:getBought() ) then
+            publicServisesRunning = publicServisesRunning + 1
+        end    
+    end
+    
+    setDataBox("Happy Groups", happyGroups, 1)
+    setDataBox("Ads Running", adsRunning, 2)
+    setDataBox("Servises Running", publicServisesRunning, 3)
+    
+end
+
 local function miniScreen(event, destination)
 
   if ( "ended" == event.phase ) then
@@ -33,6 +67,7 @@ function scene:create( event )
   local tempWidth = 130
   local tempHeight = 100
   local tempShift = 30
+  setText()
 
   local scrollView = widget.newScrollView
     {

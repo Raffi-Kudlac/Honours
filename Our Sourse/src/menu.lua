@@ -19,7 +19,7 @@ local function play( event )
   if ( "ended" == event.phase ) then       
     composer.gotoScene("mining")    
     startingPower()
-    composer.gotoScene("hydro")
+    composer.gotoScene("city")
     
 --    gv.year = 2018
 --    gv.month = 8

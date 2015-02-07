@@ -33,6 +33,8 @@ local function buy(event, index)
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end
+    
+    setText()
   end
 end
 

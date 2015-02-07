@@ -32,7 +32,8 @@ local function buy(event, index)
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end
-
+    
+    setText()
     -- save power advertisement. effects the demand function
     if (index == 0 and gv.advertisements[0]:getBought() ) then
       alterDemand(true)

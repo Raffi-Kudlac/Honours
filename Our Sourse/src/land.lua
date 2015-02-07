@@ -12,7 +12,13 @@ local landTile    = require( "landTile" )
 local scene       = composer.newScene()
 local bg          = display
 local tiles       = {}
+local coalPower = 0
+local gasPower = 0
+local oilPower = 0
+local nuclearPower = 0
 local sceneGroup  = 0
+local powerTimer 
+local switch = false
 
 require "landOptions"
 
@@ -45,23 +51,74 @@ end
 
 local function setDataLabels()
 
-  local openOwnedSpace  = -1
-  local percentUsed     = 0
-  local areaUsed        = 0
-
-  for i = 0,14,1 do
-    if(tiles[i].tile:getType()=="owned")then
-      areaUsed = areaUsed + 1
-      openOwnedSpace = openOwnedSpace + 1
-    elseif(tiles[i].tile:getType()=="open")then
-      openOwnedSpace = openOwnedSpace + 1
-    end
+  -- calculate coal,
+  
+  local pass = 0
+  local totalConsumption = gv.coalSpecs:getConsumption()*gv.coalBuildCounter
+  
+  if (totalConsumption > gv.resourcesHeld[2]) then
+      pass = math.round(gv.resourcesHeld[2]/gv.coalSpecs:getConsumption());
+  else
+      pass = gv.coalBuildCounter
   end
 
-  percentUsed = math.round((areaUsed/14)*100)
-  setDataBox("Area Owned", openOwnedSpace, 1)
-  setDataBox("Built on", areaUsed, 2)
-  setDataBox(percentUsed.."% ","land used", 3)
+  coalPower = pass*gv.coalSpecs:getProduces() .. " GW"
+
+
+  -- calculate gas
+
+  pass = 0
+  totalConsumption = gv.gasSpecs:getConsumption()*gv.gasBuildCounter
+  
+  if (totalConsumption > gv.resourcesHeld[1]) then
+      pass = math.round(gv.resourcesHeld[1]/gv.gasSpecs:getConsumption());
+  else
+      pass = gv.gasBuildCounter
+  end
+
+  gasPower = pass*gv.gasSpecs:getProduces() .. " GW"
+  
+  
+  -- calculate oil
+  
+  pass = 0
+  totalConsumption = gv.oilSpecs:getConsumption()*gv.oilBuildCounter
+  
+  if (totalConsumption > gv.resourcesHeld[0]) then
+      pass = math.round(gv.resourcesHeld[0]/gv.oilSpecs:getConsumption());
+  else
+      pass = gv.oilBuildCounter
+  end
+
+  oilPower = pass*gv.oilSpecs:getProduces() .. " GW"
+  
+  
+  -- calculate nuclear 
+  
+  pass = 0
+  totalConsumption = gv.nuclearSpecs:getConsumption()*gv.nuclearBuildCounter
+  
+  if (totalConsumption > gv.resourcesHeld[3]) then
+      pass = math.round(gv.resourcesHeld[3]/gv.nuclearSpecs:getConsumption());
+  else
+      pass = gv.nuclearBuildCounter
+  end
+
+  nuclearPower = pass*gv.nuclearSpecs:getProduces() .. " GW"        
+  
+  
+  if (switch) then
+      setDataBox("Nuclear Power", nuclearPower, 1)
+      setDataBox("Gas Power", gasPower, 2)
+      setDataBox("Oil Power",oilPower, 3)
+      switch = false  
+      print("switch is false")
+  else
+      setDataBox("Coal Power", coalPower, 1)
+      setDataBox("Gas Power", gasPower, 2)
+      setDataBox("Oil Power",oilPower, 3)
+      switch = true
+  end
 end
 
 --Builds the tiles. All tiles start open but are changed later
@@ -112,8 +169,6 @@ local function buildTiles()
   --This the extra tile that is cut off. Had to be disabled
   tiles[12]:setEnabled(false)
   tiles[12].isVisible = false
-
-
 end
 
 local function buildStartingTiles()
@@ -234,7 +289,7 @@ end
 function scene:create( event )
 
   sceneGroup = self.view
-
+  switch = false
   local bg = display.newImage("Images/land_screen/lnd_bg.png")
   bg.anchorX, bg.anchorY = 0,0
 
@@ -243,18 +298,7 @@ function scene:create( event )
 
   bg.x = 0
   bg.y = 0
-
-  --  bg = widget.newButton
-  --  {
-  --    width       = display.contentWidth,
-  --    height      = display.contentHeight,
-  --    defaultFile = "Images/land_screen/lnd_bg.png",
-  --    id          = "bg",
-  --    left        =50,
-  --    top         = 40,
-  --  }
-  --grid:scale(1.2,1.2)
-
+  
   sceneGroup:insert(bg)
   buildTiles()
   buildStartingTiles()
@@ -270,6 +314,7 @@ function scene:show( event )
   if ( phase == "will" ) then
     -- Called when the scene is still off screen (but is about to come on screen).
     setDataLabels()
+    powerTimer = timer.performWithDelay( 4000, setDataLabels, -1 );
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -286,8 +331,10 @@ function scene:hide( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is on screen (but is about to go off screen).
+
   -- Insert code here to "pause" the scene.
   -- Example: stop timers, stop animation, stop audio, etc.
+  timer.cancel(powerTimer)
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
   end
