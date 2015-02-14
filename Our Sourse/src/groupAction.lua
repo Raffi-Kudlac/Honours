@@ -48,11 +48,11 @@ function scene:create( event )
   local groupDisplay = widget.newButton
     {
       width       = widthCalculator(0.4),
-      height      = heightCalculator(0.35),
+      height      = heightCalculator(0.45),
       defaultFile = "Images/global_images/Horizontal_Box.png",
       id          = "BO",
       left        = centerX(widthCalculator(0.4)),
-      top         = centerY(heightCalculator(0.35)),
+      top         = centerY(heightCalculator(0.45)),
   }
 
 
@@ -63,14 +63,14 @@ function scene:create( event )
 
   local btnOkay = widget.newButton
     {
-      width         = 50,
-      height        = 20,
+      width         = widthCalculator(0.1),
+      height        = heightCalculator(0.07),
       shape         = "roundedRect",
       cornerRadius  = 10,
       label         = "Okay",
       id            = "btnOkay",
       top           =  text.y + text.height*1.1,
-      left          =  groupDisplay.x - 25,
+      left          =  centerX(widthCalculator(0.1)),
       onEvent       = okay
   }
 

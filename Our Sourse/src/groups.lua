@@ -59,15 +59,8 @@ function groups:setStatus(n)
   end
 
   local temp = math.abs ( self.status)
-
-  if (temp == 0) then
-    self.actionPercent = 0
-  elseif(temp > 0 and temp < 5 ) then
-    self.actionPercent = 2
-  elseif (temp > 5 ) then
-    self.actionPercent = 4
-  end
-
+  
+  self.actionPercent = math.round(math.abs( self.status )*4)/10
 end
 
 function groups:getActionPercent()
@@ -84,12 +77,12 @@ function groups:getStatus()
     return ":|"
   elseif(self.status < 0 and self.status >= -5) then
     return ":("
-  elseif(self.status > -5) then
+  elseif(self.status < -5) then
     return " :x"
   elseif(self.status > 0 and self.status < 5 ) then
     return ":)"
   elseif (self.status > 5 ) then
-    return "XD"
+    return "=D"
   else
     return "X"
   end

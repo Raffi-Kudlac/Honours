@@ -21,7 +21,7 @@ local function createText()
   local xPosition = (cityOptionsBG.x - cityOptionsBG.width/2) + cityOptionsBG.x*0.1
   local yPosition = (cityOptionsBG.y - cityOptionsBG.height/2) + cityOptionsBG.y*0.1
 
-  costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().. "B", xPosition,
+  costText = display.newText("Costs: $"..gv.tileClicked.tile:getCost(), xPosition,
     yPosition, gv.font, gv.fontSize )
   costText.anchorX,costText.anchorY = 0,0
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -34,13 +34,10 @@ end
 
 local function buy(event)
 
-  if(event.phase == "began") then
-    if(gv.money >= gv.tileClicked.tile:getCost()) then
+  if(event.phase == "began") then    
       gv.money = gv.money - gv.tileClicked.tile:getCost()
       setMoney()
       convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
-
-    end
     composer.hideOverlay()
   end
 end

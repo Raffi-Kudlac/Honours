@@ -125,8 +125,7 @@ function scene:hide( event )
   if ( phase == "will" ) then
     -- Called when the scene is on screen (but is about to go off screen).
     -- Insert code here to "pause" the scene.
-    -- Example: stop timers, stop animation, stop audio, etc.
-    resume()
+    -- Example: stop timers, stop animation, stop audio, etc.    
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
   end

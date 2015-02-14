@@ -21,7 +21,7 @@ function powerPlant.new(kind)  -- constructor
     pros        = "",
     consumption = 0,
     cons        = "",
-    maintenence = 0,      -- cost payed monthly to maintain
+    maintenence = 0,      -- cost payed monthly to maintain    
   }
 
 return setmetatable( newPowerPlant, powerPlant_mt )

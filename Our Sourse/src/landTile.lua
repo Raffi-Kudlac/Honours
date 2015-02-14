@@ -19,11 +19,9 @@ local function setCost()
   if (me.type == "owned") then
     me.cost = 0
   elseif(me.type == "forest") then
-    me.cost = 4
+    me.cost = 50
   elseif (me.type == "city owned") then
-    me.cost = 2
-  elseif(me.type == "forest") then
-    me.cost = 4
+    me.cost = 90  
   else
     me.cost = -1
   end
@@ -40,11 +38,9 @@ function landTile.new(kind, ppType)  -- constructor
     temp = 0
     b = true
   elseif(kind == "forest") then
-    temp = 4
+    temp = 50
   elseif (kind == "city owned") then
-    temp = 2
-  elseif(kind == "forest") then
-    temp = 4
+    temp = 90  
   else
     temp = -1
   end

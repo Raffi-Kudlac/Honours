@@ -14,12 +14,20 @@ local sceneGroup
 
 local damnedRivers = {}
 
-damnedRivers[0] = 0
-damnedRivers[1] = 0
-damnedRivers[2] = 0
-damnedRivers[3] = 0
-damnedRivers[4] = 0
-damnedRivers[5] = 0
+damnedRivers[0] = "Images/hydro_screen/hy_screen_river1_dam.png"
+damnedRivers[1] = "Images/hydro_screen/hy_screen_river2_dam.png"
+damnedRivers[2] = "Images/hydro_screen/hy_screen_river3_dam.png"
+damnedRivers[3] = "Images/hydro_screen/hy_screen_river4_dam.png"
+damnedRivers[4] = "Images/hydro_screen/hy_screen_river5_dam.png"
+damnedRivers[5] = "Images/hydro_screen/hy_screen_river6_dam.png"
+
+local maskFileArray = {}
+maskFileArray[0] = "Images/hydro_screen/hy_screen_river1_mask.png"
+maskFileArray[1] = "Images/hydro_screen/hy_screen_river2_mask.png"
+maskFileArray[2] = "Images/hydro_screen/hy_screen_river3_mask.png"
+maskFileArray[3] = "Images/hydro_screen/hy_screen_river4_mask.png"
+maskFileArray[4] = "Images/hydro_screen/hy_screen_river5_mask.png"
+maskFileArray[5] = "Images/hydro_screen/hy_screen_river6_mask.png"
 
 
 -------------------------------------------------
@@ -37,31 +45,28 @@ local function setDataLabels()
     
         if (gv.rivers[x]:getBuilt()) then        
             totalPower = totalPower + gv.rivers[x]:getPowerGenerated()
-            areaDestroyed = areaDestroyed + gv.rivers[x]getAD()
-            totalMaintenence = totalMaintenence + gv.rivers[x]:getMainteneceCost() 
+            areaDestroyed = areaDestroyed + gv.rivers[x]:getAD()
+            --totalMaintenence = totalMaintenence + gv.rivers[x]:getMainteneceCost() 
         end    
     end
     
-    status = gv.groups[0]:getNumberStatus()
-    
-    if (status < 0 and status >= -5 ) then
-        status = "Displeased"
-    elseif (status < -5 ) then
-        status = "Mad"
-    elseif (status > 0 and status <= 5 ) then
-        status = "Pleased"
-    elseif (status > 5) then
-        status = "Happy"
-    elseif (status == 0 ) then
-        status = "Neutral"
-    end
+    totalMaintenence = math.round((totalPower/gv.powerSupplied)*1000)/10
     
     setDataBox("Hydro Power", totalPower.. " GW", 1)
     setDataBox("Area Destroyed", areaDestroyed, 2)
-    setDataBox("Maintence Cost",totalMaintenence, 3)
+    setDataBox("Hydro %",totalMaintenence, 3)
 
 end
 
+
+local function riverData( event, index )
+
+    if ( event.phase == "ended" ) then
+        gv.riverSelected = index    
+        composer.showOverlay("riverDamedData")
+    end
+
+end
 
 local function dam(riverSelected,event)
 
@@ -79,27 +84,38 @@ local function dam(riverSelected,event)
 end
 
 function changeImage()
+    
+  local temp = streams[gv.riverSelected]  
+  sceneGroup:remove(streams[gv.riverSelected])
 
-  --streams[gv.riverSelected]:setLabel("damed")
+  streams[gv.riverSelected] = widget.newButton
+    {      
+      width = display.contentWidth,
+      height = display.contentHeight,
+      left = 0,
+      top = 0,
+      defaultFile = damnedRivers[gv.riverSelected],
+      onEvent = function(event) return riverData(event, gv.riverSelected + 0) end,
+  }
+
+  streams[gv.riverSelected].anchorY, streams[gv.riverSelected].anchorX = 0,0
+  streams[gv.riverSelected].x = 0
+  streams[gv.riverSelected].y = 0
+  streams[gv.riverSelected].river  = gv.rivers[gv.riverSelected]
   
---  local temp = streams[gv.riverSelected]  
---  sceneGroup:remove(streams[gv.riverSelected])
---
---  streams[gv.riverSelected] = widget.newButton
---    {      
---      width = display.contentWidth,
---      height = display.contentHeight,
---      left = 0,
---      top = 0,
---      defaultFile = damnedRivers[gv.riverSelected],      
---  }
---
---  streams[gv.riverSelected].anchorY, streams[gv.riverSelected].anchorX = 0,0
---  streams[gv.riverSelected].x = 0
---  streams[gv.riverSelected].y = 0
---  streams[gv.riverSelected].river  = gv.rivers[gv.riverSelected]
--- 
---  sceneGroup:insert(streams[gv.riverSelected])
+  
+  local mask = graphics.newMask( maskFileArray[gv.riverSelected] )
+  local xScale = streams[gv.riverSelected].width/2400
+  local yScale = streams[gv.riverSelected].height/1600
+  
+  streams[gv.riverSelected]:setMask( mask )
+  streams[gv.riverSelected].maskScaleX = xScale
+  streams[gv.riverSelected].maskScaleY = yScale
+  streams[gv.riverSelected].maskX = streams[gv.riverSelected].width/2
+  streams[gv.riverSelected].maskY = streams[gv.riverSelected].height/2
+      
+ 
+  sceneGroup:insert(streams[gv.riverSelected])
 end
 
 
@@ -130,15 +146,6 @@ function scene:create( event )
   defaultFileArray[3] = "Images/hydro_screen/hy_screen_river4.png"
   defaultFileArray[4] = "Images/hydro_screen/hy_screen_river5.png"
   defaultFileArray[5] = "Images/hydro_screen/hy_screen_river6.png"
-  
-  local maskFileArray = {}
-  maskFileArray[0] = "Images/hydro_screen/hy_screen_river1_mask.png"
-  maskFileArray[1] = "Images/hydro_screen/hy_screen_river2_mask.png"
-  maskFileArray[2] = "Images/hydro_screen/hy_screen_river3_mask.png"
-  maskFileArray[3] = "Images/hydro_screen/hy_screen_river4_mask.png"
-  maskFileArray[4] = "Images/hydro_screen/hy_screen_river5_mask.png"
-  maskFileArray[5] = "Images/hydro_screen/hy_screen_river6_mask.png"
-    
   
   for x = 0, 5, 1 do 
    

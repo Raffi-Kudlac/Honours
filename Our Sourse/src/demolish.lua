@@ -14,10 +14,15 @@ local ownedOptionsTop   = 0
 local shiftConstant     = 280
 local prosWidth         = 0
 local prosHeight        = 0
+local yShift = 0
 
 local message   = ""
-local costText  = ""
 local infoText  = ""
+local producingText
+local resourceConsumptionText
+local maintenenceText
+local demolishText
+local demolishCost = 0 -- will be 90% the cost of building
 
 
 -------------------------------------------------
@@ -27,29 +32,65 @@ local function createText()
 
   local xPosition = (ownedOptionsBG.x - ownedOptionsBG.width/2) + ownedOptionsBG.x*0.1
   local yPosition = (ownedOptionsBG.y - ownedOptionsBG.height/2) + ownedOptionsBG.y*0.1
+  local data = ""
+  local type = gv.tileClicked.tile:getType()
+  local specs
+  
+  if ( type == "solar" ) then
+      type = "Solar"
+      specs = gv.solarSpecs
+  elseif ( type == "wind" ) then
+      type = "Wind"
+      specs = gv.windSpecs  
+  end
+  
+  demolishCost = specs:getCost()*0.9
 
-  costText = display.newText("Costs: $4 B", xPosition,
-    yPosition, gv.font, gv.fontSize )
-  costText.anchorX,costText.anchorY = 0,0
-  costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  producingText = display.newText("Producing " .. specs:getProduces() .. " GW per month", xPosition, 
+    yPosition, gv.font, gv.fontSize)
+  producingText.anchorX, producingText.anchorY = 0,0 
+  producingText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
+  
+  data = "Consumes Nothing"
+  
+  resourceConsumptionText = display.newText(data, xPosition, producingText.y + yShift, gv.font, gv.fontSize)
+  resourceConsumptionText.anchorX, resourceConsumptionText.anchorY = 0,0
+  resourceConsumptionText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
+  
+  data = "Costs $" .. specs:getMaintenenceCost() .. " per month to maintain"
+  
+  maintenenceText = display.newText(data, xPosition, resourceConsumptionText.y + yShift, 
+  gv.font, gv.fontSize)
+  maintenenceText.anchorX, maintenenceText.anchorY = 0,0
+  maintenenceText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
 
-  infoText = display.newText(message, costText.x,costText.y +20,prosWidth,prosHeight, gv.font,gv.fontSize)
+  demolishText = display.newText("Costs: $" .. demolishCost .. " to demolish", xPosition,
+    maintenenceText.y + yShift, gv.font, gv.fontSize )
+  demolishText.anchorX,demolishText.anchorY = 0,0
+  demolishText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+
+  infoText = display.newText(message, demolishText.x,demolishText.y + yShift,prosWidth,prosHeight, gv.font,gv.fontSize)
   infoText.anchorX, infoText.anchorY = 0,0
   infoText.height = infoText.height + 15
   infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 end
 
 
-local function demolish(event)
+local function naturaldemolish(event)
 
   if(event.phase == "began") then
-
-    if(gv.money >= 4) then
-      gv.money = gv.money - 4
-      convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+      local type = gv.tileClicked.tile:getType()
+      
+      if (type == "wind") then
+          gv.groups[3]:setStatus(1)
+          gv.windBuildCounter = gv.windBuildCounter -1
+      else
+          gv.solarBuildCounter = gv.solarBuildCounter - 1 
+      end
+      gv.groups[0]:setStatus(-0.5)
+      gv.money = gv.money - demolishCost
+      naturalConvertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
       composer.hideOverlay()
-    end
-
   end
 end
 
@@ -69,25 +110,26 @@ function scene:create( event )
   -- Initialize the scene here.
   -- Example: add display objects to "sceneGroup", add touch listeners, etc.
   local sceneGroup = self.view
+  local bgWidth = widthCalculator(0.6)
+  local bgHeight = heightCalculator(0.7)
 
   message = "From here you can demlosh you power plant, returning the land to the open state. " ..
     "It costs money to demolish a power plant but it could be worth it if the current one isn't generating any power. " ..
     " After the plant is gone you can chose to build another plant in its stead. "
 
 
-  ownedOptionsTop = centerY(shiftConstant)
-  ownedOptionsLeft = centerX(shiftConstant) + 20
-
   ownedOptionsBG = widget.newButton
     {
-      width       = widthCalculator(0.6),
-      height      = heightCalculator(0.5),
+      width       = bgWidth,
+      height      = bgHeight,
       defaultFile = "Images/global_images/Horizontal_Box.png",
       id          = "BO",
-      left        = centerX(widthCalculator(0.6)),
-      top         = centerY(heightCalculator(0.6)),
+      left        = centerX(bgWidth),
+      top         = centerY(heightCalculator(0.8)),
   }
+ 
   prosWidth = ownedOptionsBG.width*0.8
+  yShift = ownedOptionsBG.height*0.1
   createText()
 
   local btnDemolish = widget.newButton
@@ -98,9 +140,9 @@ function scene:create( event )
       cornerRadius  = 10,
       label         = "Demolish",
       id            = "btnBuy",
-      top           =  infoText.y + infoText.height,
-      left          = costText.x,
-      onEvent       = demolish
+      top           =  infoText.y + infoText.height - bgWidth*.02,
+      left          = infoText.x,
+      onEvent       = naturaldemolish
   }
 
   btnDemolish.anchorY = 0
@@ -119,7 +161,10 @@ function scene:create( event )
   }
 
   sceneGroup:insert(ownedOptionsBG)
-  sceneGroup:insert(costText)
+  sceneGroup:insert(resourceConsumptionText)
+  sceneGroup:insert(maintenenceText)
+  sceneGroup:insert(producingText)
+  sceneGroup:insert(demolishText)
   sceneGroup:insert(infoText)
   sceneGroup:insert(btnDemolish)
   sceneGroup:insert(btnCancel)

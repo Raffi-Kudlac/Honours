@@ -12,6 +12,8 @@ The width and height of the overlay waterfall sqaure is 450 pxl.
 local composer = require( "composer" )
 local widget   = require( "widget" )
 local gv       = require( "global" )
+require "mining"
+
 local scene    = composer.newScene()
 local width    = 150
 local height   = 150
@@ -19,11 +21,11 @@ local height   = 150
 local function setText()
 
     local hydroCount = 0
-    local fossilCount = 0
+    local dugCount = 0
     local naturalCount = 0
     
     
-    fossilCount = gv.coalBuildCounter + gv.oilBuildCounter + gv.gasBuildCounter + gv.nuclearBuildCounter
+    dugCount = numberOfTilesMined()
     local naturalCount = gv.windBuildCounter + gv.solarBuildCounter
     
     for x = 0, 5, 1 do 
@@ -34,7 +36,7 @@ local function setText()
     
     setDataBox("Natural Land Used", naturalCount, 1)
     setDataBox("Rivers Damned", hydroCount, 2)
-    setDataBox("Plants Built",fossilCount, 3)
+    setDataBox("Areas Dug", dugCount, 3)
 
 end
 

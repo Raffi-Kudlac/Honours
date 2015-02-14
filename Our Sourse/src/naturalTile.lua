@@ -21,7 +21,7 @@ function naturalTile.new(kind)  -- constructor
     type = kind,
     built = false,
     owned = false,
-    cost = 5,         -- cost to build on this cell
+    cost = 5,         -- cost to build on this cell   
   }
 
 return setmetatable( newnaturalTile, naturalTile_mt )

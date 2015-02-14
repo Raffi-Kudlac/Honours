@@ -36,6 +36,7 @@ local btnCY
 local btnPP
 local btnLND
 local btnRS
+local btnBlackout
 local btnPausePlay
 local btnMenu
 local MB
@@ -52,14 +53,15 @@ local btnPausePlay
 
 local startBlackoutTimeYear = 0
 local startBlackoutTimeMonth = 0
+local populationFine = 25 
 local isPaused = false
 local initalPopulation = 10000
 local btnPausePlay
-local monthCounter    = 1
+local monthCounter    = 0
 local circleWidth     = 30
 local circleHeight    = 30
 local MB = widget
-local populationVariable = 1.05
+local populationVariable = 1.07
 local month           = {
   "January",
   "February",
@@ -84,26 +86,26 @@ end
 
 local function removeStage()
     
-
-    gv.stage:remove( stcBG )
-    gv.stage:remove(btnBNS)
-    gv.stage:remove(btnCY)
-    gv.stage:remove(btnPP)
-    gv.stage:remove(btnLND)
-    gv.stage:remove(btnRS)
-    gv.stage:remove(btnPausePlay)
-    gv.stage:remove( btnMenu )
-    gv.stage:remove( MB )
-    gv.stage:remove( dataBar )
-    gv.stage:remove( dataBox1)
-    gv.stage:remove( dataBox2)
-    gv.stage:remove( dataBox3)
-    
-    gv.stage:remove( TBBG )
-    gv.stage:remove(timeBar)
-    gv.stage:remove( timeLabel )
-    gv.stage:remove( weather )
-    gv.stage:remove( btnPausePlay )
+      gv.stage:remove( stcBG )
+      gv.stage:remove(btnBNS)
+      gv.stage:remove(btnCY)
+      gv.stage:remove(btnPP)
+      gv.stage:remove(btnLND)
+      gv.stage:remove(btnRS)
+      gv.stage:remove( btnBlackout )
+      gv.stage:remove(btnPausePlay)
+      gv.stage:remove( btnMenu )
+      gv.stage:remove( MB )
+      gv.stage:remove( dataBar )
+      gv.stage:remove( dataBox1)
+      gv.stage:remove( dataBox2)
+      gv.stage:remove( dataBox3)
+      
+      gv.stage:remove( TBBG )
+      gv.stage:remove(timeBar)
+      gv.stage:remove( timeLabel )
+      gv.stage:remove( weather )
+      gv.stage:remove( btnPausePlay )
 
 end
 
@@ -120,7 +122,7 @@ end
 
 local function calculateMonthlyPopulationIncrease()
 
-  return  math.round ( (populationFunction(year+1)*populationVariable - populationFunction(gv.year))/12)
+  return  math.round ( (populationFunction(year+1) - gv.population)/12)
 
 end
 
@@ -129,14 +131,14 @@ function startingPower()
 
   composer.gotoScene("natural")
   setNaturalCurrentEnergySourse(gv.windSpecs)
-  for x = 1, 2, 1 do
+  for x = 1, 1, 1 do
     gv.marker = x
     naturalPurchasedConfirmed()
   end
   gv.money = gv.money + gv.windSpecs:getCost()*2
 
   setNaturalCurrentEnergySourse(gv.solarSpecs)
-  for x = 1, 2, 1 do
+  for x = 1, 3, 1 do
     gv.marker = 5 + x
     naturalPurchasedConfirmed()
   end
@@ -161,7 +163,8 @@ end
 -- Initalizing the global variables
 local function initalize()
 
-  monthCounter = 1
+  monthCounter = 0
+  gv.monthCounter = 0
   gv.monthTimer    = 0
   gv.secondsTimer  = 0
   gv.stage         = display.getCurrentStage()
@@ -172,7 +175,8 @@ local function initalize()
   gv.yearTimer     = timer
   gv.population    = 10000--populationFunction(year)
   gv.onCityScreen  = true
-
+  gv.gameOver = false
+  
   gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
   
   gv.submitionName = ""
@@ -208,6 +212,11 @@ local function initalize()
   gv.resourseAmount[1] = 0
   gv.resourseAmount[2] = 0
   gv.resourseAmount[3] = 0
+  
+  gv.nuclearInfluence = 1
+  gv.coalInfluence = 2
+  gv.gasInfluence = 1
+  gv.oilInfluence = 1
 
 
   local energyPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
@@ -218,7 +227,7 @@ local function initalize()
   local energyCost = 110
   local energyProduction = 4.1
   local energyConsumption = 1
-  local energyMaintenence = 1
+  local energyMaintenence = 4
 
   gv.oilSpecs = powerPlant.new("oil")
   gv.oilSpecs:setCost(energyCost)
@@ -230,60 +239,60 @@ local function initalize()
 
   -- For Hydro
   gv.rivers = {}
-  gv.hydroCounter = 2
+  gv.hydroCounter = 6
   -- name, area Distroyed, cost to build, power generated, cost to mainTain
   gv.rivers[0] =  stream.new("Hudson",15,120,4.0,3)
   gv.rivers[1] =  stream.new("The Amazon River",25,150,4.5,3)  
   gv.rivers[2] =  stream.new("Colorado River",20,130,3.8,3)
-  gv.rivers[3] =  stream.new("The Nial",30,170,4.6,3)
+  gv.rivers[3] =  stream.new("The Nile",30,170,4.6,3)
   gv.rivers[4] =  stream.new("Niagra Falls",5,140,3.8,3)
   gv.rivers[5] =  stream.new("Mississippi River",17,120,4.3,3)
 
-  local r0Data = "The Hudson river is a prime source of clean hydro electric power. Only destroying 15 sqaure killometers " .. 
-  "the envirmentalist will protest but there are worse places to build damns. "
+  local r0Data = "The Hudson river is a prime source of clean hydro electric power. Only destroying 15 square kilometers " .. 
+  "the environmentalist will protest but there are worse places to build dams. "
 
   gv.rivers[0]:setData(r0Data)
   
-  r0Data = "A water source with high power outage but unfortunatly destroys a large amount of " .. 
-  "habited land. If we build here the envirmentalist will go nuts. Only " ..
+  r0Data = "A water source with high power outage but unfortunately destroys a large amount of " .. 
+  "habited land. If we build here the environmentalist will go nuts. Only " ..
   "build here if we have no other options."
   gv.rivers[1]:setData(r0Data)
   
-  r0Data = "The Colorada River. Similar to the hudson but because of geography slightly more area is destroyed if " .. 
+  r0Data = "The Colorado River. Similar to the Hudson but because of geography slightly more area is destroyed if " .. 
   "we deside to build here."
   
   gv.rivers[2]:setData(r0Data)
   
-  r0Data = "The Nial. A river of life and prosparity. damning this river would have hudge envirmental effects and " .. 
-  "repricutions as well as a shift in the stability in the enviroment after the damn was built due to the chnage in " ..
-  "levels of water. Building here is not recomended."
+  r0Data = "The Nile. A river of life and prosperity. daming this river would have huge environmental effects and " .. 
+  "repercussions as well as a shift in the stability in the environment after the dam was built due to the change in " ..
+  "levels of water. Building here is not recommended."
   
   gv.rivers[3]:setData(r0Data)
   
   
   r0Data = "Niagra Falls. Due to the height of the falls, the speed of the water and the amount of flowing water we can build a " ..
-  "damn here for minimal envirmental effects and get decent amounts of power back. It would be nice if all damns could be built " .. 
+  "dam here for minimal environmental effects and get decent amounts of power back. It would be nice if all dams could be built " .. 
   "on sites like these but they are rare. Building here is strongly recomended." 
   
   gv.rivers[4]:setData(r0Data)
   
   
   r0Data = "A river with the capability to produce clean energy and not to destroy too much land in the " ..
-  "process. Envirmentalists will be displeased but we can live with that. People need power."
+  "process. Environmentalists will be displeased but we can live with that. People need power."
   
   gv.rivers[5]:setData(r0Data)
   
 
-  energyPros = "This Fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossle fuels."..
+  energyPros = "This Fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossil fuels."..
     "Coal is cheap and fairly easy to obtain."
 
-  energyCons = "Coal puts carbon dioxide into the air and its supplies are not infinite. Envirmentatilist will not"..
+  energyCons = "Coal puts carbon dioxide into the air and its supplies are not infinite. Environmentalists will not"..
     "like you for building this kind of power plant"
 
   energyCost = 100
   energyProduction = 4.3
   energyConsumption = 1.7    -- factor of 1000 killo tonnes
-  energyMaintenence = 1
+  energyMaintenence = 4
 
   gv.coalSpecs = powerPlant.new("coal")
   gv.coalSpecs:setCost(energyCost)
@@ -293,8 +302,8 @@ local function initalize()
   gv.coalSpecs:setConsumption(energyConsumption)
   gv.coalSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "This Fossil fueled power plant runs off of gas. Gas is the most expensive of the fossle fuels but burns the cleanest"..
-    "and has the lest impact on the atmosphere"
+  energyPros = "This Fossil fueled power plant runs off of gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
+    "and has the least impact on the atmosphere"
   energyCons = "There is a finite amount of gas on the planet"
   energyCost = 120
   energyProduction = 4
@@ -308,7 +317,7 @@ local function initalize()
   gv.gasSpecs:setConsumption(energyConsumption)
   gv.gasSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "Nuclear Power is the cleanest of the natural resourses. With uranium being the most abundant it can long outlast fossil fuels"
+  energyPros = "Nuclear Power is the cleanest of the natural resources. With uranium being the most abundant it can long outlast fossil fuels"
   energyCons = "Uranium is limited and plants are expensive. Some of the population is scared of nuclear power"
   energyCost = 150
   energyProduction = 4.8
@@ -322,8 +331,9 @@ local function initalize()
   gv.nuclearSpecs:setConsumption(energyConsumption)
   gv.nuclearSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "Solar power is the only power source that works differently. By turning light into energy there are no envirmental"..
-    "consiquences and they are self sustaining. As long as the sun is around, we can have solar power"
+  energyPros = "Solar power is the only power source that works differently. By turning light into energy there are no environmental"..
+    "consequences and it is self sustaining. As long as the sun is around, we can have solar power. Environmentalists will " .. 
+    "like it if we decide to build these."
   energyCons = "Although well liked, solar panels are expensive and have a low conversion rate of light to energy. This " ..
     "doesn't make them an ideal source of power for a large population. They also only work during the day."
   energyCost = 50
@@ -339,12 +349,13 @@ local function initalize()
   gv.solarSpecs:setMaintenenceCost(0)
 
   energyPros = "Wind power is one of the main natural resources. Running off of flowing air it is capable of producing " ..
-    "clean energy. Windmills will produce power as long as there is moving air so no need to worry about running out of wind. "
+    "clean energy. Windmills will produce power as long as there is moving air so no need to worry about running out of wind. " .. 
+    "Environmentalists will like it if we decide to build these."
 
 
   energyCons = "Windmills are expensive to build and don't produce a lot of energy compared to fossile fuels so they can not " ..
     "sustain a large population. They also take up large amounts of room. People who live near windmills don't like the noise " ..
-    "contant rotating shadows and view. Windmills cause many bird casulties so bird watchers are no fan as well"
+    "contant rotating shadows and view. Windmills cause many bird casualties so bird watchers are not fans as well"
 
   energyCost = 60
   energyProduction = 2.8
@@ -358,50 +369,50 @@ local function initalize()
   gv.windSpecs:setConsumption(energyConsumption)
   gv.windSpecs:setMaintenenceCost(0)
 
-
   gv.groups = {}
   gv.groupCounter = 4
   gv.groupActionWinner = -1
 
-  gv.groups[0] = organization.new( "Envirmentalists" )
-  gv.groups[0]:setAbout("This organization is deticated to protecting the earth and to care for the " ..
-    "envirment. Poluting the atmosphere or destroying the land in any way will generally make this organization " ..
-    "angry with you. This organization is effected and effects almost all forms of power It is very hard to keep them happy forever.")
+  gv.groups[0] = organization.new( "Environmentalists" )
+  gv.groups[0]:setAbout("\nThis organization is dedicated to protecting the earth and to care for the " ..
+    "environment. Polluting the atmosphere or destroying the land in any way will generally make this organization " ..
+    "angry with you. This organization is affected by and effects almost all forms of power It is very hard to keep them happy forever.")
 
 
-  gv.groups[0]:setHappyText("The Envirmentalists are happy with you and have convinced the goverment to reduce taxes for you. " ..
-    "as a result the maintenence cost of fossile fueled and nuclear power plants has decreased by 1B")
+  gv.groups[0]:setHappyText("The Environmentalists are happy with you and have convinced the government to reduce taxes for you. " ..
+    "as a result the maintenance cost of fossil fueled, nuclear and hydro power plants has decreased by $1")
 
-  gv.groups[0]:setMadText("The Envirmentalists are mad that you are polluting the planet. They have convinced the goverment to " ..
-    "add more taxes to your power plant. As a result the maintenence cost of your Nuclear and fossil fueled power plants has " ..
-    "inceased by 1B")
+  gv.groups[0]:setMadText("\nThe Environmentalists are mad that you are polluting the planet. They have convinced the government to " ..
+    "add more taxes to your power plants. As a result the maintenance cost of your nuclear, fossil fueled and hydro power plants has " ..
+    "increased by $1")
 
   gv.groups[1] = organization.new( "Anti-Nuclear" )
-  gv.groups[1]:setAbout("This organization of people is composed of people who are scared of nuclear power and believe that it " ..
-    "is to dangerious to be used close to thier homes and loved ones. Building nuclear power plants will upset this group. " ..
-    "A good way to deal with them would be to educate them and assure them that although nuclear power is dangerious, all " ..
-    "the safety procations are being taken so there is nothing to fear.")
+  gv.groups[1]:setAbout("\nThis organization of people is composed of people who are scared of nuclear power and believe that it " ..
+    "is to dangerous to be used close to their homes and loved ones. Building nuclear power plants will upset this group. " ..
+    "A good way to deal with them would be to educate them and assure them that although nuclear power is dangerous, all " ..
+    "the safety precautions are being taken so there is nothing to fear.")
 
-  gv.groups[1]:setHappyText("The Anti-Nuclear group aren't seaming so Anti-Nuclear any more and they have gotten off your "..
-    "back for the time being. With some extra breathing room and not having to deal with them you have reduced the maintenece cost" ..
-    "of nuclear power Plants by 3B")
+  gv.groups[1]:setHappyText("The Anti-Nuclear group aren't seeming so Anti-Nuclear any more and they have gotten off your "..
+    "back for the time being. With some extra breathing room and not having to deal with them you have reduced the maintenance cost" ..
+    "of nuclear power Plants by $2")
 
-  gv.groups[1]:setMadText("The Anti-Nuclear groups is mad at you for building nuclear power plants. They feel unsafe and worried. "
-    .. "They have complained to the goverment and as a result you have been forced to increase security checks and add " ..
-    "extra safety procations. This has increased the maintenence cost of all nuclear power plants by 3B")
+  gv.groups[1]:setMadText("The Anti-Nuclear group is mad at you for building nuclear power plants. They feel unsafe and worried. "
+    .. "They have complained to the government and as a result you have been forced to increase security checks and add " ..
+    "extra safety precautions. This has increased the maintenance cost of all nuclear power plants by $2")
 
 
   gv.groups[2] = organization.new( "The Population" )
-  gv.groups[2]:setAbout("The people you serve generally don't care how they get thier power as long as they get it. " ..
-    "Keeping the lights on will keep them happy but if blackouts occure then they are going to get mad. If too many blackouts" ..
-    "happen then you have to give some money back to the people to compinsate. Be careful, if to many blackouts " ..
-    "happen to frequently then you lose the game")
+  gv.groups[2]:setAbout("\nThe people you serve generally don't care how they get their power as long as they get it. " ..
+    "Keeping the lights on will keep them happy but if blackouts occur then they are going to get mad. If too many blackouts" ..
+    "happen then you have to give some money back to the people to compensate. Be careful, if too many blackouts " ..
+    "happen too frequently then you lose the game")
 
   gv.groups[2]:setHappyText("The people are happy with your production of power. You don't get anything but at least" ..
     "they are not rioting and making your life difficult.")
 
-  gv.groups[2]:setMadText("To many blackouts have happened and the people have rioted and made inpropriate signs" ..
-    "protesting your capabilities of producing power. You pay a fine of 10B for the damages and getting rid of the protestors.")
+  gv.groups[2]:setMadText("Too many blackouts have happened and the people have rioted and made inappropriate signs" ..
+    "protesting your capabilities of producing power. You pay a fine of $" .. populationFine ..  
+    " for the damages and getting rid of the protestors.")
 
   gv.groups[3] = organization.new( "Anti-Windmillists" )
   --    gv.groups[3]:setAbout("You would think, 'Who protests Windmills. Clean energy and no envirmental hazards' well " ..
@@ -409,64 +420,110 @@ local function initalize()
   --    "give the landscape any beauty points eigher. They are also the reason for a lot avian deaths when they don't like to "..
   --    "look where they are flying." )
 
-  gv.groups[3]:setAbout("You would think, 'Who would protests Windmills. Clean energy and no envirmental hazards' well you can't " ..
-    "everybody happy. This groups is usually composed of people who live around windmills. They don't like the noise and the " ..
-    "appearence of these big machines. This population of this groups is generally small and they don't get a lot of attention " ..
+  gv.groups[3]:setAbout("\nYou would think, 'Who would protests Windmills. Clean energy and no environmental hazards' well you can't " ..
+    "make everybody happy. This group is usually composed of people who live around windmills. They don't like the noise and " ..
+    "appearance of these big machines. The population of this group is generally small and they don't get a lot of attention " ..
     "as windmills are a source of clean energy.")
 
   gv.groups[3]:setHappyText("although windmills are noisy and not nice to live around you have convinced the " ..
-    "Anti-Windmillists that they are worth it. The cost of building windmills has reduced by 2B.")
+    "Anti-Windmillists that they are worth it. The cost of building windmills has reduced by $5.")
 
   gv.groups[3]:setMadText("Farmers and countrymen are not happy about the windmills that you have been putting up." ..
-    "They have rallied and spoken to the goverment. The cost of building future windmills has increased by 2B")
-
-  gv.nuclearInfluence = 2
-  gv.coalInfluence = 3
-  gv.gasInfluence = 2
-  gv.oilInfluence = 2
-
+    "They have rallied and spoken to the goverment. The cost of building future windmills has increased by $5")
 
   gv.advertisements = {}
   gv.addCounter = 5
-  gv.advertisements[0] = adds.new( "Save Power", 2 )
-  gv.advertisements[0]:setEffect("Educate the population to intelligently use power so they don't waste it."..
-    "This add is useful if you are having trouble keeping up with demand and it makes the envirmentalists happy")
+  local adCost = 4
+  
+  gv.advertisements[0] = adds.new( "Save Power", adCost )
+  gv.advertisements[0]:setEffect("Costs $".. adCost .." per month. \nEducate the population" .. 
+   "to intelligently use power so they don't waste it."..
+    "This ad is useful if you are having trouble keeping up with demand and it makes the environmentalists less mad")
 
-  gv.advertisements[1] = adds.new( "Safe Nuclear Power", 3 )  
-  gv.advertisements[1]:setEffect("Advertise to the population about the workings of nuclear power. Show them that " .. 
-    "although nuclear power can be dangerious, you have all the nessisary safety procations in place and that thier " .. 
-    "safety is your first priority")
+  adCost = 5
+  gv.advertisements[1] = adds.new( "Safe Nuclear Power", adCost )  
+  gv.advertisements[1]:setEffect("Costs $" .. adCost .." per month. \nAdvertise to the population" ..
+   " about the workings of nuclear power. Show them that " .. 
+    "although nuclear power can be dangerous, you have all the necessary safety precautions in place")
   
-  gv.advertisements[2] = adds.new( "Pro Windmills", 2 )
-      gv.advertisements[2]:setEffect( "Are those anti-Windmillists causing trouble for you? Hire this add and it will " .. 
-      "them how lucky they are to have a eneregy generating machine in thier backyard")
+  adCost = 4
+  gv.advertisements[2] = adds.new( "Pro Windmills", adCost )
+      gv.advertisements[2]:setEffect( "Costs $" .. adCost .." per month. \nAre those anti-Windmillists causing trouble for you?" ..  
+      " Hire this ad and it will show " .. 
+      "them how lucky they are to have a eneregy generating machine in their backyard")
   
-  gv.advertisements[3] = adds.new( "Pro Hydro", 3 )
-  gv.advertisements[3]:setEffect("Advertise what the world would be like without hydro power and all the perks it bring us. " ..
-   " Yeah some land gets a little wet but hey, fish have to live somewhere too right")
+--  gv.advertisements[3] = adds.new( "Pro Hydro", 3 )
+--  gv.advertisements[3]:setEffect("Advertise what the world would be like without hydro power and all the perks it bring us. " ..
+--   " Yeah some land gets a little wet but hey, fish have to live somewhere too right")
   
-  gv.advertisements[4] = adds.new( "Fossil Power", 2 )
-  gv.advertisements[4]:setEffect( "Yes fossil fueled power plants pollute the planet on massive scales and are no " .. 
+  adCost = 4
+  gv.advertisements[3] = adds.new( "Fossil Power", adCost )
+  gv.advertisements[3]:setEffect( "Costs $" .. adCost .." per month. \nYes fossil fueled power plants pollute" ..
+   " the planet on massive scales and are no " .. 
   "friend to wildlife but it's cheap and effective. You want the cost of energy to be 10 times what it is now. Thats " ..
    "what it would be without fossil fuels")
   
-  gv.advertisements[5] = adds.new( "Public Appeal", 4 )
-  gv.advertisements[5]:setEffect("Is the population pissed at you? Are they complaining about your capability to provide power? " .. 
+  gv.advertisements[4] = adds.new( "Public Appeal", adCost )
+  gv.advertisements[4]:setEffect("Costs $" .. adCost .." per month. \nIs the population upset with you?" .. 
+   " Are they complaining about your capability to provide power? " .. 
     "I'll calm the public down and show them that creating energy is no easy task")
 
   gv.publicServises = {}
   gv.servisCounter = 8
-  gv.publicServises[0] = publicServises.new("Geologist",4)
-  gv.publicServises[0]:setAbout("Hire a Geologist to analise the land and tell you where resourses are. Say goodbye to guessing")
+  
+  local publicServisCost = 6
+  gv.publicServises[0] = publicServises.new("Geologist",publicServisCost)
+  gv.publicServises[0]:setAbout("\nCosts $" .. publicServisCost .. " per month\nAre you hitting blanks trying to get the " ..
+  "resources you need? tired of wasting money? Hire a Geologist to find what tiles hold. Give her some time to work " .. 
+  "and she will get back to you with some information. Say good bye to guessing")
 
-  gv.publicServises[1] = publicServises.new("Fossil Fuel Advances",4)
-  gv.publicServises[2] = publicServises.new("Nuclear Advances",4)
-  gv.publicServises[3] = publicServises.new("Wind Advances",3)
-  gv.publicServises[4] = publicServises.new("Solar Advances",4)
-  gv.publicServises[5] = publicServises.new("Hydro Advances",5)
-  gv.publicServises[6] = publicServises.new("Generator Advances",3)
-  gv.publicServises[7] = publicServises.new("Corrupt Envirmentalists",8)
-
+  publicServisCost = 6
+  gv.publicServises[1] = publicServises.new("Fossil Fuel Advances",publicServisCost)
+  gv.publicServises[1]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in the fossil fuels."
+  .. " If succesfull you will discover information " .. 
+  "that will make your fossil fueled power plants more efficient. Possibly increasing power generation " .. 
+  " or reducing maintenence. Be careful though as you make advancements it becomes harder to make more.")
+      
+      
+  gv.publicServises[2] = publicServises.new("Nuclear Advances",publicServisCost)  
+  gv.publicServises[2]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in Nuclear Reactors."
+  .. " If successful you will discover information " .. 
+  "that will make nuclear power plants more efficient. Possibly increasing power generation " .. 
+  " or reducing maintenance. Be careful though as you make advancements it becomes harder to make more.")
+  
+  publicServisCost = 4 
+  gv.publicServises[3] = publicServises.new("Wind Advances",publicServisCost)
+  gv.publicServises[3]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in windmills."
+  .. " If successful you will discover information " .. 
+  "that will make your windmills more efficient. Increasing power generation. Can't really reduce maintenance. " .. 
+  "Be careful though as you make advancements it becomes harder to make more.")
+  
+  
+  gv.publicServises[4] = publicServises.new("Solar Advances",publicServisCost)
+  gv.publicServises[4]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in solar panels."
+  .. " If successful you will discover information " .. 
+  "that will make your solar panels more efficient. Increasing power generation. Can't really reduce maintenance. " .. 
+  "Be careful though as you make advancements it becomes harder to make more.")
+  
+  publicServisCost = 8
+  gv.publicServises[5] = publicServises.new("Hydro Advances",publicServisCost)
+  gv.publicServises[5]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in dams."
+  .. " If successful you will discover information " .. 
+  "that will make dams more efficient. Possibly increasing power generation " .. 
+  " or reducing maintenance. Be careful though as you make advancements it becomes harder to make more.")
+  
+  publicServisCost = 6
+  gv.publicServises[6] = publicServises.new("Generator Advances",publicServisCost)
+  gv.publicServises[6]:setAbout("\nCosts $" .. publicServisCost .. " per month\n"
+  .. "Generators are at the heart of all forms of power except solar. If successful you will discover information " .. 
+  "that will make all forms of power more efficienct by a little bit. Increasing power generation of all types of" .. 
+  "power except solar. Be careful though as you make advancements it becomes harder to make more.")
+  
+  publicServisCost = 6
+  gv.publicServises[7] = publicServises.new("Corrupt Envirmentalists",publicServisCost)
+  gv.publicServises[7]:setAbout("\nCosts $" .. publicServisCost .. " per month\nAre those environmentalists groups giving " .. 
+  "you a hard time? It's time to infiltrate their ranks and take a load off your back. Hire some one to go behind enemy lines " .. 
+  "and convince the environmentalists to give you a break\n\n\n")
   gv.foundResourses = {}
 
   for x = 0, 23,1 do
@@ -483,20 +540,31 @@ local function initalize()
   gv.blackoutCounter = 0       -- a counter holding the number of total blackouts that has occured
   gv.blackoutLengthSum = 0
   gv.blackoutAmountRate = 5
-  gv.blackoutTimeRate   = 3    -- this varible and the one above represents the rate of blackouts. 5 blackouts in three years
+  gv.blackoutTimeRate   = 3    -- this varible and the one above represents the rate of blackouts. 5 blackouts in 3 years
+  -- gv.blackoutTimes hold a two D array of all the blackouts within the blackout rate. In this case 5 blackouts in 3 years
+  -- index 1: start year; index 2 start month; index 3 length in months
   gv.blackoutTimes = {}
-
 end
 
+function returnToMainMenuFromGameOver( event )
 
+    if ( event.phase == "ended" ) then
+        
+        composer.gotoScene("menu")       
+        composer.removeHidden()                                
+        cancelTimers()
+        initalize()                 
+        composer.removeScene("mining")
+    end
+end
 
 function  returnToMainMenu( event )
 
     if ( event.phase == "ended" ) then
         
         composer.gotoScene("menu")       
-        composer.removeHidden()
-        removeStage()
+        composer.removeHidden()                
+        removeStage()        
         cancelTimers()
         initalize()                 
         composer.removeScene("mining")
@@ -722,8 +790,7 @@ end
 
 local function showMenu( event )
 
-  if (event.phase == "began") then
-    pause()
+  if (event.phase == "began") then    
     composer.showOverlay("inGameMenu")
   end
 
@@ -762,7 +829,7 @@ local function buildMoneyBar()
 
   MB = widget.newButton
     {
-      width         = w*0.6,
+      width         = stcBG.width*0.4,
       height        = 20,
       labelAlign    = "left",
       shape         = "roundedRect",
@@ -777,7 +844,30 @@ local function buildMoneyBar()
 
   setMoney()
   gv.stage:insert( MB )
+end
 
+local function showBlackoutData( event ) 
+
+    if ( event.phase == "ended" ) then
+        composer.showOverlay("blackoutInfo")    
+    end
+
+end
+
+local function buildBlackoutButton()
+    
+    btnBlackout = widget.newButton
+    {
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = "Images/static_screen/st_plant.png",
+      id          = "plant",
+      top         = MB.y - (MB.height/2)*1.3,
+      left        = MB.x + (MB.width/2)*1.1,
+      onEvent     = showBlackoutData
+    }
+
+   gv.stage:insert( btnBlackout )
 
 end
 
@@ -1038,10 +1128,12 @@ local function docResources()
 
   --Hydro
 
-  for i = 1,gv.hydroCounter - 1,1 do
+  for i = 0,gv.hydroCounter - 1,1 do      
     if( gv.rivers[i]:getBuilt() ) then
+        print("Damn ".. i .. "got triggered")
       gv.powerSupplied = gv.powerSupplied + gv.rivers[i]:getPowerGenerated()
       docMoney = docMoney + gv.rivers[i]:getMainteneceCost()
+      
     end
   end
 
@@ -1058,6 +1150,7 @@ function buildStaticScreen()
   buildScreenButtons()
   buildMenu()
   buildMoneyBar()
+  buildBlackoutButton()
   buildDataBar()
   buildToolBar()
 end
@@ -1177,8 +1270,8 @@ end
 
 local function corruptEnvirmentalists()
 
-  gv.money = gv.money - 10
-  gv.groups[0]:setStatus(2)
+  --gv.money = gv.money - 10
+  gv.groups[0]:setStatus(3)
 
 end
 
@@ -1256,12 +1349,12 @@ local function checkPublicServisPercent()
         end
       elseif ( x == 6) then
 
-        gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 1)
-        gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 1)
-        gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 1)
-        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 1)
-        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 1)
-        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 1)
+        gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 0.5)
+        gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 0.5)
+        gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 0.5)
+        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 0.5)
+        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.5)
+        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 0.5)
         gv.publicServisText[6] = "Due to your investment in researching more efficient generators " ..
           "all energy sources except solar panels can produce an extra GW of power"
       elseif ( x == 7) then
@@ -1292,27 +1385,43 @@ local function calculateYearDifferene(index)
   return yearDiff
 end
 
+local function gameOver()
+
+  pause()
+  gv.gameOver = true
+  gv.monthCounter = monthCounter -1
+  removeStage()
+  composer.gotoScene("gameOver")
+  
+end
+
 local function addBlackoutTime()
 
-  -- wipes out any blackouts outside of the time range
-  for x = 1, #gv.blachoutTimes, 1 do
-    if( calculateYearDifferene(1) > gv.blackoutTimeRate ) then
-      table.remove(gv.blackoutTimes, 1)
-    end
-  end
-
+  trimBlackoutRateArray()  
 
   -- insert new blackout time
-  if(#gv.blackoutTimes == 5) then
-  -- game over
+  if(#gv.blackoutTimes >= 5) then
+      gameOver()
   else
     timeData = {startBlackoutTimeYear, startBlackoutTimeMonth, gv.blackoutLengthCounter}
-    table.insert(gv.blackoutTimes,timeData)
+    table.insert(gv.blackoutTimes,timeData)      
   end
 
   gv.blackoutLengthSum = 0
   for x = 1, #gv.blackoutTimes, 1 do
     gv.blackoutLengthSum = gv.blackoutTimes[x][3] + gv.blackoutLengthSum
+  end
+
+end
+
+
+function trimBlackoutRateArray()
+
+    -- wipes out any blackouts outside of the time range    
+  for x = 1, #gv.blackoutTimes, 1 do
+    if( calculateYearDifferene(x) > gv.blackoutTimeRate ) then
+      table.remove(gv.blackoutTimes, x)
+    end
   end
 
 end
@@ -1323,16 +1432,20 @@ local function isBlackout()
 
     gv.blackoutLengthCounter = gv.blackoutLengthCounter + 1
     gv.blackoutCounter = gv.blackoutCounter + 1
+    gv.groups[2]:setStatus(-0.5)
 
-    if(gv.blackoutLengthCounter >= 10) then
-    -- game over
-    elseif (gv.blackoutLengthCounter == 1) then
+    if(gv.blackoutLengthCounter >= 10) then   -- blackout has lasted longer then 10 months straight
+        gameOver()
+    elseif ( #gv.blackoutTimes == 4 ) then -- 4 blackouts have happened. this is the fifth. game over
+        gameOver()    
+    elseif (gv.blackoutLengthCounter == 1) then --blcakout just started
       startBlackoutTimeYear = gv.year
       startBlackoutTimeMonth = gv.month
+      gv.groups[2]:setStatus(-0.5)      
     end
 
     if ( gv.blackoutLengthSum + gv.blackoutLengthCounter >= 12) then
-    -- game over
+        gameOver()
     end
 
   else
@@ -1345,27 +1458,17 @@ local function isBlackout()
   end
 end
 
-local function gameOver()
-
-  removeStage()
-  composer.gotoScene("gameOver")
-
-end
-
 local function inDept()
-
-  local isGameOver = false
-
-  if (gv.money <= -30) then
-  --gameOver()
+  
+  if (gv.money <= -100) then
+      gameOver()
   end
-
 end
 
 local function checkGroupActionPercent()
 
   local spaceArray = {}
-  local percent = math.random(1,100)
+  local percent = math.random(1,1000)/10
 
   for x = 0, gv.groupCounter -1, 1 do
     spaceArray[x] = x*10
@@ -1399,25 +1502,25 @@ local function checkGroupActionPercent()
       elseif (x == 1) then
 
         if ( gv.groups[1]:getNumberStatus() > 0 ) then
-          gv.nuclearSpecs:addMaintenenceCost(-3)
+          gv.nuclearSpecs:addMaintenenceCost(-2)
         else
-          gv.nuclearSpecs:addMaintenenceCost(3)
+          gv.nuclearSpecs:addMaintenenceCost(2)
         end
 
       elseif (x == 2) then
         -- this is for the population group, thinking this should be taken out and replaced in the blackout Method
         if ( gv.groups[2]:getNumberStatus() > 0 ) then
-
+              -- do nothing as there is no benifit from this group
         else
-          gv.money = gv.money - 10
+          gv.money = gv.money - populationFine
         end
 
       elseif (x == 3) then
 
         if ( gv.groups[3]:getNumberStatus() > 0 ) then
-          gv.windSpecs:setCost(gv.windSpecs:getCost() - 2)
+          gv.windSpecs:setCost(gv.windSpecs:getCost() - 5)
         else
-          gv.windSpecs:setCost(gv.windSpecs:getCost() + 2)
+          gv.windSpecs:setCost(gv.windSpecs:getCost() + 5)
         end
 
       end
@@ -1432,43 +1535,55 @@ local function checkGroupActionPercent()
       break
 
     end
-
-
   end
 
 end
 
 -- Responcible for the month/year timer
 local function timerFunction(event)
+  
+  
+  if (gv.gameOver) then
+      --do nothing 
+  else
+      monthCounter = monthCounter + 1 
+     
+      if monthCounter == 13 then
+        gv.year = gv.year +1
+        --gv.population = populationFunction(gv.year)
+        gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
+        monthCounter = 1
+        
+        if (gv.year > 2004 and (#gv.blackoutTimes == 2 or #gv.blackoutTimes == 1) ) then
+            gv.groups[2]:setStatus(0.5)
+        elseif (gv.year > 2005 and #gv.blachoutTimes == 0) then
+            gv.groups[2]:setStatus(1)
+        end
 
-  timeLabel:setLabel(month[monthCounter] .. " " .. gv.year)
-
-  monthCounter = monthCounter + 1
-
-  if monthCounter == 13 then
-    gv.year = gv.year +1
-    gv.population = populationFunction(gv.year)
-    gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
-    monthCounter = 1
+      end
+      
+      timeLabel:setLabel(month[monthCounter] .. " " .. gv.year)
+    
+      gv.population = gv.population + gv.monthlyPopulationIncrease
+      docResources()
+      calculateMoney()
+      calcPowerDemanded()
+      isBlackout()
+      if (gv.year > 2000) then
+          checkPublicServisPercent()
+          checkGroupActionPercent()
+      end
+      showData()
+      inDept()
+    
+      if(gv.onCityScreen) then
+        setDataBox("Population", gv.population, 1)        
+        setDataBox("Demanded", gv.powerDemanded.."GW", 2)
+        setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+      end
+    
+      gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)
   end
-
-  gv.population = gv.population + gv.monthlyPopulationIncrease
-  docResources()
-  calculateMoney()
-  checkPublicServisPercent()
-  checkGroupActionPercent()
-  --showData()
-
-  if(gv.onCityScreen) then
-    setDataBox("Population", gv.population, 1)
-    calcPowerDemanded()
-    setDataBox("Demanded", gv.powerDemanded.."GW", 2)
-    setDataBox("Supplied", gv.powerSupplied.."GW", 3)
-  end
-
-  --inDept()
-
-  gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)
 end
 
 
@@ -1476,8 +1591,7 @@ end
 -- has played for
 local function secondsCounter(event)
 
-  gv.seconds = gv.seconds + 1
-  gv.secondsTimer = timer.performWithDelay(1000, secondsCounter)
+  gv.seconds = gv.seconds + 1  
 end
 
 
@@ -1485,7 +1599,7 @@ end
 function timeStart()
 
   gv.yearTimer    = timer.performWithDelay(1, timerFunction)
-  gv.secondsTimer = timer.performWithDelay(1000, secondsCounter)
+  gv.secondsTimer = timer.performWithDelay(1000, secondsCounter, -1)
 
 end
 
@@ -1504,17 +1618,10 @@ function setDataBox(title, message, number)
 end
 
 
--- used for testing purposes to see recourses owned and rate of consumption
+-- used for testing purposes 
 function showData()
 
-  local amount = gv.nuclearBuildCounter*gv.nuclearSpecs:getConsumption()
-  print("Amount of Uranium currently owned "..tostring(gv.resourcesHeld[3]))
-  print("Amount of Uranium being used each month "..tostring(amount))
-
-  amount = gv.oilBuildCounter*gv.oilSpecs:getConsumption()
-  print("Amount of Oil currently owned "..tostring(gv.resourcesHeld[0]))
-  print("Amount of Oil being used each month "..tostring(amount))
-
+    print("The envirmentalists are at level " .. gv.groups[0]:getNumberStatus())
 
 end
 

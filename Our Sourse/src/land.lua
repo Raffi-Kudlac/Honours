@@ -131,6 +131,7 @@ local function buildTiles()
   local shiftX  = 0.3 * display.contentWidth
   local shiftY  = 0.17 * display.contentHeight
   local counter = 0
+  local mask = graphics.newMask( "Images/land_screen/lnd_tile_plain_mask.png" )
 
   for y = 0, 4, 1 do
 
@@ -159,6 +160,16 @@ local function buildTiles()
       tiles[counter].x        = tileX
       tiles[counter].y        = tileY
       tiles[counter].tile     = landTile.new("open", "none")
+      
+      local xScale = tiles[counter].width/512
+      local yScale = tiles[counter].height/512
+      
+      tiles[counter]:setMask( mask )      
+      tiles[counter].maskScaleX = xScale
+      tiles[counter].maskScaleY = yScale
+      tiles[counter].maskX = tiles[counter].width/2  
+      tiles[counter].maskY = tiles[counter].height/2
+      
       sceneGroup:insert(tiles[counter])
       counter                 = counter +1
       tileX = tileX + shiftX
@@ -196,13 +207,13 @@ end
 function groupCheck()
 
   if ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "oil" ) then
-    gv.group[0]:setStatus(gv.oilInfluence)
+    gv.groups[0]:setStatus(gv.oilInfluence)
   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "coal" ) then
-    gv.group[0]:setStatus(gv.coalInfluence)
+    gv.groups[0]:setStatus(gv.coalInfluence)
   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "nuclear" ) then
-    gv.group[1]:setStatus(gv.nuclearInfluence)
+    gv.groups[1]:setStatus(gv.nuclearInfluence)
   elseif ( tiles[gv.marker].tile:getTypeOfPowerPlant() == "gas" ) then
-    gv.group[0]:setStatus(gv.gasInfluence)
+    gv.groups[0]:setStatus(gv.gasInfluence)
   end
 
 
@@ -243,6 +254,7 @@ end
 
 function convertButton(path,location,type, ppType)
 
+  tiles[location]:setMask( nil )
   local temp = tiles[location]  
   sceneGroup:remove(tiles[location])
 
@@ -264,18 +276,31 @@ function convertButton(path,location,type, ppType)
   tiles[location].y       = temp.y
   tiles[location].tile    = landTile.new(type, ppType)
   
+  local mask = 0
   if (type == "forest") then
-      local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
-      local xScale = tiles[location].width/512
-      local yScale = tiles[location].height/512
-      
-      tiles[location]:setMask( mask )
-      
-      tiles[location].maskScaleX = xScale
-      tiles[location].maskScaleY = yScale
-      tiles[location].maskX = tiles[location].width/2  
-      tiles[location].maskY = tiles[location].height/2  
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )            
+  elseif (type == "city owned") then  
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_city01_mask.png" )      
+  elseif ( type == "open" ) then      
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_plain_mask.png" )      
+  elseif ( ppType == "oil") then
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_oil_mask.png" )
+  elseif ( ppType == "gas") then
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_gas_mask.png" )
+  elseif ( ppType == "coal") then
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_coal_mask.png" )
+  elseif ( ppType == "nuclear") then
+      mask = graphics.newMask( "Images/land_screen/lnd_tile_nuke_mask.png" )
   end
+  
+  local xScale = tiles[location].width/512
+  local yScale = tiles[location].height/512
+  
+  tiles[location]:setMask( mask )      
+  tiles[location].maskScaleX = xScale
+  tiles[location].maskScaleY = yScale
+  tiles[location].maskX = tiles[location].width/2  
+  tiles[location].maskY = tiles[location].height/2
   
   sceneGroup:insert(location+2,tiles[location])
   setDataLabels()

@@ -49,7 +49,7 @@ local function createText(ffSpecs)
   productionText.anchorX,productionText.anchorY = 0,0
   productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
+  consumptionText = display.newText("Consumes: Nothing",costText.x,productionText.y+20,gv.font,gv.fontSize)
   consumptionText.anchorX,consumptionText.anchorY = 0,0
   consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
@@ -85,7 +85,7 @@ local function setText(ffSpecs, kind)
   currentEnergySourse = ffSpecs
   costText.text = "Costs: $"..ffSpecs:getCost()
   productionText.text = "Produces: "..ffSpecs:getProduces().."GW"
-  consumptionText.text = "Consumes: "..ffSpecs:getConsumption()
+  consumptionText.text = "Consumes: Nothing"
   prosText.text = ffSpecs:getPros()
   consText.text = ffSpecs:getCons()
 
@@ -95,16 +95,17 @@ end
 function naturalPurchasedConfirmed()
 
   gv.money    = gv.money - currentEnergySourse:getCost()
+  gv.groups[0]:setStatus(0.5)
 
   if(currentEnergySourse:getType() =="solar") then
     gv.solarBuildCounter = gv.solarBuildCounter + 1
     gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1
-    convertButton("Images/natural_resource_screen/nr_tile_solar.png",gv.marker, "solar")
+    naturalConvertButton("Images/natural_resource_screen/nr_tile_solar.png",gv.marker, "solar")
   elseif(currentEnergySourse:getType() =="wind") then
-    gv.groups[3]:setStatus(2)
+    gv.groups[3]:setStatus(-1)    
     gv.windBuildCounter = gv.windBuildCounter + 1
     gv.naturalLandUsedCounter = gv.naturalLandUsedCounter +1
-    convertButton("Images/natural_resource_screen/nr_tile_wind.png",gv.marker, "wind")
+    naturalConvertButton("Images/natural_resource_screen/nr_tile_wind.png",gv.marker, "wind")
   end
 
 end
@@ -112,14 +113,11 @@ end
 
 local function buy( event )
 
-  if (event.phase == "began") then
-    if(currentEnergySourse:getCost()<=gv.money) then
+  if (event.phase == "began") then       
       naturalPurchasedConfirmed()
       setMoney()
-      composer.hideOverlay()
-    end
+      composer.hideOverlay()    
   end
-
 end
 
 

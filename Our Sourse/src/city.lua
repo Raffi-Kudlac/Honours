@@ -9,6 +9,7 @@ local scene         = composer.newScene()
 local gv            = require( "global" )
 local scaleOverlay  = display.newImage("Images/city_screen/cty_scaleOverlay.png")
 local maxSOHeight   = 0
+local scale
 local showProduced  = timer
 
 -------------------------------------------------
@@ -19,7 +20,7 @@ local function scaleOverlayHeightCalculator()
 
   -- conversion ratio for now is maxHeight = 5Gw
   local net = gv.powerSupplied - gv.powerDemanded
-  local limit = 25
+  local limit = 10
 
   if (net > limit) then
     net = limit
@@ -27,13 +28,13 @@ local function scaleOverlayHeightCalculator()
     net = -limit
   end
 
-  local percent = net/limit
+  local percent = math.abs(net/limit)
 
   if (net < 0 and scaleOverlay.rotation == 0) then
     scaleOverlay.rotation = 180
-    scaleOverlay:setFillColor(1,0,0)
+    scaleOverlay:setFillColor(1,0,0)        
   elseif ( net > 0 and scaleOverlay.rotation == 180) then
-    scaleOverlay.rotation = 0
+    scaleOverlay.rotation = 0         
     scaleOverlay:setFillColor(0,1,0)
   end
 
@@ -43,6 +44,7 @@ end
 
 local function producing(event)
 
+  calcPowerDemanded()
   setDataBox("Demanded", gv.powerDemanded.."GW", 2)
   setDataBox("Supplied", gv.powerSupplied.."GW", 3)
   scaleOverlayHeightCalculator()
@@ -66,18 +68,18 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
-  local scale = display.newImage("Images/city_screen/cty_scale.png")
+  scale = display.newImage("Images/city_screen/cty_scale.png")
 
-  scale.anchorX,scale.anchorY = 0,0.5
-  scale.x = 15
+  scale.anchorX,scale.anchorY = 0.5,0.5
+  scale.x = widthCalculator(0.05)
   scale.y = 100
   scale:scale(0.3,0.18)
 
 
   --scaleOverlay.anchorX,scaleOverlay.anchorY = 0,1
-  scaleOverlay.anchorX,scaleOverlay.anchorY = 0.5,0.5
+  scaleOverlay.anchorX,scaleOverlay.anchorY = 0.5,1--0.5,0.5
   scaleOverlay:scale(0.3,0.18)
-  scaleOverlay.x = scale.x + scaleOverlay.width*0.3/2
+  scaleOverlay.x = scale.x
   scaleOverlay.y = scale.y
   maxSOHeight = scaleOverlay.height
   scaleOverlay:setFillColor(0,1,0)
@@ -96,7 +98,6 @@ function scene:create( event )
   sceneGroup:insert(bg)
   sceneGroup:insert(scale)
   sceneGroup:insert(scaleOverlay)
-  print("The number of elements in stage is " .. #gv.stage)
 end
 
 -- "scene:show()"
@@ -108,6 +109,7 @@ function scene:show( event )
   gv.powerSupplied = math.round (gv.powerSupplied *10)/10
   if ( phase == "will" ) then
     setDataBox("Population", gv.population, 1)
+    calcPowerDemanded()
     setDataBox("Demanded", gv.powerDemanded.."GW", 2)
     setDataBox("Supplied", gv.powerSupplied.."GW", 3)
 

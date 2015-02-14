@@ -27,6 +27,7 @@ local productionText    = ""
 local prosText          = ""
 local consText          = ""
 local consumptionText   = ""
+local maintenenceText   = ""
 local currentEnergySourse = powerPlant
 
 -------------------------------------------------
@@ -35,7 +36,24 @@ local currentEnergySourse = powerPlant
 
 local function createText(ffSpecs)
 
+  local data = ""
   currentEnergySourse = ffSpecs
+  
+  local type = ffSpecs:getType()
+  
+  if ( type == "oil" ) then
+      type = "Oil"
+      specs = gv.oilSpecs
+  elseif ( type == "coal" ) then
+      type = "Coal"
+      specs = gv.coalSpecs
+  elseif ( type == "gas" ) then
+      type = "Gas"
+      specs = gv.gasSpecs
+  elseif ( type == "nuclear" ) then
+      type = "Uranium"
+      specs = gv.nuclearSpecs
+  end
 
   local textX = (buildOptions.x - buildOptions.width/2) + buildOptions.width*0.25
   local textY = (buildOptions.y - buildOptions.height/2) + buildOptions.height*0.06
@@ -49,9 +67,19 @@ local function createText(ffSpecs)
   productionText.anchorX,productionText.anchorY = 0,0
   productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  consumptionText = display.newText("Consumes: "..ffSpecs:getConsumption(),costText.x,productionText.y+20,gv.font,gv.fontSize)
+  data = "Consumes: "..ffSpecs:getConsumption() .. " unit of " .. type .. " per month"
+
+  consumptionText = display.newText( data,costText.x,productionText.y+20,
+  buildOptions.width*0.4, 0, gv.font,gv.fontSize)
   consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
   consumptionText.anchorX,consumptionText.anchorY = 0,0
+  
+  data = "Costs $" .. ffSpecs:getMaintenenceCost() .. " per month to maintain"
+  
+  maintenenceText = display.newText(data, costText.x, consumptionText.y + 30, 
+  gv.font, gv.fontSize)
+  maintenenceText.anchorX, maintenenceText.anchorY = 0,0
+  maintenenceText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
 
 
   scrollText = widget.newScrollView
@@ -65,7 +93,7 @@ local function createText(ffSpecs)
   }
   scrollText.anchorX, scrollText.anchorY = 0,0
   scrollText.x = costText.x
-  scrollText.y = consumptionText.y + 30
+  scrollText.y = maintenenceText.y + 20
 
   prosText = display.newText(ffSpecs:getPros(), 5,10,scrollText.width*0.95,prosHeight, gv.font,gv.fontSize)
   prosText.anchorX, prosText.anchorY = 0,0
@@ -92,7 +120,8 @@ local function setText(ffSpecs, kind)
   currentEnergySourse = ffSpecs
   costText.text = "Costs: $"..ffSpecs:getCost()
   productionText.text = "Produces: "..ffSpecs:getProduces().."GW"
-  consumptionText.text = "Consumes: "..ffSpecs:getConsumption()
+  consumptionText.text = "Consumes: "..ffSpecs:getConsumption() .. " unit of " .. kind .. " per month"
+  maintenenceText.text = "Costs $" .. ffSpecs:getMaintenenceCost() .. " per month to maintain"
   prosText.text = ffSpecs:getPros()
   consText.text = ffSpecs:getCons()
 
@@ -130,14 +159,11 @@ end
 
 local function buy( event )
 
-  if (event.phase == "began") then
-    if(currentEnergySourse:getCost()<=gv.money) then
+  if (event.phase == "began") then    
       landPurchasedConfirmed()
       setMoney()
-      composer.hideOverlay()
-    end
+      composer.hideOverlay()    
   end
-
 end
 
 
@@ -217,7 +243,7 @@ function scene:create( event )
       height      = circleHeight,
       id          = "btnNP",
       defaultFile = "Images/land_screen/lnd_nuclear.png",
-      onEvent     = function() return setText(gv.nuclearSpecs, "nuc") end,
+      onEvent     = function() return setText(gv.nuclearSpecs, "Uranium") end,
       top         = btnCoal.y + heightShift,
       left        = buttonX
   }
@@ -232,7 +258,7 @@ function scene:create( event )
       cornerRadius  = 10,
       label         = "Buy",
       id            = "btnBuy",
-      top           = (scrollText.y + scrollText.height) + buildOptions.height*0.05,
+      top           = (scrollText.y + scrollText.height*0.95),
       left          = costText.x,
       onEvent       = buy
   }
@@ -263,6 +289,7 @@ function scene:create( event )
   sceneGroup:insert(costText)
   sceneGroup:insert(productionText)
   sceneGroup:insert(consumptionText)
+  sceneGroup:insert(maintenenceText)
   --    scrollText:insert(prosText)
   --    scrollText:insert(consText)
   --    sceneGroup:insert(prosText)

@@ -23,7 +23,7 @@ local scrollText
 
 local function createText(sceneGroup)
 
-  local textVerticalShift = damHeight*0.1
+  local textVerticalShift = damHeight*0.08
   
   textWidth = damWidth*0.8
 
@@ -40,13 +40,19 @@ local function createText(sceneGroup)
   local costText = display.newText(costMessage, damOptionsLeft,
     riverName.y + textVerticalShift, gv.font, gv.fontSize )
   costText.anchorX,costText.anchorY = 0,0
-  
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  
+  local messageText = "Maintenence cost: $"
+  
+  local maintinenceText =display.newText(messageText .. gv.rivers[gv.riverSelected]:getMainteneceCost(), damOptionsLeft,
+    costText.y + textVerticalShift, gv.font, gv.fontSize )
+  maintinenceText.anchorX, maintinenceText.anchorY = 0,0  
+  maintinenceText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
   local destruction = "Area flooded: " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " km squared"
 
   local adText = display.newText(destruction, damOptionsLeft,
-    costText.y + textVerticalShift, damWidth*0.3, 0, gv.font, gv.fontSize )
+    maintinenceText.y + textVerticalShift, damWidth*0.3, 0, gv.font, gv.fontSize )
   adText.anchorX,adText.anchorY = 0,0
   
   adText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -82,6 +88,7 @@ local function createText(sceneGroup)
 
   sceneGroup:insert(riverName)
   sceneGroup:insert(costText)
+  sceneGroup:insert(maintinenceText)
   sceneGroup:insert(adText)
   sceneGroup:insert(powerText)
   scrollText:insert(info)
@@ -99,20 +106,27 @@ end
 
 local function confirmPurchase()
 
+  local magicNumber = 30 --just thought 30 would work well
+  local doc = 0
+
   gv.money = gv.money - gv.rivers[gv.riverSelected]:getCost()
   gv.rivers[gv.riverSelected]:setBuilt()
   setMoney()
+  
+  -- calculate how much to doc for the envirmentalists  
+  doc = gv.rivers[gv.riverSelected]:getAD()  
+  doc = math.round((doc/magicNumber)*10)/10  
+  gv.groups[0]:setStatus(-doc)
+  
 end
 
 
 local function damed(event)
 
-  if (event.phase == "began") then
-    if (gv.money >= gv.rivers[gv.riverSelected]:getCost()) then
+  if (event.phase == "began") then    
       confirmPurchase()
       changeImage()
-      composer.hideOverlay()
-    end
+      composer.hideOverlay()    
   end
 end
 

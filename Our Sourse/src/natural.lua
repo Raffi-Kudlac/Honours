@@ -17,12 +17,12 @@ local function setDataLabels()
 
   local windPower = gv.windBuildCounter*gv.windSpecs:getProduces()
   local solarPower = gv.solarBuildCounter*gv.solarSpecs:getProduces()
-  local percent = (gv.naturalLandUsedCounter/14)*100
+  local percent = math.round(100*(windPower + solarPower)/gv.powerDemanded)--(gv.naturalLandUsedCounter/14)*100
   percent = math.round(percent)
 
   setDataBox("Solar Power",tostring(solarPower) .. " GW" , 1)
   setDataBox("Wind Power", tostring(windPower) .. " GW", 2)
-  setDataBox("Land Used",tostring(percent) .. "%", 3)
+  setDataBox("Natural Power",tostring(percent) .. "%", 3)
 end
 
 
@@ -35,6 +35,7 @@ local function loadOptions(counter, event)
   gv.marker = counter
   gv.tileClicked = tiles[counter]
 
+  print("The natural options method got called")
   if ( "began" == event.phase ) then
 
     if (tiles[counter].tile:getType() == "open") then
@@ -50,10 +51,11 @@ end
 -- PUBLIC FUNCTIONS
 -------------------------------------------------
 
-function convertButton(path,location,type)
-
+function naturalConvertButton(path,location,type)
+  print("convert called in natural")
+  tiles[location]:setMask( nil )
   local temp = tiles[location]
-  --local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
+  local mask = nil
   sceneGroup:remove(tiles[location])
 
   tiles[location] = widget.newButton
@@ -73,14 +75,24 @@ function convertButton(path,location,type)
   tiles[location].x       = temp.x
   tiles[location].y       = temp.y
   tiles[location].tile    = naturalTile.new(type)
-  if(type == "destroy") then
-    tiles[location].tile:setBuilt(false)
+  
+  if(type == "open") then
+        mask = graphics.newMask( "Images/land_screen/lnd_tile_plain_mask.png" )
+  elseif (type == "solar" ) then
+      mask = graphics.newMask( "Images/natural_resource_screen/nr_tile_solar_mask.png" )
+  elseif (type == "wind" ) then
+      mask = graphics.newMask( "Images/natural_resource_screen/nr_tile_wind_mask.png" )    
   end
-
-  tiles[location].tile:setOwned()
-
-
-  -- tiles[location]:setMask( mask )
+  
+  local xScale = tiles[location].width/512
+  local yScale = tiles[location].height/512
+  
+  tiles[location]:setMask( mask )      
+  tiles[location].maskScaleX = xScale
+  tiles[location].maskScaleY = yScale
+  tiles[location].maskX = tiles[location].width/2  
+  tiles[location].maskY = tiles[location].height/2
+  
   sceneGroup:insert(location+2,tiles[location])
   setDataLabels()
 end
@@ -98,6 +110,7 @@ local function buildTiles()
   local shiftX  = 0.3 * display.contentWidth
   local shiftY  = 0.17 * display.contentHeight
   local counter = 0
+  local mask = graphics.newMask( "Images/land_screen/lnd_tile_plain_mask.png" )
 
   for y = 0, 4, 1 do
 
@@ -126,6 +139,16 @@ local function buildTiles()
       tiles[counter].x        = tileX
       tiles[counter].y        = tileY
       tiles[counter].tile     = naturalTile.new("open")
+      
+      local xScale = tiles[counter].width/512
+      local yScale = tiles[counter].height/512
+      
+      tiles[counter]:setMask( mask )      
+      tiles[counter].maskScaleX = xScale
+      tiles[counter].maskScaleY = yScale
+      tiles[counter].maskX = tiles[counter].width/2  
+      tiles[counter].maskY = tiles[counter].height/2      
+      
       sceneGroup:insert(tiles[counter])
       counter                 = counter +1
       tileX = tileX + shiftX

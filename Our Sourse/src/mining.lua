@@ -51,6 +51,7 @@ end
 function numberOfTilesMined()
 
   local counter = 0
+  tilesExisting = 24
 
   for x = 0,tilesExisting-1,1 do
     if grid[x].cell:isMined() == true then
@@ -123,13 +124,13 @@ local function setText()
     
       if (switch) then
           setDataBox("Coal Mined", gv.resourseAmount[2], 1)
-          setDataBox("Gas Mined", gv.resourseAmount[1], 2)
-          setDataBox("Oil Mined", gv.resourseAmount[0], 3)
+          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
+          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
           switch = false
       else
           setDataBox("Uranium Mined", gv.resourseAmount[3], 1)
-          setDataBox("Gas Mined", gv.resourseAmount[1], 2)
-          setDataBox("Oil Mined", gv.resourseAmount[0], 3)
+          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
+          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
           switch = true
       end  
 

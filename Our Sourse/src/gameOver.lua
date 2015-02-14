@@ -15,8 +15,8 @@ local heighScoreData = {}      --used to store data read from the file
 local path = system.pathForFile( "localHighScores.txt", system.DocumentsDirectory)
 local file = nil
 local name = ""
-local position = 0
-local currentTotalMonths = (gv.year-2000)*12 + gv.month
+local position = -1
+local currentTotalMonths = (gv.year-2000)*12 + gv.monthCounter
 local tempMonths = 0
 local nameField = ""
 local submit = ""
@@ -117,7 +117,7 @@ local function createText()
   sceneGroup:insert(labelText)      
   
   for k = 1, 5, 1 do
-      if ( heighScoreData[k][1] ~= -1) then
+      if ( heighScoreData[k][1] ~= "-1") then
           message = heighScoreData[k][1]
           dataY = dataY + heightCalculator(0.1)
           tempText[k] = display.newText(message, dataX,
@@ -221,7 +221,7 @@ local function createText()
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "Back",
-      onEvent   =   returnToMainMenu,
+      onEvent   =   returnToMainMenuFromGameOver,
   }
 
   local newGame = widget.newButton
@@ -284,7 +284,7 @@ local function close( event )
 
   if(event.phase == "ended") then
 
-    local winningData = {gv.submitionName,(gv.year-2000), gv.month, gv.blackoutLengthSum}
+    local winningData = {gv.submitionName,(gv.year-2000), gv.monthCounter, gv.blackoutLengthSum}
     table.insert(heighScoreData, position, winningData)
 
 
@@ -389,7 +389,7 @@ function scene:create( event )
 
     io.close(file)
 
-    currentTotalMonths = (gv.year-2000)*12 + gv.month
+    currentTotalMonths = (gv.year-2000)*12 + gv.monthCounter
     for x = 1, 5, 1 do
 
       tempMonths = heighScoreData[x][2]*12 + heighScoreData[x][3]
@@ -412,7 +412,7 @@ function scene:create( event )
         position = x
         getNameFromUser()
         break
-      elseif ( tempMonths > currentTotalMonths ) then
+      elseif ( tempMonths > currentTotalMonths and x == 5 ) then
         createText()
       end
     end

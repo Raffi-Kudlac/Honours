@@ -56,22 +56,22 @@ local function buy(event, index)
     end
 
 
-    -- pro hydro advertisement. effects envirmentalists group.
-    if (index == 3 and gv.advertisements[3]:getBought() ) then
-      gv.groups[0]:setStatus(5)
-    elseif (index == 3 and gv.advertisements[3]:getBought() == false and gv.hydroCounter > 0 ) then
-      gv.groups[0]:setStatus(-5)
-    end
+--    -- pro hydro advertisement. effects envirmentalists group.
+--    if (index == 3 and gv.advertisements[3]:getBought() ) then
+--      gv.groups[0]:setStatus(5)
+--    elseif (index == 3 and gv.advertisements[3]:getBought() == false and gv.hydroCounter > 0 ) then
+--      gv.groups[0]:setStatus(-5)
+--    end
 
 
     -- Fossil Power advertisement. effects the envirementalists group.
-    if (index == 4 and gv.advertisements[4]:getBought() ) then
+    if (index == 3 and gv.advertisements[3]:getBought() ) then
       gv.groups[0]:setStatus(5)
-    elseif (index == 4 and gv.advertisements[4]:getBought() == false ) then
+    elseif (index == 3 and gv.advertisements[3]:getBought() == false ) then
       gv.groups[0]:setStatus(-5)
     end
 
-    if (index == 5 and gv.advertisements[5]:getBought() ) then
+    if (index == 4 and gv.advertisements[4]:getBought() ) then
       gv.groups[2]:setStatus(3)
     elseif (index == 4 and gv.advertisements[4]:getBought() == false ) then
       gv.groups[0]:setStatus(-3)
@@ -248,14 +248,14 @@ function scene:create( event )
       hideBackground = true,
       horizontalScrollDisabled = true,
       height = BG.height*0.95,
-      scrollHeight = BG.height*4,
+      scrollHeight = BG.height*3,
       topPadding = padding,
       bottomPadding = padding,
       rightPadding = padding,
       leftPadding = padding,
   }
 
-  expandShift = scrollView.height*0.6
+  expandShift = scrollView.height*0.7
 
   local btnBack = widget.newButton
     {

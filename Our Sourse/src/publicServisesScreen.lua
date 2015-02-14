@@ -15,7 +15,7 @@ local scrollHeight = 200
 local entry = {}
 local entryData = {}
 local boughtButton = {}
-local expandShift = 80
+local expandShift = 0
 local expanded = false
 local pressedGroup
 -------------------------------------------------
@@ -180,7 +180,7 @@ function scene:create( event )
       left = centerX(widthValue),
       width = widthValue,
       height = heightValue*0.95,
-      scrollHeight = heightValue*10,
+      scrollHeight = heightValue*12,
       hideBackground = true,
       horizontalScrollDisabled = true,
       topPadding = padding,
@@ -189,7 +189,7 @@ function scene:create( event )
       leftPadding = padding,
   }
 
-  expandShift = scrollView.height*0.4
+  expandShift = scrollView.height*0.8
   makeEntries()
 
 

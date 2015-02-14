@@ -15,11 +15,16 @@ local ownedOptionsTop   = 0
 local shiftConstant     = 280
 local prosWidth         = shiftConstant*0.7
 local prosHeight        = 0
+local yShift = 0
 
 local message   = ""
-local costText  = ""
 local infoText  = ""
 
+local demolishCost = 0 -- cost to demolish will be 90% the cost to build
+local resourceConsumptionText = ""
+local maintenenceText = ""
+local producingText = ""
+local demolishText = ""
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -27,15 +32,53 @@ local infoText  = ""
 
 local function createText()
 
-  local xPosition = (ownedOptionsBG.x - ownedOptionsBG.width/2) + ownedOptionsBG.x*0.1
-  local yPosition = (ownedOptionsBG.y - ownedOptionsBG.height/2) + ownedOptionsBG.y*0.1
+  local xPosition = (ownedOptionsBG.x - ownedOptionsBG.width/2) + ownedOptionsBG.x*0.07
+  local yPosition = (ownedOptionsBG.y - ownedOptionsBG.height/2) + ownedOptionsBG.y*0.1  
+  local specs = 0
+  local data = ""
+  
+  local type = gv.tileClicked.tile:getTypeOfPowerPlant()
+  
+  if ( type == "oil" ) then
+      type = "Oil"
+      specs = gv.oilSpecs
+  elseif ( type == "coal" ) then
+      type = "Coal"
+      specs = gv.coalSpecs
+  elseif ( type == "gas" ) then
+      type = "Gas"
+      specs = gv.gasSpecs
+  elseif ( type == "nuclear" ) then
+      type = "Uranium"
+      specs = gv.nuclearSpecs
+  end
 
-  costText = display.newText("Costs: $4 B", xPosition,
-    yPosition, gv.font, gv.fontSize )
-  costText.anchorX,costText.anchorY = 0,0
-  costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  demolishCost = math.round(specs:getCost()*0.90)
 
-  infoText = display.newText(message, costText.x,costText.y + 20,prosWidth,prosHeight, gv.font,gv.fontSize)
+  producingText = display.newText("Can produce " .. specs:getProduces() .. " GW per month", xPosition, 
+    yPosition, gv.font, gv.fontSize)
+  producingText.anchorX, producingText.anchorY = 0,0 
+  producingText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
+  
+  data = "Consumes " .. specs:getConsumption() .." Units of " .. type .. " per month"
+  
+  resourceConsumptionText = display.newText(data, xPosition, producingText.y + yShift, gv.font, gv.fontSize)
+  resourceConsumptionText.anchorX, resourceConsumptionText.anchorY = 0,0
+  resourceConsumptionText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
+  
+  data = "Costs $" .. specs:getMaintenenceCost() .. " per month to maintain"
+  
+  maintenenceText = display.newText(data, xPosition, resourceConsumptionText.y + yShift, 
+  gv.font, gv.fontSize)
+  maintenenceText.anchorX, maintenenceText.anchorY = 0,0
+  maintenenceText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
+
+  demolishText = display.newText("Costs: $" .. demolishCost .. " to demolish", xPosition,
+    maintenenceText.y + yShift, gv.font, gv.fontSize )
+  demolishText.anchorX,demolishText.anchorY = 0,0
+  demolishText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+--
+  infoText = display.newText(message, demolishText.x,demolishText.y + yShift,prosWidth,prosHeight, gv.font,gv.fontSize)
   infoText.anchorX, infoText.anchorY = 0,0
   infoText.height = infoText.height + 15
   infoText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -44,16 +87,25 @@ end
 
 local function demolish(event)
 
-  if(event.phase == "began") then
-
-    if( gv.money >= 4 ) then
-      gv.money = gv.money - 4
+  if(event.phase == "began") then    
+      gv.money = gv.money - demolishCost
       groupCheck()
-      convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open", "none")
-
+      convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+      
+      
+      local type = gv.tileClicked.tile:getTypeOfPowerPlant()
+  
+      if ( type == "oil" ) then
+         gv.oilBuildCounter = gv.oilBuildCounter - 1
+      elseif ( type == "coal" ) then
+         gv.coalBuildCounter = gv.coalBuildCounter - 1
+      elseif ( type == "gas" ) then
+         gv.gasBuildCounter = gv.gasBuildCounter - 1
+      elseif ( type == "nuclear" ) then
+         gv.nuclearBuildCounter = gv.nuclearBuildCounter - 1
+      end
+      
       composer.hideOverlay()
-    end
-
   end
 end
 
@@ -77,34 +129,35 @@ function scene:create( event )
   message = "From here you can demlosh you power plant, returning the land to the open state. " ..
     "It costs money to demolish a power plant but it could be worth it if the current one isn't generating any power. " ..
     " After the plant is gone you can chose to build another plant in its stead. "
-
-
-  ownedOptionsTop = centerY(shiftConstant)
-  ownedOptionsLeft = centerX(shiftConstant) + 20
+    
+  local bgWidth = widthCalculator(0.6)
+  local bgHeight = heightCalculator(0.7)
 
   ownedOptionsBG = widget.newButton
     {
-      width       = widthCalculator(0.6),
-      height      = heightCalculator(0.55),
+      width       = bgWidth,
+      height      = bgHeight,
       defaultFile = "Images/global_images/Horizontal_Box.png",
       id          = "BO",
-      left        = centerX(widthCalculator(0.6)),
-      top         = centerY(heightCalculator(0.6)),
+      left        = centerX(bgWidth),
+      top         = centerY(heightCalculator(0.8)),
   }
 
   prosWidth = ownedOptionsBG.width*0.8
+  yShift = ownedOptionsBG.height*0.1
   createText()
+  
 
   local btnDemolish = widget.newButton
     {
-      width         = 80,
-      height        = 20,
+      width         = bgWidth*0.25,
+      height        = bgHeight*0.1,
       shape         = "roundedRect",
       cornerRadius  = 10,
       label         = "Demolish",
       id            = "btnBuy",
-      top           =  infoText.y + infoText.height,
-      left          = costText.x,
+      top           = infoText.y + infoText.height - bgWidth*.02,
+      left          = demolishText.x,
       onEvent       = demolish
   }
 
@@ -112,8 +165,8 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width         = 60,
-      height        = 20,
+      width         = bgWidth*0.2,
+      height        = bgHeight*0.1,
       shape         = "roundedRect",
       cornerRadius  = 10,
       label         = "Cancel",
@@ -123,11 +176,17 @@ function scene:create( event )
       onEvent       = cancel
   }
 
-  sceneGroup:insert(ownedOptionsBG)
-  sceneGroup:insert(costText)
+  sceneGroup:insert(ownedOptionsBG)    
+  sceneGroup:insert(resourceConsumptionText)
+  sceneGroup:insert(maintenenceText)
+  sceneGroup:insert(producingText)
+  sceneGroup:insert(demolishText)
   sceneGroup:insert(infoText)
+  
   sceneGroup:insert(btnDemolish)
   sceneGroup:insert(btnCancel)
+  
+  
 end
 
 

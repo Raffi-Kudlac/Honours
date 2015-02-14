@@ -17,6 +17,7 @@ local textHeight      = 0
 local mineOptions = 0
 local costText = 0
 local info = 0
+local costToMine = 10
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
@@ -28,7 +29,7 @@ local function createText(sceneGroup)
   local xPosition = (mineOptions.x - mineOptions.width/2) + mineOptions.width*0.1
   local yPosition = (mineOptions.y - mineOptions.height/2) + mineOptions.height*0.1
 
-  costText = display.newText("It costs 1 B to mine", xPosition,
+  costText = display.newText("It costs $" ..costToMine .. " to mine", xPosition,
     yPosition, gv.font, gv.fontSize )
   costText.anchorX,costText.anchorY = 0,0
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -45,17 +46,14 @@ end
 
 local function mine(event)
 
-  if event.phase == "began" then
-    if (gv.money >= 1)then
-      gv.money = gv.money - 1
+  if event.phase == "began" then    
+      gv.money = gv.money - costToMine
       setMoney()
       changeCell()
       gatherResourses()
       alterFoundResourses()
-      composer.hideOverlay()
-    end
+      composer.hideOverlay()    
   end
-
 end
 
 

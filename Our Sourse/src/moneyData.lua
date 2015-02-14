@@ -69,7 +69,7 @@ local function makeText(sceneGroup)
 
   local docMoney = 0
   --Hydro
-  for i = 1, gv.hydroCounter - 1, 1 do
+  for i = 0, gv.hydroCounter - 1, 1 do
     if( gv.rivers[i]:getBuilt() ) then
       docMoney = docMoney + gv.rivers[i]:getMainteneceCost()
     end
@@ -153,7 +153,7 @@ local function displayText(data, sceneGroup)
   for x =0,7, 1 do
 
     if (data[x][0] ~= 0 ) then
-      text = display.newText(data[x][1] .. "$".. math.round(data[x][0]).."B", xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize )
+      text = display.newText(data[x][1] .. "$".. math.round(data[x][0]), xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize )
       text.anchorX,text.anchorY = 0,0
       text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
       sceneGroup:insert(text)

@@ -30,7 +30,7 @@ local function createText()
   local xPosition = (forestOptionsBG.x - forestOptionsBG.width/2) + forestOptionsBG.x*0.1
   local yPosition = (forestOptionsBG.y - forestOptionsBG.height/2) + forestOptionsBG.y*0.1
 
-  costText = display.newText("Costs: "..gv.tileClicked.tile:getCost().." B", xPosition,
+  costText = display.newText("Costs: $"..gv.tileClicked.tile:getCost(), xPosition,
     yPosition, gv.font, gv.fontSize )
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
   costText.anchorX,costText.anchorY = 0,0
@@ -44,14 +44,11 @@ end
 
 local function buy(event)
 
-  if(event.phase == "began") then
-
-    if(gv.money >= gv.tileClicked.tile:getCost()) then
+  if(event.phase == "began") then    
       gv.money = gv.money - gv.tileClicked.tile:getCost()
       setMoney()
       convertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
-    end
-
+      gv.groups[0]:setStatus(-1)
     composer.hideOverlay()
   end
 end
@@ -70,9 +67,9 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
-  forestMessage = "You must buy this unihabited land from the city and once you do you are free to build"..
-    " on it. This costs a little bit more then buting land from the city as you have to landscape it to make it "..
-    "usable."
+     
+  forestMessage = "Purchasing this land is cheaper then buying it from the city but envirmentalists have problems with cutting down " .. 
+    "tress. Like they don't know what thier signs are made out of. Once you buy the land can build power plants on it"
 
 
   forestOptionsTop  = centerY(shiftConstant)
