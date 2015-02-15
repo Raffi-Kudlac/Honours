@@ -24,8 +24,6 @@ local miningTimer
 
 local function mined(n,event)
 
-
-  print("The cell clicked is " .. tostring(n))
   local options = {
     isModal = true
   }
@@ -115,12 +113,6 @@ local function miningData( event )
 end
 
 local function setText()
-
---  oilText:setLabel("Oil: "..tostring(gv.resourseAmount[0]).."/"..tostring(totalResourses[4]))
---  gasText:setLabel("Gas: "..tostring(gv.resourseAmount[1]).."/"..tostring(totalResourses[5]))
---  coalText:setLabel("Coal: "..tostring(gv.resourseAmount[2]).."/"..tostring(totalResourses[6]))
---  uraniumText:setLabel("Uranium: "..tostring(gv.resourseAmount[3]).."/"..tostring(totalResourses[7]))
---  local tilesMined = numberOfTilesMined()
     
       if (switch) then
           setDataBox("Coal Mined", gv.resourseAmount[2], 1)
@@ -172,9 +164,10 @@ local function buildGrid(sceneGroup)
         left = currentX,
         width = square,
         height = square,
+        labelColor = { default = {gv.fontColourR, gv.fontColourG, gv.fontColourB} },
         defaultFile = "Images/mining_screen/mining_digTile.png",
         label = i+1,
-        onEvent = function(event) return mined(i+0,event) end,
+        onEvent = function(event) return mined(i + 0,event) end,
     }
 
     currentX = currentX - square - gap
@@ -193,6 +186,7 @@ local function buildGrid(sceneGroup)
         left = currentX,
         width = square,
         height = square,
+        labelColor = { default = {gv.fontColourR, gv.fontColourG, gv.fontColourB} },
         defaultFile = "Images/mining_screen/mining_digTile.png",
         label = i+1,
         onEvent = function(event) return mined(i+0,event) end,
@@ -215,6 +209,7 @@ local function buildGrid(sceneGroup)
         left = currentX,
         width = square,
         height = square,
+        labelColor = { default = {gv.fontColourR, gv.fontColourG, gv.fontColourB} },
         defaultFile = "Images/mining_screen/mining_digTile.png",
         label = i+1,
         onEvent = function(event) return mined(i+0,event) end,
@@ -237,6 +232,7 @@ local function buildGrid(sceneGroup)
         left = currentX,
         width = square,
         height = square,
+        labelColor = { default = {gv.fontColourR, gv.fontColourG, gv.fontColourB} },
         defaultFile = "Images/mining_screen/mining_digTile.png",
         label = i+1,
         onEvent = function(event) return mined(i+0,event) end,
@@ -354,20 +350,18 @@ function changeCell()
   local temp = grid[cellClicked]
   sceneGroup:remove(grid[cellClicked])
 
-  local replacement = widget.newButton
+  grid[cellClicked] = widget.newButton
     {
       top = temp.y - temp.height/2,
       left = temp.x - temp.width/2,
       width = temp.width,
       height = temp.height,
       defaultFile = "Images/mining_screen/mining_Done_digTile.png",
-      onEvent = function(event) return mined(cellClicked + 0,event) end,
   }
 
-  replacement.cell = grid[cellClicked].cell
-  replacement.cell:setMined()
-
-  grid[cellClicked] = replacement
+  grid[cellClicked].cell = temp.cell
+  grid[cellClicked].cell:setMined()
+  
   sceneGroup:insert(grid[cellClicked])
 
 end

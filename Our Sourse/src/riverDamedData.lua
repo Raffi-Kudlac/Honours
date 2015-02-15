@@ -93,8 +93,7 @@ function scene:create( event )
     {
       width         = bgWidth*0.2,
       height        = bgHeight*0.1,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
       top           = infoText.y + infoText.height - bgWidth*.02,

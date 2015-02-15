@@ -153,30 +153,35 @@ function scene:create( event )
       top         = centerY(damHeight),
   }
   
+    
   damOptionsLeft = damOptions.x - damWidth/2.5
+  sceneGroup:insert(damOptions)
+  createText(sceneGroup)
+  
+  local btnWidth  = damOptions.width*0.25
+  local btnHeight = damOptions.height*0.15
+  
   local btnDam = widget.newButton
     {
-      width         = 50,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = btnWidth,
+      height        = btnHeight,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Dam",
-      id            = "btnMine",
-      top           =  damOptions.height - 10,
-      left          =  damOptionsLeft,
+      id            = "btnDam",
+      top           =  scrollText.x + scrollText.height*0.8,
+      left          =  centerX(btnWidth) - damOptions.width*0.15,
       onEvent       = damed
   }
 
   local btnCancel = widget.newButton
     {
-      width         = 60,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = btnWidth,
+      height        = btnHeight,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnDam.y,
-      left          = btnDam.x + 70,
+      left          = centerX(btnWidth) + damOptions.width*0.15,
       onEvent       = cancel
   }
 
@@ -184,11 +189,10 @@ function scene:create( event )
 
 
 
-  sceneGroup:insert(damOptions)
+  
   sceneGroup:insert(btnDam)
   sceneGroup:insert(btnCancel)
-
-  createText(sceneGroup)
+  
 end
 
 

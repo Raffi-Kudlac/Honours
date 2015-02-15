@@ -220,8 +220,7 @@ local function loadElements()
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(btnWidth) + btnWidth*increaseHorizontalShift,
       top       = display.contentHeight - btnHeight*1.1,
       labelAlign = "center",
@@ -233,8 +232,7 @@ local function loadElements()
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(btnWidth),
       top       = display.contentHeight - btnHeight*1.1,
       labelAlign = "center",
@@ -308,8 +306,7 @@ local function getNameFromUser()
     {
       width     = textFieldWidth*0.9,
       height    = nameField.height*1.1,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(textFieldWidth*0.9),
       top       = nameField.y + nameField.height*1.2,
       labelAlign = "center",

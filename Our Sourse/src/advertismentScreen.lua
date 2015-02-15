@@ -148,10 +148,9 @@ local function makeEntries()
   for x=0, gv.addCounter - 1, 1 do
     entry[x] = widget.newButton
       {
-        width     = scrollView.width*0.6,
+        width     = scrollView.width*0.7,
         height    = scrollView.height*0.2,
-        shape     = "roundedRect",
-        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+        defaultFile = "Images/global_images/button1.png",
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
@@ -169,7 +168,7 @@ local function makeEntries()
       {
         width     = scrollView.width*0.15,
         height    = scrollView.height*0.15,
-        left      = entry[x].width + scrollView.width*0.15,
+        left      = entry[x].width + scrollView.width*0.1,
         top       = entry[x].y - scrollView.height*0.15/2,
         defaultFile = path,
         onEvent   = function(event) buy(event, (x + 0)) end

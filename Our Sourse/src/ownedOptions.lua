@@ -150,13 +150,12 @@ function scene:create( event )
 
   local btnDemolish = widget.newButton
     {
-      width         = bgWidth*0.25,
-      height        = bgHeight*0.1,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = bgWidth*0.27,
+      height        = bgHeight*0.15,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Demolish",
       id            = "btnBuy",
-      top           = infoText.y + infoText.height - bgWidth*.02,
+      top           = infoText.y + infoText.height*0.75,
       left          = demolishText.x,
       onEvent       = demolish
   }
@@ -165,10 +164,9 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width         = bgWidth*0.2,
-      height        = bgHeight*0.1,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = bgWidth*0.27,
+      height        = bgHeight*0.15,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnDemolish.y,

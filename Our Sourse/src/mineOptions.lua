@@ -88,10 +88,9 @@ function scene:create( event )
 
   local btnMine = widget.newButton
     {
-      width         = 50,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = mineOptions.width*0.3,
+      height        = mineOptions.height*0.2,
+      defaultFile = "Images/global_images/button1.png",      
       label         = "Mine",
       id            = "btnMine",
       top           =  info.y + info.height,
@@ -101,14 +100,13 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width         = 60,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = mineOptions.width*0.3,
+      height        = mineOptions.height*0.2,
+      defaultFile   = "Images/global_images/button1.png",    
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnMine.y,
-      left          = btnMine.x + mineOptions.width*0.4,
+      left          = btnMine.x + mineOptions.width*0.3,
       onEvent       = cancel
   }
 

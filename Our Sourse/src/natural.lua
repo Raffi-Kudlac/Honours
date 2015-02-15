@@ -172,12 +172,11 @@ function scene:create( event )
     {
       width       = display.contentWidth,
       height      = display.contentHeight,
-      defaultFile = "Images/land_screen/lnd_grid.png",
+      defaultFile = "Images/natural_resource_screen/nr_Background.png",
       id          = "grid",
-      left        =50,
-      top         = 40,
-  }
-  grid:scale(1.2,1.2)
+      left        = 0,
+      top         = 0,
+  } 
   sceneGroup:insert(grid)
   buildTiles()
   -- Initialize the scene here.

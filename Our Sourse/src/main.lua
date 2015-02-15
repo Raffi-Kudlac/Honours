@@ -948,9 +948,21 @@ local function buildDataBar()
 end
 
 
+local function fastForward( event )
+
+    if ( event.phase == "ended" ) then
+        if (gv.month == 5000 ) then
+            gv.month = 2500
+        else
+            gv.month = 5000
+        end     
+    end
+
+end
+
 local function buildToolBar()
 
-  local TBwidth         = display.contentWidth*0.28
+  local TBwidth         = display.contentWidth*0.32
   local TBheight        = TBwidth*0.17     
   local toolBarFactorX  = display.contentWidth-TBwidth
 
@@ -969,9 +981,10 @@ local function buildToolBar()
   timeLabel = widget.newButton
     {
       width         = TBwidth *0.9,
-      height        = 20,
+      height        = TBheight*0.75,
       shape         = "roundedRect",
       cornerRadius  = 6,
+      labelColor = { default = {gv.fontColourR, gv.fontColourG, gv.fontColourB} },
       id            = "time",
       fillColor     = { default={ 0.5, 0, 0, 1 }, over={ 0.5, 0, 0.5, 0 } },
       label         = "January",
@@ -984,7 +997,7 @@ local function buildToolBar()
   
   timeBar = widget.newButton
     {
-      width     = TBwidth,
+      width     = timeBarWidth,
       height    = timeBarHeight,
       defaultFile = "Images/static_screen/st_speedControl.png",      
       left      = display.contentWidth - timeBarWidth,
@@ -992,15 +1005,16 @@ local function buildToolBar()
   }
   
 
-  -- the weather icon
+  -- the fast forward icon
   weather = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_weather_Sun.png",
+      defaultFile = "Images/static_screen/st_fastforward.png",
       id          = "weather",
-      top         = 25,
-      left        = toolBarFactorX + 70,
+      top         = timeBar.y - circleHeight/2,
+      left        = timeBar.x - timeBarWidth/3,
+      onEvent     = fastForward,
   }
 
 
@@ -1012,8 +1026,8 @@ local function buildToolBar()
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_pause.png",
       id          = "pausePlay",
-      top         = 25,
-      left        = toolBarFactorX + 110,
+      top         = timeBar.y - circleHeight/2,
+      left        = timeBar.x + timeBarWidth/7,
       onEvent     = pausedPressed,
   }
 

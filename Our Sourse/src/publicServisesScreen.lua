@@ -94,16 +94,16 @@ end
 
 local function makeEntries()
 
-  local startingX = scrollView.width*0.08
+  local startingX = scrollView.width*0.02
   local startingY = scrollView.height*0.08
+  local textX = scrollView.width*0.1
 
   for x=0, gv.servisCounter - 1, 1 do
     entry[x] = widget.newButton
       {
-        width     = scrollView.width*0.6,
+        width     = scrollView.width*0.8,
         height    = scrollView.height*0.2,
-        shape     = "roundedRect",
-        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+        defaultFile = "Images/global_images/button1.png",
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
@@ -120,14 +120,16 @@ local function makeEntries()
       {
         width     = scrollView.width*0.15,
         height    = scrollView.height*0.15,
-        left      = entry[x].width + scrollView.width*0.15,
+        left      = entry[x].width + scrollView.width*0.02,
         top       = entry[x].y - scrollView.height*0.15/2,
         defaultFile = path,
         onEvent   =   function(event) buy(event, x + 0) end
     }
     entry[x]:setLabel(gv.publicServises[x]:getName())
-
-    entryData[x] = display.newText(gv.publicServises[x]:getAbout(), startingX, entry[x].y + entry[x].height/2,
+    
+    
+    
+    entryData[x] = display.newText(gv.publicServises[x]:getAbout(), textX, entry[x].y + entry[x].height/2,
       scrollView.width*0.75, 0, gv.font, gv.fontSize )
     entryData[x].anchorX,entryData[x].anchorY = 0,0
     entryData[x].isVisible = false

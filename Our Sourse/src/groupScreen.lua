@@ -10,6 +10,7 @@ local widget    = require( "widget" )
 local scene     = composer.newScene()
 local entry     = {}
 local entryData = {}
+local faces = {}
 local scrollView
 local expanded = false
 local pressedGroup
@@ -57,20 +58,30 @@ local function makeEntries()
 
   local startingX = scrollView.width*0.08
   local startingY = scrollView.height*0.08
+  local emotion = 0
 
   for x=0, gv.groupCounter - 1, 1 do
     entry[x] = widget.newButton
       {
-        width     = scrollView.width*0.8,
+        width     = scrollView.width*0.6,
         height    = scrollView.height*0.2,
-        shape     = "roundedRect",
-        fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+        defaultFile = "Images/global_images/button1.png", 
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
-        labelAlign = "left",
+        labelAlign = "center",
         onEvent   =   function(event) showSpecifics(event, x + 0) end
+    }    
+    entry[x]:setLabel(gv.groups[x]:getName())
+    emotion = gv.groups[x]:getStatus()
+    
+    faces[x] = widget.newButton
+    {
+        width = scrollView.width*0.2,
+        height = scrollView.height*0.2,
+        defaultFile = emotion,
+        top = entry[x].y - entry[x].height/2,
+        left = entry[x].x + entry[x].width/2 + scrollView.width*0.05,        
     }
-    entry[x]:setLabel(gv.groups[x]:getName() .. "\t\t\t" .. gv.groups[x]:getStatus())
 
     entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, (x+1)*scrollView.height*0.21 + startingY,
       scrollView.width*0.85, expandShift, gv.font, gv.fontSize )
@@ -79,9 +90,22 @@ local function makeEntries()
     entryData[x].anchorX,entryData[x].anchorY = 0,0
 
     scrollView:insert(entry[x])
+    scrollView:insert(faces[x])
     scrollView:insert(entryData[x])
 
   end
+end
+
+local function updateEmotions()
+
+    for x=0, gv.groupCounter - 1, 1 do
+        scrollView:remove(entry[x])
+        scrollView:remove(entryData[x])
+        scrollView:remove(faces[x])        
+    end
+    
+    makeEntries()
+
 end
 
 local function back (event)
@@ -162,6 +186,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      updateEmotions()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

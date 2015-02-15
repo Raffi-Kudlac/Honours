@@ -26,7 +26,7 @@ local function refreshText()
     message = #gv.blackoutTimes .. " blackout(s) in 3 years \n At 5 the game will end"
     blackoutRateText.text = message
     
-    message = gv.blackoutLengthSum + gv.blackoutLengthCounter .. " blackout months in 3 years" .. 
+    message = gv.blackoutLengthSum + gv.blackoutLengthCounter .. " blackout month(s) in 3 years" .. 
       "\n At 12 the game ends"
       
     blackoutLengthText.text = message  
@@ -174,16 +174,15 @@ function scene:create( event )
       top       = centerY(BGHeight),      
   }
   
-  local btnWidth = BG.width*0.2
-  local btnHeight = BG.height*0.1
+  local btnWidth = BG.width*0.3
+  local btnHeight = BG.height*0.15
   
 
   local btnBack = widget.newButton
     {
       width     = btnWidth,
-      height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      height    = btnHeight,      
+      defaultFile = "Images/global_images/button1.png",
       id        = "btnPlay",
       label     = "Back",
       left      = centerX(btnWidth),

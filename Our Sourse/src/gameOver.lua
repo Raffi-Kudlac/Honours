@@ -55,7 +55,7 @@ local function createText()
   local startingY = display.contentHeight*0.05
   local startingX = display.contentWidth/2
   local dataX = display.contentWidth*0.1
-  local dataY = display.contentHeight*0.2
+  local dataY = display.contentHeight*0.25
   local tempText = {}
   local labels = {}
   local labelText = 0
@@ -93,6 +93,14 @@ local function createText()
             startingY, gv.font, gv.fontSize*2 )
           --title.anchorX, title.anchorY = 0,0
           title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          
+          message = "You Lasted " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
+          "a total Blackout time of " .. gv.blackoutCounter .. " month(s)" 
+          
+          local localScore = display.newText(message, centerX(display.contentWidth*0.6),
+            title.y + title.height,display.contentWidth*0.6,0, gv.font, gv.fontSize*1.5 )
+            localScore.anchorX, localScore.anchorY = 0,0
+          localScore:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
           sceneGroup:insert(title)          
       end                              
@@ -131,7 +139,7 @@ local function createText()
   
   -- Printing Years
   dataX = dataX + widthCalculator(0.2)
-  dataY = display.contentHeight*0.2
+  dataY = display.contentHeight*0.25
   
   labelText = display.newText(labels[2], dataX,
         dataY, gv.font, gv.fontSize*2 )        
@@ -157,7 +165,7 @@ local function createText()
   
   -- Printing Months
   dataX = dataX + widthCalculator(0.2) - labelText.width/2
-  dataY = display.contentHeight*0.2
+  dataY = display.contentHeight*0.25
   
   labelText = display.newText(labels[3], dataX,
         dataY, gv.font, gv.fontSize*2 )        
@@ -183,7 +191,7 @@ local function createText()
   
   -- Printing BlackOut Months
   dataX = dataX + widthCalculator(0.2) - labelText.width/2
-  dataY = display.contentHeight*0.2
+  dataY = display.contentHeight*0.25
   
   labelText = display.newText(labels[4], dataX,
         dataY, gv.font, gv.fontSize*2 )        
@@ -215,8 +223,7 @@ local function createText()
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(btnWidth) - btnWidth*increaseHorizontalShift,
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
@@ -228,8 +235,7 @@ local function createText()
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(btnWidth),
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
@@ -242,8 +248,7 @@ local function createText()
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       left      = centerX(btnWidth) + btnWidth*increaseHorizontalShift,
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
@@ -393,6 +398,10 @@ function scene:create( event )
     for x = 1, 5, 1 do
 
       tempMonths = heighScoreData[x][2]*12 + heighScoreData[x][3]
+      
+      print("X: ".. x)
+      print("The months on file are" .. tempMonths)
+      print("Your score is ".. currentTotalMonths)
 
       if (tempMonths < currentTotalMonths ) then
 
@@ -412,8 +421,10 @@ function scene:create( event )
         position = x
         getNameFromUser()
         break
-      elseif ( tempMonths > currentTotalMonths and x == 5 ) then
+      elseif ( tempMonths >= currentTotalMonths and x == 5 ) then
+        print("got called")
         createText()
+        
       end
     end
 

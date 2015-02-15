@@ -53,8 +53,7 @@ function scene:create( event )
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       id        = "btnPlay",
       label     = "New Game",
       left      = BG.x - BG.width/2 + BG.width*0.1,
@@ -68,8 +67,7 @@ function scene:create( event )
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       id        = "btnPlay",
       label     = "Quit",
       left      = btnNewGame.x - btnWidth/2,
@@ -83,8 +81,7 @@ function scene:create( event )
     {
       width     = btnWidth,
       height    = btnHeight,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      defaultFile = "Images/global_images/button1.png",
       id        = "btnPlay",
       label     = "Resume",
       left      = btnNewGame.x - btnWidth/2,

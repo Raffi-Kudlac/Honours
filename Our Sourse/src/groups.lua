@@ -74,15 +74,15 @@ end
 function groups:getStatus()
 
   if (self.status == 0) then
-    return ":|"
+    return "Images/business_screen/bns_neutral.png"
   elseif(self.status < 0 and self.status >= -5) then
-    return ":("
+    return "Images/business_screen/bns_sad.png"
   elseif(self.status < -5) then
-    return " :x"
+    return "Images/business_screen/bns_supersad.png"
   elseif(self.status > 0 and self.status < 5 ) then
-    return ":)"
+    return "Images/business_screen/bns_happy.png"
   elseif (self.status > 5 ) then
-    return "=D"
+    return "Images/business_screen/bns_superhappy.png"
   else
     return "X"
   end
