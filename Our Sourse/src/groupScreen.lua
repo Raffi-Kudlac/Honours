@@ -35,6 +35,7 @@ local function showSpecifics(event, index)
       for  x = index + 1, gv.groupCounter -1,1 do
 
         entry[x].y = yMarker + (x - index - 1 )*shift
+        faces[x].y = yMarker + (x - index - 1 )*shift
       end
       pressedGroup = index
       entryData[index].isVisible = true
@@ -43,6 +44,7 @@ local function showSpecifics(event, index)
       for x = pressedGroup +1, gv.groupCounter -1, 1 do
 
         entry[x].y = entry[x-1].y + shift
+        faces[x].y = faces[x-1].y + shift
       end
 
       entryData[pressedGroup].isVisible = false
@@ -69,6 +71,7 @@ local function makeEntries()
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
+        fontSize  = gv.businessFont,
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }    
     entry[x]:setLabel(gv.groups[x]:getName())
@@ -186,7 +189,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
-      updateEmotions()
+      --updateEmotions()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

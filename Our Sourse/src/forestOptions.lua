@@ -88,8 +88,8 @@ function scene:create( event )
   prosWidth = forestOptionsBG.width*0.8
   createText()
   
-  local btnWidth = forestOptionsBG.width*0.25
-  local btnHeight = forestOptionsBG.height*0.15
+  local btnWidth = forestOptionsBG.width*0.3
+  local btnHeight = forestOptionsBG.height*0.2
 
   local btnBuy = widget.newButton
     {
@@ -99,7 +99,7 @@ function scene:create( event )
       label         = "Buy",
       id            = "btnBuy",
       top           = infoText.y + infoText.height - btnHeight/2,
-      left          = centerX(btnWidth) - forestOptionsBG.width*0.15,
+      left          = centerX(btnWidth) - forestOptionsBG.width*0.2,
       onEvent       = buy
   }
 

@@ -250,7 +250,7 @@ function scene:create( event )
 
   createText(gv.oilSpecs)
   
-  local btnActionWidth = buildOptions.width*0.22
+  local btnActionWidth = buildOptions.width*0.25
   local btnActionHeight = buildOptions.height*0.12
 
   local btnBuy = widget.newButton
@@ -261,7 +261,7 @@ function scene:create( event )
       label         = "Buy",
       id            = "btnBuy",
       top           = (scrollText.y + scrollText.height*0.9),
-      left          = centerX(btnActionWidth) -buildOptions.width*0.15,
+      left          = centerX(btnActionWidth) -buildOptions.width*0.1,
       onEvent       = buy
   }
 
@@ -275,7 +275,7 @@ function scene:create( event )
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnBuy.y,
-      left          = centerX(btnActionWidth) + buildOptions.width*0.15,
+      left          = centerX(btnActionWidth) + buildOptions.width*0.2,
       onEvent       = cancel
   }
 

@@ -132,16 +132,18 @@ function scene:create( event )
   yShift = ownedOptionsBG.height*0.1
   createText()
 
+  local btnWidth = ownedOptionsBG.width*0.3
+  local btnHeight = ownedOptionsBG.height*0.2
+
   local btnDemolish = widget.newButton
     {
-      width         = 80,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = btnWidth,
+      height        = btnHeight,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Demolish",
       id            = "btnBuy",
-      top           =  infoText.y + infoText.height - bgWidth*.02,
-      left          = infoText.x,
+      top           =  infoText.y + infoText.height - bgWidth*.06,
+      left          = infoText.x + ownedOptionsBG.width*0.1,
       onEvent       = naturaldemolish
   }
 
@@ -149,14 +151,13 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width         = 60,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = btnWidth,
+      height        = btnHeight,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnDemolish.y,
-      left          = btnDemolish.x + ownedOptionsBG.width*0.4,
+      left          = btnDemolish.x + ownedOptionsBG.width*0.2,
       onEvent       = cancel
   }
 

@@ -39,6 +39,7 @@ naturalLandUsedCounter = 0
 rivers = 0
 hydroCounter = 0
 groups = 0
+businessFont = 10
 groupCounter = 4
 advertisements = 0
 addCounter = 5

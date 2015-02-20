@@ -158,7 +158,7 @@ function scene:create( event )
   sceneGroup:insert(damOptions)
   createText(sceneGroup)
   
-  local btnWidth  = damOptions.width*0.25
+  local btnWidth  = damOptions.width*0.3
   local btnHeight = damOptions.height*0.15
   
   local btnDam = widget.newButton
@@ -181,7 +181,7 @@ function scene:create( event )
       label         = "Cancel",
       id            = "btnCancel",
       top           = btnDam.y,
-      left          = centerX(btnWidth) + damOptions.width*0.15,
+      left          = centerX(btnWidth) + damOptions.width*0.2,
       onEvent       = cancel
   }
 

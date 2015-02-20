@@ -46,8 +46,8 @@ function changeBoughtImage( index, image )
 
   boughtButton[index] = widget.newButton
     {
-      width     = scrollWidth*0.2,
-      height    = 40,
+      width     = scrollView.width*0.15,
+      height    = scrollView.height*0.15,
       left      = 0,
       top       = 0,
       defaultFile = image,
@@ -94,19 +94,20 @@ end
 
 local function makeEntries()
 
-  local startingX = scrollView.width*0.02
+  local startingX = scrollView.width*0.1
   local startingY = scrollView.height*0.08
-  local textX = scrollView.width*0.1
+  local textX = scrollView.width*0.15
 
   for x=0, gv.servisCounter - 1, 1 do
     entry[x] = widget.newButton
       {
-        width     = scrollView.width*0.8,
+        width     = scrollView.width*0.7,
         height    = scrollView.height*0.2,
         defaultFile = "Images/global_images/button1.png",
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
+        fontSize  = gv.businessFont, 
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }
 
@@ -120,7 +121,7 @@ local function makeEntries()
       {
         width     = scrollView.width*0.15,
         height    = scrollView.height*0.15,
-        left      = entry[x].width + scrollView.width*0.02,
+        left      = entry[x].width + scrollView.width*0.1,
         top       = entry[x].y - scrollView.height*0.15/2,
         defaultFile = path,
         onEvent   =   function(event) buy(event, x + 0) end
@@ -159,7 +160,7 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
-  local widthValue = widthCalculator(0.45)
+  local widthValue = widthCalculator(0.5)
   local heightValue = heightCalculator(0.8)
   local padding = 5
 
@@ -170,7 +171,7 @@ function scene:create( event )
       height      = heightValue,
       defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
-      left        = centerX(widthValue),
+      left        = centerX(widthValue*0.9),
       top         = centerY(heightValue),
   }
 

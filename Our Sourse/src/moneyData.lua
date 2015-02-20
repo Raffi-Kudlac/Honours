@@ -193,13 +193,14 @@ function scene:create( event )
       top         = centerY(heightCalculator(0.5)),
   }
 
+  btnWidth = BG.width*0.3
+  btnHeight = BG.height*0.2
 
   local btnOkay = widget.newButton
     {
-      width         = 50,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = btnWidth,
+      height        = btnHeight,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
       top           = BG.y + (BG.height/2)*0.5,

@@ -28,6 +28,14 @@ local function play( event )
   end
 end
 
+local function tutorial( event )
+
+    if (event.phase == "ended" ) then    
+        composer.gotoScene("tutorial")    
+    end
+
+end
+
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -52,57 +60,50 @@ function scene:create( event )
   }
   
   
-    
---    local myRectangle = display.newRect( 300, 
---    150, display.contentWidth, display.contentHeight )
---    myRectangle.strokeWidth = 1
---    myRectangle:setFillColor( 1 )
---    myRectangle:setStrokeColor( 1, 0, 0 )
-    
---    local mask = graphics.newMask( "Images/land_screen/lnd_tile_forest_mask.png" )
---    
---    local btnPlay = widget.newButton
---        {
---          width       = 120,
---          height      = 120,
---          defaultFile = "Images/land_screen/lnd_tile_forest.png",
---          id          = "openLand",
---          left        = centerX(120),
---          top         = centerY(120),
---          onEvent = play,          
+  local btnTutorial = widget.newButton
+    {
+      width     = 100,
+      height    = 50,
+      shape     = "roundedRect",
+      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      id        = "btnPlay",
+      label     = "TUtorial",
+      left      = centerX(100),
+      top       = centerY(50) + 100,
+      onEvent   = tutorial
+  }
+  
+--  local array = {}
+--  
+--  array[0] = "Images/hydro_screen/hy_river_one.png"
+--  
+--  local btnPlay = widget.newButton
+--      {
+--          width = display.contentWidth,
+--          height = display.contentHeight,
+--          left = 0,
+--          top = 0,
+--          defaultFile = array[0],
+--          onEvent   = play,          
 --      }
---      btnPlay.anchorX, btnPlay.anchorY = 0,0      
---      local xScale = btnPlay.width/512
---      local yScale = btnPlay.height/512
+--      btnPlay.anchorY, btnPlay.anchorX = 0,0
+--      btnPlay.x = 0
+--      btnPlay.y = 0
+--      
+--      
+--      local mask = graphics.newMask( "hy_screen_river_one_mask.png" )
+--      local xScale = btnPlay.width/2400
+--      local yScale = btnPlay.height/1600
 --      
 --      btnPlay:setMask( mask )
---      --myRectangle:setMask(mask)
---      
---      
---      
-----      myRectangle.maskScaleX = 0.5
-----      myRectangle.maskScaleY = 0.5
---
 --      btnPlay.maskScaleX = xScale
 --      btnPlay.maskScaleY = yScale
-------      
---      btnPlay.maskX = btnPlay.width/2  
+--      btnPlay.maskX = btnPlay.width/2
 --      btnPlay.maskY = btnPlay.height/2
-------      
 --      
---      print("The masks x is " .. btnPlay.maskX)
---      print("The masks y is " .. btnPlay.maskY)
---      print("The masks xscale is " .. btnPlay.maskScaleX)
---      print("The masks yscale is " .. btnPlay.maskScaleY)
---      
-
-
-
   
-  
-      
-      --sceneGroup:insert(myRectangle)
       sceneGroup:insert(btnPlay)
+      sceneGroup:insert(btnTutorial)
 end
 
 

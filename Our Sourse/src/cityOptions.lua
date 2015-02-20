@@ -78,8 +78,8 @@ function scene:create( event )
 
   local btnBuy = widget.newButton
     {
-      width = cityOptionsBG.width*0.2,
-      height = cityOptionsBG.height*0.15,
+      width = cityOptionsBG.width*0.3,
+      height = cityOptionsBG.height*0.2,
       defaultFile = "Images/global_images/button1.png",      
       label       = "Buy",
       id          = "btnBuy",
@@ -92,13 +92,13 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width = cityOptionsBG.width*0.2,
-      height = cityOptionsBG.height*0.15,
+      width = cityOptionsBG.width*0.3,
+      height = cityOptionsBG.height*0.2,
       defaultFile = "Images/global_images/button1.png",       
       label = "Cancel",
       id = "btnCancel",
       top = btnBuy.y,
-      left = centerX(cityOptionsBG.width*0.2) + cityOptionsBG.width*0.15,
+      left = centerX(cityOptionsBG.width*0.2) + cityOptionsBG.width*0.2,
       onEvent = cancel
   }
 

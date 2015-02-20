@@ -240,7 +240,7 @@ local function createText()
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "New Game",
-      onEvent   =   newGame,
+      onEvent   =   newGameFromGameOver,
   }
   
   

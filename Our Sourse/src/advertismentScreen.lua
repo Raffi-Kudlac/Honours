@@ -92,8 +92,8 @@ function changeBoughtImage( index, image )
 
   boughtButton[index] = widget.newButton
     {
-      width     = scrollWidth*0.2,
-      height    = 40,
+      width     = scrollView.width*0.15,
+      height    = scrollView.height*0.15,
       left      = 0,
       top       = 0,
       defaultFile = image,
@@ -141,7 +141,7 @@ end
 
 local function makeEntries()
 
-  local startingX = scrollView.width*0.08
+  local startingX = scrollView.width*0.04
   local startingY = scrollView.height*0.08
   local path = ""
 
@@ -154,6 +154,7 @@ local function makeEntries()
         left      = startingX,
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
+        fontSize  = gv.businessFont,
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }
 
@@ -168,7 +169,7 @@ local function makeEntries()
       {
         width     = scrollView.width*0.15,
         height    = scrollView.height*0.15,
-        left      = entry[x].width + scrollView.width*0.1,
+        left      = entry[x].width + scrollView.width*0.06,
         top       = entry[x].y - scrollView.height*0.15/2,
         defaultFile = path,
         onEvent   = function(event) buy(event, (x + 0)) end
@@ -189,7 +190,7 @@ local function makeEntries()
     --        }
     --        entryData[x].isVisible = false
 
-    entryData[x] = display.newText(gv.advertisements[x]:getEffect(), startingX,
+    entryData[x] = display.newText(gv.advertisements[x]:getEffect(), startingX*3,
       (x+1)*scrollView.height*0.21 + startingY + startingY, scrollView.width*0.75, expandShift, gv.font, gv.fontSize )
     entryData[x].anchorX,entryData[x].anchorY = 0,0
     entryData[x].isVisible = false

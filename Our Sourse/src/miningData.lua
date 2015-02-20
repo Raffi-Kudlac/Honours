@@ -78,10 +78,9 @@ function scene:create( event )
 
   local btnOkay = widget.newButton
     {
-      width         = 50,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = BG.width*0.4,
+      height        = BG.height*0.15,
+      defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
       top           =  BG.y + BG.height/2 - BG.height*0.2,

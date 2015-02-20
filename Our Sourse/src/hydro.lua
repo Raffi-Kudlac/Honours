@@ -136,9 +136,8 @@ function scene:create( event )
 
   bg.x = 0
   bg.y = 0
-  
-  
-  sceneGroup:insert(bg)  
+  sceneGroup:insert(bg)
+    
   local defaultFileArray = {}
   defaultFileArray[0] = "Images/hydro_screen/hy_screen_river1.png"
   defaultFileArray[1] = "Images/hydro_screen/hy_screen_river2.png"  

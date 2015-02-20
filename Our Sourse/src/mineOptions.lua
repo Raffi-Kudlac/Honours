@@ -100,7 +100,7 @@ function scene:create( event )
 
   local btnCancel = widget.newButton
     {
-      width         = mineOptions.width*0.3,
+      width         = mineOptions.width*0.25,
       height        = mineOptions.height*0.2,
       defaultFile   = "Images/global_images/button1.png",    
       label         = "Cancel",

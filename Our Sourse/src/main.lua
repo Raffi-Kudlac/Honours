@@ -169,6 +169,7 @@ local function initalize()
   gv.secondsTimer  = 0
   gv.stage         = display.getCurrentStage()
   gv.seconds       = 0
+  gv.businessFont = 14
   gv.year          = 2000
   gv.month         = 5000 --each month is five seconds
   gv.secondsTimer  = timer
@@ -571,6 +572,17 @@ function  returnToMainMenu( event )
     end
 end
 
+function newGameFromGameOver( event )
+
+    if (event.phase == "ended" ) then            
+        returnToMainMenuFromGameOver( event )        
+        composer.gotoScene("mining")    
+        startingPower()
+        composer.gotoScene("city")
+    end
+
+end
+
 function newGame( event )
 
     if (event.phase == "ended" ) then
@@ -778,7 +790,7 @@ function changePauseImage(imagePath)
       height      = circleHeight,
       defaultFile = imagePath,
       id          = "pausePlay",
-      top         = 25,
+      top         = timeBar.y - circleHeight*0.5,
       left        = x,
       onEvent     = pausedPressed,
   }
@@ -1012,7 +1024,7 @@ local function buildToolBar()
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_fastforward.png",
       id          = "weather",
-      top         = timeBar.y - circleHeight/2,
+      top         = timeBar.y - circleHeight*0.5,
       left        = timeBar.x - timeBarWidth/3,
       onEvent     = fastForward,
   }
@@ -1026,7 +1038,7 @@ local function buildToolBar()
       height      = circleHeight,
       defaultFile = "Images/static_screen/st_pause.png",
       id          = "pausePlay",
-      top         = timeBar.y - circleHeight/2,
+      top         = timeBar.y - circleHeight*0.5,
       left        = timeBar.x + timeBarWidth/7,
       onEvent     = pausedPressed,
   }

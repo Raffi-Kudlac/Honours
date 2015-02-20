@@ -68,6 +68,17 @@ function scene:create( event )
   local tempHeight = 100
   local tempShift = 30
   setText()
+  
+--  local bg = display.newImage("Images/business_screen/bns_bg.png")
+--  bg.anchorX, bg.anchorY = 0,0
+--
+--  bg.height = display.contentHeight
+--  bg.width = display.contentWidth
+--
+--  bg.x = 0
+--  bg.y = 0
+--  
+--  sceneGroup:insert(bg)
 
   local scrollView = widget.newScrollView
     {
