@@ -22,7 +22,8 @@ damnedRivers[4] = "Images/hydro_screen/hy_screen_river5_dam.png"
 damnedRivers[5] = "Images/hydro_screen/hy_screen_river6_dam.png"
 
 local maskFileArray = {}
-maskFileArray[0] = "Images/hydro_screen/hy_screen_river1_mask.png"
+
+maskFileArray[0] = "Images/hydro_screen/hy_screen_river1_maskBORDER.png"
 maskFileArray[1] = "Images/hydro_screen/hy_screen_river2_mask.png"
 maskFileArray[2] = "Images/hydro_screen/hy_screen_river3_mask.png"
 maskFileArray[3] = "Images/hydro_screen/hy_screen_river4_mask.png"
@@ -41,8 +42,7 @@ local function setDataLabels()
     local totalMaintenence = 0
     local status  = 0
     
-    for x = 0, 5, 1 do
-    
+    for x = 0, 5, 1 do    
         if (gv.rivers[x]:getBuilt()) then        
             totalPower = totalPower + gv.rivers[x]:getPowerGenerated()
             areaDestroyed = areaDestroyed + gv.rivers[x]:getAD()
@@ -146,7 +146,7 @@ function scene:create( event )
   defaultFileArray[4] = "Images/hydro_screen/hy_screen_river5.png"
   defaultFileArray[5] = "Images/hydro_screen/hy_screen_river6.png"
   
-  for x = 0, 5, 1 do 
+  for x = 0, 0, 1 do 
    
       streams[x] = widget.newButton
       {
@@ -158,58 +158,24 @@ function scene:create( event )
           onEvent   = function(event) return dam(x + 0,event) end,
           
       }
-      streams[x].anchorY, streams[x].anchorX = 0,0
+      streams[x].anchorX = 0
+      streams[x].anchorY = 0
       streams[x].x = 0
       streams[x].y = 0
+      streams[x].river =  gv.rivers[x]
       
       local mask = graphics.newMask( maskFileArray[x] )
       local xScale = streams[x].width/2400
       local yScale = streams[x].height/1600
-      
+            
       streams[x]:setMask( mask )
       streams[x].maskScaleX = xScale
       streams[x].maskScaleY = yScale
       streams[x].maskX = streams[x].width/2
       streams[x].maskY = streams[x].height/2
-      
-      streams[x].river =  gv.rivers[x]
+           
       sceneGroup:insert(streams[x])
   end
-  
-
---  bg:setMask( mask )
---  bg.maskScaleX = xScale 
---  bg.maskScaleY = yScale
---  bg.maskX = 0
---  bg.maskY = 0
-
---  streams[0] = widget.newButton
---    {
---      width     = 100,
---      height    = 50,
---      shape     = "roundedRect",
---      id        = "btnRiver1",
---      label     = "River1",
---      left      = centerX(100) - 100,
---      top       = centerY(50),
---      onEvent   = function(event) return dam(0,event) end,
---  }
---
---  streams[0].river =  gv.rivers[0]
---
---  streams[1] = widget.newButton
---    {
---      width     = 100,
---      height    = 50,
---      shape     = "roundedRect",
---      id        = "btnRiver2",
---      label     = "River2",
---      left      = centerX(100) + 50,
---      top       = centerY(50),
---      onEvent   = function(event) return dam(1,event) end,
---  }
---
---  streams[1].river = gv.rivers[1]
 
 end
 

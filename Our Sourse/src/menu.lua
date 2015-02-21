@@ -46,63 +46,69 @@ function scene:create( event )
 
   local sceneGroup = self.view
 
+--  local btnPlay = widget.newButton
+--    {
+--      width     = 100,
+--      height    = 50,
+--      shape     = "roundedRect",
+--      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+--      id        = "btnPlay",
+--      label     = "PLay",
+--      left      = centerX(100),
+--      top       = centerY(50),
+--      onEvent   = play
+--  }
+  
+  
+  local array = {}
+  
+  array[0] = "Images/hydro_screen/hy_screen_river1.png"
+  
   local btnPlay = widget.newButton
+      {
+          width = display.contentWidth,
+          height = display.contentHeight,
+          left = 0,
+          top = 0,
+          defaultFile = array[0],
+          onEvent   = play,          
+      }
+      btnPlay.anchorY = 0
+      btnPlay.anchorX = 0
+      btnPlay.x = 0
+      btnPlay.y = 0
+      
+      
+      
+      local xScale = math.round(100*(btnPlay.width/2400))/100
+      local yScale = math.round(100*(btnPlay.height/1600))/100     
+      
+     
+      local m = graphics.newMask( "Images/hydro_screen/hy_screen_river1_maskBORDER.png" )
+      
+      btnPlay:setMask( m )
+      btnPlay.maskScaleX = xScale
+      btnPlay.maskScaleY = yScale
+      btnPlay.maskX = btnPlay.width/2
+      btnPlay.maskY = btnPlay.height/2
+      
+  
+      sceneGroup:insert(btnPlay)
+      
+      local btnTutorial = widget.newButton
     {
-      width     = 100,
+      width     = 200,
       height    = 50,
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "btnPlay",
-      label     = "PLay",
-      left      = centerX(100),
-      top       = centerY(50),
-      onEvent   = play
-  }
-  
-  
-  local btnTutorial = widget.newButton
-    {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
-      label     = "TUtorial",
+      label     = xScale .."C".. yScale,
       left      = centerX(100),
       top       = centerY(50) + 100,
       onEvent   = tutorial
   }
-  
---  local array = {}
---  
---  array[0] = "Images/hydro_screen/hy_river_one.png"
---  
---  local btnPlay = widget.newButton
---      {
---          width = display.contentWidth,
---          height = display.contentHeight,
---          left = 0,
---          top = 0,
---          defaultFile = array[0],
---          onEvent   = play,          
---      }
---      btnPlay.anchorY, btnPlay.anchorX = 0,0
---      btnPlay.x = 0
---      btnPlay.y = 0
---      
---      
---      local mask = graphics.newMask( "hy_screen_river_one_mask.png" )
---      local xScale = btnPlay.width/2400
---      local yScale = btnPlay.height/1600
---      
---      btnPlay:setMask( mask )
---      btnPlay.maskScaleX = xScale
---      btnPlay.maskScaleY = yScale
---      btnPlay.maskX = btnPlay.width/2
---      btnPlay.maskY = btnPlay.height/2
---      
-  
-      sceneGroup:insert(btnPlay)
+      
+      
       sceneGroup:insert(btnTutorial)
 end
 
