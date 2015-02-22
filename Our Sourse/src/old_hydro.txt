@@ -165,8 +165,8 @@ function scene:create( event )
       streams[x].river =  gv.rivers[x]
       
       local mask = graphics.newMask( maskFileArray[x] )
-      local xScale = streams[x].width/1200
-      local yScale = streams[x].height/800
+      local xScale = streams[x].width/2400
+      local yScale = streams[x].height/1600
             
       streams[x]:setMask( mask )
       streams[x].maskScaleX = xScale

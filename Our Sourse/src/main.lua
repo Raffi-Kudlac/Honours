@@ -1565,9 +1565,21 @@ local function checkGroupActionPercent()
 
 end
 
+local function populationAction()
+
+    -- Currently there is a five percent chance that the population mood increases  
+    local  n = math.random(1,100)
+    
+    if ( n >= 1 and n <= 5 ) then
+         return true
+     else
+        return false
+    end
+
+end
+
 -- Responcible for the month/year timer
 local function timerFunction(event)
-  
   
   if (gv.gameOver) then
       --do nothing 
@@ -1575,14 +1587,14 @@ local function timerFunction(event)
       monthCounter = monthCounter + 1 
      
       if monthCounter == 13 then
-        gv.year = gv.year +1
+        gv.year = gv.year + 1
         --gv.population = populationFunction(gv.year)
         gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
         monthCounter = 1
         
         if (gv.year > 2004 and (#gv.blackoutTimes == 2 or #gv.blackoutTimes == 1) ) then
             gv.groups[2]:setStatus(0.5)
-        elseif (gv.year > 2005 and #gv.blachoutTimes == 0) then
+        elseif (gv.year > 2005 and #gv.blackoutTimes == 0 and populationAction()) then
             gv.groups[2]:setStatus(1)
         end
 

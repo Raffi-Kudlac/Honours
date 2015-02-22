@@ -64,7 +64,7 @@ local function createText()
   labels[1] = "Name"
   labels[2] = "Years"
   labels[3] = "Months"
-  labels[4] = "BlackOut Months"
+  labels[4] = "Blackout Months"
   
   local function globalPosition( event )
         
@@ -87,7 +87,7 @@ local function createText()
               prefix = "th"
           end
           message = "Game Over: You came in " .. tostring(place) .. prefix .. " in the world" 
-          print("The global position valie is " .. place)
+          --print("The global position value is " .. place)
           
           local title = display.newText(message, startingX,
             startingY, gv.font, gv.fontSize*2 )
@@ -102,7 +102,8 @@ local function createText()
             localScore.anchorX, localScore.anchorY = 0,0
           localScore:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-          sceneGroup:insert(title)          
+          sceneGroup:insert(title)    
+          sceneGroup:insert( localScore )      
       end                              
   end
   
@@ -289,7 +290,7 @@ local function close( event )
 
   if(event.phase == "ended") then
 
-    local winningData = {gv.submitionName,(gv.year-2000), gv.monthCounter, gv.blackoutLengthSum}
+    local winningData = {gv.submitionName,(gv.year-2000), gv.monthCounter, gv.blackoutCounter}
     table.insert(heighScoreData, position, winningData)
 
 
