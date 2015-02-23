@@ -198,13 +198,13 @@ function scene:create( event )
 
   local btnBack = widget.newButton
     {
-      left = (scrollView.x - scrollView.width/2) - 120,
+      left = (scrollView.x - scrollView.width/2) - BG.width*0.25,
       top = scrollView.y - scrollView.height/2,
       id = "back",
-      label = "back",
-      width = 80,
-      height = 40,
-      shape = "rect",
+      label = "Back",
+      defaultFile   = "Images/global_images/button1.png",
+      width = BG.width*0.23,
+      height = BG.height*0.2,
       onEvent = back
   }
   sceneGroup:insert(btnBack)

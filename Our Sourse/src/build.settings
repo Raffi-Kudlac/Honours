@@ -3,46 +3,10 @@ settings =
     orientation =
     {
         default = "landscapeLeft",
-        supported = { "landscapeLeft", "landscapeRight" },
+        supported = { "landscapeLeft" },
         UIStatusBarHidden = true,
     },
-    
-    iphone = {
-		plist = {
-            UIAppFonts = { "fonts/Komika-Display/Komika_display.ttf",
-            "fonts/comic-relief/ComicRelief.ttf"  },
-            --CFBundleIdentifier="beyondthecube.StrandedSloth",
-            --CFBundleDisplayName="Stranded Sloth",
-			--UIStatusBarHidden = false,
-			--UIPrerenderedIcon = true, -- set to false for "shine" overlay
-			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
-
-            --[[
-            -- iOS app URL schemes:
-            CFBundleURLTypes =
-            {
-                {
-                    CFBundleURLSchemes =
-                    {
-                        "fbXXXXXXXXXXXXXX", -- example scheme for facebook
-                        "coronasdkapp", -- example second scheme
-                    }
-                }
-            }
-            --]]
-			CFBundleIconFiles = {
-            "Icon.png",
-            "Icon@2x.png",
-            "Icon-72.png",
-            "Icon-72@2x.png",
-            "Icon-Small-50.png",
-            "Icon-Small-50@2x.png",
-            "Icon-Small.png",
-            "Icon-Small@2x.png",
-            },
-
-		}
-	},
+        
 	-- Android permissions
 
 	androidPermissions = {

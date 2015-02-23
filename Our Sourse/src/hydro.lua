@@ -105,8 +105,8 @@ function changeImage()
   
   
   local mask = graphics.newMask( maskFileArray[gv.riverSelected] )
-  local xScale = streams[gv.riverSelected].width/2400
-  local yScale = streams[gv.riverSelected].height/1600
+  local xScale = streams[gv.riverSelected].width/1200
+  local yScale = streams[gv.riverSelected].height/800
   
   streams[gv.riverSelected]:setMask( mask )
   streams[gv.riverSelected].maskScaleX = xScale

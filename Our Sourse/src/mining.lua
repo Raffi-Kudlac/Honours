@@ -251,8 +251,7 @@ local function buildGrid(sceneGroup)
       left = grid[23].x - square*1.5 - gap,
       width = square,
       height = square,
-      --defaultFile = "buttonDefault.png",
-      shape = "rect",
+      defaultFile = "Images/mining_screen/mining_infoButton.png",      
       label = "info",
       onEvent = miningData,
   }

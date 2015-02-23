@@ -64,9 +64,8 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
-  local tempWidth = 130
-  local tempHeight = 100
-  local tempShift = 30
+  local width = display.contentWidth
+  local height = display.contentHeight  
   setText()
   
 --  local bg = display.newImage("Images/business_screen/bns_bg.png")
@@ -80,66 +79,79 @@ function scene:create( event )
 --  
 --  sceneGroup:insert(bg)
 
-  local scrollView = widget.newScrollView
-    {
-      top = centerY(tempHeight),
-      left = centerX(tempWidth),
-      width = tempWidth,
-      height = tempHeight,
-      scrollWidth = tempWidth*2,
-      scrollHeight = tempHeight*2,
-  --listener = scrollListener,
-  }
-
 
   local btnGroupStatus = widget.newButton
     {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      width     = width,
+      height    = height,      
       id        = "btnPlay",
-      label     = "Groups",
-      --left      = centerX(100) + 150,
-      --top       = centerY(50),
+      defaultFile = "Images/business_screen/bns_groups.png",       
+      left      = 0,
+      top       = 0,
       onEvent   = function( event ) miniScreen(event, "groupScreen") end
   }
+  
+  
+  local mask = graphics.newMask( "Images/business_screen/bns_groups_mask.png" )
+  local xScale = btnGroupStatus.width/1200
+  local yScale = btnGroupStatus.height/800
+  
+  btnGroupStatus:setMask( mask )
+  btnGroupStatus.maskScaleX = xScale
+  btnGroupStatus.maskScaleY = yScale
+  btnGroupStatus.maskX = btnGroupStatus.width/2
+  btnGroupStatus.maskY = btnGroupStatus.height/2
+  
 
-  local btnAdvertisements = widget.newButton
-    {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnAdvertisements",
-      label     = "Adds",
-      --left      = centerX(100) - 150,
-      top       = btnGroupStatus.y + tempShift,
+  local btnAdvertisements = widget.newButton    
+  {
+      width     = width,
+      height    = height,      
+      id        = "btnPlay",
+      defaultFile = "Images/business_screen/bns_ads.png",       
+      left      = 0,
+      top       = 0, 
       onEvent   = function( event ) miniScreen(event, "advertismentScreen") end
   }
+  
+  mask = graphics.newMask( "Images/business_screen/bns_ads_mask.png" )
+  local xScale = btnAdvertisements.width/1200
+  local yScale = btnAdvertisements.height/800
+  
+  btnAdvertisements:setMask( mask )
+  btnAdvertisements.maskScaleX = xScale
+  btnAdvertisements.maskScaleY = yScale
+  btnAdvertisements.maskX = btnAdvertisements.width/2
+  btnAdvertisements.maskY = btnAdvertisements.height/2
+  
+  
 
   local btnPublicServises = widget.newButton
     {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnAdvertisements",
-      label     = "PublicServis",
-      --left      = centerX(100),
-      top       = btnAdvertisements.y + tempShift,
+      width     = width,
+      height    = height,      
+      id        = "btnPlay",
+      defaultFile = "Images/business_screen/bns_public-services.png",       
+      left      = 0,
+      top       = 0, 
       onEvent   = function( event ) miniScreen(event, "publicServisesScreen") end
   }
+  
+  
+  mask = graphics.newMask( "Images/business_screen/bns_public-services_mask.png" )
+  local xScale = btnPublicServises.width/1200
+  local yScale = btnPublicServises.height/800
+  
+  btnPublicServises:setMask( mask )
+  btnPublicServises.maskScaleX = xScale
+  btnPublicServises.maskScaleY = yScale
+  btnPublicServises.maskX = btnPublicServises.width/2
+  btnPublicServises.maskY = btnPublicServises.height/2
 
-
-  scrollView:insert( btnGroupStatus )
-  scrollView:insert( btnAdvertisements )
-  scrollView:insert( btnPublicServises )
-  sceneGroup:insert( scrollView )
-
-  --sceneGroup:insert(btnGroupStatus)
-  --sceneGroup:insert(btnAdvertisments)
-  --sceneGroup:insert(btnPublicServises)
+  sceneGroup:insert( btnGroupStatus )
+  sceneGroup:insert( btnAdvertisements )
+  sceneGroup:insert( btnPublicServises )
+    
 end
 
 

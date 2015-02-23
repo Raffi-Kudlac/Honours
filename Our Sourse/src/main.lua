@@ -669,6 +669,16 @@ local function buildStaticBG()
       left        = 0,
       top         = display.contentHeight - h
   }
+  
+  local mask = graphics.newMask( "Images/static_screen/st_UICorner_mask.png" )
+  local xScale = stcBG.width/1024
+  local yScale = stcBG.height/512
+  
+  stcBG:setMask( mask )
+  stcBG.maskScaleX = xScale
+  stcBG.maskScaleY = yScale
+  stcBG.maskX = stcBG.width/2
+  stcBG.maskY = stcBG.height/2
 
   stcBG:setEnabled( false )
   gv.stage:insert( stcBG )
@@ -777,6 +787,44 @@ local function pausedPressed(event)
   end
 end
 
+
+local function fastForward( event )
+  
+    if ( event.phase == "ended" ) then
+        
+        if (gv.month == 5000 ) then
+            gv.month = 2500
+            changeFastForwardButton("Images/static_screen/st_FF_Green.png")
+            print("fast forward being called")
+        else
+            gv.month = 5000
+            changeFastForwardButton("Images/static_screen/st_fastforward.png")
+        end     
+    end
+
+end
+
+function changeFastForwardButton(imagePath)
+
+  local x = weather.x - weather.width/2
+
+  gv.stage:remove( weather )
+
+  weather = widget.newButton
+    {
+      width       = circleWidth,
+      height      = circleHeight,
+      defaultFile = imagePath,
+      id          = "weather",
+      top         = timeBar.y - circleHeight*0.5,
+      left        = x,
+      onEvent     = fastForward,
+  }
+  gv.stage:insert(weather)
+    
+
+end
+
 function changePauseImage(imagePath)
 
   local x = btnPausePlay.x - btnPausePlay.width/2
@@ -872,7 +920,7 @@ local function buildBlackoutButton()
     {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_plant.png",
+      defaultFile = "Images/static_screen/st_lightbulb.png",
       id          = "plant",
       top         = MB.y - (MB.height/2)*1.3,
       left        = MB.x + (MB.width/2)*1.1,
@@ -891,13 +939,18 @@ local function buildDataBar()
   local dataBoxShift = w + 10
   local dataBoxWidth = ((dataBarX/3) - 20)
   local dataBoxHeightPos = 17
+  local datatBarColour = 68/255
+  local dataBoxColour = 224/255  
+  local dataBoxTextR = 0/255
+  local dataBoxTextG = 128/255
+  local dataBoxTextB = 255/255
 
   dataBar = widget.newButton
     {
       width     = dataBarX,
       height    = 30,
       shape     = "rect",
-      fillColor = { default={ 0.8, 0, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      fillColor = { default={ datatBarColour, datatBarColour,datatBarColour, 1 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "DB",
       left      =  w - 4,
       top       =  display.contentHeight -20
@@ -909,7 +962,8 @@ local function buildDataBar()
       width     = dataBoxWidth,
       shape     = "roundedRect",
       cornerRadius = 5,
-      fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      fillColor = { default={ dataBoxColour, dataBoxColour, dataBoxColour, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      labelColor = { default={ dataBoxTextR, dataBoxTextG, dataBoxTextB }, over={ 0, 0, 0, 0.5 } },
       id        = "dataBox1",
       left      =  dataBoxShift,
       fontSize  = 10,
@@ -925,7 +979,8 @@ local function buildDataBar()
       width     = dataBoxWidth,
       shape     = "roundedRect",
       cornerRadius = 5,
-      fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      fillColor = { default={ dataBoxColour, dataBoxColour, dataBoxColour, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      labelColor = { default={ dataBoxTextR, dataBoxTextG, dataBoxTextB }, over={ 0, 0, 0, 0.5 } },
       id        = "dataBox2",
       left      =  dataBoxShift,
       fontSize  = 10,
@@ -941,7 +996,8 @@ local function buildDataBar()
       width     = dataBoxWidth,
       shape     = "roundedRect",
       cornerRadius = 5,
-      fillColor = { default={ 0, 1, 0, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      fillColor = { default={ dataBoxColour, dataBoxColour, dataBoxColour, 1 }, over={ 1, 0.2, 0.5, 1 } },
+      labelColor = { default={ dataBoxTextR, dataBoxTextG, dataBoxTextB }, over={ 0, 0, 0, 0.5 } },
       id        = "dataBox3",
       left      =  dataBoxShift,
       fontSize  = 10,
@@ -959,18 +1015,6 @@ local function buildDataBar()
 
 end
 
-
-local function fastForward( event )
-
-    if ( event.phase == "ended" ) then
-        if (gv.month == 5000 ) then
-            gv.month = 2500
-        else
-            gv.month = 5000
-        end     
-    end
-
-end
 
 local function buildToolBar()
 
@@ -1045,8 +1089,7 @@ local function buildToolBar()
 
 
   TBBG:setEnabled( false )
-  timeLabel:setEnabled( false )
-  weather:setEnabled( false )
+  timeLabel:setEnabled( false )  
 
   gv.stage:insert( TBBG )
   gv.stage:insert(timeBar)

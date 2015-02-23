@@ -250,7 +250,7 @@ function scene:create( event )
 
   createText(gv.oilSpecs)
   
-  local btnActionWidth = buildOptions.width*0.25
+  local btnActionWidth = buildOptions.width*0.3
   local btnActionHeight = buildOptions.height*0.12
 
   local btnBuy = widget.newButton

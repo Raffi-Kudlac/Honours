@@ -17,7 +17,7 @@ local textHeight      = 0
 local mineOptions = 0
 local costText = 0
 local info = 0
-local costToMine = 10
+local costToMine = 20
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS

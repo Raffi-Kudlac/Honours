@@ -9,28 +9,48 @@ local gv        = require( "global" )
 local widget    = require( "widget" )
 local parse     = require ( "mod_parse")
 local scene     = composer.newScene()
+local sceneGroup
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function play( event )
+local function createText()
 
-  if ( "ended" == event.phase ) then       
-    composer.gotoScene("loading")    
---    startingPower()
---    composer.gotoScene("city")   
-  end
+    local startingX = widthCalculator(0.5)
+    local startingY = heightCalculator(0.4)
+
+    local title = display.newText("The Source", startingX,
+    startingY, gv.font, gv.fontSize*4 )
+   --title.anchorX, title.anchorY = 0,0
+     title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+     
+     startingY = startingY + heightCalculator(0.15)
+     local loading = display.newText("Loading...", startingX,
+          startingY, gv.font, gv.fontSize*3 )        
+     loading:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+     
+     sceneGroup:insert(title)
+     sceneGroup:insert(loading)
+
 end
 
-local function tutorial( event )
+local function movingOn( event )
 
-    if (event.phase == "ended" ) then    
-        composer.gotoScene("tutorial")    
-    end
+  composer.gotoScene("mining")    
+  startingPower()
+  composer.gotoScene("hydro")
+  composer.gotoScene("natural")
+  composer.gotoScene("busness")
+  composer.gotoScene("groupScreen")
+  composer.gotoScene("advertismentScreen")
+  composer.gotoScene("publicServisesScreen")  
+  composer.gotoScene("mining")
+  composer.gotoScene("resourseMap")  
+  composer.gotoScene("blackoutInfo")  
+  composer.gotoScene("city")
 
 end
-
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -39,68 +59,21 @@ end
 -- "scene:create()"
 function scene:create( event )
 
-  local sceneGroup = self.view
+  sceneGroup = self.view
+  
+  local bg = display.newImage("Images/natural_resource_screen/nr_Background.png")
+  bg.anchorX, bg.anchorY = 0,0
 
-  local btnPlay = widget.newButton
-    {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
-      label     = "PLay",
-      left      = centerX(100),
-      top       = centerY(50),
-      onEvent   = play
-  }
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+
+  bg.x = 0
+  bg.y = 0
   
-  local btnTutorial = widget.newButton
-    {
-      width     = 200,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
-      label     = "Tutorial",
-      left      = centerX(100),
-      top       = centerY(50) + 100,
-      onEvent   = tutorial
-  }
+  sceneGroup:insert(bg)
+  createText()
   
-  
---  local array = {}
---  
---  array[0] = "Images/hydro_screen/hy_screen_river1small.png"
---  
---  local btnPlay = widget.newButton
---      {
---          width = display.contentWidth,
---          height = display.contentHeight,
---          left = 0,
---          top = 0,
---          defaultFile = array[0],
---          onEvent   = play,          
---      }
---      btnPlay.anchorY = 0
---      btnPlay.anchorX = 0
---      btnPlay.x = 0
---      btnPlay.y = 0
---      
---      local xScale = math.round(100*(btnPlay.width/1200))/100
---      local yScale = math.round(100*(btnPlay.height/800))/100     
---      
---     
---      local m = graphics.newMask( "Images/hydro_screen/hy_screen_river1_maskBORDER1.png" )
---      
---      btnPlay:setMask( m )
---      btnPlay.maskScaleX = xScale
---      btnPlay.maskScaleY = yScale
---      btnPlay.maskX = btnPlay.width/2
---      btnPlay.maskY = btnPlay.height/2
-      
-      
-      sceneGroup:insert(btnPlay)      
-      sceneGroup:insert(btnTutorial)
+  timer.performWithDelay(500, movingOn)
 end
 
 
