@@ -132,8 +132,8 @@ function scene:create( event )
   yShift = ownedOptionsBG.height*0.1
   createText()
 
-  local btnWidth = ownedOptionsBG.width*0.3
-  local btnHeight = ownedOptionsBG.height*0.2
+  local btnWidth = ownedOptionsBG.width*0.25
+  local btnHeight = ownedOptionsBG.height*0.15
 
   local btnDemolish = widget.newButton
     {
@@ -142,7 +142,7 @@ function scene:create( event )
       defaultFile = "Images/global_images/button1.png",
       label         = "Demolish",
       id            = "btnBuy",
-      top           =  infoText.y + infoText.height - bgWidth*.06,
+      top           =  infoText.y + infoText.height - bgWidth*.07,
       left          = infoText.x + ownedOptionsBG.width*0.1,
       onEvent       = naturaldemolish
   }

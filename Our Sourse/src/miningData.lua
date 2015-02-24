@@ -61,7 +61,7 @@ function scene:create( event )
       message = "Tile " .. (gv.foundResourses[x] + 1) .. " contains " .. amount[0] .. " Oil, " .. amount[1] .. " gas, " ..
         amount[2] .. " coal and " .. amount[3] .. " uranium "
       infoText[counter] = display.newText(message, xPosition, yPosition, BG.width*0.9, 0, gv.font, gv.fontSize )
-      infoText.anchorX, infoText.anchorY = 0,0
+      infoText[counter].anchorX, infoText[counter].anchorY = 0,0
       infoText[counter]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
       yPosition = yPosition + 20
       sceneGroup:insert(infoText[counter])

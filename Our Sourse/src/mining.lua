@@ -247,10 +247,10 @@ local function buildGrid(sceneGroup)
 
   local info = widget.newButton
     {
-      top = grid[23].y - square/2,
-      left = grid[23].x - square*1.5 - gap,
-      width = square,
-      height = square,
+      top = grid[23].y - square/3,
+      left = grid[23].x - square - gap,
+      width = square*0.8,
+      height = square*0.6,
       defaultFile = "Images/mining_screen/mining_infoButton.png",      
       label = "info",
       onEvent = miningData,

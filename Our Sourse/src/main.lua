@@ -729,7 +729,8 @@ local function buildScreenButtons()
       defaultFile = "Images/static_screen/st_plant.png",
       id          = "plant",
       top         = buttonFactorY,
-      left        = buttonFactorX
+      left        = buttonFactorX,
+      onEvent     = function() return goToScreen("innerWorkings") end,
   }
 
 
