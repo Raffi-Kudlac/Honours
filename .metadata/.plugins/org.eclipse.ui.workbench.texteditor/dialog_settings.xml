@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="404" key="DIALOG_X_ORIGIN"/>
+		<item value="225" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="setEnabled" key="selection"/>
-		<item value="false" key="casesensitive"/>
+		<item value="buttonPaths" key="selection"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="grid"/>
-			<item value="setEnabled"/>
-			<item value="grid[18]"/>
-			<item value="grid[19]"/>
-			<item value="gv.money"/>
-			<item value="highScoreData"/>
-			<item value="array"/>
+			<item value="powerType"/>
+			<item value="btnAdvertisements"/>
+			<item value="btnGroupStatus"/>
+			<item value="streams[gv.riverSelected]"/>
+			<item value="streams[gv.riverSelected].maskScaleX = xScale"/>
 			<item value="bg"/>
+			<item value="damnedRivers"/>
+			<item value="streams[x]"/>
 		</list>
 		<list key="replacehistory">
-			<item value="heighScoreData"/>
-			<item value="highScoreData"/>
-			<item value="limit"/>
-			<item value="gv.advertisements"/>
-			<item value="1"/>
-			<item value="hydro"/>
-			<item value="solar"/>
-			<item value="wind"/>
+			<item value="buttonPaths"/>
+			<item value="btnPublicServises"/>
+			<item value="btnAdvertisements"/>
+			<item value="stcBG"/>
+			<item value="currentImage"/>
+			<item value="tutorialImages"/>
+			<item value="btnPlay"/>
+			<item value="[counter]"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="263" key="DIALOG_WIDTH"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="774" key="DIALOG_X_ORIGIN"/>
-		<item value="244" key="DIALOG_Y_ORIGIN"/>
+		<item value="0" key="DIALOG_X_ORIGIN"/>
+		<item value="121" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -86,6 +86,7 @@ end
 function changeImage()
     
   local temp = streams[gv.riverSelected]  
+  local t = gv.riverSelected
   sceneGroup:remove(streams[gv.riverSelected])
 
   streams[gv.riverSelected] = widget.newButton
@@ -95,7 +96,7 @@ function changeImage()
       left = 0,
       top = 0,
       defaultFile = damnedRivers[gv.riverSelected],
-      onEvent = function(event) return riverData(event, gv.riverSelected + 0) end,
+      onEvent = function(event) return riverData(event, t + 0) end,
   }
 
   streams[gv.riverSelected].anchorY, streams[gv.riverSelected].anchorX = 0,0

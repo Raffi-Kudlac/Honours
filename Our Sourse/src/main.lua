@@ -195,10 +195,10 @@ local function initalize()
   gv.resourseAmount = {}
   gv.resourcesHeld = {}
 
-  gv.resourcesHeld[0] = 100
-  gv.resourcesHeld[1] = 100
-  gv.resourcesHeld[2] = 100
-  gv.resourcesHeld[3] = 100
+  gv.resourcesHeld[0] = 0
+  gv.resourcesHeld[1] = 0
+  gv.resourcesHeld[2] = 0
+  gv.resourcesHeld[3] = 0
 
   gv.coalBuildCounter = 0
   gv.oilBuildCounter = 0
