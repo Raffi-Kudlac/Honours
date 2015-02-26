@@ -8,6 +8,7 @@ local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )
 local parse     = require ( "mod_parse")
+local connection = require("testconnection")
 local scene     = composer.newScene()
 
 
@@ -34,7 +35,7 @@ local function textListener( event )
   if (event.phase == "ended" or event.phase == "submitted") then
     gv.submitionName = event.target.text
 
-    if (name == nil ) then
+    if (gv.submitionName == nil or gv.submitionName == "") then
       gv.submitionName = "Player 1"
     end
 
@@ -43,8 +44,8 @@ end
 
 
 local function goGlobal( event )
-     
-    if (event.phase == "began" ) then
+          
+    if (event.phase == "began"  and connection.test()) then
         composer.gotoScene("gameOverGlobalScores")
     end 
 
@@ -93,17 +94,8 @@ local function createText()
             startingY, gv.font, gv.fontSize*2 )
           --title.anchorX, title.anchorY = 0,0
           title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-          
-          message = "You Lasted " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
-          "a total Blackout time of " .. gv.blackoutCounter .. " month(s)" 
-          
-          local localScore = display.newText(message, centerX(display.contentWidth*0.6),
-            title.y + title.height,display.contentWidth*0.6,0, gv.font, gv.fontSize*1.5 )
-            localScore.anchorX, localScore.anchorY = 0,0
-          localScore:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-          sceneGroup:insert(title)    
-          sceneGroup:insert( localScore )      
+          sceneGroup:insert(title)                    
       end                              
   end
   
@@ -113,7 +105,9 @@ local function createText()
           ["order"] = "-totalTime,totalBlackoutTime",              
         }
   
-  parse:getObjects( "sample", query, globalPosition )
+  if (connection.test()) then
+      parse:getObjects( "sample", query, globalPosition )
+  end
 
     
   -- Printing names
@@ -123,10 +117,20 @@ local function createText()
   labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
   dataY = dataY +heightCalculator(0.05)
         
-  sceneGroup:insert(labelText)      
+  sceneGroup:insert(labelText)    
+  
+  message = "You Lasted " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
+          "a total Blackout time of " .. gv.blackoutCounter .. " month(s)" 
+          
+  local localScore = display.newText(message, centerX(display.contentWidth*0.6),
+    labelText.y - labelText.height*1.3,display.contentWidth*0.6,0, gv.font, gv.fontSize*1.5 )
+    localScore.anchorX, localScore.anchorY = 0,0
+  localScore:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  sceneGroup:insert( localScore )
+    
   
   for k = 1, 5, 1 do
-      if ( heighScoreData[k][1] ~= "-1") then
+      if ( tostring(heighScoreData[k][1]) ~= "-1") then          
           message = heighScoreData[k][1]
           dataY = dataY + heightCalculator(0.1)
           tempText[k] = display.newText(message, dataX,
@@ -314,7 +318,7 @@ local function getNameFromUser()
   
   local congratsText = "Contratulations, You have made a high Score. Please enter a name below"
   local textFieldWidth = widthCalculator(0.2)
-  local textFieldHeight = heightCalculator(0.06)
+  local textFieldHeight = heightCalculator(0.1)
 
   nameField = native.newTextField( centerX(textFieldWidth),centerY(textFieldHeight),textFieldWidth ,textFieldHeight)
   nameField.align = "center"
@@ -399,10 +403,6 @@ function scene:create( event )
     for x = 1, 5, 1 do
 
       tempMonths = heighScoreData[x][2]*12 + heighScoreData[x][3]
-      
-      print("X: ".. x)
-      print("The months on file are" .. tempMonths)
-      print("Your score is ".. currentTotalMonths)
 
       if (tempMonths < currentTotalMonths ) then
 

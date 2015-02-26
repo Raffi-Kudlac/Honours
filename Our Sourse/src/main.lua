@@ -185,7 +185,7 @@ local function initalize()
   gv.money = 10
   gv.moneyMadeFactor = 0.6
   calcPowerDemanded()
-  gv.powerSupplied = gv.powerDemanded*1.1
+  gv.powerSupplied = 13.1 -- manually calculated starting power. 4.3 + 2.8 + 2*3
   gv.screen = "city"
   gv.font = native.newFont( "Chunkfive Ex", 8 )--"Chunkfive Ex"--native.systemFontBold
   gv.fontSize = 10
@@ -1694,6 +1694,19 @@ function setDataBox(title, message, number)
     dataBox2:setLabel(title .. ": ".. message)
   elseif number == 3 then
     dataBox3:setLabel(title .. ": ".. message)
+  else
+  -- do nothing
+  end
+end
+
+function setDataBoxNoColon(title, message, number)
+
+  if number == 1 then
+    dataBox1:setLabel(title .. message)
+  elseif number == 2 then
+    dataBox2:setLabel(title .. message)
+  elseif number == 3 then
+    dataBox3:setLabel(title .. message)
   else
   -- do nothing
   end

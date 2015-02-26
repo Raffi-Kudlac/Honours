@@ -8607,3 +8607,1103 @@ java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a 
 	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
 	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-24 21:37:01.029
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-24 21:43:52.761
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:19:33.112
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:19:49.419
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:44:21.625
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:44:36.601
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:45:53.781
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:48:04.214
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:50:14.129
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:53:30.182
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:54:39.292
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:55:02.014
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:55:07.701
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:55:10.028
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:55:14.787
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:55:53.807
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:56:07.361
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:58:41.564
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:58:44.699
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 11:59:56.158
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:00:08.107
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:00:13.840
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:03:40.727
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:03:42.183
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:03:43.960
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:07:43.024
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:09:27.934
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:10:16.575
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:10:22.479
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:10:45.748
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:10:50.694
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:11:31.183
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:11:38.503
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:11:44.877
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:11:49.040
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:12:11.087
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:15:37.607
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:25:58.986
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:27:42.993
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:27:45.401
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:28:34.088
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:55:37.405
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 12:56:34.590
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:00:20.956
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:05:42.135
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:09:40.789
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:09:49.103
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:10:22.626
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:10:40.439
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:13:23.744
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:14:15.697
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:14:26.899
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:16:48.240
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:17:03.969
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:17:07.653
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:18:22.276
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:20:20.750
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:24:37.055
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:24:45.626
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:24:50.093
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:25:03.344
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:25:31.463
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:25:35.564
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:25:38.300
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:25:39.768
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:14.392
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:15.615
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:28.509
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:34.162
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:43.904
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:26:57.533
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:27:09.031
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:27:14.301
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:28:25.262
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:28:54.239
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:29:49.547
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:32:00.265
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:32:46.028
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:32:50.826
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:32:53.744
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:33:25.600
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:34:01.066
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:34:31.222
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:34:38.923
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:34:48.597
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:35:00.918
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:35:08.220
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:35:10.909
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:43:04.487
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:47:15.553
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:48:15.172
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:48:16.405
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 13:56:11.139
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:04:40.844
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:10:57.987
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:12:23.395
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:20:12.192
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:24:03.210
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:24:07.500
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)
+
+!ENTRY org.eclipse.jface.text 4 0 2015-02-25 14:53:29.039
+!MESSAGE Unexpected runtime error while computing a text hover
+!STACK 0
+java.lang.RuntimeException: Exception to avoid to create a tooltip, currently a workaround for dltk
+	at org.eclipse.koneki.ldt.ui.internal.editor.text.LuaDocumentationHover.getHoverInfo(LuaDocumentationHover.java:99)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:196)
+	at org.eclipse.dltk.internal.ui.text.hover.AbstractScriptEditorTextHover.getHoverInfo(AbstractScriptEditorTextHover.java:151)
+	at org.eclipse.dltk.internal.ui.text.hover.BestMatchHover.getHoverInfo(BestMatchHover.java:113)
+	at org.eclipse.dltk.internal.ui.text.hover.EditorTextHoverProxy.getHoverInfo(EditorTextHoverProxy.java:78)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:168)

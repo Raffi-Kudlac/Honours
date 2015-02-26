@@ -23,14 +23,14 @@ local function textListener( event )
   if (event.phase == "ended" or event.phase == "submitted") then
     gv.submitionName = event.target.text
 
-    if (gv.submitionName == nil ) then
+    if (gv.submitionName == nil or gv.submitionName == ""  ) then
       gv.submitionName = "Player 1"
     end
 
   end
 end
 
-local currentTotalMonths = (gv.year-2000)*12 + gv.month
+local currentTotalMonths = (gv.year-2000)*12 + gv.monthCounter
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
@@ -162,10 +162,8 @@ local function topTwenty( event )
               scrollDataY, gv.font, gv.fontSize*1.5 )
             tempText[k].anchorX, tempText.anchorY = 0.5,0
             tempText[k]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-            scrollView:insert(tempText[k])
-                
-        end
-                      
+            scrollView:insert(tempText[k])                
+        end                      
     end
     
 end

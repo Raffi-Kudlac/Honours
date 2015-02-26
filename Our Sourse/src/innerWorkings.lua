@@ -16,6 +16,9 @@ local infoBoxWidth = widthCalculator(0.3)
 local infoBoxHeight = heightCalculator(0.5)
 local windmillSpace = 120 -- meters squared
 local solarSpace = 50 -- meters squared
+local rightArrow
+local leftArrow
+local cyclePointer = 0
 
 local powerButtons = {}
 local buttonPaths = {}
@@ -25,24 +28,25 @@ local textStartingX = 0
 local textStartingY = 0
 local sceneGroup
 
-buttonPaths[0] = "Images/land_screen/lnd_oil.png"
-buttonPaths[1] = "Images/land_screen/lnd_gas.png"
-buttonPaths[2] = "Images/land_screen/lnd_coal.png"
-buttonPaths[3] = "Images/land_screen/lnd_nuclear.png"
-buttonPaths[4] = "Images/natural_resource_screen/nr_solar.png"
-buttonPaths[5] = "Images/natural_resource_screen/nr_wind.png"
-buttonPaths[6] = "Images/land_screen/lnd_coal.png"
+buttonPaths[0] = "Images/natural_resource_screen/nr_wind.png"
+buttonPaths[1] = "Images/land_screen/lnd_oil.png"
+buttonPaths[2] = "Images/land_screen/lnd_gas.png"
+buttonPaths[3] = "Images/land_screen/lnd_coal.png"
+buttonPaths[4] = "Images/land_screen/lnd_nuclear.png"
+buttonPaths[5] = "Images/natural_resource_screen/nr_solar.png"
+buttonPaths[6] = "Images/natural_resource_screen/nr_wind.png"
+buttonPaths[7] = "Images/land_screen/lnd_coal.png"
 
 
 local videoPaths = {}
-
 videoPaths[0] = "video/test.mp4"
 videoPaths[1] = "video/test.mp4"
 videoPaths[2] = "video/test.mp4"
-videoPaths[3] = "video/test.mp4"
+videoPaths[3] = "video/coalvid.mp4"
 videoPaths[4] = "video/test.mp4"
 videoPaths[5] = "video/test.mp4"
 videoPaths[6] = "video/test.mp4"
+videoPaths[7] = "video/test.mp4"
 
 -- a 2D array holding the name of the stat in index 1 and the answer in index 2. 
 -- this uses built in function so the starting index is 1
@@ -85,11 +89,25 @@ local function removeText()
     end
 end
 
+local function setHydroLabels(name,produces, maintinence)
+    
+    if (name == "NA") then 
+        setDataBoxNoColon("", name, 1)
+        setDataBoxNoColon("", name, 2)
+        setDataBoxNoColon("", name, 3)
+    else
+        setDataBox("Name", name, 1)
+        setDataBox("Produces", produces .. " unit(s)", 2)
+        setDataBox("Maintinence cost","$"..maintinence, 3)
+    end
+
+end
+
 local function setDataLabels(produces,consumes, maintinence)
     
     setDataBox("Produces", produces .. " GW", 1)
     setDataBox("Consumes", consumes .. " unit(s)", 2)
-    setDataBox("Maintinence cost",maintinence .. "$", 3)
+    setDataBox("Maintinence cost","$"..maintinence, 3)
 
 end
 
@@ -161,14 +179,14 @@ local function addFossilFuelsText(index)
       consumptionRate = consumptionRate .. " units per month"      
     end
     
-    dataTitle[1] = "Total Production: \n\t" .. power
-    dataTitle[2] = "Remaining Resource: \n\t" .. resourceRemaining .. " units"
-    dataTitle[3] = "Consumption Rate: \n\t" .. consumptionRate
-    dataTitle[4] = "Time until Depletion:\n\t" .. timeTilDepletion
-    dataTitle[5] = "Total Maintenence Cost:\n\t" .. "$"..maintinence        
+    dataTitle[1] = "TOTAL PRODUCTION: \n\t" .. power
+    dataTitle[2] = "REMAINING RESOURCES: \n\t" .. resourceRemaining .. " units"
+    dataTitle[3] = "CONSUMPTION RATE: \n\t" .. consumptionRate
+    dataTitle[4] = "TIME TILL DEPLETION:\n\t" .. timeTilDepletion
+    dataTitle[5] = "TOTAL MAINTENENCE COST:\n\t" .. "$"..maintinence        
     
     for x = 1, 5, 1 do    
-        text[x] = display.newText(dataTitle[x],textStartingX,textStartingY, infoBox.width*0.8,0, gv.font, gv.fontSize )
+        text[x] = display.newText(dataTitle[x],textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
         text[x].anchorX, text[x].anchorY = 0,0
         text[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
         sceneGroup:insert(text[x])
@@ -191,26 +209,26 @@ local function addNaturalText(index)
         -- calculate solar 
         specs = gv.solarSpecs        
         buildingsCounter = gv.solarBuildCounter  
-        name = "Solar panals"             
+        name = "SOLAR PANALS"             
         area = buildingsCounter*windmillSpace*3
     elseif( index == 5 ) then
         -- calculate wind
         specs = gv.windSpecs        
         buildingsCounter = gv.windBuildCounter
-        name = "Windmills"   
+        name = "WINDMILLS"   
         area = buildingsCounter*solarSpace*6
     end
     
     setDataLabels(specs:getProduces(),specs:getConsumption(),specs:getMaintenenceCost())
     
     totalProduced = buildingsCounter*specs:getProduces()
-    textData[1] = "Total Production: \n\t" .. totalProduced .. " GW"
-    textData[2] = name .. " built: \n\t" .. buildingsCounter
-    textData[3] = "Total Maintenence Cost: \n\t$" .. totalMaintenence
-    textData[4] = "Area used:\n\t" .. area .. " meters squared"
+    textData[1] = "TOTAL PRODUCTION: \n\t" .. totalProduced .. " GW"
+    textData[2] = name .. " BUILT: \n\t" .. buildingsCounter
+    textData[3] = "TOTAL MAINTENENCE COST: \n\t$" .. totalMaintenence
+    textData[4] = "AREA USED:\n\t" .. area .. " meters squared"
     
     for x = 1, 4, 1 do    
-        text[x] = display.newText(textData[x],textStartingX,textStartingY, infoBox.width*0.8,0, gv.font, gv.fontSize )
+        text[x] = display.newText(textData[x],textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
         text[x].anchorX, text[x].anchorY = 0,0
         text[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
         sceneGroup:insert(text[x])
@@ -244,13 +262,13 @@ local function addHydroText()
   end
   
   
-  dataTitle[1] = "Total Production:\n\t" .. power .. " GW"
-  dataTitle[2] = "Rivers Damed:\n\t" .. instalations
-  dataTitle[3] = "Total Area Destroyed:\n\t" .. area .. " km squared"  
-  dataTitle[4] = "Total Maintenence Cost:\n\t" .. "$"..maintenence
+  dataTitle[1] = "TOTAL PRODUCTION:\n\t" .. power .. " GW"
+  dataTitle[2] = "RIVERS DAMED:\n\t" .. instalations
+  dataTitle[3] = "TOTAL AREA DESTROYED:\n\t" .. area .. " km squared"  
+  dataTitle[4] = "TOTAL MAINTENENCE COST:\n\t" .. "$"..maintenence
   
   for x = 1, 4, 1 do    
-      text[x] = display.newText(dataTitle[x],textStartingX,textStartingY, infoBox.width*0.8,0, gv.font, gv.fontSize )
+      text[x] = display.newText(dataTitle[x],textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
       text[x].anchorX, text[x].anchorY = 0,0
       text[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
       sceneGroup:insert(text[x])
@@ -260,19 +278,84 @@ local function addHydroText()
 
 end
 
-local function addText(index)
-    
-    textStartingX = infoBox.x - infoBox.width/2 + infoBox.width*0.05
-    textStartingY = infoBox.y - infoBox.height/2 + infoBox.height*0.05
+local function cycle( up, event )
 
-    if(index>= 0 and index <= 3) then
-        addFossilFuelsText(index)
-    elseif(index == 4 or index == 5) then
-        addNaturalText(index) 
-    elseif(index == 6) then
+    if ( event.phase == "began") then
+    
+        local direction
+        local finish
+        local builtDams = 0
+        
+        for x = 0, 5, 1 do
+            if(gv.rivers[x]:getBuilt()) then
+                builtDams = builtDams + 1
+            end
+        end
+        
+        if ( builtDams ~= 0) then
+            rightArrow.isVisible = true
+            leftArrow.isVisible = true 
+            if ( up ) then
+              direction = 1
+              finish = 5 
+            else
+              direction = -1
+              finish = 0
+            
+            end
+            for t = cyclePointer, finish, direction do
+                if(gv.rivers[t]:getBuilt()) then
+                    setHydroLabels(gv.rivers[t]:getName(),gv.rivers[t]:getPowerGenerated(),gv.rivers[t]:getMainteneceCost())
+                    cyclePointer = t
+                    break
+                elseif (t == finish) then
+                    t = 5 - finish
+                end                       
+            end
+          else
+            setHydroLabels("NA","", "")
+          end    
+    end 
+
+end
+
+
+local function addGeneratorData()
+
+    local information = "The Generator is at the heart of all sources of power except solar power. \n " .. 
+    "Micheal Faraday discovered that if you push a magnet through a coiled wire, the kinetic energy of the magnet " .. 
+    "will be converted into electrical energy in the wire. \n A current. \n " .. 
+    "Once you have a current you can direct it where ever you want. :)"
+    
+      text[1] = display.newText(information,textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
+      text[1].anchorX, text[1].anchorY = 0,0
+      text[1]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+      sceneGroup:insert(text[1])
+
+
+end
+
+local function addText(index, event)
+    
+    textStartingX = infoBox.x + infoBox.width*0.05
+    textStartingY = infoBox.y + infoBox.height*0.05
+    infoBox.height = infoBoxHeight       
+    infoBox.y = heightCalculator(0.1) 
+    rightArrow.isVisible = false
+    leftArrow.isVisible = false
+
+    if(index>= 1 and index <= 4) then
+        addFossilFuelsText(index-1)
+    elseif(index == 5 or index == 6) then
+        addNaturalText(index-1) 
+    elseif(index == 7) then
         addHydroText()
-    elseif (index == 7) then
-        -- show some generator data
+        cycle(true, event)        
+    elseif (index == 0) then
+        textStartingY = infoBox.y - infoBox.height*0.05
+        addGeneratorData()
+        infoBox.height = infoBoxHeight*1.1        
+        infoBox.y = heightCalculator(0.05)
     end
 end
 
@@ -280,10 +363,11 @@ local function changeData(index, event)
 
     if (event.phase == "began" ) then        
         removeText()
-        addText(index)
+        addText(index, event)
         setVideo(index)
     end
 end
+
 
 local function testingArea()
 
@@ -300,11 +384,11 @@ function scene:create( event )
 
   sceneGroup = self.view
   local buttonY = display.contentHeight*0.8
-  local buttonX = display.contentWidth*0.35
+  local buttonX = display.contentWidth*0.3
   
   -- builds navigation buttons
   
-  for x = 0, 6, 1 do 
+  for x = 0, 7, 1 do 
       powerButtons[x] = widget.newButton
       {
         width     = circleWidth,
@@ -316,21 +400,55 @@ function scene:create( event )
        }
       buttonX = buttonX + circleWidth*1.5
       sceneGroup:insert(powerButtons[x])
-  end      
+  end
   
-  infoBox = widget.newButton
+  rightArrow = widget.newButton
   {
-      width       = infoBoxWidth,
-      height      = infoBoxHeight,
-      defaultFile = "Images/global_images/Vertical_Box.png",
-      id          = "BO",
-      left        = 5,
-      top         = heightCalculator(0.1),
-  }
+    width     = circleWidth,
+    height    = circleHeight,
+    defaultFile = "Images/inner_workings_screen/right-arrow.png",
+    top         = powerButtons[7].y - circleHeight*1.5,
+    left        = powerButtons[7].x + circleWidth/4,
+    onEvent   =  function( event ) cycle(true, event ) end,
+   }
+       
+   leftArrow = widget.newButton
+  {
+    width     = circleWidth,
+    height    = circleHeight,
+    defaultFile = "Images/inner_workings_screen/left-arrow.png",
+    top         = powerButtons[7].y - circleHeight*1.5,
+    left        = powerButtons[7].x - circleWidth*1.25,
+    onEvent   =  function( event ) cycle(false, event ) end,
+   }
+  
+  rightArrow.isVisible = false
+  leftArrow.isVisible = false 
+  
+  sceneGroup:insert(rightArrow)
+  sceneGroup:insert(leftArrow)
+  
+  
+--  infoBox = widget.newButton
+--  {
+--      width       = infoBoxWidth,
+--      height      = infoBoxHeight,
+--      defaultFile = "Images/global_images/Vertical_Box.png",
+--      id          = "BO",
+--      left        = 5,
+--      top         = heightCalculator(0.1),
+--  }
+
+
+  infoBox = display.newImage("Images/global_images/Vertical_Box.png", 5,heightCalculator(0.1))
+  infoBox.anchorX, infoBox.anchorY = 0,0
+  infoBox.width = infoBoxWidth
+  infoBox.height = infoBoxHeight
+  
 
   sceneGroup:insert(infoBox)
-  textStartingX = infoBox.x - infoBox.width/2 + infoBox.width*0.05
-  textStartingY = infoBox.y - infoBox.height/2 + infoBox.height*0.05   
+  textStartingX = infoBox.x + infoBox.width*0.05
+  textStartingY = infoBox.y + infoBox.height*0.05   
 end
 
 
@@ -367,6 +485,7 @@ function scene:hide( event )
   -- Example: stop timers, stop animation, stop audio, etc.
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
+  removeText()
   video:pause()
   video:seek(0)
   video:removeEventListener("video",videoListener)
