@@ -55,26 +55,24 @@ function scene:create( event )
 
   local sceneGroup = self.view
   cityMessage = "The city owns this land and it must be bought from them. "..
-    "land is in high demand, everyone wants a piece so the cost is high. Once "..
-    "you buy this you can sell it again but you sell it at a lower price then what you bought it for. "..
-    "If you buy this then you still need to pay to put an istablishment on the location as well"
-
+    "Land is in high demand, and everyone wants a piece so the cost is high. Once "..
+    "you buy this you stuck with it but you will be able to build an establishment of your choice."    
 
   cityOptionsTop  = centerY(shiftConstant)
   cityOptionsLeft = centerX(shiftConstant) + 20
 
   cityOptionsBG = widget.newButton
     {
-      width       = widthCalculator(0.6),
-      height      = heightCalculator(0.6),
+      width       = widthCalculator(0.5),
+      height      = heightCalculator(0.5),
       defaultFile = "Images/global_images/Horizontal_Box.png",
       id          = "BO",
       left        = centerX(widthCalculator(0.5)),
-      top         = centerY(heightCalculator(0.5) + heightCalculator(0.1) ),
+      top         = centerY(heightCalculator(0.5)),
   }
 
   prosWidth = cityOptionsBG.width*0.8
-  createText()
+  createText() 
 
   local btnBuy = widget.newButton
     {
@@ -83,8 +81,8 @@ function scene:create( event )
       defaultFile = "Images/global_images/button1.png",      
       label       = "Buy",
       id          = "btnBuy",
-      top         = infoText.y + infoText.height,
-      left        = centerX(cityOptionsBG.width*0.2) - cityOptionsBG.width*0.15,
+      top         = infoText.y + cityOptionsBG.height*0.45,
+      left        = centerX(cityOptionsBG.width*0.3) - cityOptionsBG.width*0.2,
       onEvent = buy
   }
 
@@ -98,7 +96,7 @@ function scene:create( event )
       label = "Cancel",
       id = "btnCancel",
       top = btnBuy.y,
-      left = centerX(cityOptionsBG.width*0.2) + cityOptionsBG.width*0.2,
+      left = centerX(cityOptionsBG.width*0.3) + cityOptionsBG.width*0.2,
       onEvent = cancel
   }
 

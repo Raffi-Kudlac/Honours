@@ -34,7 +34,7 @@ local function createText(ownedOptionsBG)
   nameText.anchorX, nameText.anchorY = 0,0 
   nameText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
   
-  data = "Porducing " .. gv.rivers[gv.riverSelected]:getPowerGenerated() .. "GW"
+  data = "Producing " .. gv.rivers[gv.riverSelected]:getPowerGenerated() .. "GW"
   
   producingText = display.newText(data, xPosition, nameText.y + yShift, gv.font, gv.fontSize)
   producingText.anchorX, producingText.anchorY = 0,0
@@ -48,8 +48,8 @@ local function createText(ownedOptionsBG)
   maintenenceText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
   
   data = "You can not demolish hydro plants. A giant wall of concrete holding back a mountain of water." ..
-   " It would cots a fortune and the envirmental impact would be huge. It's better to just leave it standing. " .. 
-   "This way we save money and we don't piss off the envirmentalists."
+   " It would cost a fortune and the environmental impact would be huge. It's better to just leave it standing. " .. 
+   "This way we save money and we don't piss off the environmentalists."
   
   infoText = display.newText(data, maintenenceText.x,maintenenceText.y + yShift*1.2,prosWidth,prosHeight, gv.font,gv.fontSize)
   infoText.anchorX, infoText.anchorY = 0,0
@@ -91,12 +91,12 @@ function scene:create( event )
   
     local btnOkay = widget.newButton
     {
-      width         = bgWidth*0.2,
-      height        = bgHeight*0.1,
+      width         = bgWidth*0.25,
+      height        = bgHeight*0.15,
       defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
-      top           = infoText.y + infoText.height - bgWidth*.02,
+      top           = infoText.y + infoText.height - bgWidth*.08,
       left          = centerX(bgWidth*0.2),
       onEvent       = cancel
   }

@@ -113,7 +113,7 @@ function scene:create( event )
   local bgWidth = widthCalculator(0.6)
   local bgHeight = heightCalculator(0.7)
 
-  message = "From here you can demlosh you power plant, returning the land to the open state. " ..
+  message = "From here you can demolish your power plant, returning the land to the open state. " ..
     "It costs money to demolish a power plant but it could be worth it if the current one isn't generating any power. " ..
     " After the plant is gone you can chose to build another plant in its stead. "
 
@@ -132,7 +132,7 @@ function scene:create( event )
   yShift = ownedOptionsBG.height*0.1
   createText()
 
-  local btnWidth = ownedOptionsBG.width*0.25
+  local btnWidth = ownedOptionsBG.width*0.3
   local btnHeight = ownedOptionsBG.height*0.15
 
   local btnDemolish = widget.newButton

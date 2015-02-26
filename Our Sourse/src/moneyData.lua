@@ -65,7 +65,7 @@ local function makeText(sceneGroup)
   end
 
   moneyData[2][0] = pass*gv.nuclearSpecs:getMaintenenceCost()
-  moneyData[2][1] = "Nuclear Maintenence Cost: "
+  moneyData[2][1] = "Nuclear Maintenance Cost: "
 
   local docMoney = 0
   --Hydro
@@ -76,7 +76,7 @@ local function makeText(sceneGroup)
   end
 
   moneyData[3][0] = docMoney
-  moneyData[3][1] = "Hydro Maintenence Cost: "
+  moneyData[3][1] = "Hydro Maintenance Cost: "
 
   -- gas maintenence Cost
 
@@ -93,7 +93,7 @@ local function makeText(sceneGroup)
   end
 
   moneyData[4][0] = pass*gv.gasSpecs:getMaintenenceCost()
-  moneyData[4][1] = "Gas Maintenence Cost: "
+  moneyData[4][1] = "Gas Maintenance Cost: "
 
 
   -- oil maintenence Cost
@@ -110,7 +110,7 @@ local function makeText(sceneGroup)
   end
 
   moneyData[5][0] = pass*gv.oilSpecs:getMaintenenceCost()
-  moneyData[5][1] = "Oil Maintenence Cost: "
+  moneyData[5][1] = "Oil Maintenance Cost: "
 
   -- coal maintenence Cost
   consumption = gv.coalSpecs:getConsumption()
@@ -126,7 +126,7 @@ local function makeText(sceneGroup)
   end
 
   moneyData[6][0] = pass*gv.coalSpecs:getMaintenenceCost()
-  moneyData[6][1] = "Coal Maintenence Cost: "
+  moneyData[6][1] = "Coal Maintenance Cost: "
 
   if (gv.powerDemanded > gv.powerSupplied ) then
     moneyData[7][0] = 0

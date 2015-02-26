@@ -27,7 +27,7 @@ local function refreshText()
     blackoutRateText.text = message
     
     message = gv.blackoutLengthSum + gv.blackoutLengthCounter .. " blackout month(s) in 3 years" .. 
-      "\n At 12 the game ends"
+      "\n At 12 the game will end"
       
     blackoutLengthText.text = message  
       

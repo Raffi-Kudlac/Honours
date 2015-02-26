@@ -45,7 +45,7 @@ local function createText(ffSpecs)
   costText.anchorX,costText.anchorY = 0,0
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  productionText = display.newText("Produses: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
+  productionText = display.newText("Produces: "..ffSpecs:getProduces().."GW",costText.x,costText.y+20,gv.font,gv.fontSize)
   productionText.anchorX,productionText.anchorY = 0,0
   productionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
@@ -179,7 +179,7 @@ function scene:create( event )
       left        = buttonX
   }
 
-  local btnWidth = buildOptions.width*0.22
+  local btnWidth = buildOptions.width*0.25
   local btnHeight = buildOptions.height*0.12
 
   local btnBuy = widget.newButton

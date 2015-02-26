@@ -98,7 +98,7 @@ local function setHydroLabels(name,produces, maintinence)
     else
         setDataBox("Name", name, 1)
         setDataBox("Produces", produces .. " unit(s)", 2)
-        setDataBox("Maintinence cost","$"..maintinence, 3)
+        setDataBox("Maintenance cost","$"..maintinence, 3)
     end
 
 end
@@ -107,7 +107,7 @@ local function setDataLabels(produces,consumes, maintinence)
     
     setDataBox("Produces", produces .. " GW", 1)
     setDataBox("Consumes", consumes .. " unit(s)", 2)
-    setDataBox("Maintinence cost","$"..maintinence, 3)
+    setDataBox("Maintenance cost","$"..maintinence, 3)
 
 end
 
@@ -322,9 +322,9 @@ end
 
 local function addGeneratorData()
 
-    local information = "The Generator is at the heart of all sources of power except solar power. \n " .. 
-    "Micheal Faraday discovered that if you push a magnet through a coiled wire, the kinetic energy of the magnet " .. 
-    "will be converted into electrical energy in the wire. \n A current. \n " .. 
+    local information = "The generator is at the heart of all sources of power except solar power. \n " .. 
+    "Michael Faraday discovered that if you push a magnet through a coiled wire, the kinetic energy of the magnet " .. 
+    "will be converted into electrical energy in the wire. \n This elecrical energy is a current. " .. 
     "Once you have a current you can direct it where ever you want. :)"
     
       text[1] = display.newText(information,textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
@@ -337,10 +337,10 @@ end
 
 local function addText(index, event)
     
-    textStartingX = infoBox.x + infoBox.width*0.05
-    textStartingY = infoBox.y + infoBox.height*0.05
     infoBox.height = infoBoxHeight       
-    infoBox.y = heightCalculator(0.1) 
+    infoBox.y = heightCalculator(0.1)    
+    textStartingX = infoBox.x + infoBox.width*0.05
+    textStartingY = infoBox.y + infoBox.height*0.05     
     rightArrow.isVisible = false
     leftArrow.isVisible = false
 

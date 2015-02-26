@@ -60,7 +60,7 @@ local function createText()
   producingText.anchorX, producingText.anchorY = 0,0 
   producingText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
   
-  data = "Consumes " .. specs:getConsumption() .." Units of " .. type .. " per month"
+  data = "Consumes " .. specs:getConsumption() .." units of " .. type .. " per month"
   
   resourceConsumptionText = display.newText(data, xPosition, producingText.y + yShift, gv.font, gv.fontSize)
   resourceConsumptionText.anchorX, resourceConsumptionText.anchorY = 0,0
@@ -126,7 +126,7 @@ function scene:create( event )
   -- Example: add display objects to "sceneGroup", add touch listeners, etc.
   local sceneGroup = self.view
 
-  message = "From here you can demlosh you power plant, returning the land to the open state. " ..
+  message = "From here you can demolish your power plant, returning the land to the open state. " ..
     "It costs money to demolish a power plant but it could be worth it if the current one isn't generating any power. " ..
     " After the plant is gone you can chose to build another plant in its stead. "
     
@@ -150,7 +150,7 @@ function scene:create( event )
 
   local btnDemolish = widget.newButton
     {
-      width         = bgWidth*0.27,
+      width         = bgWidth*0.3,
       height        = bgHeight*0.15,
       defaultFile = "Images/global_images/button1.png",
       label         = "Demolish",

@@ -34,8 +34,8 @@ local function createText(sceneGroup)
   costText.anchorX,costText.anchorY = 0,0
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  local miningInfo = "Coal, Gas, Oil and Uranium are all resourses that our power plants run off of today. They all come from " ..
-    "the earth and there is only a limited amount of them. Once we run out. There will be none left."
+  local miningInfo = "Coal, Gas, Oil and Uranium are all resources that our power plants run off of today. They all come from " ..
+    "the earth and there is only a limited amount of them. Once we run out there will be none left."
 
   info = display.newText(miningInfo, costText.x, costText.y + 20,mineOptions.width*0.85, textHeight, gv.font,gv.fontSize)
   info.anchorX, info.anchorY = 0,0

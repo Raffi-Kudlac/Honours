@@ -48,7 +48,7 @@ function scene:create( event )
       shape     = "roundedRect",
       fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
       id        = "btnPlay",
-      label     = "PLay",
+      label     = "Play",
       left      = centerX(100),
       top       = centerY(50),
       onEvent   = play

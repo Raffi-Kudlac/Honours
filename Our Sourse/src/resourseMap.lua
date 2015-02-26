@@ -78,14 +78,25 @@ function scene:create( event )
 
   local natural = widget.newButton
     {
-      top = bg.height*0.1,
-      left = bg.width*0.06,
-      width = width,
-      height = height,
+      top = bg.height*0.08,
+      left = bg.width*0.15,
+      width = width*0.8,
+      height = height*1.2,
       defaultFile = "Images/resource_screen/rec_natural.png",
       onEvent = function() return goToScreen("natural") end,
   }
   natural.anchorX, natural.anchorY = 0,0
+  
+  local mask = graphics.newMask( "Images/resource_screen/rec_natural_mask.png" )
+  local xScale = natural.width/300
+  local yScale = natural.height/200
+  
+  natural:setMask( mask )
+  natural.maskScaleX = xScale
+  natural.maskScaleY = yScale
+  natural.maskX = natural.width/2
+  natural.maskY = natural.height/2
+  
 
 
   local hydro = widget.newButton

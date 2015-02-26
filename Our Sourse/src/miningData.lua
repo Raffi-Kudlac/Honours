@@ -70,7 +70,7 @@ function scene:create( event )
   end
 
   if (pass == false) then
-    local emptyText = display.newText("Sorry, You do not know anyting about any tiles", xPosition, yPosition,
+    local emptyText = display.newText("Sorry, You do not know anything about any tiles", xPosition, yPosition,
       BG.width*0.9, 0, gv.font, gv.fontSize)
     emptyText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
     sceneGroup:insert(emptyText)

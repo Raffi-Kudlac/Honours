@@ -220,11 +220,11 @@ local function initalize()
   gv.oilInfluence = 1
 
 
-  local energyPros = "This Fossle Fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
-    " In comparison to coal it will burn faily well and not polute the air as much."
-  local energyCons = "Oil has many other purposes other then just fueling power plants. Such as fueling cars and heating homes."..
-    "These other uses drain the amount of oil that can be used. Investing in this kind of power plant will wont make envirmentalist "..
-    " particularily happy."
+  local energyPros = "This fossil fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
+    " In comparison to coal it will burn faily well and not pollute the air as much."
+  local energyCons = "Oil has many other purposes other than just fueling power plants, such as fueling cars and heating homes."..
+    "These other uses drain the amount of oil that can be used. Investing in this kind of power plant wont make environmentalists"..
+    " particularly happy."
   local energyCost = 110
   local energyProduction = 4.1
   local energyConsumption = 1
@@ -273,7 +273,7 @@ local function initalize()
   
   r0Data = "Niagra Falls. Due to the height of the falls, the speed of the water and the amount of flowing water we can build a " ..
   "dam here for minimal environmental effects and get decent amounts of power back. It would be nice if all dams could be built " .. 
-  "on sites like these but they are rare. Building here is strongly recomended." 
+  "on sites like these but they are rare. Building here is strongly recommended." 
   
   gv.rivers[4]:setData(r0Data)
   
@@ -284,11 +284,11 @@ local function initalize()
   gv.rivers[5]:setData(r0Data)
   
 
-  energyPros = "This Fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossil fuels."..
-    "Coal is cheap and fairly easy to obtain."
+  energyPros = "This fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossil fuels."..
+    " Coal is cheap and fairly easy to obtain."
 
   energyCons = "Coal puts carbon dioxide into the air and its supplies are not infinite. Environmentalists will not"..
-    "like you for building this kind of power plant"
+    " like you for building this kind of power plant"
 
   energyCost = 100
   energyProduction = 4.3
@@ -303,8 +303,8 @@ local function initalize()
   gv.coalSpecs:setConsumption(energyConsumption)
   gv.coalSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "This Fossil fueled power plant runs off of gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
-    "and has the least impact on the atmosphere"
+  energyPros = "This fossil fueled power plant runs off of gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
+    " and has the least impact on the atmosphere"
   energyCons = "There is a finite amount of gas on the planet"
   energyCost = 120
   energyProduction = 4
@@ -318,7 +318,7 @@ local function initalize()
   gv.gasSpecs:setConsumption(energyConsumption)
   gv.gasSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "Nuclear Power is the cleanest of the natural resources. With uranium being the most abundant it can long outlast fossil fuels"
+  energyPros = "Nuclear power is the cleanest of the natural resources. With uranium being the most abundant resource it can long outlast fossil fuels. "
   energyCons = "Uranium is limited and plants are expensive. Some of the population is scared of nuclear power"
   energyCost = 150
   energyProduction = 4.8
@@ -333,7 +333,7 @@ local function initalize()
   gv.nuclearSpecs:setMaintenenceCost(energyMaintenence)
 
   energyPros = "Solar power is the only power source that works differently. By turning light into energy there are no environmental"..
-    "consequences and it is self sustaining. As long as the sun is around, we can have solar power. Environmentalists will " .. 
+    " consequences and it is self sustaining. As long as the sun is around, we can have solar power. Environmentalists will " .. 
     "like it if we decide to build these."
   energyCons = "Although well liked, solar panels are expensive and have a low conversion rate of light to energy. This " ..
     "doesn't make them an ideal source of power for a large population. They also only work during the day."
@@ -375,9 +375,10 @@ local function initalize()
   gv.groupActionWinner = -1
 
   gv.groups[0] = organization.new( "Environmentalists" )
-  gv.groups[0]:setAbout("\nThis organization is dedicated to protecting the earth and to care for the " ..
+  gv.groups[0]:setAbout("\nThis organization is dedicated to protecting the earth and to caring for the " ..
     "environment. Polluting the atmosphere or destroying the land in any way will generally make this organization " ..
-    "angry with you. This organization is affected by and effects almost all forms of power It is very hard to keep them happy forever.")
+    "angry with you. This organization is affected by and effects almost all forms of power. It is very hard to keep them happy forever." .. 
+    " Building clean sources of energy will help keep them happy.")
 
 
   gv.groups[0]:setHappyText("The Environmentalists are happy with you and have convinced the government to reduce taxes for you. " ..
@@ -389,7 +390,7 @@ local function initalize()
 
   gv.groups[1] = organization.new( "Anti-Nuclear" )
   gv.groups[1]:setAbout("\nThis organization of people is composed of people who are scared of nuclear power and believe that it " ..
-    "is to dangerous to be used close to their homes and loved ones. Building nuclear power plants will upset this group. " ..
+    "is too dangerous to be used close to their homes and loved ones. Building nuclear power plants will upset this group. " ..
     "A good way to deal with them would be to educate them and assure them that although nuclear power is dangerous, all " ..
     "the safety precautions are being taken so there is nothing to fear.")
 
@@ -405,8 +406,8 @@ local function initalize()
   gv.groups[2] = organization.new( "The Population" )
   gv.groups[2]:setAbout("\nThe people you serve generally don't care how they get their power as long as they get it. " ..
     "Keeping the lights on will keep them happy but if blackouts occur then they are going to get mad. If too many blackouts" ..
-    "happen then you have to give some money back to the people to compensate. Be careful, if too many blackouts " ..
-    "happen too frequently then you lose the game")
+    " happen then you have to give some money back to the people to compensate, and if too many " ..
+    "happen too frequently then you will lose.")
 
   gv.groups[2]:setHappyText("The people are happy with your production of power. You don't get anything but at least" ..
     "they are not rioting and making your life difficult.")
@@ -421,7 +422,7 @@ local function initalize()
   --    "give the landscape any beauty points eigher. They are also the reason for a lot avian deaths when they don't like to "..
   --    "look where they are flying." )
 
-  gv.groups[3]:setAbout("\nYou would think, 'Who would protests Windmills. Clean energy and no environmental hazards' well you can't " ..
+  gv.groups[3]:setAbout("\nYou would think, 'Who would protest windmills? Clean energy and no major environmental hazards.' Well you can't " ..
     "make everybody happy. This group is usually composed of people who live around windmills. They don't like the noise and " ..
     "appearance of these big machines. The population of this group is generally small and they don't get a lot of attention " ..
     "as windmills are a source of clean energy.")
@@ -430,7 +431,7 @@ local function initalize()
     "Anti-Windmillists that they are worth it. The cost of building windmills has reduced by $5.")
 
   gv.groups[3]:setMadText("Farmers and countrymen are not happy about the windmills that you have been putting up." ..
-    "They have rallied and spoken to the goverment. The cost of building future windmills has increased by $5")
+    "They have rallied and spoken to the government. The cost of building future windmills has increased by $5")
 
   gv.advertisements = {}
   gv.addCounter = 5
@@ -438,21 +439,21 @@ local function initalize()
   
   gv.advertisements[0] = adds.new( "Save Power", adCost )
   gv.advertisements[0]:setEffect("Costs $".. adCost .." per month. \nEducate the population" .. 
-   "to intelligently use power so they don't waste it."..
-    "This ad is useful if you are having trouble keeping up with demand and it makes the environmentalists less mad")
+   " to intelligently use power so they don't waste it."..
+    " This ad is useful if you are having trouble keeping up with demand and it makes the environmentalists less mad.")
 
   adCost = 5
   gv.advertisements[1] = adds.new( "Safe Nuclear Power", adCost )  
   gv.advertisements[1]:setEffect("Costs $" .. adCost .." per month. \nAdvertise to the population" ..
    " about the workings of nuclear power. Show them that " .. 
-    "although nuclear power can be dangerous, you have all the necessary safety precautions in place")
+    "although nuclear power can be dangerous, you have all the necessary safety precautions in place.")
   
   adCost = 4
   gv.advertisements[2] = adds.new( "Pro Windmills", adCost )
-      gv.advertisements[2]:setEffect( "Costs $" .. adCost .." per month. \nAre those anti-Windmillists causing trouble for you?" ..  
+      gv.advertisements[2]:setEffect( "Costs $" .. adCost .." per month. \nAre those anti-windmillists causing trouble for you?" ..  
       " Hire this ad and it will show " .. 
-      "them how lucky they are to have a eneregy generating machine in their backyard")
-  
+      "them how lucky they are to have a energy-generating machine in their backyard.")
+
 --  gv.advertisements[3] = adds.new( "Pro Hydro", 3 )
 --  gv.advertisements[3]:setEffect("Advertise what the world would be like without hydro power and all the perks it bring us. " ..
 --   " Yeah some land gets a little wet but hey, fish have to live somewhere too right")
@@ -461,13 +462,13 @@ local function initalize()
   gv.advertisements[3] = adds.new( "Fossil Power", adCost )
   gv.advertisements[3]:setEffect( "Costs $" .. adCost .." per month. \nYes fossil fueled power plants pollute" ..
    " the planet on massive scales and are no " .. 
-  "friend to wildlife but it's cheap and effective. You want the cost of energy to be 10 times what it is now. Thats " ..
-   "what it would be without fossil fuels")
+  "friend to wildlife, but it's cheap and effective. You want the cost of energy to be 10 times what it is now. That's " ..
+   "what it would be without fossil fuels.")
   
   gv.advertisements[4] = adds.new( "Public Appeal", adCost )
   gv.advertisements[4]:setEffect("Costs $" .. adCost .." per month. \nIs the population upset with you?" .. 
    " Are they complaining about your capability to provide power? " .. 
-    "I'll calm the public down and show them that creating energy is no easy task")
+    "I'll calm the public down and show them that creating energy is no easy task.")
 
   gv.publicServises = {}
   gv.servisCounter = 8
@@ -475,55 +476,55 @@ local function initalize()
   local publicServisCost = 6
   gv.publicServises[0] = publicServises.new("Geologist",publicServisCost)
   gv.publicServises[0]:setAbout("\nCosts $" .. publicServisCost .. " per month\nAre you hitting blanks trying to get the " ..
-  "resources you need? tired of wasting money? Hire a Geologist to find what tiles hold. Give her some time to work " .. 
-  "and she will get back to you with some information. Say good bye to guessing")
+  "resources you need? Tired of wasting money? Hire a Geologist to find what tiles hold. Give her some time to work " .. 
+  "and she will get back to you with some information. Say good bye to guessing.")
 
   publicServisCost = 6
   gv.publicServises[1] = publicServises.new("Fossil Fuel Advances",publicServisCost)
-  gv.publicServises[1]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in the fossil fuels."
-  .. " If succesfull you will discover information " .. 
-  "that will make your fossil fueled power plants more efficient. Possibly increasing power generation " .. 
-  " or reducing maintenence. Be careful though as you make advancements it becomes harder to make more.")
+  gv.publicServises[1]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest in research in the fossil fuels."
+  .. " If successful you will discover information " .. 
+  "that will make your fossil fueled power plants more efficient, which could possibly increase power generation " .. 
+  " or reduce maintenance. Be careful though as you make advancements it becomes harder to make more.")
       
       
   gv.publicServises[2] = publicServises.new("Nuclear Advances",publicServisCost)  
-  gv.publicServises[2]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in Nuclear Reactors."
+  gv.publicServises[2]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest in research in nuclear reactors."
   .. " If successful you will discover information " .. 
-  "that will make nuclear power plants more efficient. Possibly increasing power generation " .. 
-  " or reducing maintenance. Be careful though as you make advancements it becomes harder to make more.")
+  "that will make nuclear power plants more efficient, which could possibly increase power generation " .. 
+  " or reduce maintenance. Be careful though as you make advancements it becomes harder to make more.")
   
   publicServisCost = 4 
   gv.publicServises[3] = publicServises.new("Wind Advances",publicServisCost)
-  gv.publicServises[3]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in windmills."
+  gv.publicServises[3]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest in research in windmills."
   .. " If successful you will discover information " .. 
-  "that will make your windmills more efficient. Increasing power generation. Can't really reduce maintenance. " .. 
+  "that will make your windmills more efficient, which increases power generation. You can't really reduce maintenance cost. " .. 
   "Be careful though as you make advancements it becomes harder to make more.")
   
   
   gv.publicServises[4] = publicServises.new("Solar Advances",publicServisCost)
-  gv.publicServises[4]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in solar panels."
+  gv.publicServises[4]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest in research in solar panels."
   .. " If successful you will discover information " .. 
-  "that will make your solar panels more efficient. Increasing power generation. Can't really reduce maintenance. " .. 
+  "that will make your solar panels more efficient, which increases power generation. You can't really reduce maintenance. " .. 
   "Be careful though as you make advancements it becomes harder to make more.")
   
   publicServisCost = 8
   gv.publicServises[5] = publicServises.new("Hydro Advances",publicServisCost)
-  gv.publicServises[5]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest research in dams."
+  gv.publicServises[5]:setAbout("\nCosts $" .. publicServisCost .. " per month\nInvest in research in dams."
   .. " If successful you will discover information " .. 
-  "that will make dams more efficient. Possibly increasing power generation " .. 
-  " or reducing maintenance. Be careful though as you make advancements it becomes harder to make more.")
+  "that will make dams more efficient, which possibly increases power generation " .. 
+  " or reduces maintenance. Be careful though as you make advancements it becomes harder to make more.")
   
   publicServisCost = 6
   gv.publicServises[6] = publicServises.new("Generator Advances",publicServisCost)
   gv.publicServises[6]:setAbout("\nCosts $" .. publicServisCost .. " per month\n"
   .. "Generators are at the heart of all forms of power except solar. If successful you will discover information " .. 
-  "that will make all forms of power more efficienct by a little bit. Increasing power generation of all types of" .. 
-  "power except solar. Be careful though as you make advancements it becomes harder to make more.")
+  "that will make all forms of power more efficient by a little bit. Increasing power generation of all types of" .. 
+  " power except solar. Be careful though as you make advancements it becomes harder to make more.")
   
   publicServisCost = 6
-  gv.publicServises[7] = publicServises.new("Corrupt Envirmentalists",publicServisCost)
+  gv.publicServises[7] = publicServises.new("Corrupt Environmentalists",publicServisCost)
   gv.publicServises[7]:setAbout("\nCosts $" .. publicServisCost .. " per month\nAre those environmentalists groups giving " .. 
-  "you a hard time? It's time to infiltrate their ranks and take a load off your back. Hire some one to go behind enemy lines " .. 
+  "you a hard time? It's time to infiltrate their ranks and take a load off your back. Hire someone to go behind enemy lines " .. 
   "and convince the environmentalists to give you a break\n\n\n")
   gv.foundResourses = {}
 

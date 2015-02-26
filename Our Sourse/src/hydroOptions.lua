@@ -25,7 +25,7 @@ local function createText(sceneGroup)
 
   local textVerticalShift = damHeight*0.08
   
-  textWidth = damWidth*0.8
+  textWidth = damWidth*0.75
 
   local nme = gv.rivers[gv.riverSelected]:getName()
 
@@ -42,14 +42,14 @@ local function createText(sceneGroup)
   costText.anchorX,costText.anchorY = 0,0
   costText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
   
-  local messageText = "Maintenence cost: $"
+  local messageText = "Maintenance cost: $"
   
   local maintinenceText =display.newText(messageText .. gv.rivers[gv.riverSelected]:getMainteneceCost(), damOptionsLeft,
     costText.y + textVerticalShift, gv.font, gv.fontSize )
   maintinenceText.anchorX, maintinenceText.anchorY = 0,0  
   maintinenceText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
-  local destruction = "Area flooded: " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " km squared"
+  local destruction = "Area flooded: \n " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " km squared"
 
   local adText = display.newText(destruction, damOptionsLeft,
     maintinenceText.y + textVerticalShift, damWidth*0.3, 0, gv.font, gv.fontSize )

@@ -68,8 +68,8 @@ function scene:create( event )
 
   local sceneGroup = self.view
      
-  forestMessage = "Purchasing this land is cheaper then buying it from the city but envirmentalists have problems with cutting down " .. 
-    "tress. Like they don't know what thier signs are made out of. Once you buy the land can build power plants on it"
+  forestMessage = "Purchasing this land is cheaper than buying it from the city but environmentalists have problems with cutting down " .. 
+    "trees. Like they don't know what their signs are made out of. Once you buy the land you can build power plants on it."
 
 
   forestOptionsTop  = centerY(shiftConstant)
