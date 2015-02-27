@@ -51,7 +51,7 @@ local function createText(ffSpecs)
       type = "Gas"
       specs = gv.gasSpecs
   elseif ( type == "nuclear" ) then
-      type = "Uranium"
+      type = "uranium"
       specs = gv.nuclearSpecs
   end
 
@@ -70,7 +70,7 @@ local function createText(ffSpecs)
   data = "Consumes:\n "..ffSpecs:getConsumption() .. " unit of " .. type .. " per month"
 
   consumptionText = display.newText( data,costText.x,productionText.y+20,
-  buildOptions.width*0.4, 0, gv.font,gv.fontSize)
+  buildOptions.width*0.45, 0, gv.font,gv.fontSize)
   consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
   consumptionText.anchorX,consumptionText.anchorY = 0,0
   
@@ -117,6 +117,7 @@ end
 
 local function setText(ffSpecs, kind)
 
+  
   currentEnergySourse = ffSpecs
   costText.text = "Costs: $"..ffSpecs:getCost()
   productionText.text = "Produces: "..ffSpecs:getProduces().."GW"
@@ -124,6 +125,7 @@ local function setText(ffSpecs, kind)
   maintenenceText.text = "Costs $" .. ffSpecs:getMaintenenceCost() .. " per month to maintain"
   prosText.text = ffSpecs:getPros()
   consText.text = ffSpecs:getCons()
+  scrollText:scrollTo( "top", { time=0} )
 
 end
 
@@ -207,7 +209,7 @@ function scene:create( event )
       height      = circleHeight,
       id          = "btnoil",
       defaultFile = "Images/land_screen/lnd_oil.png",
-      onEvent     = function() return setText(gv.oilSpecs, "oil") end,
+      onEvent     = function() return setText(gv.oilSpecs, "oil") end,      
       top         = buttonY,
       left        = buttonX
   }
@@ -262,6 +264,7 @@ function scene:create( event )
       id            = "btnBuy",
       top           = (scrollText.y + scrollText.height*0.9),
       left          = centerX(btnActionWidth) -buildOptions.width*0.1,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = buy
   }
 
@@ -276,6 +279,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnBuy.y,
       left          = centerX(btnActionWidth) + buildOptions.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 
@@ -290,11 +294,7 @@ function scene:create( event )
   sceneGroup:insert(costText)
   sceneGroup:insert(productionText)
   sceneGroup:insert(consumptionText)
-  sceneGroup:insert(maintenenceText)
-  --    scrollText:insert(prosText)
-  --    scrollText:insert(consText)
-  --    sceneGroup:insert(prosText)
-  --    sceneGroup:insert(consText)
+  sceneGroup:insert(maintenenceText)  
   sceneGroup:insert(scrollText)
   sceneGroup:insert(btnBuy)
   sceneGroup:insert(btnCancel)

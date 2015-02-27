@@ -40,6 +40,13 @@ local function showSpecifics(event, index)
       pressedGroup = index
       entryData[index].isVisible = true
       expanded = true
+      
+      scrollView:scrollToPosition
+      {          
+          y = -entry[index].y*0.8,
+          time = 0,          
+      }
+      
     else
       for x = pressedGroup +1, gv.groupCounter -1, 1 do
 
@@ -49,10 +56,22 @@ local function showSpecifics(event, index)
 
       entryData[pressedGroup].isVisible = false
       expanded = false
+      
+      scrollView:scrollToPosition
+      {          
+          y = 0,
+          time = 0,          
+      }
+      
     end
+    
+  elseif (event.phase == "moved") then
+       local dy = math.abs( ( event.y - event.yStart ) )
+               
+        if ( dy > 10 ) then
+            scrollView:takeFocus( event )
+        end    
   end
-
-
 end
 
 
@@ -72,19 +91,26 @@ local function makeEntries()
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
         fontSize  = gv.businessFont,
+        labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }    
     entry[x]:setLabel(gv.groups[x]:getName())
     emotion = gv.groups[x]:getStatus()
     
-    faces[x] = widget.newButton
-    {
-        width = scrollView.width*0.2,
-        height = scrollView.height*0.2,
-        defaultFile = emotion,
-        top = entry[x].y - entry[x].height/2,
-        left = entry[x].x + entry[x].width/2 + scrollView.width*0.05,        
-    }
+    
+    faces[x] = display.newImage(emotion,entry[x].x + entry[x].width/2 + scrollView.width*0.05, entry[x].y - entry[x].height/2)
+    faces[x].width = scrollView.width*0.2
+    faces[x].height = scrollView.height*0.2
+    faces[x].anchorX,faces[x].anchorY = 0,0
+    
+--    faces[x] = widget.newButton
+--    {
+--        width = scrollView.width*0.2,
+--        height = scrollView.height*0.2,
+--        defaultFile = emotion,
+--        top = entry[x].y - entry[x].height/2,
+--        left = entry[x].x + entry[x].width/2 + scrollView.width*0.05,        
+--    }
 
     entryData[x] = display.newText(gv.groups[x]:getAbout(), startingX, (x+1)*scrollView.height*0.21 + startingY,
       scrollView.width*0.85, expandShift, gv.font, gv.fontSize )
@@ -174,6 +200,7 @@ function scene:create( event )
       defaultFile   = "Images/global_images/button1.png",
       width = BG.width*0.23,
       height = BG.height*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent = back
   }
   sceneGroup:insert(scrollView)

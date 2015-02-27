@@ -52,7 +52,7 @@ local function createText(sceneGroup)
   local destruction = "Area flooded: \n " .. tostring(gv.rivers[gv.riverSelected]:getAD()) .. " km squared"
 
   local adText = display.newText(destruction, damOptionsLeft,
-    maintinenceText.y + textVerticalShift, damWidth*0.3, 0, gv.font, gv.fontSize )
+    maintinenceText.y + textVerticalShift, damWidth*0.4, 0, gv.font, gv.fontSize )
   adText.anchorX,adText.anchorY = 0,0
   
   adText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -170,6 +170,7 @@ function scene:create( event )
       id            = "btnDam",
       top           =  scrollText.x + scrollText.height*0.8,
       left          =  centerX(btnWidth) - damOptions.width*0.15,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = damed
   }
 
@@ -182,6 +183,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnDam.y,
       left          = centerX(btnWidth) + damOptions.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

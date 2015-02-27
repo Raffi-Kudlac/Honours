@@ -70,6 +70,16 @@ foundResourses = 0
 -- an array holding text that will be displayed if a public servise passes
 publicServisText = 0
 submitionName = ""
+
+buttonR = 0
+buttonG = 0
+buttonB = 0
+
+buttonOver1 = 0
+buttonOver2 = 0
+buttonOver3 = 0
+buttonOver4 = 0
+
 gaveOver = false
 
 local g       = {}

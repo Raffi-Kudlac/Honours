@@ -157,6 +157,7 @@ function scene:create( event )
       id            = "btnBuy",
       top           = infoText.y + infoText.height*0.75,
       left          = demolishText.x,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = demolish
   }
 
@@ -171,6 +172,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnDemolish.y,
       left          = btnDemolish.x + ownedOptionsBG.width*0.4,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

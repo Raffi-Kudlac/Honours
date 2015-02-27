@@ -223,6 +223,7 @@ local function loadElements()
       top       = display.contentHeight - btnHeight*1.1,
       labelAlign = "center",
       label     = "Back",
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   =   returnToMainMenu,
   }
 
@@ -235,6 +236,7 @@ local function loadElements()
       top       = display.contentHeight - btnHeight*1.1,
       labelAlign = "center",
       label     = "New Game",
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   =   newGame,
   }
   

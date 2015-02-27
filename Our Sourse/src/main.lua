@@ -30,6 +30,8 @@ local publicServises  = require( "publicServises" )
 require( "mining" )
 require( "naturalOptions" )
 
+
+local onInnerWorkings = false
 local stcBG
 local btnBNS
 local btnCY
@@ -57,7 +59,7 @@ local populationFine = 25
 local isPaused = false
 local initalPopulation = 10000
 local btnPausePlay
-local monthCounter    = 0
+local monthCounter    = 1
 local circleWidth     = 30
 local circleHeight    = 30
 local MB = widget
@@ -79,7 +81,27 @@ local month           = {
 
 -- year not being used right now.
 local function populationFunction(year)
-
+  
+  local yearsPassed = gv.year- 200
+  local populationRateArray = {}
+  local index = math.random(1,4)
+  
+  
+  if (yearsPassed > 10 ) then   -- make population growth rate slower
+      populationRateArray[1] = 1.07
+      populationRateArray[2] = 1.06
+      populationRateArray[3] = 1.08
+      populationRateArray[4] = 1.05
+      return math.round (gv.population*populationRateArray[index])
+      
+  else    -- make population growth rate larger
+      populationRateArray[1] = 1.09
+      populationRateArray[2] = 1.1
+      populationRateArray[3] = 1.11
+      populationRateArray[4] = 1.12
+       return math.round (gv.population*populationRateArray[index])
+  end
+  
   return math.round (gv.population*populationVariable)
 
 end
@@ -163,7 +185,7 @@ end
 -- Initalizing the global variables
 local function initalize()
 
-  monthCounter = 0
+  monthCounter    = 0
   gv.monthCounter = 0
   gv.monthTimer    = 0
   gv.secondsTimer  = 0
@@ -183,7 +205,7 @@ local function initalize()
   gv.submitionName = ""
   gv.demandFactor  = 1.2
   gv.money = 10
-  gv.moneyMadeFactor = 0.6
+  gv.moneyMadeFactor = 0.9
   calcPowerDemanded()
   gv.powerSupplied = 13.1 -- manually calculated starting power. 4.3 + 2.8 + 2*3
   gv.screen = "city"
@@ -221,10 +243,10 @@ local function initalize()
 
 
   local energyPros = "This fossil fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
-    " In comparison to coal it will burn faily well and not pollute the air as much."
-  local energyCons = "Oil has many other purposes other than just fueling power plants, such as fueling cars and heating homes."..
-    "These other uses drain the amount of oil that can be used. Investing in this kind of power plant wont make environmentalists"..
-    " particularly happy."
+    " In comparison to coal it will burn faily well and not pollute the air as much. It will produce good amounts of power"
+  local energyCons = "Oil is a finite resource on the plantet and it has other uses for cars and heating homes. Although it " .. 
+  "does not pollute as much as coal it still releases small green house emitions and getting thos stuff " .. 
+  "out of the ground is no clean task. Environmentalists wont be too happy."
   local energyCost = 110
   local energyProduction = 4.1
   local energyConsumption = 1
@@ -243,7 +265,7 @@ local function initalize()
   gv.hydroCounter = 6
   -- name, area Distroyed, cost to build, power generated, cost to mainTain
   gv.rivers[0] =  stream.new("Hudson",15,120,4.0,3)
-  gv.rivers[1] =  stream.new("The Amazon River",25,150,4.5,3)  
+  gv.rivers[1] =  stream.new("Amazon River",25,150,4.5,3)  
   gv.rivers[2] =  stream.new("Colorado River",20,130,3.8,3)
   gv.rivers[3] =  stream.new("The Nile",30,170,4.6,3)
   gv.rivers[4] =  stream.new("Niagra Falls",5,140,3.8,3)
@@ -305,7 +327,8 @@ local function initalize()
 
   energyPros = "This fossil fueled power plant runs off of gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
     " and has the least impact on the atmosphere"
-  energyCons = "There is a finite amount of gas on the planet"
+  energyCons = "Gas is can be dangerious to handle and requires proper containment. It must be handled properly and " .. 
+  "carefully. Don't want any acidents to happen. There is also a finite amount of gas on the plant."
   energyCost = 120
   energyProduction = 4
   energyConsumption = 1.5
@@ -318,8 +341,11 @@ local function initalize()
   gv.gasSpecs:setConsumption(energyConsumption)
   gv.gasSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "Nuclear power is the cleanest of the natural resources. With uranium being the most abundant resource it can long outlast fossil fuels. "
-  energyCons = "Uranium is limited and plants are expensive. Some of the population is scared of nuclear power"
+  energyPros = "Nuclear power is the cleanest of the natural resources. With uranium being the most abundant resource it can long outlast fossil fuels. " .. 
+  " And there is way more energy per unit of uranium then there is per unit of coal."
+  energyCons = "Uranium is radio active and getting at its pool of energy can be dangerious. The radio active waste that " .. 
+  " the plant produces can't just be hucked in the garbage it must be properly disposed of. Some people are scared " .. 
+  "of nuclear power and even though there are no envirmental hazards we still have to dig for uranium."
   energyCost = 150
   energyProduction = 4.8
   energyConsumption = 1
@@ -347,7 +373,7 @@ local function initalize()
   gv.solarSpecs:setCons(energyCons)
   gv.solarSpecs:setPros(energyPros)
   gv.solarSpecs:setConsumption(energyConsumption)
-  gv.solarSpecs:setMaintenenceCost(0)
+  gv.solarSpecs:setMaintenenceCost(1)
 
   energyPros = "Wind power is one of the main natural resources. Running off of flowing air it is capable of producing " ..
     "clean energy. Windmills will produce power as long as there is moving air so no need to worry about running out of wind. " .. 
@@ -368,7 +394,7 @@ local function initalize()
   gv.windSpecs:setCons(energyCons)
   gv.windSpecs:setPros(energyPros)
   gv.windSpecs:setConsumption(energyConsumption)
-  gv.windSpecs:setMaintenenceCost(0)
+  gv.windSpecs:setMaintenenceCost(1)
 
   gv.groups = {}
   gv.groupCounter = 4
@@ -431,7 +457,8 @@ local function initalize()
     "Anti-Windmillists that they are worth it. The cost of building windmills has reduced by $5.")
 
   gv.groups[3]:setMadText("Farmers and countrymen are not happy about the windmills that you have been putting up." ..
-    "They have rallied and spoken to the government. The cost of building future windmills has increased by $5")
+    "They have rallied and spoken to the government. The cost of building future windmills has increased by $5 and " .. 
+    "you have been fined $10")
 
   gv.advertisements = {}
   gv.addCounter = 5
@@ -546,6 +573,16 @@ local function initalize()
   -- gv.blackoutTimes hold a two D array of all the blackouts within the blackout rate. In this case 5 blackouts in 3 years
   -- index 1: start year; index 2 start month; index 3 length in months
   gv.blackoutTimes = {}
+  
+  gv.buttonR = 0/255
+  gv.buttonG = 128/255
+  gv.buttonB = 255/255
+  
+  gv.buttonOver1 = 0
+  gv.buttonOver2 = 0
+  gv.buttonOver3 = 0
+  gv.buttonOver4 = 0.5   
+  
 end
 
 function returnToMainMenuFromGameOver( event )
@@ -633,8 +670,13 @@ end
 
 function calcPowerDemanded()
 
+  -- this function results in a max of 1.4 and a min of 1. Max occures in july.
+  -- min accures in jan
+  local pdConstant = math.sin((monthCounter-4) * (math.pi/6)) *0.1 + 1.2
+  
   -- power demanded = population + a little more for businesses and such
-  gv.powerDemanded = math.round ( 10*(gv.population*1.2/1000) )/10 --1.2
+  gv.powerDemanded = math.round ( 10*(gv.population*pdConstant/1000) )/10 --1.2
+  
 end
 
 function centerY(height)
@@ -1193,9 +1235,11 @@ local function docResources()
 
   --solar
   productionFunction(gv.solarBuildCounter,gv.solarSpecs)
+  docMoney = docMoney + calculateMaintenenceCost(gv.solarBuildCounter, gv.solarSpecs)
 
   --wind
   productionFunction(gv.windBuildCounter,gv.windSpecs)
+  docMoney = docMoney + calculateMaintenenceCost(gv.windBuildCounter, gv.windSpecs)
 
   --Hydro
 
@@ -1246,11 +1290,10 @@ function publicServisFee()
 
   local minus = 0
 
-  for i = 0, servisCounter, 1 do
+  for i = 0, gv.servisCounter-1, 1 do
 
     if (gv.publicServises[i]:getBought()) then
-      minus = minus + gv.publicServises[i]:getCost()
-      --print ( "The cost of the add is " .. gv.publicServises[i]:getCost())
+      minus = minus + gv.publicServises[i]:getCost()      
     end
   end
 
@@ -1351,8 +1394,7 @@ local function checkPublicServisPercent()
   local randomNumber = math.random(1,10)
   local pass = false
 
-  --for x = 0, servisCounter -1, 1 do
-  for x = 0, 0, 1 do
+  for x = 0, gv.servisCounter -1, 1 do  
     if( gv.publicServises[x]:getBought() and gv.publicServises[x]:calculatePassFail() ) then
       pass = true
       if(x == 0 ) then
@@ -1388,46 +1430,46 @@ local function checkPublicServisPercent()
       elseif ( x == 2 ) then
 
         if ( randomNumber > 5) then
-          gv.nuclearSpecs:setMaintenenceCost(gv.nuclearSpecs:getsetMaintenenceCost() - 2)
+          gv.nuclearSpecs:setMaintenenceCost(gv.nuclearSpecs:getsetMaintenenceCost() - 1)
           gv.publicServisText[2] = "Due to improvements in technologie the maintenence cost " ..
-            " of all nuclear power plants has decreased by 2"
+            " of all nuclear power plants has decreased by 1"
         else
-          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 2)
+          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 1)
           gv.publicServisText[2] = "Due to improvements in technologie " ..
-            "all nuclear power plants now produce 2 GW more power"
+            "all nuclear power plants now produce 1 GW more power"
         end
       elseif ( x == 3 ) then
 
-        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 2)
+        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.5)
         gv.publicServisText[3] = "Due to improvements in technologie " ..
-          "all windmills have become more efficient and produce 2 GW more power"
+          "all windmills have become more efficient and produce 0.5 GW more power"
 
       elseif ( x == 4 ) then
 
-        gv.solarSpecs:setProduction(gv.solarSpecs:getProduction() + 2)
+        gv.solarSpecs:setProduction(gv.solarSpecs:getProduction() + 0.5)
         gv.publicServisText[4] = "Due to improvements in technologie " ..
-          "all solar panals have become more efficient and produce 2 GW more power"
+          "all solar panals have become more efficient and produce 0.5 GW more power"
       elseif ( x == 5) then
 
         if ( randomNumber > 5) then
-          gv.hydroSpecs:setMaintenenceCost(gv.hydroSpecs:getsetMaintenenceCost() - 2)
+          gv.hydroSpecs:setMaintenenceCost(gv.hydroSpecs:getsetMaintenenceCost() - 1)
           gv.publicServisText[5] = "Due to improvements in technologie the maintenence cost " ..
-            " of all hydro power plants has decreased by 2"
+            " of all hydro power plants has decreased by 1"
         else
-          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 2)
+          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 1)
           gv.publicServisText[5] = "Due to improvements in technologie " ..
-            "all hydro plants have become more efficient and produce 2 GW more power"
+            "all hydro plants have become more efficient and produce 1 GW more power"
         end
       elseif ( x == 6) then
 
-        gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 0.5)
-        gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 0.5)
-        gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 0.5)
-        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 0.5)
-        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.5)
-        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 0.5)
+        gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 0.2)
+        gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 0.2)
+        gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 0.2)
+        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 0.2)
+        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.2)
+        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 0.2)
         gv.publicServisText[6] = "Due to your investment in researching more efficient generators " ..
-          "all energy sources except solar panels can produce an extra GW of power"
+          "all energy sources except solar panels produce an extra 0.2 GW of power"
       elseif ( x == 7) then
         corruptEnvirmentalists()
         gv.publicServisText[7] = " You have been successful in briding the envirmentalists to get off your back " ..
@@ -1592,6 +1634,8 @@ local function checkGroupActionPercent()
           gv.windSpecs:setCost(gv.windSpecs:getCost() - 5)
         else
           gv.windSpecs:setCost(gv.windSpecs:getCost() + 5)
+          gv.money = gv.money - 10
+          setMoney()
         end
 
       end
@@ -1630,7 +1674,7 @@ local function timerFunction(event)
       --do nothing 
   else
       monthCounter = monthCounter + 1 
-     
+                 
       if monthCounter == 13 then
         gv.year = gv.year + 1
         --gv.population = populationFunction(gv.year)
@@ -1713,6 +1757,33 @@ function setDataBoxNoColon(title, message, number)
   end
 end
 
+function mainSetInnerWorkingsVariable(status)
+    onInnerWorkings = status
+end
+
+function getInnerWorkingsVariable()
+
+    return onInnerWorkings
+end
+
+function returnMovie()
+    
+    if(onInnerWorkings) then
+        revealVideo()
+    else
+        -- do nothing
+    end
+end
+
+function shiftMovie()
+
+    if(onInnerWorkings) then
+        hideVideo()
+    else
+        -- do nothing
+    end
+end
+
 
 -- used for testing purposes 
 function showData()
@@ -1722,4 +1793,5 @@ function showData()
 end
 
 initalize()
+require( "innerWorkings" )
 main()

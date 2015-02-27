@@ -85,6 +85,7 @@ function scene:create( event )
       id            = "btnOkay",
       top           =  BG.y + BG.height/2 - BG.height*0.2,
       left          =  (BG.x + BG.width)/2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = okay
   }
 

@@ -11,6 +11,8 @@ local scene     = composer.newScene()
 local dimension = 280
 local BG = 0
 
+local scrollText
+
 -------------------------------------------------
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
@@ -35,9 +37,11 @@ local function makeText(sceneGroup)
   -- 4 gas
   -- 5 oil
   -- 6 coal
-  -- 7 population
+  -- 7 windmill
+  -- 8 solar
+  -- 9 population
 
-  for x = 0, 7, 1 do
+  for x = 0, 9, 1 do
     moneyData[x] = {}
     for i = 0, 1, 1 do
       moneyData[x][i] = 0
@@ -48,7 +52,7 @@ local function makeText(sceneGroup)
   moneyData[0][1] = "Advertisemnt Fees: "
 
   moneyData[1][0] = publicServisFee()
-  moneyData[1][1] = "Public Servis Fees: "
+  moneyData[1][1] = "Public service Fees: "
 
   -- Nuclear Maintenence
 
@@ -128,14 +132,23 @@ local function makeText(sceneGroup)
   moneyData[6][0] = pass*gv.coalSpecs:getMaintenenceCost()
   moneyData[6][1] = "Coal Maintenance Cost: "
 
-  if (gv.powerDemanded > gv.powerSupplied ) then
-    moneyData[7][0] = 0
-  else
-    moneyData[7][0] = math.round(gv.powerDemanded * gv.moneyMadeFactor)
-  end
-  moneyData[7][1] = "Money Made from Population: "
+  -- windmill maintenance cost
+  moneyData[7][0] = gv.windBuildCounter*gv.windSpecs:getMaintenenceCost()
+  moneyData[7][1] = "Windmill Cost: "
+  
+  -- solar maintenance cost
+  moneyData[8][0] = gv.solarBuildCounter*gv.solarSpecs:getMaintenenceCost()
+  moneyData[8][1] = "Solar Panal Cost: "
+  
 
-  for i = 0, 6, 1 do
+  if (gv.powerDemanded > gv.powerSupplied ) then
+    moneyData[9][0] = 0
+  else
+    moneyData[9][0] = math.round(gv.powerDemanded * gv.moneyMadeFactor)
+  end
+  moneyData[9][1] = "Money Made from Population: "
+
+  for i = 0, 8, 1 do
     moneyData[i][0] = moneyData[i][0]*-1
   end
 
@@ -146,29 +159,28 @@ end
 local function displayText(data, sceneGroup)
 
   local text = 0
-  local xPosition = (BG.x - BG.width/2) + BG.width*0.1
-  local yPosition = (BG.y - BG.height/2) + 10
+  local xPosition = scrollText.width*0.05
+  local yPosition = scrollText.height*0.1
   local total = 0
 
-  for x =0,7, 1 do
+  for x =0,9, 1 do
 
     if (data[x][0] ~= 0 ) then
       text = display.newText(data[x][1] .. "$".. math.round(data[x][0]), xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize )
       text.anchorX,text.anchorY = 0,0
       text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-      sceneGroup:insert(text)
-      yPosition = yPosition + 20
+      scrollText:insert(text)
+      yPosition = yPosition + scrollText.height*0.15
       total = total + data[x][0]
     end
 
   end
 
   total = math.round(total)
-
   text = display.newText("Your total income is: $" .. total, xPosition, yPosition, dimension - 20, 0, gv.font, gv.fontSize)
   text.anchorX,text.anchorY = 0,0
   text:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-  sceneGroup:insert(text)
+  scrollText:insert(text)
 
 end
 
@@ -185,9 +197,9 @@ function scene:create( event )
 
   BG = widget.newButton
     {
-      width       = widthCalculator(0.5),
-      height      = heightCalculator(0.5),
-      defaultFile = "Images/global_images/Horizontal_Box.png",
+      width       = widthCalculator(0.4),
+      height      = heightCalculator(0.6),
+      defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
       left        = centerX(widthCalculator(0.5)),
       top         = centerY(heightCalculator(0.5)),
@@ -195,6 +207,19 @@ function scene:create( event )
 
   btnWidth = BG.width*0.3
   btnHeight = BG.height*0.2
+
+  scrollText = widget.newScrollView
+    {
+      width = BG.width*0.95,
+      height = BG.height*0.7,
+      horizontalScrollDisabled = true,      
+      scrollHeight = BG.height*2,
+      hideBackground = true,
+  }
+  
+  scrollText.anchorX, scrollText.anchorY = 0,0
+  scrollText.x = BG.x - BG.width/2
+  scrollText.y = BG.y - BG.height*0.45
 
   local btnOkay = widget.newButton
     {
@@ -205,12 +230,14 @@ function scene:create( event )
       id            = "btnOkay",
       top           = BG.y + (BG.height/2)*0.5,
       left          = (BG.x - BG.width/2) + BG.width*0.1,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = okay
   }
 
 
   passedMoneyData = makeText()
   sceneGroup:insert(BG)
+  sceneGroup:insert(scrollText)
   sceneGroup:insert(btnOkay)
 
   displayText(passedMoneyData, sceneGroup)
@@ -225,6 +252,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      shiftMovie()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -245,6 +273,7 @@ function scene:hide( event )
   -- Example: stop timers, stop animation, stop audio, etc.
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
+      returnMovie()
   end
 end
 

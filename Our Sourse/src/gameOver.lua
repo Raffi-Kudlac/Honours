@@ -233,6 +233,7 @@ local function createText()
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "Back",
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   =   returnToMainMenuFromGameOver,
   }
 
@@ -245,6 +246,7 @@ local function createText()
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "New Game",
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   =   newGameFromGameOver,
   }
   
@@ -258,6 +260,7 @@ local function createText()
       top       = display.contentHeight - heightCalculator(0.1),
       labelAlign = "center",
       label     = "Go Global",
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   =   goGlobal,
   }
 

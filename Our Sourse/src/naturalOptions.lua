@@ -88,7 +88,7 @@ local function setText(ffSpecs, kind)
   consumptionText.text = "Consumes: Nothing"
   prosText.text = ffSpecs:getPros()
   consText.text = ffSpecs:getCons()
-
+  scrollText:scrollTo( "top", { time=0} )
 end
 
 
@@ -191,6 +191,7 @@ function scene:create( event )
       id            = "btnBuy",
       top           = scrollText.y + scrollText.height/2,
       left          = centerX(btnWidth) - buildOptions.width*0.15,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = buy
   }
 
@@ -205,6 +206,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnBuy.y,
       left          = centerX(btnWidth) + buildOptions.width*0.15,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

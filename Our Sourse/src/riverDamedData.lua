@@ -34,13 +34,13 @@ local function createText(ownedOptionsBG)
   nameText.anchorX, nameText.anchorY = 0,0 
   nameText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
   
-  data = "Producing " .. gv.rivers[gv.riverSelected]:getPowerGenerated() .. "GW"
+  data = "Producing: " .. gv.rivers[gv.riverSelected]:getPowerGenerated() .. "GW"
   
   producingText = display.newText(data, xPosition, nameText.y + yShift, gv.font, gv.fontSize)
   producingText.anchorX, producingText.anchorY = 0,0
   producingText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
   
-  data = "Costs $" .. gv.rivers[gv.riverSelected]:getMainteneceCost() .. " per month to maintain"
+  data = "Costs:\n $" .. gv.rivers[gv.riverSelected]:getMainteneceCost() .. " per month to maintain"
   
   maintenenceText = display.newText(data, xPosition, producingText.y + yShift, prosWidth/2, prosHeight, 
   gv.font, gv.fontSize)
@@ -96,8 +96,9 @@ function scene:create( event )
       defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
-      top           = infoText.y + infoText.height - bgWidth*.08,
+      top           = infoText.y + infoText.height - bgWidth*.04,
       left          = centerX(bgWidth*0.2),
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
   

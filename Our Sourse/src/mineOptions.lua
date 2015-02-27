@@ -95,6 +95,7 @@ function scene:create( event )
       id            = "btnMine",
       top           =  info.y + info.height,
       left          =  costText.x,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = mine
   }
 
@@ -107,6 +108,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnMine.y,
       left          = btnMine.x + mineOptions.width*0.3,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

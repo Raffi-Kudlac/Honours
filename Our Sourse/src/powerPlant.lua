@@ -38,6 +38,13 @@ end
 
 function powerPlant:addMaintenenceCost(a)
   self.maintenence = self.maintenence + a
+  
+  if ( self.maintenence < 1) then
+      self.maintenence = 1
+      return false
+  end
+  
+  return true
 end
 
 function powerPlant:setCost(money)

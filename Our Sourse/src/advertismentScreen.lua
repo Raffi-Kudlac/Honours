@@ -24,7 +24,7 @@ local pressedGroup
 
 local function buy(event, index)
 
-  if event.phase == "began" then
+  if event.phase == "ended" then
     gv.advertisements[index]:flipBought()
 
     if gv.advertisements[index]:getBought() then
@@ -76,7 +76,13 @@ local function buy(event, index)
     elseif (index == 4 and gv.advertisements[4]:getBought() == false ) then
       gv.groups[0]:setStatus(-3)
     end
-
+  
+  elseif (event.phase == "moved") then
+       local dy = math.abs( ( event.y - event.yStart ) )
+               
+        if ( dy > 10 ) then
+            scrollView:takeFocus( event )
+        end    
   end
 end
 
@@ -123,6 +129,12 @@ local function showSpecifics(event, index)
       pressedGroup = index
       entryData[index].isVisible = true
       expanded = true
+      scrollView:scrollToPosition
+      {          
+          y = -entry[index].y*0.8,
+          time = 0,          
+      }
+      
     else
       for x = pressedGroup +1, gv.addCounter -1, 1 do
 
@@ -132,7 +144,21 @@ local function showSpecifics(event, index)
 
       entryData[pressedGroup].isVisible = false
       expanded = false
+      
+      scrollView:scrollToPosition
+      {          
+          y = 0,
+          time = 0,          
+      }
+
     end
+    
+  elseif (event.phase == "moved") then
+       local dy = math.abs( ( event.y - event.yStart ) )
+               
+        if ( dy > 10 ) then
+            scrollView:takeFocus( event )
+        end       
   end
 
 
@@ -155,12 +181,13 @@ local function makeEntries()
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
         fontSize  = gv.businessFont,
+        labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }
 
 
     if gv.advertisements[x]:getBought() then
-      path = "Images/static_screen/st_land.png"
+      path = "Images/static_screen/st_purchased.png"
     else
       path = "Images/static_screen/st_money.png"
     end
@@ -176,20 +203,6 @@ local function makeEntries()
     }
 
     entry[x]:setLabel(gv.advertisements[x]:getName())
-
-    --        entryData[x] = widget.newButton
-    --        {
-    --            width = scrollWidth*0.9,
-    --            height = 100,
-    --            shape = "roundedRect",
-    --            left = startingX,
-    --            top = (x+1)*55,
-    --            labelAlign = "left",
-    --            label = gv.groups[x]:getAbout(),
-    --            isEnabled = false,
-    --        }
-    --        entryData[x].isVisible = false
-
     entryData[x] = display.newText(gv.advertisements[x]:getEffect(), startingX*3,
       (x+1)*scrollView.height*0.21 + startingY + startingY, scrollView.width*0.75, expandShift, gv.font, gv.fontSize )
     entryData[x].anchorX,entryData[x].anchorY = 0,0
@@ -265,8 +278,9 @@ function scene:create( event )
       label = "Back",
       defaultFile   = "Images/global_images/button1.png",
       width = BG.width*0.23,
-      height = BG.height*0.2,      
-      onEvent = back
+      height = BG.height*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },      
+      onEvent = back,
   }
   sceneGroup:insert(btnBack)
   makeEntries()

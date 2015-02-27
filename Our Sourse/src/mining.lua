@@ -115,14 +115,25 @@ end
 local function setText()
     
       if (switch) then
-          setDataBox("Coal Mined", gv.resourseAmount[2], 1)
-          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
-          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
+          -- Shows total resources mined
+--          setDataBox("Coal Mined", gv.resourseAmount[2], 1)
+--          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
+--          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
+
+          setDataBox("Coal Mined", gv.resourcesHeld[2], 1)
+          setDataBox("Gas Extracted", gv.resourcesHeld[1], 2)
+          setDataBox("Oil Drilled",gv.resourcesHeld[0], 3)
+
           switch = false
       else
-          setDataBox("Uranium Mined", gv.resourseAmount[3], 1)
-          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
-          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
+          -- Shows total resources mined
+--          setDataBox("Uranium Mined", gv.resourseAmount[3], 1)
+--          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
+--          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
+
+          setDataBox("Uranium Mined", gv.resourcesHeld[3], 1)
+          setDataBox("Gas Extracted", gv.resourcesHeld[1], 2)
+          setDataBox("Oil Drilled",gv.resourcesHeld[0], 3)
           switch = true
       end  
 

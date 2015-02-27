@@ -46,7 +46,7 @@ local function createText()
   
   demolishCost = specs:getCost()*0.9
 
-  producingText = display.newText("Producing " .. specs:getProduces() .. " GW per month", xPosition, 
+  producingText = display.newText("Producing " .. specs:getProduces() .. " GW", xPosition, 
     yPosition, gv.font, gv.fontSize)
   producingText.anchorX, producingText.anchorY = 0,0 
   producingText:setFillColor(gv.fontColourR, gv.fontColourG, gv.fontColourB)
@@ -144,6 +144,7 @@ function scene:create( event )
       id            = "btnBuy",
       top           =  infoText.y + infoText.height - bgWidth*.07,
       left          = infoText.x + ownedOptionsBG.width*0.1,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = naturaldemolish
   }
 
@@ -158,6 +159,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnDemolish.y,
       left          = btnDemolish.x + ownedOptionsBG.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

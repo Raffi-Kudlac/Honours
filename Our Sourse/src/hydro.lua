@@ -61,7 +61,7 @@ end
 
 local function riverData( event, index )
 
-    if ( event.phase == "ended" ) then
+    if ( event.phase == "began" ) then
         gv.riverSelected = index    
         composer.showOverlay("riverDamedData")
     end

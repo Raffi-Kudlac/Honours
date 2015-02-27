@@ -13,7 +13,6 @@ local BG
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-
 local function resumePlay( event )
 
 
@@ -43,7 +42,7 @@ function scene:create( event )
       height      = boxHeight,
       defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
-      left        = centerX(boxWidth),
+      left        = centerX(boxWidth),      
       top         = centerY(boxHeight),
   }
 
@@ -58,6 +57,7 @@ function scene:create( event )
       label     = "New Game",
       left      = BG.x - BG.width/2 + BG.width*0.1,
       top       = BG.y - BG.height/2 + BG.height*0.1,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   = newGame, 
   }
   btnNewGame.anchorx, btnNewGame.anchory = 0,0
@@ -72,6 +72,7 @@ function scene:create( event )
       label     = "Quit",
       left      = btnNewGame.x - btnWidth/2,
       top       = btnNewGame.y + verticalShift,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   = returnToMainMenu, 
   }
   
@@ -86,6 +87,7 @@ function scene:create( event )
       label     = "Resume",
       left      = btnNewGame.x - btnWidth/2,
       top       = btnQuit.y + verticalShift,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   = resumePlay,
   }
 
@@ -105,6 +107,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      shiftMovie()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -125,6 +128,7 @@ function scene:hide( event )
     -- Example: stop timers, stop animation, stop audio, etc.    
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
+      returnMovie()
   end
 end
 

@@ -187,6 +187,7 @@ function scene:create( event )
       label     = "Back",
       left      = centerX(btnWidth),
       top       = BG.y + BG.height/2 - btnHeight,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent   = back
   }
       

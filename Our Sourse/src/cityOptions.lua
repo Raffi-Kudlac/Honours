@@ -83,6 +83,7 @@ function scene:create( event )
       id          = "btnBuy",
       top         = infoText.y + cityOptionsBG.height*0.45,
       left        = centerX(cityOptionsBG.width*0.3) - cityOptionsBG.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent = buy
   }
 
@@ -97,6 +98,7 @@ function scene:create( event )
       id = "btnCancel",
       top = btnBuy.y,
       left = centerX(cityOptionsBG.width*0.3) + cityOptionsBG.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent = cancel
   }
 

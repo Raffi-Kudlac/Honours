@@ -124,6 +124,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      shiftMovie()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -139,7 +140,7 @@ function scene:hide( event )
   local phase = event.phase
 
   if ( phase == "will" ) then
-    for x = 0,servisCounter - 1,1 do
+    for x = 0,gv.servisCounter - 1,1 do
       gv.publicServisText[x] = ""
     end
     -- Called when the scene is on screen (but is about to go off screen).
@@ -147,6 +148,7 @@ function scene:hide( event )
     -- Example: stop timers, stop animation, stop audio, etc.
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
+      returnMovie()
   end
 end
 

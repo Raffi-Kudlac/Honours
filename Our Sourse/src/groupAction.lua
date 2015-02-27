@@ -63,13 +63,14 @@ function scene:create( event )
 
   local btnOkay = widget.newButton
     {
-      width         = widthCalculator(0.1),
-      height        = heightCalculator(0.07),
+      width         = widthCalculator(0.15),
+      height        = heightCalculator(0.1),
       defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
       top           =  text.y + text.height*1.1,
       left          =  centerX(widthCalculator(0.1)),
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = okay
   }
 
@@ -88,6 +89,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
+      shiftMovie()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.
@@ -103,12 +105,13 @@ function scene:hide( event )
   local phase = event.phase
 
   if ( phase == "will" ) then
-    resume()
+      resume()
     -- Called when the scene is on screen (but is about to go off screen).
     -- Insert code here to "pause" the scene.
     -- Example: stop timers, stop animation, stop audio, etc.
   elseif ( phase == "did" ) then
   -- Called immediately after scene goes off screen.
+      returnMovie()
   end
 end
 

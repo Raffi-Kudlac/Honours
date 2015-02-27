@@ -100,6 +100,7 @@ function scene:create( event )
       id            = "btnBuy",
       top           = infoText.y + infoText.height - btnHeight/2,
       left          = centerX(btnWidth) - forestOptionsBG.width*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = buy
   }
 
@@ -114,6 +115,7 @@ function scene:create( event )
       id            = "btnCancel",
       top           = btnBuy.y,
       left          = centerX(btnWidth) + forestOptionsBG.width*0.15,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = cancel
   }
 

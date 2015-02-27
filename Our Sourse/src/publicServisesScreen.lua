@@ -25,17 +25,24 @@ local pressedGroup
 
 local function buy(event, index)
 
-  if event.phase == "began" then
+  if event.phase == "ended" then
     gv.publicServises[index]:flipBought()
 
     if gv.publicServises[index]:getBought() then
-      changeBoughtImage(index,"Images/static_screen/st_land.png")
+      changeBoughtImage(index,"Images/static_screen/st_purchased.png")
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end
     
     setText()
+  elseif (event.phase == "moved") then
+       local dy = math.abs( ( event.y - event.yStart ) )
+               
+        if ( dy > 10 ) then
+            scrollView:takeFocus( event )
+        end      
   end
+  
 end
 
 
@@ -77,6 +84,13 @@ local function showSpecifics(event, index)
       pressedGroup = index
       entryData[index].isVisible = true
       expanded = true
+      
+      scrollView:scrollToPosition
+      {          
+          y = -entry[index].y*0.8,
+          time = 0,          
+      }
+      
     else
       for x = pressedGroup +1, gv.servisCounter -1, 1 do
 
@@ -86,7 +100,20 @@ local function showSpecifics(event, index)
 
       entryData[pressedGroup].isVisible = false
       expanded = false
+      
+--      scrollView:scrollToPosition
+--      {          
+--          y = 0,
+--          time = 0,          
+--      }
+      
     end
+  elseif (event.phase == "moved") then
+       local dy = math.abs( ( event.y - event.yStart ) )
+               
+        if ( dy > 10 ) then
+            scrollView:takeFocus( event )
+        end      
   end
 
 end
@@ -108,11 +135,12 @@ local function makeEntries()
         top       = x*scrollView.height*0.22 + startingY,
         labelAlign = "center",
         fontSize  = gv.businessFont, 
+        labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
         onEvent   =   function(event) showSpecifics(event, x + 0) end
     }
 
     if gv.publicServises[x]:getBought() then
-      path = "Images/static_screen/st_land.png"
+      path = "Images/static_screen/st_purchased.png"
     else
       path = "Images/static_screen/st_money.png"
     end
@@ -205,6 +233,7 @@ function scene:create( event )
       defaultFile   = "Images/global_images/button1.png",
       width = BG.width*0.23,
       height = BG.height*0.2,
+      labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent = back
   }
   sceneGroup:insert(btnBack)
