@@ -439,7 +439,7 @@ local function initalize()
     "they are not rioting and making your life difficult.")
 
   gv.groups[2]:setMadText("Too many blackouts have happened and the people have rioted and made inappropriate signs" ..
-    "protesting your capabilities of producing power. You pay a fine of $" .. populationFine ..  
+    " protesting your capabilities of producing power. You pay a fine of $" .. populationFine ..  
     " for the damages and getting rid of the protestors.")
 
   gv.groups[3] = organization.new( "Anti-Windmillists" )

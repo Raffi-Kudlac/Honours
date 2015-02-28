@@ -43,9 +43,9 @@ buttonPaths[7] = "Images/inner_workings_screen/inw_hydrodam.png"
 
 local videoPaths = {}
 videoPaths[0] = "video/test.mp4"
-videoPaths[1] = "video/test.mp4"
-videoPaths[2] = "video/test.mp4"
-videoPaths[3] = "video/coalvid.mp4"
+videoPaths[1] = "video/vid_oil.mp4"
+videoPaths[2] = "video/vid_gas.mp4"
+videoPaths[3] = "video/vid_coal.mp4"
 videoPaths[4] = "video/test.mp4"
 videoPaths[5] = "video/test.mp4"
 videoPaths[6] = "video/test.mp4"

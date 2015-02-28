@@ -111,7 +111,7 @@ local function createText(sceneGroup, BG)
   rectY = rectY + BG.height*0.25
   
   message = gv.blackoutLengthSum + gv.blackoutLengthCounter .. " blackout month(s) in 3 years" .. 
-  "\n At 12 the game ends"
+  "\n At 12 the game will end"
   
   local thirdRect = display.newRoundedRect( rectX, rectY, rectWidth,  rectHeight, 10)
   thirdRect.anchorX,thirdRect.anchorY = 0,0
