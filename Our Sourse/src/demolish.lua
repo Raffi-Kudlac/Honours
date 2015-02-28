@@ -89,7 +89,7 @@ local function naturaldemolish(event)
       end
       gv.groups[0]:setStatus(-0.5)
       gv.money = gv.money - demolishCost
-      naturalConvertButton("Images/land_screen/lnd_tile_plain.png",gv.marker, "open")
+      naturalConvertButton("Images/natural_resource_screen/nr_tile_plain.png",gv.marker, "open")
       composer.hideOverlay()
   end
 end

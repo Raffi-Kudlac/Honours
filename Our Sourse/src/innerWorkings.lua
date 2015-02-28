@@ -31,14 +31,14 @@ local textStartingX = 0
 local textStartingY = 0
 local sceneGroup
 
-buttonPaths[0] = "Images/natural_resource_screen/nr_wind.png"
+buttonPaths[0] = "Images/inner_workings_screen/inw_generator.png"
 buttonPaths[1] = "Images/land_screen/lnd_oil.png"
 buttonPaths[2] = "Images/land_screen/lnd_gas.png"
 buttonPaths[3] = "Images/land_screen/lnd_coal.png"
 buttonPaths[4] = "Images/land_screen/lnd_nuclear.png"
 buttonPaths[5] = "Images/natural_resource_screen/nr_solar.png"
 buttonPaths[6] = "Images/natural_resource_screen/nr_wind.png"
-buttonPaths[7] = "Images/land_screen/lnd_coal.png"
+buttonPaths[7] = "Images/inner_workings_screen/inw_hydrodam.png"
 
 
 local videoPaths = {}

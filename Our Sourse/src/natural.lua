@@ -127,7 +127,7 @@ local function buildTiles()
         {
           width       = 120,
           height      = 120,
-          defaultFile = "Images/land_screen/lnd_tile_plain.png",
+          defaultFile = "Images/natural_resource_screen/nr_tile_plain.png",
           id          = "openLand",
           left        = 0,
           top         = 0,
