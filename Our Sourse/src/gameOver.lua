@@ -176,7 +176,7 @@ local function createText()
         dataY, gv.font, gv.fontSize*2 )        
   labelText.anchorX, labelText.anchorY = 0,0        
   labelText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )      
-  dataY = dataY +heightCalculator(0.05)
+  dataY = dataY + heightCalculator(0.05)
         
   sceneGroup:insert(labelText)
   dataX = dataX + labelText.width/2      
@@ -296,7 +296,11 @@ end
 local function close( event )
 
   if(event.phase == "ended") then
-
+    
+    if (gv.submitionName == nil or gv.submitionName == "") then
+      gv.submitionName = "Player 1"
+    end
+    
     local winningData = {gv.submitionName,(gv.year-2000), gv.monthCounter, gv.blackoutCounter}
     table.insert(heighScoreData, position, winningData)
 
@@ -370,26 +374,30 @@ function scene:create( event )
 
   path = system.pathForFile( "localHighScores.txt", system.DocumentsDirectory)
 
+  -- array will hold data in the file
   for x =1,5,1 do
     heighScoreData[x] = {-1,-1,-1,-1}
   end
 
-  if ( path ~= nil) then
+  if ( path ~= nil) then -- make path to file
     file = io.open(path , "r")
 
-    if (file == nil ) then
-      createFile()
+    if (file == nil ) then -- file does not exist
+      createFile()        --  creates file and makes connection to it
       file = io.open(path , "r")
     end
 
     local x = 1
     local y = 1
-
+    
+    -- loads file into array
     for line in file:lines() do
       heighScoreData[x][y] = line
 
       if (y ~= 1) then
         heighScoreData[x][y] = tonumber(heighScoreData[x][y])
+      else
+        heighScoreData[x][y] = tostring(heighScoreData[x][y])
       end
 
       y = y +1
@@ -425,10 +433,8 @@ function scene:create( event )
         position = x
         getNameFromUser()
         break
-      elseif ( tempMonths >= currentTotalMonths and x == 5 ) then
-        print("got called")
-        createText()
-        
+      elseif ( tempMonths >= currentTotalMonths and x == 5 ) then        
+        createText()        
       end
     end
 

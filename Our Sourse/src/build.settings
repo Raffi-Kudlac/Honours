@@ -2,8 +2,8 @@ settings =
 {
     orientation =
     {
-        default = "landscapeLeft",
-        supported = { "landscapeLeft" },
+        default = "landscapeRight",
+        supported = { "landscapeRight" },
         UIStatusBarHidden = true,
     },
         
