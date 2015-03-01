@@ -1441,13 +1441,13 @@ local function checkPublicServisPercent()
           gv.coalSpecs:setMaintenenceCost( gv.coalSpecs:getMaintenenceCost() - 1)
           gv.gasSpecs:setMaintenenceCost( gv.gasSpecs:getMaintenenceCost() - 1)
           gv.oilSpecs:setMaintenenceCost( gv.oilSpecs:getMaintenenceCost() - 1)
-          gv.publicServisText[1] = "Due to improvements in technologie the maintenence cost " ..
+          gv.publicServisText[1] = "Due to improvements in technology the maintenence cost " ..
             " of all fossile fueled power plants has decreased by 1"
         else
           gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 1)
           gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 1)
           gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 1)
-          gv.publicServisText[1] = "Due to improvements in technologie " ..
+          gv.publicServisText[1] = "Due to improvements in technology " ..
             "all fossile fueled power plants now produce 1 GW more power"
         end
 
@@ -1457,34 +1457,34 @@ local function checkPublicServisPercent()
 
         if ( randomNumber > 5) then
           gv.nuclearSpecs:setMaintenenceCost(gv.nuclearSpecs:getsetMaintenenceCost() - 1)
-          gv.publicServisText[2] = "Due to improvements in technologie the maintenence cost " ..
+          gv.publicServisText[2] = "Due to improvements in technology the maintenence cost " ..
             " of all nuclear power plants has decreased by 1"
         else
-          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduces() + 1)
-          gv.publicServisText[2] = "Due to improvements in technologie " ..
-            "all nuclear power plants now produce 1 GW more power"
+          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduces() + 0.7)
+          gv.publicServisText[2] = "Due to improvements in technology " ..
+            "all nuclear power plants now produce 0.7 GW more power"
         end
       elseif ( x == 3 ) then
 
-        gv.windSpecs:setProduction(gv.windSpecs:getProduces() + 0.5)
-        gv.publicServisText[3] = "Due to improvements in technologie " ..
-          "all windmills have become more efficient and produce 0.5 GW more power"
+        gv.windSpecs:setProduction(gv.windSpecs:getProduces() + 0.3)
+        gv.publicServisText[3] = "Due to improvements in technology " ..
+          "all windmills have become more efficient and produce 0.3 GW more power"
 
       elseif ( x == 4 ) then
 
-        gv.solarSpecs:setProduction(gv.solarSpecs:getProduces() + 0.5)
-        gv.publicServisText[4] = "Due to improvements in technologie " ..
-          "all solar panals have become more efficient and produce 0.5 GW more power"
+        gv.solarSpecs:setProduction(gv.solarSpecs:getProduces() + 0.3)
+        gv.publicServisText[4] = "Due to improvements in technology " ..
+          "all solar panals have become more efficient and produce 0.3 GW more power"
       elseif ( x == 5) then
 
         if ( randomNumber > 5) then
           gv.hydroSpecs:setMaintenenceCost(gv.hydroSpecs:getsetMaintenenceCost() - 1)
-          gv.publicServisText[5] = "Due to improvements in technologie the maintenence cost " ..
+          gv.publicServisText[5] = "Due to improvements in technology the maintenence cost " ..
             " of all hydro power plants has decreased by 1"
         else
-          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduces() + 1)
-          gv.publicServisText[5] = "Due to improvements in technologie " ..
-            "all hydro plants have become more efficient and produce 1 GW more power"
+          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduces() + 0.5)
+          gv.publicServisText[5] = "Due to improvements in technology " ..
+            "all hydro plants have become more efficient and produce 0.5 GW more power"
         end
       elseif ( x == 6) then
 
@@ -1727,12 +1727,12 @@ local function timerFunction(event)
       -- if getting close to a blackout. Flash the lightbulb at the user
       if(dif < 0.8 and dif >=0 ) then
           gettingCloseToBlackout(true)
-      elseif(gv.powerSupplied - gv.powerDemanded >= 0.8) then
+      elseif(dif >= 0.8) then
           swapBlackoutButton( "Images/static_screen/st_lightbulb.png",true)    
       end
       
-      if (gv.year > 2000) then
-          checkPublicServisPercent()
+      checkPublicServisPercent()
+      if (gv.year > 2000) then    
           checkGroupActionPercent()
       end
       showData()

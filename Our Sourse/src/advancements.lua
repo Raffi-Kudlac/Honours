@@ -39,14 +39,14 @@ function scene:create( event )
   local xShift = 0
 
   local widthValue = widthCalculator(0.45)
-  local heightValue = heightCalculator(0.5)
+  local heightValue = heightCalculator(0.35)
   textWidth = widthValue*0.9
 
   local BG = widget.newButton
     {
       width       = widthValue,
       height      = heightValue,
-      defaultFile = "Images/global_images/Vertical_Box.png",
+      defaultFile = "Images/global_images/Horizontal_Box.png",
       id          = "BO",
       left        = centerX(widthValue),
       top         = centerY(heightValue),
@@ -99,14 +99,13 @@ function scene:create( event )
 
   local btnOkay = widget.newButton
     {
-      width         = 50,
-      height        = 20,
-      shape         = "roundedRect",
-      cornerRadius  = 10,
+      width         = widthCalculator(0.1),
+      height        = heightCalculator(0.1),
+      defaultFile = "Images/global_images/button1.png",      
       label         = "Okay",
       id            = "btnOkay",
-      top           = BG.y + BG.height/2 - BG.height*0.2,
-      left          = BG.x - BG.width/2 + BG.width*0.05,
+      top           = BG.y + BG.height*0.1,
+      left          = centerX(widthCalculator(0.1)),
       onEvent       = okay
   }
 

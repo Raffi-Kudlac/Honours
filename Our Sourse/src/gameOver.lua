@@ -121,13 +121,15 @@ local function createText()
   
   if (connection.test()) then
       parse:getObjects( "sample", query, globalPosition )
+      print("This got called incorrectly")
   else   
+      print("This was supposed to happen")
       message = "Game Over: " .. reasonForEnd .. localTotalScore       
       local title = display.newText(message, startingX,
-        startingY, gv.font, gv.fontSize*1.5 )
-      --title.anchorX, title.anchorY = 0,0
-      title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-      sceneGroup:insert(title)  
+            startingY, widthCalculator(0.8), 0, gv.font, gv.fontSize*1.5 )
+          --title.anchorX, title.anchorY = 0,0
+          title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+          sceneGroup:insert(title)            
   end
 
     
@@ -139,13 +141,6 @@ local function createText()
   dataY = dataY +heightCalculator(0.05)
         
   sceneGroup:insert(labelText)    
-        
-  local localScore = display.newText(message, centerX(display.contentWidth*0.6),
-    labelText.y - labelText.height*1.3,display.contentWidth*0.6,0, gv.font, gv.fontSize*1.5 )
-    localScore.anchorX, localScore.anchorY = 0,0
-  localScore:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-  sceneGroup:insert( localScore )
-    
   
   for k = 1, 5, 1 do
       if ( tostring(heighScoreData[k][1]) ~= "-1") then          

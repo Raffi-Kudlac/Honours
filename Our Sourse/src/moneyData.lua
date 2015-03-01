@@ -138,7 +138,7 @@ local function makeText(sceneGroup)
   
   -- solar maintenance cost
   moneyData[8][0] = gv.solarBuildCounter*gv.solarSpecs:getMaintenenceCost()
-  moneyData[8][1] = "Solar Panal Cost: "
+  moneyData[8][1] = "Solar Panel Cost: "
   
 
   if (gv.powerDemanded > gv.powerSupplied ) then

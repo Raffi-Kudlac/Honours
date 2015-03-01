@@ -7,11 +7,12 @@ This screen is the menu screen currently only holding the play button.
 local composer  = require( "composer" )
 local gv        = require( "global" )
 local widget    = require( "widget" )
+local opData      = require( "operatingData" )
 local scene     = composer.newScene()
 local circleWidth = 30
 local circleHeight = circleWidth
-local videoHeight = display.contentHeight*0.65
-local videoWidth = display.contentWidth*0.45
+local videoHeight = display.contentHeight*0.8
+local videoWidth = display.contentWidth*0.6
 local videoX = display.contentCenterX + videoWidth*0.1
 local videoY = display.contentCenterY - videoWidth*0.05
 local infoBoxWidth = widthCalculator(0.3)
@@ -25,11 +26,15 @@ local cyclePointer = 1
 local powerButtons = {}
 local buttonPaths = {}
 local consumptionTimer 
+local operatingTextArea
 local video 
 local infoBox
 local textStartingX = 0
 local textStartingY = 0
 local sceneGroup
+local textTimer
+
+local describingText = {}
 
 buttonPaths[0] = "Images/inner_workings_screen/inw_generator.png"
 buttonPaths[1] = "Images/land_screen/lnd_oil.png"
@@ -227,7 +232,7 @@ local function addFossilFuelsText(index)
     dataTitle[3] = "CONSUMPTION RATE: \n\t" .. consumptionRate
     dataTitle[4] = "TIME TILL DEPLETION:\n\t" .. timeTilDepletion
     dataTitle[5] = "TOTAL MAINTENENCE COST:\n\t" .. "$"..maintinence
-    dataTitle[6] = "TOTAL " .. unit .. " MINED: \n \t" .. gv.resourseAmount[3] .. " units"        
+    dataTitle[6] = "TOTAL " .. unit .. " MINED: \n \t" .. gv.resourseAmount[index] .. " units"        
     
     for x = 1, 6, 1 do    
         text[x] = display.newText(dataTitle[x],textStartingX,textStartingY, infoBox.width*0.9,0, gv.font, gv.fontSize )
@@ -253,7 +258,7 @@ local function addNaturalText(index)
         -- calculate solar 
         specs = gv.solarSpecs        
         buildingsCounter = gv.solarBuildCounter  
-        name = "SOLAR PANALS"             
+        name = "SOLAR PANELS"             
         area = buildingsCounter*windmillSpace*3
     elseif( index == 5 ) then
         -- calculate wind
@@ -392,14 +397,41 @@ local function addTimer( index )
     consumptionTimer = timer.performWithDelay(1000, function ( event ) addFossilFuelsText( index ) end, -1)
 end
 
+local function stopTextTimer()
+    
+    if ( textTimer ~= nil) then
+        timer.cancel(textTimer)
+    end
+    textTimer = nil
+
+end
+
+local function changeOperatingText( index ) 
+
+    operatingTextArea.text = describingText[index]:read()
+
+end
+
+local function addTextTimer( index )
+
+    if (index ~= -1 ) then
+        textTimer = timer.performWithDelay(3000, function ( event ) changeOperatingText( index + 0 ) end, -1)
+    else
+        stopTextTimer()
+        operatingTextArea.text = ""
+    end    
+
+end 
 
 local function addText(index, event)
     
-    resetTextPosition()     
+    resetTextPosition()
     rightArrow.isVisible = false
     leftArrow.isVisible = false
     
     removeTimer()
+    stopTextTimer()
+    
 
     if(index>= 1 and index <= 4) then        
         textStartingY = infoBox.y - infoBox.height*0.05
@@ -407,17 +439,22 @@ local function addText(index, event)
         infoBox.y = heightCalculator(0.05)        
         addFossilFuelsText(index-1)
         addTimer( index -1 )
+        operatingTextArea.text = describingText[index-1]:read()
     elseif(index == 5 or index == 6) then
         addNaturalText(index-1) 
+        operatingTextArea.text = describingText[index-1]:read()
     elseif(index == 7) then
         addHydroText()
         cycle(true, event)        
+        operatingTextArea.text = describingText[index-1]:read()
     elseif (index == 0) then
         textStartingY = infoBox.y - infoBox.height*0.05
         addGeneratorData()
         infoBox.height = infoBoxHeight*1.1        
         infoBox.y = heightCalculator(0.05)
     end
+    
+    addTextTimer(index-1)
 end
 
 local function changeData(index, event)
@@ -461,7 +498,7 @@ function scene:create( event )
        }
       buttonX = buttonX + circleWidth*1.5
       sceneGroup:insert(powerButtons[x])
-  end
+  end   
   
   rightArrow = widget.newButton
   {
@@ -498,7 +535,77 @@ function scene:create( event )
 
   sceneGroup:insert(infoBox)
   textStartingX = infoBox.x + infoBox.width*0.05
-  textStartingY = infoBox.y + infoBox.height*0.05   
+  textStartingY = infoBox.y + infoBox.height*0.05
+  
+  -- oil, gas, coal, nuclear
+  describingText[0] = opData.new()    
+  describingText[0]:insert("1. Oil is fed into the furnace")
+  describingText[0]:insert("2. The furnace heats water, under pressure into steam")
+  describingText[0]:insert("3. Steam travels along the pipes")
+  describingText[0]:insert("4. The steam emerges at high speeds pushing against the turbines")
+  describingText[0]:insert("5. The turbines rotate from the kinetic energy from the steam")
+  describingText[0]:insert("6. In turn the turbine turns the generator. Creating a current")
+  describingText[0]:insert("7. The current is then sent where needed")
+  describingText[0]:insert("8. The steam is turned back into a liquid form and fresh water gets added")
+  
+  describingText[1] = opData.new()    
+  describingText[1]:insert("1. Gas along with air is fed into the combustion chamber")
+  describingText[1]:insert("2. The furnace heats water, under pressure into steam")
+  describingText[1]:insert("3. Steam travels along the pipes")
+  describingText[1]:insert("4. The steam emerges at high speeds pushing against the turbines")
+  describingText[1]:insert("5. The turbines rotate from the kinetic energy from the steam")
+  describingText[1]:insert("6. In turn the turbine turns the generator. Creating a current")
+  describingText[1]:insert("7. The current is then sent where needed")
+  describingText[1]:insert("8. The steam is turned back into a liquid form and fresh water gets added")
+  
+  describingText[2] = opData.new()    
+  describingText[2]:insert("1. Coal is fed into the furnace")
+  describingText[2]:insert("2. The furnace heats water, under pressure into steam")
+  describingText[2]:insert("3. Steam travels along the pipes")
+  describingText[2]:insert("4. The steam emerges at high speeds pushing against the turbines")
+  describingText[2]:insert("5. The turbines rotate from the kinetic energy from the steam")
+  describingText[2]:insert("6. In turn the turbine turns the generator. Creating a current")
+  describingText[2]:insert("7. The current is then sent where needed")
+  describingText[2]:insert("8. The steam is turned back into a liquid form and fresh water gets added")
+  
+  describingText[3] = opData.new()    
+  describingText[3]:insert("1. Uranium collides with a proton creating heat")
+  describingText[3]:insert("2. The heat is absorbed by water underpreassure so it does not evaporate")
+  describingText[3]:insert("3. The water travels through pipes to another water container that is heated by the pipes")
+  describingText[3]:insert("4. The the water in this container is transfered into steam")
+  describingText[3]:insert("5. The steam travels through a series of pipes emerging at high speeds")
+  describingText[3]:insert("6. The Steam pushes against the turbines that rotates")
+  describingText[3]:insert("7. The turbines turn the generator creating a current")
+  describingText[3]:insert("8. The current is sent where needed")
+  describingText[3]:insert("9. The water is recycled ready to repeat the process")
+  
+  describingText[4] = opData.new()
+  describingText[4]:insert("1. Light from the sun hits the solar panel")
+  describingText[4]:insert("2. The photon in the light seperates the electrons and protons in the panel")
+  describingText[4]:insert("3. This creates a negative and positive side")
+  describingText[4]:insert("4. Electrons are more fluid and can move around")
+  describingText[4]:insert("5. All that is needed is t attach some wires to send the current where we want")
+  
+  describingText[5] = opData.new()
+  describingText[5]:insert("1. Wind pushes against the blades causing them to turn")
+  describingText[5]:insert("2. The turning blades in turn turn  a seriece of gears")
+  describingText[5]:insert("3. The gears are directly connected to a generator that creates the current")
+  describingText[5]:insert("4. The current is then sent where needed")
+  
+  describingText[6] = opData.new()
+  describingText[6]:insert("1. Water is damed on reseviour section of the dam")
+  describingText[6]:insert("2. Due to gravity the water travels through an opening into the dam")
+  describingText[6]:insert("3. The flowing water travels past a turbine physically rotating it")
+  describingText[6]:insert("4. The turbine in turn then powers the generator")
+  describingText[6]:insert("5. The generator creates a current which can directed where needed")
+  
+  operatingTextArea = display.newText("", widthCalculator(0.3), buttonY - powerButtons[1].height*1.5,
+  widthCalculator(0.5), 0, gv.font, gv.fontSize)
+  operatingTextArea.anchorX, operatingTextArea.anchorY = 0,0
+  operatingTextArea:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  sceneGroup:insert(operatingTextArea)
+  
+  
 end
 
 
@@ -512,10 +619,12 @@ function scene:show( event )
   -- Called when the scene is still off screen (but is about to come on screen).
   
   --testingArea()
+  operatingTextArea.text = describingText[0]:read()
   mainSetInnerWorkingsVariable(true)
   resetTextPositionForFossilFuels()
-  addFossilFuelsText(0)
-  setVideo(0)
+  addFossilFuelsText(1)
+  addTextTimer(0)
+  setVideo(1)
   sceneGroup:insert(video)
   
   elseif ( phase == "did" ) then
@@ -542,6 +651,7 @@ function scene:hide( event )
   -- Called immediately after scene goes off screen.
   removeTimer()
   removeText()
+  stopTextTimer()
   video:pause()
   video:seek(0)
   video:removeEventListener("video",videoListener)

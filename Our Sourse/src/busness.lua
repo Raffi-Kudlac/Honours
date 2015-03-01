@@ -44,7 +44,7 @@ function setText()
     
     setDataBox("Happy Groups", happyGroups, 1)
     setDataBox("Ads Running", adsRunning, 2)
-    setDataBox("Servises Running", publicServisesRunning, 3)
+    setDataBox("Services Running", publicServisesRunning, 3)
     
 end
 

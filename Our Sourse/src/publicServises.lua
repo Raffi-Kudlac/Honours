@@ -4,7 +4,7 @@ This file is an object for the different kinds of group that can be influenced
 throughout the game.
 ]]
 
-
+local gv        = require( "global" )
 local publicServises = {}
 local publicServises_mt = { __index = publicServises }  -- metatable
 
@@ -13,14 +13,20 @@ local publicServises_mt = { __index = publicServises }  -- metatable
 -------------------------------------------------
 
 function publicServises.new(nme, costToUse)  -- constructor
+  
+  local tempMonthPercent = 1 - (40)/100
+
+    tempMonthPercent = tempMonthPercent^(1/12)
+    tempMonthPercent = math.round(((1 - tempMonthPercent)*100)*10)/10
+
 
   local newservis = {
     name = nme,
     cost = costToUse,
     about = "",
     bought = false,
-    yearlyPercent = 90,
-    monthlyPercent = 50, --17.5,
+    yearlyPercent = 40,
+    monthlyPercent = tempMonthPercent,
   }
 
 return setmetatable( newservis, publicServises_mt )
@@ -56,8 +62,10 @@ function publicServises:calculatePassFail()
   if ( self.monthlyPercent >= randomNumber) then
     self.yearlyPercent = self.yearlyPercent - 15
 
-    if (self.yearlyPercent < 5 ) then
-      self.yearlyPercent = 5
+    if (self.yearlyPercent < 2 and gv.year < 2030 ) then
+      self.yearlyPercent = 1
+    elseif (self.yearlyPercent < 2 and gv.year >= 2030 ) then
+        self.yearlyPercent = 0
     end
 
     local answer = 1 - (self.yearlyPercent)/100
