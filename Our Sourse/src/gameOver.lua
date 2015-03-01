@@ -22,6 +22,7 @@ local tempMonths = 0
 local nameField = ""
 local submit = ""
 local congrats = 0
+local gameOverText = 0
 local sceneGroup = ""
 local globalPositionValue = 0
 local winningData = {}
@@ -53,14 +54,29 @@ end
 
 local function createText()
 
-  local startingY = display.contentHeight*0.05
+  local startingY = display.contentHeight*0.1
   local startingX = display.contentWidth/2
   local dataX = display.contentWidth*0.1
   local dataY = display.contentHeight*0.25
   local tempText = {}
   local labels = {}
   local labelText = 0
-  local message = ""
+  local message = ""  
+  local reasonForEnd = ""
+  local localTotalScore = ""
+  
+  if(gv.money < -100 ) then
+      reasonForEnd = "You ran into debt"
+  elseif(gv.blackoutLengthCounter >= 10) then
+      reasonForEnd = "A Blackout lasted to long"      
+  elseif(#gv.blackoutTimes == 4) then
+      reasonForEnd = "Too many blackouts have happened"
+  elseif( gv.blackoutLengthSum + gv.blackoutLengthCounter >= 12) then
+      reasonForEnd = "Too many months have been blackouts"
+  end
+  
+  localTotalScore = ". Lasting " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
+          "a total Blackout time of " .. gv.blackoutCounter .. " month(s)." 
   
   labels[1] = "Name"
   labels[2] = "Years"
@@ -87,15 +103,13 @@ local function createText()
           
               prefix = "th"
           end
-          message = "Game Over: You came in " .. tostring(place) .. prefix .. " in the world" 
-          --print("The global position value is " .. place)
+          message = "Game Over: " .. reasonForEnd.. localTotalScore.. "\n Placing " .. tostring(place) .. prefix .. " in the world." 
           
           local title = display.newText(message, startingX,
-            startingY, gv.font, gv.fontSize*2 )
+            startingY, widthCalculator(0.8), 0, gv.font, gv.fontSize*1.5 )
           --title.anchorX, title.anchorY = 0,0
           title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-
-          sceneGroup:insert(title)                    
+          sceneGroup:insert(title)                              
       end                              
   end
   
@@ -107,6 +121,13 @@ local function createText()
   
   if (connection.test()) then
       parse:getObjects( "sample", query, globalPosition )
+  else   
+      message = "Game Over: " .. reasonForEnd .. localTotalScore       
+      local title = display.newText(message, startingX,
+        startingY, gv.font, gv.fontSize*1.5 )
+      --title.anchorX, title.anchorY = 0,0
+      title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+      sceneGroup:insert(title)  
   end
 
     
@@ -118,10 +139,7 @@ local function createText()
   dataY = dataY +heightCalculator(0.05)
         
   sceneGroup:insert(labelText)    
-  
-  message = "You Lasted " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
-          "a total Blackout time of " .. gv.blackoutCounter .. " month(s)" 
-          
+        
   local localScore = display.newText(message, centerX(display.contentWidth*0.6),
     labelText.y - labelText.height*1.3,display.contentWidth*0.6,0, gv.font, gv.fontSize*1.5 )
     localScore.anchorX, localScore.anchorY = 0,0
@@ -314,6 +332,7 @@ local function close( event )
     sceneGroup:remove(nameField)
     sceneGroup:remove(submit)
     sceneGroup:remove(congrats)
+    sceneGroup:remove(gameOverText)
     createText()
   end
 
@@ -323,7 +342,7 @@ end
 local function getNameFromUser()
   
   
-  local congratsText = "Contratulations, You have made a high Score. Please enter a name below"
+  local congratsText = "Congratulations, You have made a high Score. Please enter a name below"
   local textFieldWidth = widthCalculator(0.2)
   local textFieldHeight = heightCalculator(0.1)
 
@@ -334,13 +353,15 @@ local function getNameFromUser()
   nameField.anchorX, nameField.anchorY = 0,0
   nameField:addEventListener( "userInput", textListener )
   
-  
-  
-   congrats = display.newText(congratsText, nameField.x + nameField.width/2,
-            nameField.y - nameField.height, gv.font, gv.fontSize)
-  congrats:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
-  
+  congrats = display.newText(congratsText, nameField.x + nameField.width/2,
+            nameField.y - nameField.height,widthCalculator(0.7),0, gv.font, gv.fontSize)
+  congrats:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )  
   sceneGroup:insert(congrats)
+  
+  gameOverText = display.newText("Game Over", nameField.x + nameField.width*0.7,
+            congrats.y - heightCalculator(0.1), widthCalculator(0.3), 0, gv.font, gv.fontSize*2)
+  gameOverText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )  
+  sceneGroup:insert(gameOverText)
 
 
   submit = widget.newButton

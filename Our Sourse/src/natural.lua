@@ -17,7 +17,7 @@ local function setDataLabels()
 
   local windPower = gv.windBuildCounter*gv.windSpecs:getProduces()
   local solarPower = gv.solarBuildCounter*gv.solarSpecs:getProduces()
-  local percent = math.round(100*(windPower + solarPower)/gv.powerDemanded)--(gv.naturalLandUsedCounter/14)*100
+  local percent = math.round(100*(windPower + solarPower)/gv.powerSupplied)--(gv.naturalLandUsedCounter/14)*100
   percent = math.round(percent)
 
   setDataBox("Solar Power",tostring(solarPower) .. " GW" , 1)

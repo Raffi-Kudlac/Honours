@@ -120,9 +120,9 @@ local function setText()
 --          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
 --          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
 
-          setDataBox("Coal Mined", gv.resourcesHeld[2], 1)
-          setDataBox("Gas Extracted", gv.resourcesHeld[1], 2)
-          setDataBox("Oil Drilled",gv.resourcesHeld[0], 3)
+          setDataBox("Coal Mined", math.round(10*gv.resourcesHeld[2])/10, 1)
+          setDataBox("Gas Extracted", math.round(10*gv.resourcesHeld[1])/10, 2)
+          setDataBox("Oil Drilled",math.round(10*gv.resourcesHeld[0])/10, 3)
 
           switch = false
       else
@@ -131,7 +131,7 @@ local function setText()
 --          setDataBox("Gas Extracted", gv.resourseAmount[1], 2)
 --          setDataBox("Oil Drilled", gv.resourseAmount[0], 3)
 
-          setDataBox("Uranium Mined", gv.resourcesHeld[3], 1)
+          setDataBox("Uranium Mined", math.round(10*gv.resourcesHeld[3])/10, 1)
           setDataBox("Gas Extracted", gv.resourcesHeld[1], 2)
           setDataBox("Oil Drilled",gv.resourcesHeld[0], 3)
           switch = true

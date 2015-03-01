@@ -51,6 +51,7 @@ local timeBar
 local timeLabel
 local weather
 local btnPausePlay
+local blackoutSwap = nil
     
 
 local startBlackoutTimeYear = 0
@@ -585,6 +586,31 @@ local function initalize()
   
 end
 
+local function swapBlackoutButton(path, stopTimer)
+
+    local temp = btnBlackout
+    gv.stage:remove(btnBlackout)
+    
+    if (stopTimer and blackoutSwap ~= nil) then
+        timer.cancel(blackoutSwap)
+        blackoutSwap = nil
+    end
+    
+    buildBlackoutButton(path)    
+end
+
+
+local function gettingCloseToBlackout(file)
+  
+  if (file) then
+      swapBlackoutButton("Images/static_screen/st_land.png", false)
+  else
+      swapBlackoutButton("Images/static_screen/st_lightbulb.png", false)
+  end
+  
+  blackoutSwap = timer.performWithDelay(500,function() gettingCloseToBlackout( not file) end )
+end
+
 function returnToMainMenuFromGameOver( event )
 
     if ( event.phase == "ended" ) then
@@ -958,13 +984,13 @@ local function showBlackoutData( event )
 
 end
 
-local function buildBlackoutButton()
+function buildBlackoutButton(path)
     
     btnBlackout = widget.newButton
     {
       width       = circleWidth,
       height      = circleHeight,
-      defaultFile = "Images/static_screen/st_lightbulb.png",
+      defaultFile = path,
       id          = "plant",
       top         = MB.y - (MB.height/2)*1.3,
       left        = MB.x + (MB.width/2)*1.1,
@@ -1265,7 +1291,7 @@ function buildStaticScreen()
   buildScreenButtons()
   buildMenu()
   buildMoneyBar()
-  buildBlackoutButton()
+  buildBlackoutButton("Images/static_screen/st_lightbulb.png")
   buildDataBar()
   buildToolBar()
 end
@@ -1434,19 +1460,19 @@ local function checkPublicServisPercent()
           gv.publicServisText[2] = "Due to improvements in technologie the maintenence cost " ..
             " of all nuclear power plants has decreased by 1"
         else
-          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 1)
+          gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduces() + 1)
           gv.publicServisText[2] = "Due to improvements in technologie " ..
             "all nuclear power plants now produce 1 GW more power"
         end
       elseif ( x == 3 ) then
 
-        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.5)
+        gv.windSpecs:setProduction(gv.windSpecs:getProduces() + 0.5)
         gv.publicServisText[3] = "Due to improvements in technologie " ..
           "all windmills have become more efficient and produce 0.5 GW more power"
 
       elseif ( x == 4 ) then
 
-        gv.solarSpecs:setProduction(gv.solarSpecs:getProduction() + 0.5)
+        gv.solarSpecs:setProduction(gv.solarSpecs:getProduces() + 0.5)
         gv.publicServisText[4] = "Due to improvements in technologie " ..
           "all solar panals have become more efficient and produce 0.5 GW more power"
       elseif ( x == 5) then
@@ -1456,18 +1482,18 @@ local function checkPublicServisPercent()
           gv.publicServisText[5] = "Due to improvements in technologie the maintenence cost " ..
             " of all hydro power plants has decreased by 1"
         else
-          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 1)
+          gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduces() + 1)
           gv.publicServisText[5] = "Due to improvements in technologie " ..
             "all hydro plants have become more efficient and produce 1 GW more power"
         end
       elseif ( x == 6) then
 
-        gv.gasSpecs:setProduction(gv.gasSpecs:getProduction() + 0.2)
-        gv.coalSpecs:setProduction(gv.coalSpecs:getProduction() + 0.2)
-        gv.oilSpecs:setProduction(gv.oilSpecs:getProduction() + 0.2)
-        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduction() + 0.2)
-        gv.windSpecs:setProduction(gv.windSpecs:getProduction() + 0.2)
-        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduction() + 0.2)
+        gv.gasSpecs:setProduction(gv.gasSpecs:getProduces() + 0.2)
+        gv.coalSpecs:setProduction(gv.coalSpecs:getProduces() + 0.2)
+        gv.oilSpecs:setProduction(gv.oilSpecs:getProduces() + 0.2)
+        gv.hydroSpecs:setProduction(gv.hydroSpecs:getProduces() + 0.2)
+        gv.windSpecs:setProduction(gv.windSpecs:getProduces() + 0.2)
+        gv.nuclearSpecs:setProduction(gv.nuclearSpecs:getProduces() + 0.2)
         gv.publicServisText[6] = "Due to your investment in researching more efficient generators " ..
           "all energy sources except solar panels produce an extra 0.2 GW of power"
       elseif ( x == 7) then
@@ -1530,11 +1556,11 @@ end
 
 function trimBlackoutRateArray()
 
-    -- wipes out any blackouts outside of the time range    
-  for x = 1, #gv.blackoutTimes, 1 do
+    -- wipes out any blackouts outside of the time range       
+  for x = #gv.blackoutTimes, -1 do    
     if( calculateYearDifferene(x) > gv.blackoutTimeRate ) then
       table.remove(gv.blackoutTimes, x)
-    end
+    end  
   end
 
 end
@@ -1542,7 +1568,7 @@ end
 local function isBlackout()
 
   if (gv.powerDemanded > gv.powerSupplied) then   -- there is a blackout
-
+    swapBlackoutButton( "Images/static_screen/st_weather_Sun.png",true )
     gv.blackoutLengthCounter = gv.blackoutLengthCounter + 1
     gv.blackoutCounter = gv.blackoutCounter + 1
     gv.groups[2]:setStatus(-0.5)
@@ -1696,6 +1722,15 @@ local function timerFunction(event)
       calculateMoney()
       calcPowerDemanded()
       isBlackout()
+      
+      local dif = gv.powerSupplied - gv.powerDemanded
+      -- if getting close to a blackout. Flash the lightbulb at the user
+      if(dif < 0.8 and dif >=0 ) then
+          gettingCloseToBlackout(true)
+      elseif(gv.powerSupplied - gv.powerDemanded >= 0.8) then
+          swapBlackoutButton( "Images/static_screen/st_lightbulb.png",true)    
+      end
+      
       if (gv.year > 2000) then
           checkPublicServisPercent()
           checkGroupActionPercent()
