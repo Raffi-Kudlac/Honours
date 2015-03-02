@@ -17,12 +17,17 @@ local sceneGroup
 
 local tutorialImages = {}
 
-tutorialImages[1] = "Images/hydro_screen/hy_screen_river1_dam.png"
-tutorialImages[2] = "Images/hydro_screen/hy_screen_river2_dam.png"
-tutorialImages[3] = "Images/hydro_screen/hy_screen_river3_dam.png"
-tutorialImages[4] = "Images/hydro_screen/hy_screen_river4_dam.png"
-tutorialImages[5] = "Images/hydro_screen/hy_screen_river5_dam.png"
-tutorialImages[6] = "Images/hydro_screen/hy_screen_river6_dam.png"
+tutorialImages[1] = "Images/tutorial/tutorial_1.png"
+tutorialImages[2] = "Images/tutorial/tutorial_2.png"
+tutorialImages[3] = "Images/tutorial/tutorial_3.png"
+tutorialImages[4] = "Images/tutorial/tutorial_4.png"
+tutorialImages[5] = "Images/tutorial/tutorial_5.png"
+tutorialImages[6] = "Images/tutorial/tutorial_6.png"
+tutorialImages[7] = "Images/tutorial/tutorial_7.png"
+tutorialImages[8] = "Images/tutorial/tutorial_8.png"
+tutorialImages[9] = "Images/tutorial/tutorial_9.png"
+tutorialImages[10] = "Images/tutorial/tutorial_10.png"
+tutorialImages[11] = "Images/tutorial/tutorial_11.png"
 
 -------------------------------------------------
 -- PRIVATE FUNCTIONS

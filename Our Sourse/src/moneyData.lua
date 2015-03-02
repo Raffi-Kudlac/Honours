@@ -201,8 +201,8 @@ function scene:create( event )
       height      = heightCalculator(0.6),
       defaultFile = "Images/global_images/Vertical_Box.png",
       id          = "BO",
-      left        = centerX(widthCalculator(0.5)),
-      top         = centerY(heightCalculator(0.5)),
+      left        = centerX(widthCalculator(0.4)),
+      top         = centerY(heightCalculator(0.6)),
   }
 
   btnWidth = BG.width*0.3
