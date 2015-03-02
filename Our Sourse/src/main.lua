@@ -589,7 +589,9 @@ end
 local function swapBlackoutButton(path, stopTimer)
 
     local temp = btnBlackout
-    gv.stage:remove(btnBlackout)
+    if(btnBlackout ~= nil) then
+      gv.stage:remove(btnBlackout)
+    end
     
     if (stopTimer and blackoutSwap ~= nil) then
         timer.cancel(blackoutSwap)
