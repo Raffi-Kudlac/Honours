@@ -484,6 +484,14 @@ function scene:create( event )
   local buttonY = display.contentHeight*0.8
   local buttonX = display.contentWidth*0.3
   
+  local bg = display.newImage("Images/inner_workings_screen/inw_bg.png")
+  bg.anchorX, bg.anchorY = 0,0
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+  bg.x = 0
+  bg.y = 0  
+  sceneGroup:insert(bg)
+  
   -- builds navigation buttons
   
   for x = 0, 7, 1 do 
