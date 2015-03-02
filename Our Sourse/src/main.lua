@@ -603,7 +603,7 @@ end
 local function gettingCloseToBlackout(file)
   
   if (file) then
-      swapBlackoutButton("Images/static_screen/st_land.png", false)
+      swapBlackoutButton("Images/static_screen/st_lightbulb2.png", false)
   else
       swapBlackoutButton("Images/static_screen/st_lightbulb.png", false)
   end
@@ -1568,7 +1568,7 @@ end
 local function isBlackout()
 
   if (gv.powerDemanded > gv.powerSupplied) then   -- there is a blackout
-    swapBlackoutButton( "Images/static_screen/st_weather_Sun.png",true )
+    swapBlackoutButton( "Images/static_screen/st_lightbulb3.png",true )
     gv.blackoutLengthCounter = gv.blackoutLengthCounter + 1
     gv.blackoutCounter = gv.blackoutCounter + 1
     gv.groups[2]:setStatus(-0.5)
