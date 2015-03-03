@@ -104,7 +104,7 @@ end
 -- "scene:create()"
 function scene:create( event )
   
-  local btnWidth = display.contentWidth*0.15
+  local btnWidth = display.contentWidth*0.2
   local btnHeight = display.contentHeight*0.15
   local midBtnXPosition = display.contentWidth - btnWidth*1.2
   local midBtnYPosition = centerY(btnHeight)

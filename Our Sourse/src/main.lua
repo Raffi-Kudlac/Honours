@@ -21,8 +21,10 @@ function() return setText(gv.oilSpecs) end, used for passing parameters to a but
 
 local widget          = require( "widget" )
 local gv              = require( "global" )
+local parse     = require ( "mod_parse")
 local composer        = require( "composer" )
 local powerPlant      = require( "powerPlant" )
+local connection = require("testconnection")
 local stream          = require( "river" )
 local organization    = require( "groups" )
 local adds            = require( "advertisements" )
@@ -200,6 +202,8 @@ local function initalize()
   gv.population    = 10000--populationFunction(year)
   gv.onCityScreen  = true
   gv.gameOver = false
+  gv.addButtonCounter = 0
+  gv.publicServisButtonCounter = 0
   
   gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
   
@@ -942,6 +946,18 @@ local function buildMenu()
       top       =  menuFactorY,
       onEvent   = showMenu
   }
+  
+      local mask = graphics.newMask( "Images/static_screen/st_menu_mask.png" )
+      local xScale = btnMenu.width/1024
+      local yScale = btnMenu.height/512
+            
+      btnMenu:setMask( mask )
+      btnMenu.maskScaleX = xScale
+      btnMenu.maskScaleY = yScale
+      btnMenu.maskX = btnMenu.width/2
+      btnMenu.maskY = btnMenu.height/2
+           
+  
   gv.stage:insert( btnMenu )
 
 end
@@ -1695,6 +1711,30 @@ local function populationAction()
 
 end
 
+local function sendStatisticsToParse()
+
+    local damsDamed = 0
+    
+    for x = 0, 5, 1 do
+      if (gv.rivers[x]:getBuilt()) then
+        damsDamed = damsDamed + 1
+      end
+    end
+
+    local data = { 
+        ["number_of_fossil_fuelled_power_plants"] = gv.coalBuildCounter + gv.gasBuildCounter + gv.oilBuildCounter + gv.nucBuildCounter,
+        ["number_of_solar_panals"] = gv.solarBuildCounter, 
+        ["number_of_windmills"]=gv.windBuildCounter, 
+        ["number_of_dams"]= damsDamed,
+        ["number_of_occured_blackouts"] = gv.blackoutCounter,
+        ["number_of_adds_used"] = gv.addButtonCounter,
+        ["number_of_ps_used"] = gv.publicServisButtonCounter,
+        ["year"] = gv.year,
+    } 
+    parse:createObject( "statistics", data, onCreateObject )
+
+end
+
 -- Responcible for the month/year timer
 local function timerFunction(event)
   
@@ -1744,6 +1784,13 @@ local function timerFunction(event)
         setDataBox("Population", gv.population, 1)        
         setDataBox("Demanded", gv.powerDemanded.."GW", 2)
         setDataBox("Supplied", gv.powerSupplied.."GW", 3)
+      end
+      
+      if (gv.year == 2005 or gv.year == 2010 or gv.year == 2015 or gv.year == 2020 or gv.year == 2025) then
+          
+          if (connection.test()) then
+              sendStatisticsToParse()
+          end
       end
     
       gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)

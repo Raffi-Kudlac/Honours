@@ -71,10 +71,13 @@ foundResourses = 0
 publicServisText = 0
 submitionName = ""
 
+addButtonCounter = 0      -- used for statistical purposes. counts how many times the add have been activated
+publicServisButtonCounter = 0 -- used for statistical purposes. counts how many time the ps have been activated
+
+
 buttonR = 0
 buttonG = 0
 buttonB = 0
-
 buttonOver1 = 0
 buttonOver2 = 0
 buttonOver3 = 0

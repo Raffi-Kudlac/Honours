@@ -30,6 +30,7 @@ local function buy(event, index)
 
     if gv.publicServises[index]:getBought() then
       changeBoughtImage(index,"Images/static_screen/st_purchased.png")
+      gv.publicServisButtonCounter = gv.publicServisButtonCounter + 1
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end

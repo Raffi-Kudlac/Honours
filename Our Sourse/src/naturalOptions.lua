@@ -26,6 +26,7 @@ local productionText      = ""
 local prosText            = ""
 local consText            = ""
 local consumptionText     = ""
+local maintenanceText      = ""
 local currentEnergySourse = powerPlant
 
 
@@ -52,6 +53,10 @@ local function createText(ffSpecs)
   consumptionText = display.newText("Consumes: Nothing",costText.x,productionText.y+20,gv.font,gv.fontSize)
   consumptionText.anchorX,consumptionText.anchorY = 0,0
   consumptionText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  
+  maintenanceText = display.newText("Maintenance Cost: $" .. ffSpecs:getMaintenenceCost() .. " per month",costText.x, consumptionText.y+20, gv.font,gv.fontSize)
+  maintenanceText.anchorX,maintenanceText.anchorY = 0,0
+  maintenanceText:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
 
   scrollText = widget.newScrollView
     {
@@ -61,7 +66,7 @@ local function createText(ffSpecs)
       --        scrollWidth = buildOverlayWidth*0.9,
       --scrollHeight = buildOverlayWidth*0.5,
       hideBackground = true,
-      top = consumptionText.y + 20,
+      top = maintenanceText.y + 20,
       left = costText.x
   }
 
@@ -86,6 +91,7 @@ local function setText(ffSpecs, kind)
   costText.text = "Costs: $"..ffSpecs:getCost()
   productionText.text = "Produces: "..ffSpecs:getProduces().."GW"
   consumptionText.text = "Consumes: Nothing"
+  maintenanceText.text = "Maintenance Cost: $" .. ffSpecs:getMaintenenceCost() .. " per month"
   prosText.text = ffSpecs:getPros()
   consText.text = ffSpecs:getCons()
   scrollText:scrollTo( "top", { time=0} )
@@ -189,7 +195,7 @@ function scene:create( event )
       defaultFile = "Images/global_images/button1.png",
       label         = "Buy",
       id            = "btnBuy",
-      top           = scrollText.y + scrollText.height/2,
+      top           = scrollText.y + scrollText.height*0.4,
       left          = centerX(btnWidth) - buildOptions.width*0.15,
       labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = buy

@@ -11,10 +11,10 @@ local opData      = require( "operatingData" )
 local scene     = composer.newScene()
 local circleWidth = 30
 local circleHeight = circleWidth
-local videoHeight = display.contentHeight*0.8
-local videoWidth = display.contentWidth*0.6
-local videoX = display.contentCenterX + videoWidth*0.1
-local videoY = display.contentCenterY - videoWidth*0.05
+local videoHeight = display.contentHeight*0.5
+local videoWidth = display.contentWidth*0.48
+local videoX = display.contentCenterX + videoWidth*0.12
+local videoY = display.contentCenterY - videoHeight*0.25
 local infoBoxWidth = widthCalculator(0.3)
 local infoBoxHeight = heightCalculator(0.5)
 local windmillSpace = 120 -- meters squared
@@ -469,7 +469,7 @@ end
 
 local function testingArea()
 
-    local rect = display.newRect(display.contentCenterX + videoWidth*0.1, display.contentCenterY - videoWidth*0.05, videoWidth, videoHeight)
+    local rect = display.newRect(videoX, videoY, videoWidth, videoHeight)
     sceneGroup:insert(rect)
 end
 
@@ -626,14 +626,14 @@ function scene:show( event )
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
   
-  --testingArea()
+  testingArea()
   operatingTextArea.text = describingText[0]:read()
   mainSetInnerWorkingsVariable(true)
   resetTextPositionForFossilFuels()
   addFossilFuelsText(1)
   addTextTimer(0)
-  setVideo(1)
-  sceneGroup:insert(video)
+--  setVideo(1)
+--  sceneGroup:insert(video)
   
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.

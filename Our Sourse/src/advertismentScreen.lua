@@ -26,9 +26,9 @@ local function buy(event, index)
 
   if event.phase == "ended" then
     gv.advertisements[index]:flipBought()
-
     if gv.advertisements[index]:getBought() then
       changeBoughtImage(index,"Images/static_screen/st_purchased.png")
+      gv.addButtonCounter = gv.addButtonCounter + 1
     else
       changeBoughtImage(index,"Images/static_screen/st_money.png")
     end
