@@ -126,6 +126,7 @@ local function damed(event)
   if (event.phase == "began") then    
       confirmPurchase()
       changeImage()
+      setDataLabels()
       composer.hideOverlay()    
   end
 end

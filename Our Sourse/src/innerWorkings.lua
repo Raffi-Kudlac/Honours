@@ -239,7 +239,7 @@ local function addFossilFuelsText(index)
         text[x].anchorX, text[x].anchorY = 0,0
         text[x]:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
         sceneGroup:insert(text[x])
-        textStartingY = text[x].y + text[x].height/2 + infoBox.height*0.1
+        textStartingY = text[x].y + text[x].height/2 + infoBox.height*0.09
     end
 
 end
@@ -611,9 +611,13 @@ function scene:create( event )
   widthCalculator(0.5), 0, gv.font, gv.fontSize)
   operatingTextArea.anchorX, operatingTextArea.anchorY = 0,0
   operatingTextArea:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
+  
+  
+  local myRectangle = display.newRoundedRect( operatingTextArea.x + operatingTextArea.width/2, operatingTextArea.y + operatingTextArea.height*0.9,
+   operatingTextArea.width*1.1, operatingTextArea.height*2.5,10)  
+  myRectangle:setFillColor( 0,0,0 )    
+  sceneGroup:insert(myRectangle)
   sceneGroup:insert(operatingTextArea)
-  
-  
 end
 
 
@@ -626,14 +630,14 @@ function scene:show( event )
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
   
-  testingArea()
+  --testingArea()
   operatingTextArea.text = describingText[0]:read()
   mainSetInnerWorkingsVariable(true)
   resetTextPositionForFossilFuels()
   addFossilFuelsText(1)
   addTextTimer(0)
---  setVideo(1)
---  sceneGroup:insert(video)
+  setVideo(1)
+  sceneGroup:insert(video)
   
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
