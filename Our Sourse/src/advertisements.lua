@@ -18,10 +18,15 @@ function advertisements.new( nme, costToUse )  -- constructor
     bought = false,
     name = nme,
     cost = costToUse,
-    effect = ""
+    effect = "",
+    timesActivated = 0
   }
 
 return setmetatable( newAdvertisement, advertisements_mt )
+end
+
+function advertisements:getTimesActivated()
+    return self.timesActivated
 end
 
 function advertisements:getName( )
@@ -42,6 +47,10 @@ end
 
 function advertisements:setBought( status )
   self.bought = status
+  
+  if(status) then
+      self.timesActivated = self.timesActivated + 1
+  end 
 end
 
 function advertisements:flipBought( )

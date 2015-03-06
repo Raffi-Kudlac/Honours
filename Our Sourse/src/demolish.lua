@@ -87,7 +87,7 @@ local function naturaldemolish(event)
       else
           gv.solarBuildCounter = gv.solarBuildCounter - 1 
       end
-      gv.groups[0]:setStatus(-0.5)
+      gv.groups[0]:setStatus(-0.2)
       gv.money = gv.money - demolishCost
       naturalConvertButton("Images/natural_resource_screen/nr_tile_plain.png",gv.marker, "open")
       composer.hideOverlay()

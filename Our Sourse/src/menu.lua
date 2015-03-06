@@ -31,6 +31,14 @@ local function tutorial( event )
 
 end
 
+local function about( event )
+    
+    if (event.phase == "began" ) then
+        composer.gotoScene("about")
+    end
+
+end 
+
 
 -------------------------------------------------
 -- COMPOSER FUNCTIONS
@@ -50,7 +58,7 @@ function scene:create( event )
       id        = "btnPlay",
       label     = "Play",
       left      = centerX(100),
-      top       = centerY(50),
+      top       = centerY(50) - 75,
       onEvent   = play
   }
   
@@ -63,8 +71,21 @@ function scene:create( event )
       id        = "btnPlay",
       label     = "Tutorial",
       left      = centerX(100),
-      top       = centerY(50) + 100,
+      top       = centerY(50),
       onEvent   = tutorial
+  }
+  
+  local btnAbout = widget.newButton
+    {
+      width     = 100,
+      height    = 50,
+      shape     = "roundedRect",
+      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
+      id        = "btnPlay",
+      label     = "About",
+      left      = centerX(100),
+      top       = centerY(50) + 75,
+      onEvent   = about
   }
   
   
@@ -101,6 +122,7 @@ function scene:create( event )
       
       sceneGroup:insert(btnPlay)      
       sceneGroup:insert(btnTutorial)
+      sceneGroup:insert(btnAbout)
 end
 
 

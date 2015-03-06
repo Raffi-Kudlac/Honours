@@ -25,6 +25,7 @@ function publicServises.new(nme, costToUse)  -- constructor
     cost = costToUse,
     about = "",
     bought = false,
+    timesActivated = 0,
     yearlyPercent = 40,
     monthlyPercent = tempMonthPercent,
   }
@@ -37,6 +38,9 @@ function publicServises:getYearlyPercent()
   return self.yearlyPercent
 end
 
+function publicServises:getTimesActivated()
+    return self.timesActivated
+end
 
 -- this function also calculates the monthlyPercent as well
 function publicServises:setYearlyPercent(p)
@@ -115,6 +119,10 @@ end
 
 function publicServises:setBought( b )
   self.bought = b
+  
+  if (b) then
+      self.timesActivated = self.timesActivated + 1
+  end
 end
 
 function publicServises:flipBought()

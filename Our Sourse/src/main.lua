@@ -54,6 +54,7 @@ local timeLabel
 local weather
 local btnPausePlay
 local blackoutSwap = nil
+local playID = 0 
     
 
 local startBlackoutTimeYear = 0
@@ -204,6 +205,7 @@ local function initalize()
   gv.gameOver = false
   gv.addButtonCounter = 0
   gv.publicServisButtonCounter = 0
+  playID = math.random(1,1000000)
   
   gv.monthlyPopulationIncrease = calculateMonthlyPopulationIncrease()
   
@@ -369,7 +371,7 @@ local function initalize()
   energyCons = "Although well liked, solar panels are expensive and have a low conversion rate of light to energy. This " ..
     "doesn't make them an ideal source of power for a large population. They also only work during the day."
   energyCost = 50
-  energyProduction = 2
+  energyProduction = 1.8
   energyConsumption = 0
 
   gv.solarSpecs = powerPlant.new("solar")
@@ -440,7 +442,7 @@ local function initalize()
     " happen then you have to give some money back to the people to compensate, and if too many " ..
     "happen too frequently then you will lose.")
 
-  gv.groups[2]:setHappyText("The people are happy with your production of power. You don't get anything but at least" ..
+  gv.groups[2]:setHappyText("The people are happy with your production of power. You don't get anything but at least " ..
     "they are not rioting and making your life difficult.")
 
   gv.groups[2]:setMadText("Too many blackouts have happened and the people have rioted and made inappropriate signs" ..
@@ -1722,14 +1724,37 @@ local function sendStatisticsToParse()
     end
 
     local data = { 
-        ["number_of_fossil_fuelled_power_plants"] = gv.coalBuildCounter + gv.gasBuildCounter + gv.oilBuildCounter + gv.nucBuildCounter,
+        ["number_of_coal_power_plants"] = gv.coalBuildCounter,
+        ["number_of_oil_power_plants"] =  gv.oilBuildCounter,
+        ["number_of_gas_power_plants"] = gv.gasBuildCounter,
+        ["number_of_nuclear_power_plants"] = gv.nuclearBuildCounter,
         ["number_of_solar_panals"] = gv.solarBuildCounter, 
         ["number_of_windmills"]=gv.windBuildCounter, 
         ["number_of_dams"]= damsDamed,
-        ["number_of_occured_blackouts"] = gv.blackoutCounter,
-        ["number_of_adds_used"] = gv.addButtonCounter,
-        ["number_of_ps_used"] = gv.publicServisButtonCounter,
+        ["number_of_occured_blackouts"] = gv.blackoutCounter,        
         ["year"] = gv.year,
+        ["playID"] = playID,
+        ["number_of_tiles_mined"] = numberOfTilesMined(),
+        ["amount_of_coal"] = math.round(10*gv.resourcesHeld[2])/10,
+        ["amount_of_gas"] = math.round(10*gv.resourcesHeld[1])/10,
+        ["amount_of_oil"] = math.round(10*gv.resourcesHeld[0])/10,
+        ["amount_of_uranium"] = math.round(10*gv.resourcesHeld[3])/10,
+        ["power_supplied"] = gv.powerSupplied,
+        ["money"] = gv.money,
+        ["power_demanded"] = gv.powerDemanded,
+        ["ad_save_power_counter"] = gv.advertisements[0]:getTimesActivated(),
+        ["ad_safe_nuclear_power_counter"] = gv.advertisements[1]:getTimesActivated(),
+        ["ad_pro_windmills_counter"] = gv.advertisements[2]:getTimesActivated(),
+        ["ad_fossil_power_counter"] = gv.advertisements[3]:getTimesActivated(),
+        ["ad_public_appeal_counter"] = gv.advertisements[4]:getTimesActivated(),
+        ["ps_geologist_counter"] = gv.publicServises[0]:getTimesActivated(),
+        ["ps_fossil_fuel_advances_counter"] = gv.publicServises[1]:getTimesActivated(),
+        ["ps_nuclear_advances_counter"] = gv.publicServises[2]:getTimesActivated(),
+        ["ps_wind_advances_counter"] = gv.publicServises[3]:getTimesActivated(),
+        ["ps_solar_advances_counter"] = gv.publicServises[4]:getTimesActivated(),
+        ["ps_hydro_advances_counter"] = gv.publicServises[5]:getTimesActivated(),
+        ["ps_generator_advances_counter"] = gv.publicServises[6]:getTimesActivated(),
+        ["ps_corrupt_environmentalists_counter"] = gv.publicServises[7]:getTimesActivated(),
     } 
     parse:createObject( "statistics", data, onCreateObject )
 
@@ -1786,11 +1811,9 @@ local function timerFunction(event)
         setDataBox("Supplied", gv.powerSupplied.."GW", 3)
       end
       
-      if (gv.year == 2005 or gv.year == 2010 or gv.year == 2015 or gv.year == 2020 or gv.year == 2025) then
-          
-          if (connection.test()) then
-              sendStatisticsToParse()
-          end
+      if (gv.year > 2000 and gv.year % 5 == 0 and connection.test() and monthCounter == 1) then
+          print(gv.year)
+          sendStatisticsToParse()          
       end
     
       gv.monthTimer = timer.performWithDelay(gv.month,timerFunction)

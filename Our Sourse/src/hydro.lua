@@ -35,7 +35,7 @@ maskFileArray[5] = "Images/hydro_screen/hy_screen_river6_mask.png"
 -- PRIVATE FUNCTIONS
 -------------------------------------------------
 
-local function setDataLabels()
+function setHydroDataLabels()
 
     local totalPower = 0
     local areaDestroyed = 0
@@ -189,7 +189,7 @@ function scene:show( event )
 
   if ( phase == "will" ) then
   -- Called when the scene is still off screen (but is about to come on screen).
-      setDataLabels()
+      setHydroDataLabels()
   elseif ( phase == "did" ) then
   -- Called when the scene is now on screen.
   -- Insert code here to make the scene come alive.

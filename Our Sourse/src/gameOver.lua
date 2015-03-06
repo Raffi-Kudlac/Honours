@@ -70,7 +70,7 @@ local function createText()
   elseif(gv.blackoutLengthCounter >= 10) then
       reasonForEnd = "A Blackout lasted to long"      
   elseif(#gv.blackoutTimes == 4) then
-      reasonForEnd = "Too many blackouts have happened"
+      reasonForEnd = "Too many blackouts have happened in the last five years"
   elseif( gv.blackoutLengthSum + gv.blackoutLengthCounter >= 12) then
       reasonForEnd = "Too many months have been blackouts"
   end

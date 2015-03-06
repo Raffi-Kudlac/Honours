@@ -101,7 +101,7 @@ end
 function naturalPurchasedConfirmed()
 
   gv.money    = gv.money - currentEnergySourse:getCost()
-  gv.groups[0]:setStatus(0.5)
+  gv.groups[0]:setStatus(0.2)
 
   if(currentEnergySourse:getType() =="solar") then
     gv.solarBuildCounter = gv.solarBuildCounter + 1
