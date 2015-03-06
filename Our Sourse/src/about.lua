@@ -42,18 +42,18 @@ function scene:create( event )
   
   local btnBack = widget.newButton
     {
-      width     = widthCalculator(0.1),
-      height    = heightCalculator(0.1),
+      width     = widthCalculator(0.2),
+      height    = heightCalculator(0.15),
       label = "Back",
       defaultFile   = "Images/global_images/button1.png",
-      left      = widthCalculator(0.1),
-      top       = heightCalculator(0.1),
+      left      = centerX(widthCalculator(0.1)),
+      top       = heightCalculator(0.8),
       onEvent   = back
   }
 
-  
-  sceneGroup:insert(btnBack)
   sceneGroup:insert(bg)
+  sceneGroup:insert(btnBack)
+  
 end
 
 
