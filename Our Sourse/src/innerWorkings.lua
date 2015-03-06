@@ -47,14 +47,14 @@ buttonPaths[7] = "Images/inner_workings_screen/inw_hydrodam.png"
 
 
 local videoPaths = {}
-videoPaths[0] = "video/vid_magnet.mp4"
+videoPaths[0] = "video/vid_gen.mp4"
 videoPaths[1] = "video/vid_oil.mp4"
 videoPaths[2] = "video/vid_gas.mp4"
 videoPaths[3] = "video/vid_coal.mp4"
 videoPaths[4] = "video/vid_nuclear.mp4"
 videoPaths[5] = "video/vid_solar.mp4"
 videoPaths[6] = "video/vid_windmill.mp4"
-videoPaths[7] = "video/test.mp4"
+videoPaths[7] = "video/vid_hydro.mp4"
 
 -- a 2D array holding the name of the stat in index 1 and the answer in index 2. 
 -- this uses built in function so the starting index is 1

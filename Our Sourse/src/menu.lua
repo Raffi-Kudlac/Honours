@@ -48,44 +48,43 @@ end
 function scene:create( event )
 
   local sceneGroup = self.view
+  
+  local btnWidth = widthCalculator(0.2)
+  local btnHeight = heightCalculator(0.15)
+  local gap = heightCalculator(0.2)
+  local path = "Images/global_images/button1.png"
 
   local btnPlay = widget.newButton
     {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
+      width     = btnWidth,
+      height    = btnHeight,
+      defaultFile   = path,
       label     = "Play",
-      left      = centerX(100),
-      top       = centerY(50) - 75,
+      left      = centerX(btnWidth),
+      top       = centerY(btnHeight) - gap,
       onEvent   = play
   }
   
   local btnTutorial = widget.newButton
     {
-      width     = 200,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
+      width     = btnWidth,
+      height    = btnHeight,
+      defaultFile   = path,
       label     = "Tutorial",
-      left      = centerX(100),
-      top       = centerY(50),
+      left      = centerX(btnWidth),
+      top       = centerY(btnHeight),
       onEvent   = tutorial
   }
   
   local btnAbout = widget.newButton
     {
-      width     = 100,
-      height    = 50,
-      shape     = "roundedRect",
-      fillColor = { default={ 1, 0.2, 0.5, 0.7 }, over={ 1, 0.2, 0.5, 1 } },
-      id        = "btnPlay",
-      label     = "About",
-      left      = centerX(100),
-      top       = centerY(50) + 75,
-      onEvent   = about
+      width       = btnWidth,
+      height      = btnHeight,
+      defaultFile   = path,
+      label       = "About",
+      left        = centerX(btnWidth),
+      top         = centerY(btnHeight) + gap,
+      onEvent     = about
   }
   
   
