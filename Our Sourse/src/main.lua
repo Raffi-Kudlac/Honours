@@ -249,10 +249,12 @@ local function initalize()
   gv.oilInfluence = 1
 
 
-  local energyPros = "This fossil fueled power plant runs off of oil which is abundant and fairly cheap to obtain."..
+  local energyPros = "This fossil fueled power plant runs off of oil which is abundant, fairly cheap to obtain and easy to relocate. " .. 
+  "Oil has a high ratio of energy per unit so its an ideal source for power. Just like any fossil fuel. " ..
     " In comparison to coal it will burn faily well and not pollute the air as much. It will produce good amounts of power"
-  local energyCons = "Oil is a finite resource on the plantet and it has other uses for cars and heating homes. Although it " .. 
-  "does not pollute as much as coal it still releases small green house emitions and getting thos stuff " .. 
+    
+  local energyCons = "Oil is a finite resource on the plantet and it has other uses for cars and heating homes so we must share. Although it " .. 
+  "does not pollute as much as coal it still releases green house emitions and getting oil " .. 
   "out of the ground is no clean task. Environmentalists wont be too happy."
   local energyCost = 110
   local energyProduction = 4.1
@@ -283,41 +285,44 @@ local function initalize()
 
   gv.rivers[0]:setData(r0Data)
   
-  r0Data = "A water source with high power outage but unfortunately destroys a large amount of " .. 
-  "habited land. If we build here the environmentalist will go nuts. Only " ..
-  "build here if we have no other options."
+  r0Data = "Dams are great sources of clean energy. Running off of water hydro electric dams are capable of " .. 
+  "running around the clock and not having to consume resources. In the long run, hydro power is " .. 
+  "cheaper then fossil fuesl. \n \n Hydro power has deadly consequences, daming a river floods an area " .. 
+  "causing havok on the environment and aquatic eco system. Dams are also expensive to build and can only be " .. 
+  "buitl near water sources."
   gv.rivers[1]:setData(r0Data)
   
-  r0Data = "The Colorado River. Similar to the Hudson but because of geography slightly more area is destroyed if " .. 
-  "we deside to build here."
+--  r0Data = "The Colorado River. Similar to the Hudson but because of geography slightly more area is destroyed if " .. 
+--  "we deside to build here."
   
   gv.rivers[2]:setData(r0Data)
   
-  r0Data = "The Nile. A river of life and prosperity. daming this river would have huge environmental effects and " .. 
-  "repercussions as well as a shift in the stability in the environment after the dam was built due to the change in " ..
-  "levels of water. Building here is not recommended."
+--  r0Data = "The Nile. A river of life and prosperity. daming this river would have huge environmental effects and " .. 
+--  "repercussions as well as a shift in the stability in the environment after the dam was built due to the change in " ..
+--  "levels of water. Building here is not recommended."
   
   gv.rivers[3]:setData(r0Data)
   
   
-  r0Data = "Niagra Falls. Due to the height of the falls, the speed of the water and the amount of flowing water we can build a " ..
-  "dam here for minimal environmental effects and get decent amounts of power back. It would be nice if all dams could be built " .. 
-  "on sites like these but they are rare. Building here is strongly recommended." 
+--  r0Data = "Niagra Falls. Due to the height of the falls, the speed of the water and the amount of flowing water we can build a " ..
+--  "dam here for minimal environmental effects and get decent amounts of power back. It would be nice if all dams could be built " .. 
+--  "on sites like these but they are rare. Building here is strongly recommended." 
   
   gv.rivers[4]:setData(r0Data)
   
   
-  r0Data = "A river with the capability to produce clean energy and not to destroy too much land in the " ..
-  "process. Environmentalists will be displeased but we can live with that. People need power."
+--  r0Data = "A river with the capability to produce clean energy and not to destroy too much land in the " ..
+--  "process. Environmentalists will be displeased but we can live with that. People need power."
   
   gv.rivers[5]:setData(r0Data)
   
 
-  energyPros = "This fossil fueled power plant runs off of coal which is the most abundant and energy rich of the fossil fuels."..
-    " Coal is cheap and fairly easy to obtain."
+  energyPros = "This fossil fueled power plant runs off of coal which is an abundant and energy rich fossil fuel."..
+    " With high energy per unit and failry cheap too, coal is capable of supplying power to large populations"
 
-  energyCons = "Coal puts carbon dioxide into the air and its supplies are not infinite. Environmentalists will not"..
-    " like you for building this kind of power plant"
+  energyCons = "Coal puts carbon dioxide into the air and is mined from the earth. Mineing coal can be a dangerious " ..   
+   " and dirty task. There is a finite amount of caol and we will run out one day. Environmentalists do not like this " .. 
+   "kind of power."
 
   energyCost = 100
   energyProduction = 4.3
@@ -332,10 +337,12 @@ local function initalize()
   gv.coalSpecs:setConsumption(energyConsumption)
   gv.coalSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "This fossil fueled power plant runs off of gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
-    " and has the least impact on the atmosphere"
-  energyCons = "Gas is can be dangerious to handle and requires proper containment. It must be handled properly and " .. 
-  "carefully. Don't want any acidents to happen. There is also a finite amount of gas on the plant."
+  energyPros = "This fossil fueled power plant runs off of natural gas. Gas is the most expensive of the fossil fuels but burns the cleanest"..
+    " and has the least impact on the enronment. gas has a high ratio of energy per unit, is good for providing large " .. 
+    "amuounts of power and can be built directly within the city. "
+    
+  energyCons = "Natural gas is can be dangerious to handle and requires proper containment. Don't want any acidents to happen. " ..
+  "There is a finite amount of gas on the plant and it has other purposes other then for creating power like heating. "
   energyCost = 120
   energyProduction = 4
   energyConsumption = 1.5
@@ -348,11 +355,14 @@ local function initalize()
   gv.gasSpecs:setConsumption(energyConsumption)
   gv.gasSpecs:setMaintenenceCost(energyMaintenence)
 
-  energyPros = "Nuclear power is the cleanest of the natural resources. With uranium being the most abundant resource it can long outlast fossil fuels. " .. 
-  " And there is way more energy per unit of uranium then there is per unit of coal."
+  energyPros = "Nuclear power is a fairly clean source of power. With uranium being the most abundant resource it can long outlast fossil fuels. " .. 
+  " Uranium has enormous amounts of potential energy, perfect for providing power for hudge populations"
+  
+  
   energyCons = "Uranium is radio active and getting at its pool of energy can be dangerious. The radio active waste that " .. 
-  " the plant produces can't just be hucked in the garbage it must be properly disposed of. Some people are scared " .. 
-  "of nuclear power and even though there are no envirmental hazards we still have to dig for uranium."
+  " the plant produces can't just be hucked in the garbage it must be properly disposed of and it lasts for hundred of years. " ..  
+  "Uranium is finite and must be mined from the earth" .. 
+  "These power plants are not cheap as safety is a big concert that many of the people are worried about."
   energyCost = 150
   energyProduction = 4.8
   energyConsumption = 1
@@ -366,8 +376,10 @@ local function initalize()
   gv.nuclearSpecs:setMaintenenceCost(energyMaintenence)
 
   energyPros = "Solar power is the only power source that works differently. By turning light into energy there are no environmental"..
-    " consequences and it is self sustaining. As long as the sun is around, we can have solar power. Environmentalists will " .. 
+    " consequences and it is self sustaining. As long as the sun is around, we can have solar power. Solar cells work nicely " .. 
+    "on roof tops and no body objects to the clean energy. Environmentalists will " .. 
     "like it if we decide to build these."
+    
   energyCons = "Although well liked, solar panels are expensive and have a low conversion rate of light to energy. This " ..
     "doesn't make them an ideal source of power for a large population. They also only work during the day."
   energyCost = 50
@@ -383,13 +395,14 @@ local function initalize()
   gv.solarSpecs:setMaintenenceCost(1)
 
   energyPros = "Wind power is one of the main natural resources. Running off of flowing air it is capable of producing " ..
-    "clean energy. Windmills will produce power as long as there is moving air so no need to worry about running out of wind. " .. 
-    "Environmentalists will like it if we decide to build these."
+    "clean energy. Windmills can be built anywhere where air is, although cities are not prime locations, so build spots are plentiful and best part of all " .. 
+    "is that windmills have almost no environmental impact"
 
 
-  energyCons = "Windmills are expensive to build and don't produce a lot of energy compared to fossile fuels so they can not " ..
-    "sustain a large population. They also take up large amounts of room. People who live near windmills don't like the noise " ..
-    "contant rotating shadows and view. Windmills cause many bird casualties so bird watchers are not fans as well"
+  energyCons = "Windmills don't produce a lot of energy compared to fossile fuels. In order to " .. 
+  "supply enough power to even a small population, winmills must be build in groups called windfarms. This jacks up the " .. 
+  "price and makes a single windmill pretty much useless. People don't like living around windmills but the " .. 
+  "group of people around windmills is rather small."
 
   energyCost = 60
   energyProduction = 2.8
