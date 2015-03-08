@@ -77,7 +77,7 @@ function scene:create( event )
   }
   
   local btnAbout = widget.newButton
-    {
+  {
       width       = btnWidth,
       height      = btnHeight,
       defaultFile   = path,
@@ -87,41 +87,22 @@ function scene:create( event )
       onEvent     = about
   }
   
+  local bg = display.newImage("Images/global_images/Main_Screen_BG.png")
+  bg.anchorX, bg.anchorY = 0,0
+
+  bg.height = display.contentHeight
+  bg.width = display.contentWidth
+
+  bg.x = 0
+  bg.y = 0
+
+
+  sceneGroup:insert(bg)
   
---  local array = {}
---  
---  array[0] = "Images/hydro_screen/hy_screen_river1small.png"
---  
---  local btnPlay = widget.newButton
---      {
---          width = display.contentWidth,
---          height = display.contentHeight,
---          left = 0,
---          top = 0,
---          defaultFile = array[0],
---          onEvent   = play,          
---      }
---      btnPlay.anchorY = 0
---      btnPlay.anchorX = 0
---      btnPlay.x = 0
---      btnPlay.y = 0
---      
---      local xScale = math.round(100*(btnPlay.width/1200))/100
---      local yScale = math.round(100*(btnPlay.height/800))/100     
---      
---     
---      local m = graphics.newMask( "Images/hydro_screen/hy_screen_river1_maskBORDER1.png" )
---      
---      btnPlay:setMask( m )
---      btnPlay.maskScaleX = xScale
---      btnPlay.maskScaleY = yScale
---      btnPlay.maskX = btnPlay.width/2
---      btnPlay.maskY = btnPlay.height/2
-      
-      
-      sceneGroup:insert(btnPlay)      
-      sceneGroup:insert(btnTutorial)
-      sceneGroup:insert(btnAbout)
+           
+  sceneGroup:insert(btnPlay)      
+  sceneGroup:insert(btnTutorial)
+  sceneGroup:insert(btnAbout)
 end
 
 
