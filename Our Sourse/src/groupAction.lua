@@ -68,7 +68,7 @@ function scene:create( event )
       defaultFile = "Images/global_images/button1.png",
       label         = "Okay",
       id            = "btnOkay",
-      top           =  text.y + text.height*1.1,
+      top           =  text.y + text.height*0.6,
       left          =  centerX(widthCalculator(0.1)),
       labelColor = { default={ gv.buttonR, gv.buttonG, gv.buttonB }, over={ gv.buttonOver1,  gv.buttonOver2,  gv.buttonOver3,  gv.buttonOver4 } },
       onEvent       = okay

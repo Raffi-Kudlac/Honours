@@ -1,3 +1,6 @@
-\backcite {Hiriart-Urruty:1993-ConvexAnalysis}{{14}{4.1}{theorem.4.1}}
-\backcite {Bauschke:2007-PA02}{{14}{4.2}{theorem.4.2}}
-\backcite {Fear:2005manual}{{22}{A}{appendix.A}}
+\backcite {Current}{{3}{2.1}{figure.2.1}}
+\backcite {Coal}{{4}{2.2}{figure.2.2}}
+\backcite {Nuclear}{{6}{2.3}{figure.2.3}}
+\backcite {Hydro}{{7}{2.4}{figure.2.4}}
+\backcite {Wind}{{9}{2.5}{figure.2.5}}
+\backcite {Solar}{{10}{2.6}{figure.2.6}}

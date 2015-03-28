@@ -64,15 +64,18 @@ local function createText()
   local message = ""  
   local reasonForEnd = ""
   local localTotalScore = ""
+  local title
   
-  if(gv.money < -100 ) then
+  if(gv.money <= -100 ) then
       reasonForEnd = "You ran into debt"
   elseif(gv.blackoutLengthCounter >= 10) then
       reasonForEnd = "A Blackout lasted to long"      
-  elseif(#gv.blackoutTimes == 4) then
+  elseif(#gv.blackoutTimes >= 4) then
       reasonForEnd = "Too many blackouts have happened in the last five years"
   elseif( gv.blackoutLengthSum + gv.blackoutLengthCounter >= 12) then
       reasonForEnd = "Too many months have been blackouts"
+   else
+      reasonForEnd = "Error"
   end
   
   localTotalScore = ". Lasting " .. (gv.year-2000) .. " years and " .. gv.monthCounter .. " month(s). With " .. 
@@ -105,7 +108,7 @@ local function createText()
           end
           message = "Game Over: " .. reasonForEnd.. localTotalScore.. "\n Placing " .. tostring(place) .. prefix .. " in the world." 
           
-          local title = display.newText(message, startingX,
+          title = display.newText(message, startingX,
             startingY, widthCalculator(0.8), 0, gv.font, gv.fontSize*1.5 )
           --title.anchorX, title.anchorY = 0,0
           title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )
@@ -125,7 +128,7 @@ local function createText()
   else   
       print("This was supposed to happen")
       message = "Game Over: " .. reasonForEnd .. localTotalScore       
-      local title = display.newText(message, startingX,
+      title = display.newText(message, startingX,
             startingY, widthCalculator(0.8), 0, gv.font, gv.fontSize*1.5 )
           --title.anchorX, title.anchorY = 0,0
           title:setFillColor( gv.fontColourR, gv.fontColourG, gv.fontColourB )

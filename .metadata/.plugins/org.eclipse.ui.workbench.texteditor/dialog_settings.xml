@@ -6,22 +6,23 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="buttonPaths" key="selection"/>
+		<item value="gv.gameOver" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="gv.gameOver"/>
+			<item value="calculateMoney"/>
+			<item value="sceneGroup:insert(title)"/>
+			<item value="sceneGroup:insert(title)   "/>
+			<item value="playID"/>
+			<item value="setDataLabels"/>
 			<item value="powerType"/>
 			<item value="btnAdvertisements"/>
-			<item value="btnGroupStatus"/>
-			<item value="streams[gv.riverSelected]"/>
-			<item value="streams[gv.riverSelected].maskScaleX = xScale"/>
-			<item value="bg"/>
-			<item value="damnedRivers"/>
-			<item value="streams[x]"/>
 		</list>
 		<list key="replacehistory">
+			<item value="setHydroDataLabels"/>
 			<item value="buttonPaths"/>
 			<item value="btnPublicServises"/>
 			<item value="btnAdvertisements"/>
@@ -29,7 +30,6 @@
 			<item value="currentImage"/>
 			<item value="tutorialImages"/>
 			<item value="btnPlay"/>
-			<item value="[counter]"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
