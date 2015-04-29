@@ -17,4 +17,12 @@ application = {
       ["@4x"] = 3.0,
     },
   },
+  
+  license =
+  {
+    google =
+    {
+      key = "Your key here"
+    },
+  },
 }

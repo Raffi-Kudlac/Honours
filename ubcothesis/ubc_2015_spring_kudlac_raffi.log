@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  28 MAR 2015 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  22 APR 2015 11:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1351,286 +1351,287 @@ Non-PDF special ignored!
 
 [5]
 Chapter 1.
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
+
+Overfull \hbox (2.35121pt too wide) in paragraph at lines 88--97
+[]\OT1/cmr/m/n/10.95 ``The Source" is an in-ter-ac-tive en-ergy sim-u-la-tion w
+here the user is charged
+ []
+
 [1
 
 
-]
+] [2]
 Chapter 2.
-<Induction.jpg, id=261, 232.87pt x 174.6525pt>
+<Induction.jpg, id=270, 232.87pt x 174.6525pt>
 File: Induction.jpg Graphic file (type jpg)
  <use Induction.jpg>
-Package pdftex.def Info: Induction.jpg used on input line 119.
-(pdftex.def)             Requested size: 108.0011pt x 80.99936pt.
- [2
+Package pdftex.def Info: Induction.jpg used on input line 116.
+(pdftex.def)             Requested size: 180.0pt x 135.00517pt.
+ [3
 
 ]
-<fossil_fuel.png, id=269, 2007.5pt x 1245.65375pt>
+<fossil_fuel.png, id=277, 2007.5pt x 1245.65375pt>
 File: fossil_fuel.png Graphic file (type png)
  <use fossil_fuel.png>
-Package pdftex.def Info: fossil_fuel.png used on input line 134.
+Package pdftex.def Info: fossil_fuel.png used on input line 131.
 (pdftex.def)             Requested size: 360.0pt x 223.37169pt.
 
-[3 <./Induction.jpg>] [4 <./fossil_fuel.png>]
-<nuclear.png, id=285, 665.48625pt x 340.27126pt>
+[4 <./Induction.jpg>] [5 <./fossil_fuel.png>]
+<nuclear.png, id=293, 665.48625pt x 340.27126pt>
 File: nuclear.png Graphic file (type png)
  <use nuclear.png>
-Package pdftex.def Info: nuclear.png used on input line 165.
+Package pdftex.def Info: nuclear.png used on input line 161.
 (pdftex.def)             Requested size: 360.0pt x 184.07603pt.
- [5] [6 <./nuclear.png>] <hydro.png, id=297, 537.00626pt x 347.2975pt>
+ [6] [7 <./nuclear.png>] <hydro.png, id=305, 537.00626pt x 347.2975pt>
 File: hydro.png Graphic file (type png)
  <use hydro.png>
-Package pdftex.def Info: hydro.png used on input line 190.
+Package pdftex.def Info: hydro.png used on input line 186.
 (pdftex.def)             Requested size: 360.0pt x 232.82059pt.
 
-[7 <./hydro.png>] <windmill.png, id=305, 328.22626pt x 254.9525pt>
+[8 <./hydro.png>] <windmill.png, id=314, 328.22626pt x 254.9525pt>
 File: windmill.png Graphic file (type png)
 
 <use windmill.png>
-Package pdftex.def Info: windmill.png used on input line 207.
-(pdftex.def)             Requested size: 360.0pt x 279.63553pt.
- [8] [9 <./windmill.png>]
-<Solar2.jpg, id=318, 786.94pt x 597.23125pt>
+Package pdftex.def Info: windmill.png used on input line 203.
+(pdftex.def)             Requested size: 288.0011pt x 223.7092pt.
+ [9 <./windmill.png>]
+<Solar2.jpg, id=322, 786.94pt x 597.23125pt>
 File: Solar2.jpg Graphic file (type jpg)
  <use Solar2.jpg>
-Package pdftex.def Info: Solar2.jpg used on input line 224.
-(pdftex.def)             Requested size: 360.0pt x 273.20782pt.
+Package pdftex.def Info: Solar2.jpg used on input line 220.
+(pdftex.def)             Requested size: 288.0011pt x 218.56627pt.
+ [10] [11 <./Solar2.jpg>] [12] [13]
+Chapter 3.
+<DFDDiagram.png, id=346, 963.6pt x 722.7pt>
+File: DFDDiagram.png Graphic file (type png)
+ <use DFDDiagram.png>
+Package pdftex.def Info: DFDDiagram.png used on input line 275.
+(pdftex.def)             Requested size: 251.9989pt x 188.98929pt.
+ [14
 
-Overfull \hbox (3.60612pt too wide) in paragraph at lines 236--245
- [][] 
+]
+<panel.png, id=352, 1030.85126pt x 605.26125pt>
+File: panel.png Graphic file (type png)
+ <use panel.png>
+Package pdftex.def Info: panel.png used on input line 283.
+(pdftex.def)             Requested size: 216.0022pt x 126.8223pt.
+ [15 <./DFDDiagram.png> <./panel.png>] <thesourceachitecture.png, id=359, 963.6
+pt x 722.7pt>
+File: thesourceachitecture.png Graphic file (type png)
+
+<use thesourceachitecture.png>
+Package pdftex.def Info: thesourceachitecture.png used on input line 296.
+(pdftex.def)             Requested size: 251.9989pt x 188.98929pt.
+ [16 <./thesourceachitecture.png>] [17] [18]
+Chapter 4.
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+[19
+
+]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [20] [21] [22] [23] [24] [25] [26]
+Overfull \hbox (0.91708pt too wide) in paragraph at lines 630--631
+\OT1/cmr/m/n/12 (with dif-fer-ent mul-ti-ple choice ques-tions) and an-swers to
+ each are within
  []
 
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+[27] [28]
+Chapter 5.
+[29
 
-LaTeX Warning: Float too large for page by 175.73257pt on input line 245.
-
-[10 <./Solar2.jpg>] [11] [12]
-Chapter 3.
-<DFDDiagram.pdf, id=334, 722.7pt x 542.025pt>
-File: DFDDiagram.pdf Graphic file (type pdf)
- <use DFDDiagram.pdf>
-Package pdftex.def Info: DFDDiagram.pdf used on input line 261.
-(pdftex.def)             Requested size: 323.9978pt x 242.99922pt.
- [13
-
- <./DFDDiagram.pdf>]
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
- [14] [15]
-Chapter 4.
-<survey_pics/numeric/power_source.png, id=363, 564.1075pt x 288.07625pt>
+] <survey_pics/numeric/power_source.png, id=474, 649.42625pt x 356.33125pt>
 File: survey_pics/numeric/power_source.png Graphic file (type png)
 
 <use survey_pics/numeric/power_source.png>
 Package pdftex.def Info: survey_pics/numeric/power_source.png used on input lin
-e 382.
-(pdftex.def)             Requested size: 360.0pt x 183.84508pt.
+e 650.
+(pdftex.def)             Requested size: 251.9989pt x 138.26723pt.
 
-<survey_pics/numeric/adds.png, id=364, 523.9575pt x 359.3425pt>
+<survey_pics/numeric/adds.png, id=475, 524.96124pt x 345.29pt>
 File: survey_pics/numeric/adds.png Graphic file (type png)
 
 <use survey_pics/numeric/adds.png>
-Package pdftex.def Info: survey_pics/numeric/adds.png used on input line 389.
-(pdftex.def)             Requested size: 360.0pt x 246.90479pt.
+Package pdftex.def Info: survey_pics/numeric/adds.png used on input line 657.
+(pdftex.def)             Requested size: 251.9989pt x 165.74785pt.
 
-<survey_pics/numeric/public_service.png, id=365, 508.90125pt x 337.26pt>
+<survey_pics/numeric/public_service.png, id=476, 570.13pt x 368.37625pt>
 File: survey_pics/numeric/public_service.png Graphic file (type png)
 
 <use survey_pics/numeric/public_service.png>
 Package pdftex.def Info: survey_pics/numeric/public_service.png used on input l
-ine 396.
-(pdftex.def)             Requested size: 360.0pt x 238.58656pt.
- [16
-
-] [17 <./survey_pics/numeric/power_source.png>] [18 <./survey_pics/numeric/adds
-.png>] [19 <./survey_pics/numeric/public_service.png>]
-<survey_pics/numeric/power_demanded.png, id=385, 619.31375pt x 198.7425pt>
+ine 664.
+(pdftex.def)             Requested size: 251.9989pt x 162.82239pt.
+ [30 <./survey_pics/numeric/power_source.png> <./survey_pics/numeric/adds.png>]
+ [31 <./survey_pics/numeric/public_service.png>]
+<survey_pics/numeric/power_demanded.png, id=488, 619.31375pt x 198.7425pt>
 File: survey_pics/numeric/power_demanded.png Graphic file (type png)
 
 <use survey_pics/numeric/power_demanded.png>
 Package pdftex.def Info: survey_pics/numeric/power_demanded.png used on input l
-ine 415.
+ine 682.
 (pdftex.def)             Requested size: 360.0pt x 115.53152pt.
 
-<survey_pics/numeric/game_pase.png, id=386, 631.35875pt x 180.675pt>
+<survey_pics/numeric/game_pase.png, id=489, 631.35875pt x 180.675pt>
 File: survey_pics/numeric/game_pase.png Graphic file (type png)
 
 <use survey_pics/numeric/game_pase.png>
-Package pdftex.def Info: survey_pics/numeric/game_pase.png used on input line 4
-22.
+Package pdftex.def Info: survey_pics/numeric/game_pase.png used on input line 6
+89.
 (pdftex.def)             Requested size: 360.0pt x 103.02165pt.
 
-<survey_pics/numeric/cost.png, id=387, 1146.2825pt x 199.74625pt>
+<survey_pics/numeric/cost.png, id=490, 1146.2825pt x 199.74625pt>
 File: survey_pics/numeric/cost.png Graphic file (type png)
 
 <use survey_pics/numeric/cost.png>
-Package pdftex.def Info: survey_pics/numeric/cost.png used on input line 430.
+Package pdftex.def Info: survey_pics/numeric/cost.png used on input line 697.
 (pdftex.def)             Requested size: 360.0pt x 62.73143pt.
- [20 <./survey_pics/numeric/power_demanded.png> <./survey_pics/numeric/game_pas
-e.png>]
-<survey_pics/numeric/frusterated.png, id=402, 873.2625pt x 220.825pt>
+ [32 <./survey_pics/numeric/power_demanded.png>] [33 <./survey_pics/numeric/gam
+e_pase.png> <./survey_pics/numeric/cost.png>] <survey_pics/numeric/frusterated.
+png, id=509, 873.2625pt x 220.825pt>
 File: survey_pics/numeric/frusterated.png Graphic file (type png)
 
 <use survey_pics/numeric/frusterated.png>
 Package pdftex.def Info: survey_pics/numeric/frusterated.png used on input line
- 451.
+ 717.
 (pdftex.def)             Requested size: 360.0pt x 91.03415pt.
-
-<survey_pics/numeric/playing_experience.png, id=403, 752.8125pt x 240.9pt>
+ [34 <./survey_pics/numeric/frusterated.png>]
+<survey_pics/numeric/playing_experience.png, id=515, 752.8125pt x 240.9pt>
 File: survey_pics/numeric/playing_experience.png Graphic file (type png)
 
 <use survey_pics/numeric/playing_experience.png>
 Package pdftex.def Info: survey_pics/numeric/playing_experience.png used on inp
-ut line 460.
+ut line 728.
 (pdftex.def)             Requested size: 360.0pt x 115.20428pt.
 
-<survey_pics/numeric/learning.png, id=404, 1006.76125pt x 229.85875pt>
+<survey_pics/numeric/learning.png, id=517, 1006.76125pt x 229.85875pt>
 File: survey_pics/numeric/learning.png Graphic file (type png)
 
 <use survey_pics/numeric/learning.png>
-Package pdftex.def Info: survey_pics/numeric/learning.png used on input line 46
-8.
+Package pdftex.def Info: survey_pics/numeric/learning.png used on input line 73
+7.
 (pdftex.def)             Requested size: 360.0pt x 82.1914pt.
-
-<survey_pics/numeric/mis_clicked.png, id=405, 852.18375pt x 228.855pt>
+ [35 <./survey_pics/numeric/playing_experience.png> <./survey_pics/numeric/lear
+ning.png>]
+<survey_pics/numeric/mis_clicked.png, id=523, 852.18375pt x 228.855pt>
 File: survey_pics/numeric/mis_clicked.png Graphic file (type png)
 
 <use survey_pics/numeric/mis_clicked.png>
 Package pdftex.def Info: survey_pics/numeric/mis_clicked.png used on input line
- 476.
+ 747.
 (pdftex.def)             Requested size: 360.0pt x 96.68065pt.
 
-<survey_pics/numeric/tutorial.png, id=406, 1105.12875pt x 255.95625pt>
+<survey_pics/numeric/tutorial.png, id=525, 1105.12875pt x 255.95625pt>
 File: survey_pics/numeric/tutorial.png Graphic file (type png)
 
 <use survey_pics/numeric/tutorial.png>
-Package pdftex.def Info: survey_pics/numeric/tutorial.png used on input line 48
-4.
+Package pdftex.def Info: survey_pics/numeric/tutorial.png used on input line 75
+7.
 (pdftex.def)             Requested size: 360.0pt x 83.37616pt.
-
-<survey_pics/numeric/future_learning.png, id=407, 840.13875pt x 236.885pt>
+ [36 <./survey_pics/numeric/mis_clicked.png> <./survey_pics/numeric/tutorial.pn
+g>]
+<survey_pics/numeric/future_learning.png, id=531, 840.13875pt x 236.885pt>
 File: survey_pics/numeric/future_learning.png Graphic file (type png)
 
 <use survey_pics/numeric/future_learning.png>
 Package pdftex.def Info: survey_pics/numeric/future_learning.png used on input 
-line 491.
+line 766.
 (pdftex.def)             Requested size: 360.0pt x 101.50433pt.
- [21 <./survey_pics/numeric/cost.png>] [22 <./survey_pics/numeric/frusterated.p
-ng> <./survey_pics/numeric/playing_experience.png>] [23 <./survey_pics/numeric/
-learning.png> <./survey_pics/numeric/mis_clicked.png> <./survey_pics/numeric/tu
-torial.png>] [24 <./survey_pics/numeric/future_learning.png>]
-<survey_pics/post_and_pre/workings.png, id=432, 713.66624pt x 378.41376pt>
+ [37 <./survey_pics/numeric/future_learning.png>]
+<survey_pics/post_and_pre/workings.png, id=541, 713.66624pt x 378.41376pt>
 File: survey_pics/post_and_pre/workings.png Graphic file (type png)
 
 <use survey_pics/post_and_pre/workings.png>
 Package pdftex.def Info: survey_pics/post_and_pre/workings.png used on input li
-ne 523.
+ne 803.
 (pdftex.def)             Requested size: 360.0pt x 190.88667pt.
- [25]
-<survey_pics/post_and_pre/origins.png, id=439, 713.66624pt x 377.41pt>
+ [38] [39 <./survey_pics/post_and_pre/workings.png>]
+<survey_pics/post_and_pre/origins.png, id=554, 713.66624pt x 377.41pt>
 File: survey_pics/post_and_pre/origins.png Graphic file (type png)
 
 <use survey_pics/post_and_pre/origins.png>
 Package pdftex.def Info: survey_pics/post_and_pre/origins.png used on input lin
-e 533.
+e 814.
 (pdftex.def)             Requested size: 288.0011pt x 152.30312pt.
- [26 <./survey_pics/post_and_pre/workings.png>]
-Overfull \hbox (3.33234pt too wide) in paragraph at lines 541--542
-\OT1/cmr/m/n/12 data trends com-pared to the pre-vi-ous two sec-tions which sho
-wed promis-
- []
-
-[27 <./survey_pics/post_and_pre/origins.png>] [28]
-<survey_pics/post_and_pre/pros.png, id=455, 710.655pt x 385.44pt>
+ [40 <./survey_pics/post_and_pre/origins.png>] <survey_pics/post_and_pre/pros.p
+ng, id=562, 710.655pt x 385.44pt>
 File: survey_pics/post_and_pre/pros.png Graphic file (type png)
 
 <use survey_pics/post_and_pre/pros.png>
-Package pdftex.def Info: survey_pics/post_and_pre/pros.png used on input line 5
-48.
+Package pdftex.def Info: survey_pics/post_and_pre/pros.png used on input line 8
+24.
 (pdftex.def)             Requested size: 288.0011pt x 156.2082pt.
 
-<survey_pics/post_and_pre/cons.png, id=456, 709.65125pt x 370.38374pt>
+<survey_pics/post_and_pre/cons.png, id=563, 709.65125pt x 370.38374pt>
 File: survey_pics/post_and_pre/cons.png Graphic file (type png)
 
 <use survey_pics/post_and_pre/cons.png>
-Package pdftex.def Info: survey_pics/post_and_pre/cons.png used on input line 5
-55.
+Package pdftex.def Info: survey_pics/post_and_pre/cons.png used on input line 8
+31.
 (pdftex.def)             Requested size: 288.0011pt x 150.31543pt.
- [29 <./survey_pics/post_and_pre/pros.png> <./survey_pics/post_and_pre/cons.png
->] [30]
-Chapter 5.
-[31
-
-] [32
-
-]
+ [41 <./survey_pics/post_and_pre/pros.png> <./survey_pics/post_and_pre/cons.png
+>] [42]
 Chapter 6.
-[33
+[43
 
-
-] [34] (./ubc_2015_spring_kudlac_raffi.bbl
+] [44] (./ubc_2015_spring_kudlac_raffi.bbl
 (./ubc_2015_spring_kudlac_raffi.brf)
 \tf@brf=\write9
 \openout9 = `ubc_2015_spring_kudlac_raffi.brf'.
 
-) [35
-
-] [36
-
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ñ in font cmr12!
+Missing character: There is no ¢ in font cmr12!
+) [45
 
 ]
-Appendix A.
-[37
-
-] [38] [39]
-Appendix B.
-[40
-
-] [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 699.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 699.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 956.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 956.
  (./ubc_2015_spring_kudlac_raffi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 699.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 699.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 956.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 956.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: EEFF47269F832FD7FAC0A97218D5CB35;1786.
+(rerunfilecheck)             Checksum: F3002FFF7469130A5E997221C92E0558;2179.
 Package rerunfilecheck Info: File `ubc_2015_spring_kudlac_raffi.brf' has not ch
 anged.
-(rerunfilecheck)             Checksum: 577CC9538633D132318C36857C068416;243.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 699.
+(rerunfilecheck)             Checksum: 42EF585E56AC7C474CA24FF65F9B52C6;504.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 956.
  ) 
 Here is how much of TeX's memory you used:
- 25724 strings out of 493117
- 491197 string characters out of 6135433
- 545829 words of memory out of 5000000
- 28630 multiletter control sequences out of 15000+600000
- 17634 words of font info for 68 fonts, out of 8000000 for 9000
+ 25800 strings out of 493117
+ 492245 string characters out of 6135433
+ 545514 words of memory out of 5000000
+ 28669 multiletter control sequences out of 15000+600000
+ 14503 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,14n,55p,10427b,763s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,15n,55p,10427b,866s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/te
-xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on ubc_2015_spring_kudlac_raffi.pdf (46 pages, 2481504 bytes).
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on ubc_2015_spring_kudlac_raffi.pdf (50 pages, 3813599 bytes).
 PDF statistics:
- 598 PDF objects out of 1000 (max. 8388607)
- 507 compressed objects within 6 object streams
- 120 named destinations out of 1000 (max. 500000)
- 368 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 676 PDF objects out of 1000 (max. 8388607)
+ 583 compressed objects within 6 object streams
+ 163 named destinations out of 1000 (max. 500000)
+ 410 words of extra memory for PDF output out of 10000 (max. 10000000)
 

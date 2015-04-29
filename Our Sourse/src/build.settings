@@ -8,8 +8,15 @@ settings =
     },
         
 	-- Android permissions
-
-	androidPermissions = {
-  		"android.permission.INTERNET",
-  	},
+	
+	android =
+		{
+			usesExpansionFile = true,
+			usesPermissions =
+			{
+				"android.permission.INTERNET",
+				"com.android.vending.CHECK_LICENSE",
+				"android.permission.WRITE_EXTERNAL_STORAGE"
+			},
+		},	
 }

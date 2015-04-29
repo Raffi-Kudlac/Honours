@@ -1409,3 +1409,91 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi
 
 !ENTRY org.eclipse.ui 4 4 2015-03-28 10:52:21.867
 !MESSAGE Unable to find Action Set: org.eclipse.rse.core.search.searchActionSet
+!SESSION 2015-03-28 15:33:07.239 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-03-28 15:33:11.286
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:33:12.056
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:33:12.057
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:33:12.057
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:33:12.058
+!MESSAGE Unable to find Action Set: org.eclipse.rse.core.search.searchActionSet
+!SESSION 2015-03-28 15:54:20.638 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-03-28 15:54:24.334
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:54:25.079
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:54:25.079
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:54:25.080
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 15:54:25.080
+!MESSAGE Unable to find Action Set: org.eclipse.rse.core.search.searchActionSet
+!SESSION 2015-03-28 16:06:35.565 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-03-28 16:06:39.343
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 16:06:40.030
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 16:06:40.030
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 16:06:40.031
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
+
+!ENTRY org.eclipse.ui 4 4 2015-03-28 16:06:40.031
+!MESSAGE Unable to find Action Set: org.eclipse.rse.core.search.searchActionSet
+!SESSION 2015-04-28 16:00:40.441 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_11
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/raffi/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/raffi/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2015-04-28 16:00:45.009
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2015-04-28 16:00:45.878
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-04-28 16:00:45.879
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
+
+!ENTRY org.eclipse.ui 4 4 2015-04-28 16:00:45.879
+!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
+
+!ENTRY org.eclipse.ui 4 4 2015-04-28 16:00:45.879
+!MESSAGE Unable to find Action Set: org.eclipse.rse.core.search.searchActionSet

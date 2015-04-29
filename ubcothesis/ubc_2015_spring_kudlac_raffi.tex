@@ -81,33 +81,30 @@
 
 % Chapters are the next main unit.
 \chapter{Introduction}
-	“The Source” is an interactive simulation model where the user is charged with the task of providing 
-energy to a growing population. The purpose of the simulation is to show the benefits and detriments of 
-each type of energy source. Although the game targets young adults, primarily around high school and 
-College/university students; anyone can play and and have a learning experience. Two intended outcomes of 
-the simulation are to demonstrate the ratio of energy output to energy source type, and show the inner 
-workings of each. A third outcome of the simulation is show that each type of energy works in the same way 
-at its most basic level, with the exception of solar power converting kinetic energy into electrical energy.
-\bigskip
 
-The user will accomplish the task of providing energy by choosing to invest in different types of energy. 
-The energy types that are at the users' disposal are solar, wind, hydro, coal, oil, gas and nuclear. Users 
-can choose to build any of these power plants, but each type has consequences that others may not have. For 
+  In the world today nearly all people use generated power in some form or another. But not all people can say where their power comes from, or how it gets to them. This work introduces a game called ``The Source'' that is primarily targeted at high school students. In an attempt to broaden people's understanding of the origins of their power, this tablet application aims to show the benefits and detriments of certain types of energy sources. The game is unique to its market area as there are hardly any educational tablet applications on either the Apple or Google store at the time of publication. ``The Source'' has another goal which is that it must provide a positive playing experience to its users. This goal is important to keep users interested in the game and to help them better absorb information. 
+
+\medskip
+  ``The Source" is an interactive energy simulation where the user is charged with the task of providing energy to a growing population. As time progresses the population grows and demand for power increases. The user must supply more and more power to meet the demand, but each type of power has different consequences. The energy types that are at the user's disposal are solar, wind, hydro, coal, oil, gas and nuclear. Users can choose to build any of these power plants, but each type has consequences that others may not have. For 
 example, if a user decided to build a power plant that ran off of coal, environmentalists would be 
 displeased because the burning of coal introduces pollutants into the atmosphere. As well as considering 
 the consequences of their actions, the users must also consider what fuels each power plant and how long 
-each power plant can be sustained for. Fossil fuels and nuclear power are not infinite; the user must find 
+each power plant can be sustained. Fossil fuels and nuclear power are not infinite; the user must find 
 resources to fuel these power plants. Users can choose to invest in renewable resources such as solar, wind 
 and hydro, but the problem the user encounters with these types of resources is that they don't output as 
-much energy as fossil fuels. The users' main objective is to survive for as long as possible and to beat 
-their previous time. 
+much energy as fossil fuels. The user's main objective is to survive for as long as possible and to beat 
+their previous time. As the user plays the game he/she will encounter educational animations and text explaining how each power source operates.
+
+\medskip
+In the following chapters we will discuss in detail the energy sources involved in ``The Source'', the system structure, the testing procedure used to test the application, and the results that were discovered from testing. From the results it will be concluded if the ``The Source'' was successful in its objectives of teaching users about energy and providing a positive playing experience.
+
 
 \chapter{Energy Today}
   In our society, almost all of our energy that powers our homes and businesses is created in the same way. 
 It could be argued that Michael Faraday, the inventor of the concept of the generator, had the biggest 
 effect on the development of our society. In the early 1800's Faraday discovered that a magnet traveling 
 through a coiled wire which could then be redirected 
-to wherever energy was needed. This concept is at the core of all our power generation. In the following sections we will cover a few of the different kinds of power and the pros and cons of each. Power is something that everone uses in thier everyday lives and therefor it is important to have even a general understanding of how it works. 
+to wherever energy was needed. This concept is at the core of all our power generation. In the following sections we will cover a few of the different kinds of power and the pros and cons of each. Power is something that everone uses in their everyday lives and therefor it is important to have even a general understanding of how it works. 
 
 \section{Generators}
   
@@ -116,7 +113,7 @@ to wherever energy was needed. This concept is at the core of all our power gene
 
   \begin{figure}[hbt]{\label{Induction} }
   \begin{center}
-    \includegraphics[width=0.3\textwidth]{Induction}
+    \includegraphics[width=0.5\textwidth]{Induction}
     \caption[Generator Mechanics]{Generator Mechanics \cite{Current}}  
   \end{center}
 \end{figure}
@@ -142,13 +139,12 @@ In order to save water, the steam is collected and condensed back into water to 
 usually built around a water source as water needs to be switched out at times to cool components of the plant. Since plants use water to function it is convientient to have a water source close by. When water gets cycled out of the plant and back into the water source it is warm and can have negative effects on wildlife. Imagine if someone cranked the thermostat in your house to $40^\circ$C, how would you like it?
 
 Fossil fuel power plants generally produce large amounts of power and the price of fossil fuels is generally cheap, but they have huge environmental consequences such as carbon dioxide being produced. Fossil fuel plants also run on a limited resource like coal and once the resource is depleted they will be useless.
-
+\newpage
  \section{Nuclear Power}
 
  Nuclear power may be the most desired power source on the planet. Nuclear power is capable of producing tremendous amounts of power for doing little work. All nuclear power plants today run off of fission, the process of breaking up atoms into smaller ones. The element that nuclear plants currently run off of is Uranium. Uranium has nice properties for being broken apart. One property being that large amounts of energy are released when fission occurs and this energy is given off in the form of heat. Just like fossil fuel 
  power plants nuclear power plants operate by taking this heat, heating water into steam, using the steam 
  to turn a turbine and then the turbine turns a generator. This is shown in Figure \ref{nuclearCycle}.
-
 However the process of getting the heat is dramatically different. In the reactor of a nuclear power 
 plant there are Uranium rods, that fuel the plant. The rods are bombarded with nuclei that breaks apart the 
 Uranium in the rods when it collides with the nuclei. Essentially it is like breaking when playing pool. The cue ball is the nuclei and 
@@ -204,7 +200,7 @@ Although windmills have minimal environmental effects, they have five noticeable
 
 \begin{figure}[hbt]\label{windmillWorkings}
   \begin{center}
-    \includegraphics[width=1\textwidth]{windmill}
+    \includegraphics[width=0.8\textwidth]{windmill}
     \caption[Windmill Workings]{Windmill Workings \cite{Wind}}
   \end{center}
 \end{figure}
@@ -218,118 +214,141 @@ struck with light, they become excited and they raise an energy level. When enou
 
 Solar panels have little to no maintenance cost and only require attention if they break down. They fit nicely on rooftops, and they have hardly any 
 environmental impacts. Unfortunately, solar panels are the least efficient form of generating power, transforming  only about 20\% of the sunlight that hits them into usable electricity. In order to generate any significant amount of usable power, say enough to power amoderately sized population, farms of solar panels need to be built. This takes up huge amounts of space, far greater than any one fossil fueled power plant. With the increase of solar panals the cost also rises. Another drawback of solar panels is that they can only function during the day while the sun is up, which means that another source of power is required for night time activities. 
-\bigskip
+
 \begin{figure}[hbt]\label{solarCell}
   \begin{center}
-    \includegraphics[width=1\textwidth]{Solar2}
-    \caption[Solar Cell Workings]{ Solar Cell Workigns \cite{Solar}}
+    \includegraphics[width=0.8\textwidth]{Solar2}
+    \caption[Solar Cell Workings]{ Solar Cell Workings \cite{Solar}}
   \end{center}
 \end{figure}
 
-
+\newpage
 \section{Summary}
-
+    In summary each power source has its own advantages and disadvantages. Fossil fuels and nuclear power tend to be more powerful, capable of sustaining large populations but run the side effect of pollution the environment. While nature power produce clean energy but take up more space and are less powerful. Below in Tables \ref{table:Summary} and \ref{table:Summaryb} there is a comparison of the different energy sources mentioned in the previous sections.
 \begin{table}[tbph]
 \centering
-\caption{Summary of pros and cons for each power source}
+\caption{Summary of pros and cons for fossil fuels and nuclear power sources}
 \label{table:Summary}
 \begin{tabular}{|c|l|l|}
 \hline
  & \multicolumn{1}{c|}{Pros} & \multicolumn{1}{c|}{Cons} \\ \hline
-Fossile Fuels & \begin{tabular}[c]{@{}l@{}}* Produces large amounts \\    of power\\ \\ \\ * Fuel is cheap to obtain\\ \\ \\ * Can be built close to cities\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Fuel is finite\\ \\ \\ * Pollutes the environment\\ \\ \\ * Disrupts marine wildlife\end{tabular} \\ \hline
-Nuclear & \begin{tabular}[c]{@{}l@{}}* Produces large amounts \\    of power\\ \\ * Fuel is abundant\\ \\ * Produces lower waste\\    than fossil fuels\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Produces radio active \\    waste\\ \\ \\ * Disrupts marine wildlife\\ \\ \\ * Fuel is finite\end{tabular} \\ \hline
-Wind & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ \\ \\ * Produces clean energy\\ \\ \\ \\ * Minimal environmental \\    effects\\ \\ \\ \\ * Low maintenance cost\end{tabular} & \begin{tabular}[c]{@{}l@{}}* People don't like living \\    near windmills\\ \\ \\ * Produces small amounts \\    of power\\ \\ \\ * Must be build in groups\\     to be effective\\ \\ \\ * must be built in windy \\    locations\end{tabular} \\ \hline
-Solar & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ * Produces clean energy\\ \\ * No Environmental effects\\ \\ * low maintenance cost\\ \\ * Integrates well in cities\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Weakest power source \\     at creating  power\\ \\ * Must be built in groups \\    to be effective\\ \\ * Can only work during \\     the day\\ \\ * Costly to build\end{tabular} \\ \hline
-Hydro & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ * Produces clean energy \\    once built\\ \\ * Can produce large \\    amounts of energy\\ \\ * Can run all day and night\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Huge environmental \\    cost to build\\ \\ \\ * Dams can be costly \\    to build\\ \\ \\ * Have to be built by \\    water\end{tabular} \\ \hline
+Fossil Fuels & \begin{tabular}[c]{@{}l@{}}* Produces large amounts \\    of power\\ \\ * Fuel is cheap to obtain\\ \\ * Can be built close to cities\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Fuel is finite\\ \\ * Pollutes the environment\\ \\ * Disrupts marine wildlife\end{tabular} \\ \hline
+Nuclear & \begin{tabular}[c]{@{}l@{}}* Produces large amounts \\    of power\\ \\ * Fuel is abundant\\ \\ * Produces lower waste\\    than fossil fuels\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Produces radio active \\    waste\\ \\ * Disrupts marine wildlife\\ \\ * Fuel is finite\end{tabular} \\ \hline
 \end{tabular}
 \end{table}
 
 
+\begin{table}[tbph]
+\centering
+\caption{Summary of pros and cons for natural power sources}
+\label{table:Summaryb}
+\begin{tabular}{|c|l|l|}
+\hline
+      & \multicolumn{1}{c|}{Pros}                                                                                                                                                                         & \multicolumn{1}{c|}{Cons}                                                                                                                                                                                                               \\ \hline
+Wind  & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ * Produces clean energy\\ \\ * Minimal environmental \\    effects\\ \\ * Low maintenance cost\end{tabular}                             & \begin{tabular}[c]{@{}l@{}}* People don't like living \\    near windmills\\ \\ * Produces small amounts \\    of power\\ \\ * Must be build in groups\\     to be effective\\ \\ * must be built in windy \\    locations\end{tabular} \\ \hline
+Solar & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ * Produces clean energy\\ \\ * No Environmental effects\\ \\ * low maintenance cost\\ \\ * Integrates well in cities\end{tabular}       & \begin{tabular}[c]{@{}l@{}}* Weakest power source \\     at creating  power\\ \\ * Must be built in groups \\    to be effective\\ \\ * Can only work during \\     the day\\ \\ * Costly to build\end{tabular}                         \\ \hline
+Hydro & \begin{tabular}[c]{@{}l@{}}* Fuel source is infinite\\ \\ * Produces clean energy \\    once built\\ \\ * Can produce large \\    amounts of energy\\ \\ * Can run all day and night\end{tabular} & \begin{tabular}[c]{@{}l@{}}* Huge environmental \\    cost to build\\ \\ * Dams can be costly \\    to build\\ \\ * Have to be built by \\    water\end{tabular}                                                                        \\ \hline
+\end{tabular}
+\end{table}
 
 \chapter{The Source}
 
-The design of the system, as illustrated in figure 3.1 below, is straightforward. The user interacts with 
+``The Source'' is a strategy game that relies heavily on the user's capabiliy to think ahead. Users are constantly playing against the clock to determine how long can they last for with the current amount of resources that they have, and what should their next move be. As mentioned before, ``The Source'' is a energy simulator where users have to supply power to a population of people. As time progresses the population grows and the demand for power grows with it. As the demand increases it becomes harder for the user to supply the power needed to feed the population.
+
+The design of the system, as illustrated in Figure \ref{DFD Diagram}, is straightforward. The user interacts with 
 the system by purchasing power plants. This is done on a designated screen when there is land for the user 
-to build on. Once the user has picked a type of power he/she must then provide the resources necessary for 
-the power plant to function. The user can obtain fossil fuels by mining for them on the screen designated 
+to build on. If the user selects a fossil fueled or nuclear power plant then he/she must provide resources for the plant to use. The user can obtain fossil fuels or uranium by mining for them on the screen designated 
 to represent the land that is currently available for the user to excavate. Once resources have been 
-obtained and a power plant is built, energy can then be created and supplied to the population.
+obtained and a power plant is built, energy can then be created and supplied to the population. After supplying power the population pays the user and this earned money can then be spent to obtain more power sources to meet the rising demand. Users can navigate through the game using the navigation panel in the bottom left of the screen. An example is shown in \ref{control panel}. Using this panel, that exists on every screen, the user can get to almost any other screen.
 \bigskip
-
-\begin{figure}[hbt]
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{DFDDiagram}
-    \caption[Figure 1]{\label{DFD Diagram} }
-  \end{center}
-\end{figure}
-
 
 Another option that the user has is that he/she can purchase advertisements or public services to help 
 him/her flourish in the simulation. For example, a user could purchase an advertisement that educates the 
 population to not waste power. This advertisement would reduce the usage of power and allow the user to 
-more easily meet the demand. Users can also buy public services. An example would be a geologist that would 
-survey the land and tell the user where to mine for a specific resource. Both of these purchases can 
-influence groups within the game, such as environmentalists or public opinion. 
+more easily meet the demand. Users can also buy public services. An example of a public service would be a geologist that would 
+survey the land and tell the user where to mine for a specific resource. Both public services and advertisements influence groups within the game, such as environmentalists and public opinion. 
 \bigskip
 
+User's choices in the game affect groups as well, for example if a user invested in coal fueled power plants then the environmentalist group would be displeased. Groups provide small perks or punishments to the user, usually in the form of grants or fines, which are dependent on the user's play style and choices within the simulation. 
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{DFDDiagram}
+    \caption[System diagram]{\label{DFD Diagram} }
+  \end{center}
+\end{figure}
 
-Users choices in the game affect groups as well, for example if a user invested in coal fueled power plants then the environmentalists group would not be displeased. Groups provide small perks or punishments to the user, usually in the form of grants or fines, which are dependent on the users play style and choices within the simulation. 
 
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{panel}
+    \caption[In game navigation panal]{\label{control panel} }
+  \end{center}
+\end{figure}
+
+\newpage
+\section{High Scores}
+    Each time the user plays the game and their session ends he/she is presented with their score that they earned. The score is built from how long the user was able to stay in the game. The longer the user survives for, the better their score will be. If there is a tie in time then the measurement changes to number of blackouts. Who ever has the least amount of blackouts wins. In rare cases if there is still a tie then the newer score is placed above the older one. If the score is within the top five scores ever played on their current device then the score is saved to compete against it next time. The top five scores are saved on a local file so every device that contains a copy of ``The Source'' will have its own high scores file.
+
+    Every time the user plays the game and their session ends he/she will have the opportunity to send their scores to the parse database to be compared with other peoples scores. Before sharing their score the user sees how he/she did compared to the current scores on the database. If the user likes his/her placement he/she can chose to send their scores to the database, saving their score for others to see. Figure \ref{heighscores} shows this interaction. Even though users can see how well they placed in the world they can only see the top twenty scores in the world. This is the only way in the game that the user can interact with the parse database.
+
+    \begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{thesourceachitecture}
+    \caption[System architecture]{\label{heighscores} }
+  \end{center}
+\end{figure}
+\newpage
+
+\section{Tutorial \& About}
+    From the main page the user has three options, to play the game, to see the tutorial, and to visit the about page. The tutorial is currently a slide show of the available screens in the game that explains the purpose of each screen, how the user is to interact with it, and the user's overall task. The user can also visit the about page where credit is given to the artists of the game since the coding and art work were done by different people. 
 
 \section{Screen Layout}
-“The Source” is composed of 8 different screen. The first five mentioned below are know as the five core screens. You can get to any of these screens from any other screen in the game. 
+``The Source'' is composed of 8 different screens. The first five mentioned below are know as the five core screens. You can get to any of these screens from any other screen in the game. The access to these screen is in the navigation panel discussed earlier.
 \bigskip
 
 \noindent \large \textbf{ The Business Screen (one of the five core screens):} \newline
 \indent In this screen the user is able to purchase advertisements and pubic services to help him/her 
 progress through the simulation. Here the user is also able to see their progress throughout the game. The 
-user will be able to see data like, money and energy made over time.  
+user will be able to see data like money and energy made over time.  
 \bigskip
 
 \noindent The City Screen (one of the five core screens): \newline
-\indent Here the user is able to see how the population is doing, the amount of power currently demanded and the amount supplied. This screens purpose is to purely display information.
+\indent Here the user is able to see how the population is doing, the amount of power currently demanded, and the amount supplied. This screen's purpose is to display information.
 \bigskip
 
 \noindent The Power Plant Screen (one of the five core screens): \newline
-\indent This screen, possibly the most education screen shows the workings of each type of energy as well as the inner workings of a generator. As well as seeing this information this screen allows the user to 
-see specifics on the current power plants that he/she has built. Specifics being information such as 
-amount of power produced, cost to maintain, resources required to maintain and more. 
+\indent This screen, possibly the most educational screen, shows the workings of each type of energy and the inner workings of a generator. As well as seeing this information this screen allows the user to 
+see specifics on the current power plants that he/she has built. Specifics include information such as 
+amount of power produced, cost to maintain, resources required to maintain, and more. 
 \bigskip
 
 \noindent The Land Screen (one of the five core screens): \newline
-\indent From this screen the user can build power power plants that run off of fossil fuels and uranium. The user will have some designated land to start but he/she also has the option to buy more land to build 
+\indent From this screen the user can build power plants that run off of fossil fuels and uranium. The user will have some designated land to start but he/she also has the option to buy more land to build 
 on if the starting land is all used up.
 \bigskip
 
 \noindent The Resource Screen (one of the five core screens): \newline
-\indent The purpose of this screen is to act like a map for the resources at the users disposal. From this 
-screen the user can see all the resource that will be needed and the user can get at the three resource 
+\indent The purpose of this screen is to act like a map for the resources at the user's disposal. From this 
+screen the user can see all the resources that will be needed and the user can get at the three resource 
 screens that will allow the user to extract the resources.
 \bigskip
 
 \noindent The Hydro Screen: \newline
-\indent From here the user can view numerous rives that could be damned in order to generate power. Once a 
-river is damned it will be shown on the screen. Rivers can only be damed once. 
+\indent From here the user can view numerous rivers that could be dammed in order to generate power. Once a 
+river is dammed it will be shown on the screen. Rivers can only be dammed once. 
 \bigskip
 
 \noindent Solar/wind Power Screen: \newline
-\indent This screen shows land in the form of a grid that the user has at his/her to build windmills on or 
-solar canals. Building will have a cost. Once something is built it can be dismantled to open the land 
-to have something else built. 
+\indent This screen shows land in the form of a grid that the user has at his/her disposal to build windmills or solar panels on. Building has a cost, but once something is built it can be dismantled to open the land to have something else built. 
 \bigskip
 
 
 \noindent The Fossil Fuels Screen: \newline
-\indent Here land that the user can mine will be shown. This will be one large grid that will hold all the 
-fossil fuels and uranium. The user can mine a section by selecting it and he or she will have a chance 
-of discovering any one of the four resources. The resource discovered will go towards fueling the built 
-power plants. Once a section is mined it can not be reused. 
+\indent Here the land that the user can mine will be shown. This screen will be one large grid that will hold all the fossil fuels and uranium. The user can mine a section by selecting it and he or she will have a chance of discovering any combination of the four resources. The resources discovered will go towards fueling the built power plants. Once a section is mined it can not be mined again. 
 \bigskip
 
 \noindent The Static Screen: \newline
-\indent The static screen is not really a screen at all but a combination of static images that remain on 
-top of all other screens for the entire duration of the game. This serves as the means of navigation 	
-between the five core screens. As well as displaying some information such as money and time. 
+\indent The static screen is not really a screen at all, but it is a combination of static images that remain on top of all other screens for the entire duration of the game. This screen serves as the means of navigation between the five core screens, and also displays information like money and time. 
 \bigskip
 
 %Include citations in your thesis as you write:
@@ -365,62 +384,310 @@ between the five core screens. As well as displaying some information such as mo
 
 % You should really put text in between figures so LaTeX has more flexibility to place the figure at the appropriate location.
 
+\chapter{Evaluation Plan}
+
+The power-related app community in the Google Play Store and the Apple app store is practically nonexistent and contains only a handful of applications. The apps that were the most similar to ``The Source" in terms of having the user build his or her own power plants were city simulations such as ``City Island 2" \cite{CityIsland2}, ``Moon Base"\cite{MoonBase} and ``Megapolis''\cite{Megapolis}. In these apps there was no educational view as to how the power was generated, but often apps like the ones listed covered pros and cons of the types of power that were available. From an educational direction there were very few apps that explained how power plants worked, and the ones that did explain only focused on one type of power. The types of power usually covered by these types of apps were nuclear and solar as those are the more interesting of all the types. As of a searches performed prior to March 2nd 2015, there were no apps in either store that directly focused on energy as a whole and providing an understanding to the user as to how multiple power sources work.
+
+  Not surprisingly, the Internet had a more plentiful market of educational energy-based games. These games covered multiple energy sources and gave detailed descriptions, animations, and data on how these power sources operate. A good example of such a game would be ``Save the World"\cite{SavetheWorld}.  Although not all games have a goal of being educational, there were a few like ``Save the World"\cite{SavetheWorld} and ``Energyville" \cite{Energyville} that clearly had educational objectives. In comparison to all of the other games that were reviewed, the overall goals of these games were the same as those of “The Source”, although they differed in how the user accomplishes tasks, in design, and in the variety of power plants that were covered.
+
+  In summary, there are application in the Google Play and Apple App store that have covered energy and contain education facts about power sources. There are application on the web that are directly made for the purpose of educating users on many different kinds of power and how they operate. All of these applications understand the critical importance of a positive playing experience and are designed with that in mind. What ``The Source" has done differntly is that is has targeted a section of the market that has been untouched in an educational aspect. ``The Source" differs from other apps in the variety of power sources that are covered, its educational focus, and unique design. As such ``The Source'' will only be sucessful if it teaches its targeted users, app users about the different kinds of power that it covers and if it provides a pleasant playing experience.  
+
+  %In summary ``The Source" differs from any energy based app in the Google Play and Apple app store in the variety of power sources that are covered, educational focus, and unique design. ``The Source" is also unique in comparison to these other apps because of its educational focus which does not exist in most games. In comparison to educational web based applications ``The Source" only differs in the content that it covers. This is important because it means that new content is being covered and shown in a different manner than what other people are doing.
+
+  In order for “The Source” to be successful it must be evaluated in two ways. The first way ``The Source" must be evaluated is in terms of usability, it must therefore meet the following two criteria. The application must be engaging to the user and provide an overall pleasant playing experience. The reason ``The Source'' must be evaluated in terms of usability is because users will only willingly dedicate his or her time to games if the game is user friednly. The second way ``The Source" must be evaluated is in educational terms. The application must help the user to comprehend general facts about where power comes from and how power is generated. The reason ``The Source'' must be evaluated in educational terms is that educating its users about energy is one of its core purposes. It is important to know if the ``The Source'' was successful or not. If ``The Source" is successful in these two ways then it will also be successful in being different from all other content in its market. In order to discover if the game is successful in meeting these criteria, it will be tested on a group of test subjects discussed below.
+
+  \section{The Test Subjects}
+      The Source is primarily targeted at high school students, but due to time constraints and a lack of high school students the game will be tested on about 20 university students. More test subjects would have been prefered but due to time and resource constraints this is what could be managed. More would have been prefered  Students that are tested will not have played the game before but way have played the tutorial. Each student will fill out two questionnaires, one dedicated to evaluating the numeric stability of the game and one dedicated to discovering if the users have learned anything while playing the game. If both questionnaires return with significant results then it will be indicative of the participants having had an enjoyable and educational experience. 
+
+  \section{The Testing Process}
+
+    The whole testing period should last no longer than an hour. Each questionnaire will be taken online using google forms. Once a user has completed the first questionnaire, the pre knowledge test, which should take about 5 - 10 minutes he/she will be presented with the application on a personal tablet. The first thing the user will be instructed to do will to be to go through the tutorial which should take 5 - 10 minutes. After completion, the user will play the game for the first time. This will be a trial run for the user to get used to the mechanics of the system and for them explore what can be done in the app. The instructor (me) will be present to answer questions by the user. The only questions that can not be answered are those on the topic of how the energy source operates. The user can go through as many ``trial" runs as he/she wants (at least one though) but the final time should be a real attempt at trying to survive as long as possible in the game. Since the user can repeat this as many times as he/she wants it's a little hard to estimate the time but the trial period should roughly be another 5 - 10 minutes, possibly less. The final time should be about 15 - 20 minutes. If it lasts past 30 minutes the trial will be cut off. At any time the user can pause the game to use the restroom or whatnot. This time combined with the users trial time will be enough to determine if the user has learnt anything. Once the user has finished playing a game he/she will complete a questionnaire. This should take another 15 - 20 minutes in theory coming up to total sum of roughly an hour. 
+
+  \subsection{Data to be monitored by the system}
+  Every five years the system will automatically record the following information and a random number ID will be generated for each time the game is played (If the user presses the reset button, a new ID is generated). In order to remove the test runs from the actual trial. The Internet connection will be turned off. When the user is ready to play for real, the connection will be turned on allowing the data to be sent to parse. Information that the system will record are
+
+  \begin{itemize}
+  \item current amount of money
+  \item how many times each advertisement was activated
+  \item how many times each public service was activated
+  \item how many times was the fast forward button used
+  \item number of fossil fueled power plants built
+  \item number of windmill and solar panels built
+  \item number of dams built
+  \item number of occurred blackouts
+  \item number of tiles mined
+  \item amount of each resource the user currently has 
+  \item power demanded and supplied
+  \item the current year
+\end{itemize}
+
+  Gathering this data will help reveal potential flaws. For example, the user should not have \$1000 five minutes into the game because then the game would pose no challenge as the user could purchase anything.
+
+  Knowing how which ads and public services are used will reveal any numerical flaws with each perk. Flaws could include the perk costing to much or not being powerful enough to use, making the perk useless.
+
+  Knowing how many times the fast forward button is used will help give a sense if the user thinks the game pace is too slow. Generally a comfortable pace helps a game be enjoyable. This question is also reflected in the questionnaire to help get an understanding of the user's thoughts
+
+
+  Similar to the ads and public services, knowing how often each power source is used will help reveal any flaws that may exist. Power sources that are not build may not be strong enough or may be too expensive. If only a few power sources are built then those few could be too powerful.
+
+  Knowing how many blackouts have occurred in each time interval is important. In theory few blackouts should happen in the beginning and more should occur near then end when resources are fewer and demand has increased. If the data shows that multiple blackouts are frequently occurring early on then this means that it is too hard to keep up with the demand. 
+
+  Knowing how much power the user is supplying, how much power is demanded, how many tiles have been mined and knowing how much of each resource the user currently has reveals no flaws but having the information available is good. This information is recorded just in case. 
+
+  Keeping track of the year is just a reference to know when events are happening in the game and is required by other mentioned data points. 
+
+  \section{Usability Stability Questionnaire}
+
+    The questionnaire's purpose is to discover the user's tactics during the game, for example, why he or she made certain choices. Knowing this information will reveal numerical flaws in the game, such as if a power source is too strong or if an aid is too weak. This information is important to know because it reveals imbalances in the game that would need to be fixed. 
+    The questionnaire will be broken up into these three criteria usefulness, difficulty of the game and user experienc.
+    
+    \textbf{In order to access usefulness of certain items. The user will answer the following}
+
+    \begin{enumerate}
+      \item Why did you not build some of the power plants available? (see administrator)
+      \item Why did you not purchase some of the advertisements? (see administrator for specifics)
+      \item Why did you not purchase some of the public services? (see administrator for specifics)
+      \item Were there any pieces of information that were not displayed that should have been displayed
+    
+
+    \newpage
+    \textbf{In order to access the level of difficulty of the game he/she will answer 
+    the following}
+
+      \item How challenging was it to keep up with the power demanded?
+      \begin{table}[tbph]
+        \centering        
+        \label{table:challenging}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Very Easy & Easy & Neutral & Difficult & Very Difficult \\ \hline
+          1 & 2 & 3 & 4 & 5 \\ \hline
+        \end{tabular}
+      \end{table}
+
+      \item Please rate how you felt the pace of the game was.
+      ``I felt the game was..''
+
+      \begin{table}[tbph]
+        \centering        
+        \label{table:pase}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Too Slow & A Little Slow & Just Right & A little Fast & Too Fast \\ \hline
+          1 & 2 & 3 & 4 & 5 \\ \hline
+        \end{tabular}
+      \end{table}
+
+      This is question is in this section because the users interpretation of the pase of a game can greatly influence if the game is difficuly or not. To quick pase games users must work to keep up with events that are progressing. The faster the game, the more information the user must process in a shorter mount of time. This makes games harder.  
+
+      \item 
+
+      \begin{enumerate}
+        \item Indicate to what extent you agree with the following statement: ``I found some items were too expensive or too cheap, thus, making the game too easy or too hard to play."
+        \bigskip
+        \begin{table}[tbph]
+          \centering        
+          \label{table:price}
+          \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            Strongly Disagree & Disagree & Neutral & Agree & Strongly Agree \\ \hline
+            1 & 2 & 3 & 4 & 5 \\ \hline
+          \end{tabular}
+        \end{table}
+        
+        \item Please list the items you found to be too expensive (if any):
+
+        \item Please list the items you found to be too cheap  (if any):
+      \end{enumerate}
+
+      \bigskip
+      \textbf{In order to access the users playing experience he/she will answer the following}
+
+      \item Choose the statement that best applies to you \newline
+          a) I never got frustrated \newline
+          b) I got frustrated a little \newline
+          c) I got frustrated a lot \newline
+          d) I was frustrated all the time 
+\newpage
+      \item What would you rate your playing experience?
+      \begin{table}[tbph]
+        \centering        
+        \label{table:experience}          
+          \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Very Poor & Poor & Neutral & Good & Very Good \\ \hline
+          1 & 2 & 3 & 4 & 5 \\ \hline
+          \end{tabular}
+      \end{table}
+
+      \item To what extent would you agree with the following statement: ``I learned about energy from playing  this game."
+
+      \begin{table}[tbph]
+        \centering        
+        \label{table:learning}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Strongly Disagree & Disagree & Neutral & Agree & Strongly Agree \\ \hline
+          1 & 2 & 3 & 4 & 5 \\ \hline
+        \end{tabular}
+      \end{table}
+
+      \item Please state the frequency to which you mis-clicked or got lost looking for specific content
+      
+      \begin{table}[tbph]
+        \centering        
+        \label{table:misClick}
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+          Never & Rarely & Sometimes & Always \\ \hline
+          1 & 2 & 3 & 4 \\ \hline
+        \end{tabular}
+      \end{table}
+      
+      This is in this section becuase although mis-clicking and potentially getting lost in the game do make the game harder, those would be unintended difficulties that the user would face. Therefor the recording of the users mis-clicks are in the playing experience section. 
+
+      \newpage
+      \item Please state how much you agree with the following statement. ``After going through the tutorial. I felt that I understood the major aspects and mechanics of the game"
+      \bigskip
+      \begin{table}[tbph]
+        \centering        
+        \label{table:tutorial}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Strongly Disagree & Disagree & Neutral & Agree & Strongly Agree \\ \hline
+          1 & 2 & 3 & 4 & 5 \\ \hline
+        \end{tabular}
+      \end{table}
+
+      \item  After playing the game how likely is it that you would go research power on your own time?
+      \begin{table}[tbph]
+        \centering        
+        \label{table:research}
+        \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Definetly Not & Probably Not & Maybe & Probably & Definetly \\ \hline
+        1 & 2 & 3 & 4 & 5 \\ \hline
+        \end{tabular}
+      \end{table}
+
+      \item Additional Comments
+
+    \end{enumerate}
+
+\section{The Educational Questionnaire}
+    This questionnaire's purpose is to discover if the user learned anything while playing the game. In theory the people who know nothing should learn a lot, the people who know a little should only learn a little as the game only covers power at a general level, and the people who are knowledgeable should learn almost nothing. In order to know if a user has learned anything he/she will be required to complete a short knowledge test before and after completion of the game. This way the pre and post answers will be compared to discover if the user has learned anything.
+
+Specific things that this user group will have to do is to give a brief understanding of each kind of power, for example:
+
+\indent \textbf{Hydro}
+
+  \begin{enumerate}
+    \item What is source of energy for a hydro-electric dam?
+
+    \begin{enumerate}
+      \item water  
+      \item tidal-waves    
+      \item chemical reaction with water 
+      \item rain
+
+    \end{enumerate}
+
+    \item Explain how a hydro-electric damn uses the energy source to create power.
+    \begin{enumerate}
+      \item Water powered by gravity turns a turbine which in turn powers the generator which makes a   current 
+  
+      \item Water is pumped past a turbine, causing it to rotate, which in turn powers the generator which   makes a current 
+  
+      \item Chemical reactions inside the turbine create a pushing force cause the dam to rotate which in  turn powers the generator which creates a current.
+
+      \item The force of the tides cause water to move past the turbine causing it to rotate. This powers  the generator which creates a current
+    \end{enumerate}
+
+    \item Which of the following would you consider an advantage for a hydro electric dam? Check all  that apply.
+
+        \begin{enumerate}
+            \item Cheap to build
+            \item Once built, can produce clean power
+            \item Can run all the time. (24/7)
+            \item Small environmental impact
+            \item Other, please specify
+
+        \end{enumerate}
+
+    \item Which of the following would you consider a disadvantage for a hydro electric dam? Check all  that apply.
+
+    \begin{enumerate}
+            \item Destroys large amounts of land
+            \item Requires a large amount of money to build
+            \item Requires water to operate
+            \item Water is wated by the dam
+            \item Other, please specify
+
+    \end{enumerate}
+
+  \end{enumerate}
+
+  These same four questions will be repeated for each kind of power (with different multiple choice questions) and answers to each are within the game. A score will be generated for their answers before and after playing and by comparing the answers we will be able to see if the user has learned anything.
+
+\section{Conclusion}
+      With all of these questions answered it can be discovered if ``The Source'' was successful in meeting the criteria of numeric stability and usability. More specifically, it will be determined if “The Source” is successful at being a positive playing experience and teaching users general facts about where power comes from and how power is generated.
+
+
 
 
 \chapter{Data Analysis}
 
-\indent Over the course of a week and a half, 17 university students participated in testing using the method described in the last chapter. The original estimates of the timing of the testing were accurate. The amount of time taken to learn the game and the level of enjoyment did vary between people so the testing periods lasted from about 50 minutes to an hour and a half. In the following sections the results of the tests will be discussed and a conclusion will be reached as to whether or not ``The Source'' was educational and successful in being a positive playing experience.
+\indent Over the course of a week and a half, 17 university students participated in testing the system using the method described in the last chapter. The original estimates of the timing of the testing were accurate. The amount of time taken to learn the game and the level of enjoyment did vary between people so the testing periods lasted from about 50 minutes to an hour and a half. In the following sections the results of the tests will be discussed and a conclusion will be reached as to whether or not ``The Source'' was educational and successful in being a positive playing experience.
 
-\section{The Numerical Results}
-As mentioned in the previous chapter, this questionnaire's purpose was to allow the user to express his or her thoughts, ideas, experiences and opinions on playing the game. Three different areas that were directly focused were the usefulness of items in the game, the difficulty of the game, and the users' playing experiences. 
+\section{The Usability Results}
+As mentioned in the previous chapter, this questionnaire's purpose was to allow the user to express his or her thoughts, ideas, experiences and opinions on playing the game. Three different areas that were directly focused were the usefulness of items in the game, the difficulty of the game, and the users' playing experiences. The data in all charts and graphs are averaged over users.
 
 \subsection{Usefulness}
-\indent The first thing that required feedback was the usefulness of items in the game. The public services, power sources, and advertisements in the game allow for many different tactics and it is important to know users' decisions concerning all three of these items. The charts in figures \ref{powerSources}, \ref{ads} and \ref{publicServices} show the users' responses when asked why they did not purchase elements from a section.
- 
+\indent The first thing that required feedback was the usefulness of items in the game. The public services, power sources, and advertisements in the game allow for many different tactics and it is important to know users' decisions concerning all three of these items. The charts in Figures \ref{powerSources}, \ref{ads} and \ref{publicServices} show the users' responses when asked why they did not purchase elements from a section.
+ \newpage
 \begin{figure}[hbt]
   \begin{center}
-    \includegraphics[width=1\textwidth]{survey_pics/numeric/power_source}
+    \includegraphics[width=0.7\textwidth]{survey_pics/numeric/power_source}
     \caption[Power Source Choices]{Power Source Choices}\label{powerSources}
   \end{center}
 \end{figure}
 
 \begin{figure}[hbt]
   \begin{center}
-    \includegraphics[width=1\textwidth]{survey_pics/numeric/adds}
+    \includegraphics[width=0.7\textwidth]{survey_pics/numeric/adds}
     \caption[Advertisement Choices]{Advertisement Choices}\label{ads}
   \end{center}
 \end{figure}
 
 \begin{figure}[hbt]
   \begin{center}
-    \includegraphics[width=1\textwidth]{survey_pics/numeric/public_service}
+    \includegraphics[width=0.7\textwidth]{survey_pics/numeric/public_service}
     \caption[Public Service Choices]{Public Service Choices}\label{publicServices}
   \end{center}
 \end{figure}
-
 \newpage
-In all three charts, the main reason why users didn't purchase items was because of the cost. Users evaluated the cost of the items and deemed them not worthy of the time and money required. Having this many people come to this conclusion shows that the cost of the items should be reduced to allow users to feel that they have more choices.
 
-Nearly 30\% of people came to the conclusion that advertisements were an unnecessary investment. This is nearly a third of the poplulation which suggests that the perks that groups give should be reconsidered to give more positive advantages to the user rather than just preventing disadvantages. 17\% of people came to the same conclusion about public services; that public services posed no real advantage. However, the data monitored by the system shows that the few people who managed to invest in them were able to thrive for a while off of the perks provided by the public services. While it can be said that some people saw public services as a waste, some people saw an opportunity, and hence public services cannot be claimed as positive or negative for certain with so many participants being scared off by the price. 
 
-17\% of participants said that natural power was a better investment and although this number is influence by the price of the other power sources, it does suggest the possibility that maybe natural power is too strong. Natural power was meant to help the user get started in the early stages of the game and then fall off later but many users developed the strategy of investing into natural power for as long as possible. 
+In all three charts, the main reason why users didn't purchase items was because of the cost. Users evaluated the cost of the items and deemed them not worthy of the time and money required. Having this many people come to this conclusion shows that users are experiencing too much financial pressure. This pressure is limiting the users choices in the game, making it more linear. Users should have many options to chose from and while price should be a factor in their decision it should not be an overly controlling factor.
 
-\newpage
+Nearly 30\% of people came to the conclusion that advertisements were an unnecessary investment. This is nearly a third of the population, which suggests that the perks that groups give should be reconsidered to give more positive advantages to the user, rather than just preventing disadvantages. 23.7\% of people came to the same conclusion about public services; that public services posed no real advantage. However, the data monitored by the system shows that the few people who managed to invest in them were able to thrive for a while off of the perks provided by the public services. While it can be said that some people saw public services as a waste, some people saw an opportunity, and hence public services cannot be claimed as positive or negative for certain with so many participants being scared off by the price. 
+
+18\% of participants said that natural power was a better investment than other power types, and although this number is influence by the price of the other power sources, it does suggest the possibility that maybe natural power is too strong. Natural power was meant to help the user get started in the early stages of the game and then fall off later but many users developed the strategy of investing into natural power for as long as possible. 
+
 \subsection{Difficulty}
-\indent Another area that needed investigating was the difficulty that the user experienced while playing the game. Of interest to know was if the user had too easy or too difficult of a time playing. The game should not be so simple as to be mindless but should not be too difficult as to make the user give up. This difficulty was evaluated in three different questions, how difficult the user found it to keep up with demand, how the user thought the pace of the game was, and if the user found some items to be too expensive or too cheap. The results of each question are shown in figures \ref{powerDemanded}, \ref{gamePase} and \ref{cost}.
-\bigskip
-\newpage
+\indent Another area that needed investigating was the difficulty that the user experienced while playing the game. It was of interest to know if the user had a too easy or too difficult of a time playing. The game should not be so simple as to be mindless, but it should not be too difficult as to make the user give up. This difficulty was evaluated in three different questions, how difficult the user found it to keep up with demand, how the user thought the pace of the game was, and if the user found some items to be too expensive or too cheap. The results of each question are shown in figures \ref{powerDemanded}, \ref{gamePase} and \ref{cost}.
+
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/power_demanded}
-    \caption[pd]{Power Demand Difficulty Level}\label{powerDemanded}
+    \caption[Power demanded difficulty level]{Power Demand Difficulty Level}\label{powerDemanded}
   \end{center}
 \end{figure}
 
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/game_pase}
-    \caption[p]{Game Pase Rating}\label{gamePase}
+    \caption[Game pace rating]{Game Pace Rating}\label{gamePase}
   \end{center}
 \end{figure}
 
@@ -428,21 +695,20 @@ Nearly 30\% of people came to the conclusion that advertisements were an unneces
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/cost}
-    \caption[Power Source ]{Expensive/inexpensive items}\label{cost}
+    \caption[Price of items ]{Expensive/inexpensive items}\label{cost}
   \end{center}
 \end{figure}
 
-As can be seen in figure \ref{powerDemanded} the majority of the pariticipants had a difficult time keeping up with the power demanded and this is to be expected, however, the game is intended for a younger audience. If university students had a difficult time keeping up it is reasonable to believe that high school students should have even more of a challenge. This issue could be resolved by lowering the cost of the items that the users had already believed were too expensive.
+As can be seen in figure \ref{powerDemanded} the majority of the pariticipants had a difficult time keeping up with the power demanded and this is to be expected, however, the game is intended for a younger audience. If university students had a difficult time keeping up, it is reasonable to believe that high school students should have even more of a challenge. This issue could be resolved by lowering the cost of the items that the users had already believed were too expensive.
 
 Figure \ref{gamePase} shows that a majority of participants were able to cope with the pace of the game. This data shows that the pace of the game is probably not a big factor in the difficulty of the game. 
 
 \newpage
-In figure \ref{cost} the data indicates that nearly every participant found that the cost of items could use revising. In follow up questions the users said that almost all of the items and all of the non-natural power sources cost too much. This additional cost added a great deal of financial difficulty to the game. Not being able to purchase power plants is the main way that the game should show its difficulty but it can not be the only way. If purchasing power plants was the only obstacle then the user would only have to face this one problem every time he or she played. Instead the user should be facing a price obstacle as well as many other smaller obstacles created by the choices the user makes while playing. From the users' responses it can be determined that financial difficulty needs to be decreased and replaced in other sections of the game. This modification will create a more dynamic game every time the user plays, which will in turn make the game more interesting.
-
+In figure \ref{cost} the data indicates that nearly every participant found that the cost of items could use revising. In follow up questions the users said that almost all of the items and all of the non-natural power sources cost too much. This additional cost added a great deal of financial difficulty to the game. Not being able to purchase power plants is the main way that the game should create its difficulty but it can not be the only way. If purchasing power plants was the only obstacle then the user would only have to face this one problem every time he or she played. Instead the user should be facing a price obstacle as well as many other smaller obstacles created by the choices the user makes while playing. From the users' responses it can be determined that financial difficulty needs to be decreased and replaced in other sections of the game. This modification will create a more dynamic game every time the user plays, which will in turn make the game more interesting.
 
 
 \subsection{Playing Experience}
-\indent The previous two sections were dedicated to discovering potential flaws that lay within the framework of the system, but the game's core goal to provide a positive playing experience to the user must also be investigated. To see if ``The Source'' was sucessful the users were asked to comment on their frustration, playing experience, learning, mis-click, rate and tutorial experience. Out of curiosity, the user was also asked if he or she was motivated to research power on his/her own time. The results of these questions are just below in figures \ref{frusterated}, \ref{playingExperience}, \ref{learning}, \ref{mis-click}, \ref{tutorial} and \ref{future_learning}. 
+\indent The previous two sections were dedicated to discovering potential flaws that lay within the framework of the system, but one of the game's two core goals, which is to provide a positive playing experience to the user, must also be investigated. To see if ``The Source'' was successful the users were asked to comment on their frustration, playing experience, learning, mis-clicks, rate and tutorial experience. Out of curiosity, the user was also asked if he or she was motivated to research power on his/her own time. The results of these questions are below in figures \ref{frusterated}, \ref{playingExperience}, \ref{learning}, \ref{mis-click}, \ref{tutorial} and \ref{future_learning}. 
 
 
 
@@ -453,15 +719,18 @@ In figure \ref{cost} the data indicates that nearly every participant found that
   \end{center}
 \end{figure}
 
+Clearly, figure \ref{frusterated} shows that the majority of the users fell within the acceptable range of experiencing little or no frustration. The game is fairly large and has multiple screens for dedicated tasks, and as such it was expected for some participants to experience high levels of frustration, especially if they rushed through the lengthy tutorial. Unfortunately, the users did not elaborate on their frustration so there are no specifically known reasons as to what exactly was causing the users to be frustrated.
 
+\newpage
 
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/playing_experience}
-    \caption[Playing Experice Rating] ]{Playing Experience Rating}\label{playingExperience}
+    \caption[Playing experience rating]{Playing Experience Rating}\label{playingExperience}
   \end{center}
 \end{figure}
 
+From figure \ref{playingExperience} it can be seen that over 80\% of the participants had a positive experience playing, which is important to maintain user interest and attract new users.
 
 \begin{figure}[hbt]
   \begin{center}
@@ -470,7 +739,9 @@ In figure \ref{cost} the data indicates that nearly every participant found that
   \end{center}
 \end{figure}
 
+Figure \ref{learning} shows that over 75 \% of participants felt that they learned something about energy while playing this game. This data is an excellent indication of success in the other core goal of ``The Source'', which is educating the user about energy. This data is further explored in the following section.
 
+\newpage
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/mis_clicked}
@@ -479,6 +750,8 @@ In figure \ref{cost} the data indicates that nearly every participant found that
 \end{figure}
 
 
+From the data in figure \ref{mis-click}, which is directly related to the user's frustration level, it is expected to see a relation between user mis-clicks and user frustration. However this data is not indicative of a clear connection. This data shows that the game has other frustrating aspects, which other data indicates may possibly be the financial difficulty that most people experienced.
+
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/tutorial}
@@ -486,63 +759,66 @@ In figure \ref{cost} the data indicates that nearly every participant found that
   \end{center}
 \end{figure}
 
+It can be seen in figure \ref{tutorial} that the tutorial was successful in its task of informing the user of his/her objectives and the mechanics of the game. After completing the tutorial, over 90\% of participants felt ready to take on the game. Although this percentage is excellent, almost all of the participants mentioned that the tutorial was too long and that they tried unsuccessfully to use the tutorial as if it were interactive, which it was not. Although the tutorial performed its task for this study, it is unlikely that it would be effective in the real world as the attention span of users would not be long enough.
+\newpage
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/numeric/future_learning}
-    \caption[self Learning ]{Likelihood Of Self Research}\label{future_learning}
+    \caption[Likely hood of self Learning ]{Likelihood Of Self Research}\label{future_learning}
   \end{center}
 \end{figure}
 
-
-Clearly, figure \ref{frusterated} shows that the majority of the users fell within the acceptable range of experiencing little or no frustration. The game is fairly large and has multiple screens for dedicated tasks, and as such it was expected for some participants to experience high levels of frustration especially if they rushed through the lengthy tutorial.
-
-From figure \ref{playingExperience} it can be seen that over 80\% of the participants had a positive experience playing which is important to maintain user interest and attract new users.
-
-Figure \ref{learning} shows that over 75 \% of participants felt that they learned something about energy while playing this game. This data is an excellent indication of success in the other core goal of ``The Source'', which is educating the user about energy. This data is further explored in the following section.
-
-From the data in figure \ref{mis-click}, which is directly related to the user's frustration level, it is expected to see a relation between user mis-clicks and user frustrration. However this data is not indicative of a clear conenction. This data shows that the game has other frustrating aspects, which other data indicates may possibly be the financial difficulty that most people experienced.
-
-It can be seen in figure \ref{tutorial} that the tutorial was successfull in its task of informing the user of his/her objectives and the mechanics of the game. After completing the tutorial, over 90\% of participants felt ready to take on the game. Although this percentage is excellent, almost all of the participants mentioned that the tutorial was too long and that they tried unsuccessfully to use the tutorial as if it were interactive, which it was not. Although the tutorial performed its task for this study it is unlikely that it would be effective in the real world as the attention span of users would not be long enough.
-
-The other core goal of ``The Source'' is to educate the user on how the main sources of energy function, but there is too much information and detail to fully explain each power source in detail. ``The Source'' merely opens the door and gives user a taste as to what is out there, and hopefully inspires people to research a little more into power on their own time. Figure \ref{future_learning} shows that \percent{11}{17} of participants showed potential in researching power on their own time. 
+The other core goal of ``The Source'' is to educate the user on how the main sources of energy function, but there is too much information and detail to fully explain the workings of each power source completely in the game. ``The Source'' merely opens the door and gives user a taste as to what is out there, and hopefully inspires people to research a little more into power on their own time. Figure \ref{future_learning} shows that \percent{11}{17} of participants showed potential in researching power on their own time. 
 
 
 All of the data collected from the playing experience section of the usability study indicates that the users had positive playing experiences and the game was user friendly. This positive outcome means that ``The Source'' has successfully met its usability goals. In fact, the majority of the data collected for each question in this section has a positive outcome.  
 
 \section{Knowledge Test Results}
-\indent The purpose of the knowledge test was to discover if the user had learned anything during the game. As mentioned before a pre and post-test method was used to compare users' knowledge before and after playing ``The Source''. ``The Source'' can claim to be successful if more people get the right answer in the post test than the pre test. The knowledge test will be discussed in two parts; first, the operation section which covers how power plants operate, and second, the pros/cons section which covers the pros and cons of each power source. These two pieces are broken up because the information involved was presented to the users in two different ways.
+\indent The purpose of the knowledge test was to discover if the user had learned anything during the game. As mentioned before a pre and post-test method was used to compare users' knowledge before and after playing ``The Source''. The game can claim to be successful if more people get the right answer in the post test than in the pre test. Table \ref{table:improvmentAverage} shows an improvement averaged over people and power types. It shows that in all categories there was an average increase in knowledge after the pre-test. This data suggests that on a whole ``The Source'' was successful in its goal of educating its users. The knowledge test will be discussed further in three parts. First, the operation section which covers how power plants operate. Second, the origins of resources, and third, the pros/cons section, which covers the pros and cons of each power source. These three pieces are broken up because the information involved was presented to the users in two different ways.
+
+\begin{table}[tbph]
+\centering
+\caption{Improvement Average over population and power types}
+\label{table:improvmentAverage}
+\begin{tabular}{|c|c|}
+\hline
+                         & \begin{tabular}[c]{@{}c@{}}Improvement average over\\  people and power types (\%)\end{tabular} \\ \hline
+Workings of Power Source & 
+24.3                                                                                              \\ \hline
+Origins of Power         & 
+57.7                                                               \\ \hline
+Pros                     & 6                                                                                               \\ \hline
+Cons                     & 
+11.6                                                                                             \\ \hline
+\end{tabular}
+\end{table}
 
 
 \subsection{Operation of a Power Plant}
-    In both the pre and post-tests users were asked about the general idea of how each kind of power opperates and the idea behind modern generators. Within the game lies a screen with small (10-20) animations about how each type of power operates. Users are almost guaranteed to see each animation as they are instructed to explore the game on their first attempt at playing. Each animation holds the answer to the relavent question asked in the questionnaire. The results of the question are shown in figure \ref{workings}. The graph shows that there was an increase in knowledge in almost all areas except nuclear and coal power. Knowledge in nuclear power remained the same, which suggests that people didn't visit the screen where the nuclear power knowledge was presented. This relationship agrees with what a few users mentioned, that the game forced the user to care about coal more than the other non-natural power sources, because the user starts off with a coal power plant. In future work the user could start off with a random power source so they are forced to see all knowledge screens. Figure \ref{workings} also shows that one person did worse after playing the game when asked about the workings of coal power plants. Reasons why this decreased occurred are unknown and should not have happened for a number of reasons. First, since users start with a coal power plant they are almost guaranteed to visit the screen that presents them with the knowledge of how coal power plants operate. The information is not hidden or avoidable, if the user visited this screen he or she would have had to have seen it. Secondly, users showed an improvement in both gas and oil power plants which work the same way as coal power plants. If the user knows how one operates he or she knows how the other three operate as well. 
-    Even with this one anomaly, looking at the data as a whole it is clear that in all of the other categories of power there was an increase of correct answers after playing the game. This increase demonstrates that ``The Source'' is capable of teaching users about energy. 
-
-
-\begin{figure}[hbt]
+  
+    In both the pre and post-tests users were asked about the general idea of how each kind of power opperates and the idea behind modern generators. Within the game lies a screen with small (10-20 second) animations about how each type of power operates. Users are almost guaranteed to see each animation as they are instructed to explore the game on their first attempt at playing. Each animation holds the answer to the respective question asked in the questionnaire. The results of the question are shown in figure \ref{workings}. The graph shows that there was an increase in knowledge in almost all areas except nuclear and coal power. Knowledge in nuclear power remained the same, which suggests that people didn't visit the screen where the nuclear power knowledge was presented. This relationship agrees with what a few users mentioned, that the game forced the user to care about coal more than the other non-natural power sources, because the user starts off with a coal power plant. In future work the user could start off with a random power source so they are forced to see all knowledge screens. Figure \ref{workings} also shows that one person did worse after playing the game when asked about the workings of coal power plants. Reasons why this decrease occurred are unknown and the decrease should not have happened for a number of reasons. First, since users start with a coal power plant they are almost guaranteed to visit the screen that presents them with the knowledge of how coal power plants operate. The information is not hidden or avoidable, if the user visited this screen he or she would have had to have seen it. Secondly, users showed an improvement in both gas and oil power plants which work the same way as coal power plants. If the user knows how one operates he or she knows how the other three operate as well. 
+    Even with this one anomaly, looking at the data as a whole it is clear that in all of the other categories of power there was an increase of correct answers after playing the game. This is supported by the first value in Figure \ref{table:improvmentAverage}, stating that 11\% of users improved in this category. This increase demonstrates that ``The Source'' is capable of teaching users about energy. 
+    \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=1\textwidth]{survey_pics/post_and_pre/workings}
-    \caption[Working Powerplants ]{Correct answers to the workings of a power type}\label{workings}
+    \caption[The workings of Power plants ]{Correct answers to the workings of a power type}\label{workings}
   \end{center}
 \end{figure}
 
+
 \subsection{Origins of Power}
-  In this section of the questionnaire users were asked where the fuel sources of each type of power came from. In these questions solar power was ignored due to its simplicity. In the case of wind and hydro the questions focussed more on what kinds of moving air and water fueled the power types. An example of a type of air would be ``rising air due to heat and oceans''. In the case of nuclear power the users were asked what fuels nuclear power and how the fuel is obtained. The answers to these questions were never dirrectly displayed to the user but instead they have to perform the action themselves. For example, coal is mined from the earth and in the game in order to obtain coal and other fossil fuels, users had to mine sections of land. In the case of natural power the answers were shown in the animated videos because you can not create or purchase sunlight, water, or moving air. The results of this question are shown in figure \ref{origins}. The graph shows that at least one person showed improvement in all aspects of power. The graph clearly shows that users increased knowledge in this area.
+  In this section of the questionnaire users were asked where the fuel sources of each type of power came from. In these questions solar power was ignored due to its simplicity. In the case of wind and hydro the questions focussed more on what kinds of moving air and water fueled the power types. An example of a ``type'' of air would be ``rising air due to heat and oceans''. In the case of nuclear power the users were asked what fuels nuclear power and how the fuel is obtained. The answers to these questions were never directly displayed to the user but instead they have to perform the actions themselves. For example, coal is mined from the earth and in the game in order to obtain coal and other fossil fuels, users had to mine sections of land. In the case of natural power the answers were shown in the animated videos because you can not create or purchase sunlight, water, or moving air. The results of this question are shown in figure \ref{origins}. The graph shows that at least one person showed improvement in all aspects of power. This specific improvement, as well as the second value in Figure \ref{table:improvmentAverage}, stating that on an average 13.4\% of users improved in this category shows that users knowledge increased in this area.
 
   \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{survey_pics/post_and_pre/origins}
-    \caption[Origions of power fuel]{Correct answers to origions of power plant fuel}\label{origins}
+    \caption[Origins of power fuel]{Correct answers to origins of power plant fuel}\label{origins}
   \end{center}
 \end{figure}
 
 \subsection{Pros and Cons}
-In this section of the questionnaire users were asked to select a number of statements that they thought were advantages and disadvantages to the power source that the question was referring to. The answers to each question were located in the section of the game where the user would purchase a power source. This way the user could see the pros and cons of each power type before making a purchase. The results of the questionnaire are shown in figures \ref{pros} and \ref{cons}. The graphs are not nearly as clean as the others covered in the previous two sections. Here each graph has a few unexplainable flaws. The pros show that no pros were learned in 3 out of the 7 types of power and that some people for some reason did worse on 2 of the 7 power types. Even though the graph shows that at least two people improved on the remaining types of power, the negative data is too substantial to ignore. The cons graph is only marginally better than the pros. In 2 of the 7 types of power no progress was shown and people actually did worse when asked to list the cons of oil power plants. Even though some areas show an increase in knowledge the data overall is too weak to show an increase in knowledge. 
+In this section of the questionnaire users were asked to select a number of statements that they thought were advantages and disadvantages to the power source that the question was referring to. The answers to each question were located in the section of the game where the user would purchase a power source. This way the user could see the pros and cons of each power type before making a purchase. The results of the questionnaire are shown in figures \ref{pros} and \ref{cons}. The graphs are not nearly as straight foward as the others covered in the previous two sections. Here each graph has a few inexplicable features. The pros show that no pros were learned in 3 out of the 7 types of power, and some people for some reason did worse on 2 of the 7 power types. Even though the graph shows that at least two people improved on the remaining types of power, the negative data is too substantial to ignore. The cons graph is only marginally better than the pros. In 2 of the 7 types of power no progress was shown, and people actually did worse when asked to list the cons of oil power plants. Even though Figure \ref{table:improvmentAverage} shows a positive average learning value for both pros and cons the data overall is too weak to show an increase in knowledge.
 
-\indent There are a couple of possible reasons for this sudden shift in the data trends compared to the previous two sections which showed promising results. First, the answers to the questionnaire in this section were in text form. Meaning that the user had to read a segment of text while playing for each type of power to learn the pros and cons. Users are unlikely to read anything that they don't have to and since this text didn't contain vital information it is very likely that they could have given up on reading after the first sentence and hence not learned the information. Another reason is that users could have misinterpreted questions or answers on the questionnaire as some users asked for clarification on certain items. It is possible that some users had some questions about items but didn't ask which could have thrown off their answers.
-
-\indent In summary, improvement was shown in the general understanding of how power sources operate and in the understanding of the origins of fuel for each power source. The pros and cons of power sources show no conclusive data to indicate one way or another if there was an improvemnt in the understanding of pros and cons or not. When looking at the data with the pros and cons data removed, it can be seen from the improvment in the first two sections that a majority of users were able to walk away having learned a few facts about the origins of power and the operation of power plant. 
-
-\newpage
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{survey_pics/post_and_pre/pros}
@@ -557,43 +833,24 @@ In this section of the questionnaire users were asked to select a number of stat
   \end{center}
 \end{figure}
 
-\newpage
-\section{Conclusion}
-From the data mentioned above and the conclusions met from each data set, it is clear that ``The Source'' was successful in providing the user with a positive playing experience and that ``The Source'' was able to teach its audience about the origins of power and the operation of power plant. Therefore, it can be said the the game has achieved both its usability and educational goals.
+\indent There are a couple of possible reasons for this sudden shift in the data trends compared to the previous two sections, which showed promising results. First, the answers to the questionnaire in this section were in text form. Meaning that the user had to read a segment of text while playing for each type of power to learn the pros and cons. Users are unlikely to read anything that they don't have to and since this text didn't contain vital information it is very likely that they could have given up on reading after the first sentence and hence not learned the information. Another reason is that users could have misinterpreted questions or answers on the questionnaire as some users asked for clarification on certain items. It is possible that some users had some questions about items but didn't ask which could have thrown off their answers.
 
-
-\chapter{Landscape Mode}
-The landscape mode allows you to rotate a page through 90 degrees.  It
-is generally not a good idea to make the chapter heading landscape,
-but it can be useful for long tables etc.
-
-\begin{landscape}
-  This text should appear rotated, allowing for formatting of very
-  wide tables etc.  Note that this might only work after you convert
-  the \texttt{dvi} file to a postscript (\texttt{ps}) or \texttt{pdf}
-  file using \texttt{dvips} or \texttt{dvipdf} etc.
-\end{landscape}
+\indent In summary, improvement was shown in the general understanding of how power sources operate and in the understanding of the origins of fuel for each power source. Even though the average user improved in the pros and cons section as shown in Figure \ref{table:improvmentAverage}, a closer look at the data shows no conclusive indications one way or another if there was an improvement in the understanding of pros and cons or not. When looking at the data with the pros and cons data removed, it can be seen from the improvement in the first two sections that a majority of users were able to walk away having learned a few facts about the origins of power and the operation of power plant. 
 
 \chapter{Conclusion}
-Here comes the conclusion.
+    ``The Source'', an educational tablet application, was designed to show the general workings of different sources of power. Along with this goal, the application should give insight as to what fuels each type of power. The game was created for these tasks because most people use power in some form or another and it is a good idea for people to have some understanding of where their power comes from. ``The Source'' was also designed with the intention of providing the user with a pleasant playing experience. Positive playing experience is important in order to keep users interested and thereby help them absorb information.
 
-\begin{table}[tbph]
-\centering
-\caption{A publication quality table. Very very very very very very very very very very long title.
-\label{table:food1}}
-\begin{tabular}{@{}llr@{}} \toprule 
-\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
-Animal & Description & Price (\$)\\ \midrule 
-Gnat & per gram & 13.65 \\ 
-& each & 0.01 \\ 
-Gnu & stuffed & 92.50 \\ 
-Emu & stuffed & 33.33 \\ 
-Armadillo & frozen & 8.99 \\ \bottomrule 
-\end{tabular}
-\end{table}
+    \medskip
 
-\newpage
-Your conclusion can go on for several pages.
+    From the data collected from the usability test it can be said that users had a pleasant playing experience. The data to support this claim is discussed in the ``Playing Experience'' section. One major issue that was revealed was that items within the game were too expensive, causing too much of a financial strain on users. This strain is shown in Figures \ref{powerSources}, \ref{ads} and \ref{publicServices}. This financial burden causes users to only persue certain paths in the game, and this linearity should not occur. Users should be able to experience multiple paths.
+
+    From the data collected in the knowledge test we can see that all areas in the knowledge section received a positve average increase in knowledge per question, which is demonstrated in \ref{table:improvmentAverage}. Users did well in the first two sections but then fell off in the pros and cons. Although some of the numbers are small the data still shows that the average person learned from their playing experience. 
+
+    \medskip
+
+    The usability test allowed users to express their playing experience and thoughts on the game. From users responses, in the future the cost of items within the game should be lowered to lessen the financial strain on users. This alteration will also open more choices for users to take while playing, allowing for more unique games every time the user plays. The knowledge test heavily suggests that a better way to show the pros and cons of each power source should be utilized. At the moment the information is shown in the form of text, and from the results of the knowledge test it can be seen that the users are not absorbing the information. Given that a new method needs to be used to display the information, it is possible that the pros and cons could be more closely worked into the innter workings of the game. An example of this type of modification would be like when rivers are dammed then the environmental consequences are displayed to the user rather than just calculated behind the scenes.While there are small modifications that must be made, overall it can be said that ``The Source'' achieved both of its main goals, with respect to both usability and education. 
+
+
 
 
 % This file is setup to use a bibtex file sample.bib and uses the
@@ -617,83 +874,83 @@ Your conclusion can go on for several pages.
 \addtocontents{toc}{%
 \protect\renewcommand*\protect\cftchappresnum{\appendixname~}}
 
-\appendix 
-\addappheadtotoc %uses the current page number when it makes the entry in the ToC
-\appendixpage 
+% \appendix 
+% \addappheadtotoc %uses the current page number when it makes the entry in the ToC
+% \appendixpage 
 
-\addtocontents{toc}{
-\setlength{\cftbeforechapskip}{\cftbeforesecskip}
-\setlength{\cftchapindent}{\cftsecindent}
-\protect\renewcommand{\cftchapfont}{\cftsecfont}
-\protect\renewcommand{\protect\cftchapdotsep}{\cftsecdotsep}
-}
+% \addtocontents{toc}{
+% \setlength{\cftbeforechapskip}{\cftbeforesecskip}
+% \setlength{\cftchapindent}{\cftsecindent}
+% \protect\renewcommand{\cftchapfont}{\cftsecfont}
+% \protect\renewcommand{\protect\cftchapdotsep}{\cftsecdotsep}
+% }
 
 
-\chapter{Tables}
-Here you can have additional tables. Table captions are always on top.
+% \chapter{Tables}
+% Here you can have additional tables. Table captions are always on top.
 
-In order to use publication quality tables, one should use the guidelines in . In short, do not use vertical rules or double rules, units in the column heading (not in the body of the table), precede decimals with a digit, and do not use ditto signs. Table \ref{table:food} is according to the guidelines. 
+% In order to use publication quality tables, one should use the guidelines in . In short, do not use vertical rules or double rules, units in the column heading (not in the body of the table), precede decimals with a digit, and do not use ditto signs. Table \ref{table:food} is according to the guidelines. 
 
-For tables, the caption goes on top, for figures, the caption goes on the bottom. If possible, always position tables and figures at the top of a page.\footnote{In this case, the chapter heading prevents the table from being at the top.} Use the option \verb|tbph| for the placement.
+% For tables, the caption goes on top, for figures, the caption goes on the bottom. If possible, always position tables and figures at the top of a page.\footnote{In this case, the chapter heading prevents the table from being at the top.} Use the option \verb|tbph| for the placement.
 
-\begin{table}[tbph]
-\centering
-\caption{A publication quality table. Very very very very very very very very very very long title.
-\label{table:food}}
-\begin{tabular}{@{}llr@{}} \toprule 
-\multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
-Animal & Description & Price (\$)\\ \midrule 
-Gnat & per gram & 13.65 \\ 
-& each & 0.01 \\ 
-Gnu & stuffed & 92.50 \\ 
-Emu & stuffed & 33.33 \\ 
-Armadillo & frozen & 8.99 \\ \bottomrule 
-\end{tabular}
-\end{table}
+% \begin{table}[tbph]
+% \centering
+% \caption{A publication quality table. Very very very very very very very very very very long title.
+% \label{table:food}}
+% \begin{tabular}{@{}llr@{}} \toprule 
+% \multicolumn{2}{c}{Item} \\ \cmidrule(r){1-2} 
+% Animal & Description & Price (\$)\\ \midrule 
+% Gnat & per gram & 13.65 \\ 
+% & each & 0.01 \\ 
+% Gnu & stuffed & 92.50 \\ 
+% Emu & stuffed & 33.33 \\ 
+% Armadillo & frozen & 8.99 \\ \bottomrule 
+% \end{tabular}
+% \end{table}
 
-\newpage
-And other table materials (I needed to generate two pages for that appendix to test the formatting of the table of content).
+% \newpage
+% And other table materials (I needed to generate two pages for that appendix to test the formatting of the table of content).
 
-\begin{table}
-\caption{Another table}
-\end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
 
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
 
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
-\begin{table}
-\caption{Another table}
-\end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
+% \begin{table}
+% \caption{Another table}
+% \end{table}
 
-\chapter{Figures}
-Here you can have additional figures. Figure captions are always at the bottom.
+% \chapter{Figures}
+% Here you can have additional figures. Figure captions are always at the bottom.
 
-\newpage
+% \newpage
 
-And other additional figures (again I needed to generate two pages :-).
-% Indices come here.
+% And other additional figures (again I needed to generate two pages :-).
+% % Indices come here.
 
 
 \end{document}

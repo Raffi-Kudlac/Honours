@@ -1,6 +1,12 @@
-\backcite {Current}{{3}{2.1}{figure.2.1}}
-\backcite {Coal}{{4}{2.2}{figure.2.2}}
-\backcite {Nuclear}{{6}{2.3}{figure.2.3}}
-\backcite {Hydro}{{7}{2.4}{figure.2.4}}
+\backcite {Current}{{4}{2.1}{figure.2.1}}
+\backcite {Coal}{{5}{2.2}{figure.2.2}}
+\backcite {Nuclear}{{7}{2.3}{figure.2.3}}
+\backcite {Hydro}{{8}{2.4}{figure.2.4}}
 \backcite {Wind}{{9}{2.5}{figure.2.5}}
-\backcite {Solar}{{10}{2.6}{figure.2.6}}
+\backcite {Solar}{{11}{2.6}{figure.2.6}}
+\backcite {CityIsland2}{{19}{4}{chapter.4}}
+\backcite {MoonBase}{{19}{4}{chapter.4}}
+\backcite {Megapolis}{{19}{4}{chapter.4}}
+\backcite {SavetheWorld}{{19}{4}{chapter.4}}
+\backcite {SavetheWorld}{{19}{4}{chapter.4}}
+\backcite {Energyville}{{19}{4}{chapter.4}}
